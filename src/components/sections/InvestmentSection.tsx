@@ -2,10 +2,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { DEFAULT_VALUES } from "@/utils/constants";
+import { formatEUR } from "@/utils/formatters";
 
 const TABS = ["visao-geral", "por-entidade", "incluido"] as const;
 type Tab = typeof TABS[number];
-type Currency = "EUR" | "USD" | "MZN";
 
 const TAB_LABELS: Record<Tab, string> = {
   "visao-geral": "Visão Consolidada",
@@ -14,23 +14,16 @@ const TAB_LABELS: Record<Tab, string> = {
 };
 
 const d = DEFAULT_VALUES;
-const factorialMensal = d.totalColaboradores * d.custoColaboradorMes_EUR; // 2,450 EUR
-const primaveraMensal = d.totalColaboradores * d.custoPrimaveraMes_EUR; // 300 EUR
-const mensalRecorrente = factorialMensal + primaveraMensal; // 2,750 EUR
-const implantacao = d.implantacaoFactorial_EUR; // 2,000 EUR
-const mes1Total = implantacao + primaveraMensal; // 2,300 EUR
-const ano1Total = implantacao + (factorialMensal * 11) + (primaveraMensal * 12); // 32,550 EUR
-const ano2Total = mensalRecorrente * 12; // 33,000 EUR
-
-function conv(eur: number, currency: Currency): string {
-  if (currency === "EUR") return `€${eur.toLocaleString("pt-PT")}`;
-  if (currency === "USD") return `$${Math.round(eur * d.conversaoEUR_USD).toLocaleString("en-US")}`;
-  return `${Math.round(eur * d.conversaoEUR_MZN).toLocaleString("pt-BR")} MZN`;
-}
+const factorialMensal = d.totalColaboradores * d.custoColaboradorMes_EUR;
+const primaveraMensal = d.totalColaboradores * d.custoPrimaveraMes_EUR;
+const mensalRecorrente = factorialMensal + primaveraMensal;
+const implantacao = d.implantacaoFactorial_EUR;
+const mes1Total = implantacao + primaveraMensal;
+const ano1Total = implantacao + (factorialMensal * 11) + (primaveraMensal * 12);
+const ano2Total = mensalRecorrente * 12;
 
 const InvestmentSection = () => {
   const [tab, setTab] = useState<Tab>("visao-geral");
-  const [currency, setCurrency] = useState<Currency>("EUR");
 
   return (
     <section id="investment" className="py-24 md:py-32 lg:py-40 bg-background text-foreground px-6 md:px-12 lg:px-24">
@@ -40,31 +33,15 @@ const InvestmentSection = () => {
           Factorial + Integração Primavera (E2E)
         </p>
         <p className="text-sm opacity-50 mb-10 max-w-xl">
-          3 entidades legais · 500 colaboradores · €4,90 EUR/colaborador/mês
+          3 entidades legais · 500 colaboradores · €4,90/colaborador/mês
         </p>
-
-        {/* Currency toggle */}
-        <div className="flex gap-2 mb-8">
-          {(["EUR", "USD", "MZN"] as const).map((c) => (
-            <button
-              key={c}
-              onClick={() => setCurrency(c)}
-              className={cn(
-                "px-4 py-1.5 text-xs border transition-colors rounded-sm",
-                currency === c ? "bg-foreground/10 border-foreground/30" : "border-foreground/10"
-              )}
-            >
-              {c}
-            </button>
-          ))}
-        </div>
 
         {/* Summary cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <SummaryCard label="Mês 1 (implantação)" value={conv(mes1Total, currency)} sub="One-time + Primavera" />
-          <SummaryCard label="Mensal Recorrente" value={conv(mensalRecorrente, currency)} sub="Mês 2 em diante" />
-          <SummaryCard label="Total Ano 1" value={conv(ano1Total, currency)} highlight />
-          <SummaryCard label="Total Ano 2+" value={conv(ano2Total, currency)} />
+          <SummaryCard label="Mês 1 (implantação)" value={formatEUR(mes1Total)} sub="One-time + Primavera" />
+          <SummaryCard label="Mensal Recorrente" value={formatEUR(mensalRecorrente)} sub="Mês 2 em diante" />
+          <SummaryCard label="Total Ano 1" value={formatEUR(ano1Total)} highlight />
+          <SummaryCard label="Total Ano 2+" value={formatEUR(ano2Total)} />
         </div>
 
         {/* Cost per collaborator highlight */}
@@ -74,12 +51,12 @@ const InvestmentSection = () => {
             <div className="flex items-baseline gap-4">
               <div>
                 <p className="text-xs opacity-40">Ano 1</p>
-                <p className="text-2xl font-light">{conv(ano1Total / (d.totalColaboradores * 12), currency)}</p>
+                <p className="text-2xl font-light">{formatEUR(ano1Total / (d.totalColaboradores * 12))}</p>
               </div>
               <span className="text-foreground/20">→</span>
               <div>
                 <p className="text-xs opacity-40">Ano 2+</p>
-                <p className="text-2xl font-light">{conv(ano2Total / (d.totalColaboradores * 12), currency)}</p>
+                <p className="text-2xl font-light">{formatEUR(ano2Total / (d.totalColaboradores * 12))}</p>
               </div>
             </div>
           </div>
@@ -106,8 +83,8 @@ const InvestmentSection = () => {
 
         {/* Tab content */}
         <motion.div key={tab} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
-          {tab === "visao-geral" && <ConsolidatedView currency={currency} />}
-          {tab === "por-entidade" && <BillingFlowView currency={currency} />}
+          {tab === "visao-geral" && <ConsolidatedView />}
+          {tab === "por-entidade" && <BillingFlowView />}
           {tab === "incluido" && <IncludedView />}
         </motion.div>
 
@@ -120,11 +97,11 @@ const InvestmentSection = () => {
           <div className="grid md:grid-cols-2 gap-4">
             <div className="text-sm">
               <p className="opacity-40 text-xs mb-1">Factorial</p>
-              <p className="opacity-70">+€4,90 EUR/mês por colaborador adicional</p>
+              <p className="opacity-70">+€4,90/mês por colaborador adicional</p>
             </div>
             <div className="text-sm">
               <p className="opacity-40 text-xs mb-1">Primavera (E2E)</p>
-              <p className="opacity-70">+€0,60 EUR/mês por colaborador adicional</p>
+              <p className="opacity-70">+€0,60/mês por colaborador adicional</p>
             </div>
           </div>
         </div>
@@ -155,45 +132,43 @@ function SummaryCard({ label, value, highlight, sub }: { label: string; value: s
   );
 }
 
-function ConsolidatedView({ currency }: { currency: Currency }) {
+function ConsolidatedView() {
   const rows1 = [
-    { item: "Implantação Factorial (one-time)", monthly: "—", annual: conv(implantacao, currency), note: "mês 1 apenas" },
-    { item: `Factorial (${d.totalColaboradores} × €4,90)`, monthly: conv(factorialMensal, currency), annual: conv(factorialMensal * 11, currency), note: "11 meses" },
-    { item: `Primavera E2E (${d.totalColaboradores} × €0,60)`, monthly: conv(primaveraMensal, currency), annual: conv(primaveraMensal * 12, currency) },
+    { item: "Implantação Factorial (one-time)", monthly: "—", annual: formatEUR(implantacao), note: "mês 1 apenas" },
+    { item: `Factorial (${d.totalColaboradores} × €4,90)`, monthly: formatEUR(factorialMensal), annual: formatEUR(factorialMensal * 11), note: "11 meses" },
+    { item: `Primavera E2E (${d.totalColaboradores} × €0,60)`, monthly: formatEUR(primaveraMensal), annual: formatEUR(primaveraMensal * 12) },
   ];
-  const total1 = { monthly: "—", annual: conv(ano1Total, currency) };
+  const total1 = { monthly: "—", annual: formatEUR(ano1Total) };
 
   const rows2 = [
-    { item: `Factorial (${d.totalColaboradores} × €4,90)`, monthly: conv(factorialMensal, currency), annual: conv(factorialMensal * 12, currency) },
-    { item: `Primavera E2E (${d.totalColaboradores} × €0,60)`, monthly: conv(primaveraMensal, currency), annual: conv(primaveraMensal * 12, currency) },
+    { item: `Factorial (${d.totalColaboradores} × €4,90)`, monthly: formatEUR(factorialMensal), annual: formatEUR(factorialMensal * 12) },
+    { item: `Primavera E2E (${d.totalColaboradores} × €0,60)`, monthly: formatEUR(primaveraMensal), annual: formatEUR(primaveraMensal * 12) },
   ];
-  const total2 = { monthly: conv(mensalRecorrente, currency), annual: conv(ano2Total, currency) };
+  const total2 = { monthly: formatEUR(mensalRecorrente), annual: formatEUR(ano2Total) };
 
   return (
     <div className="space-y-10">
       <div>
         <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Ano 1 (com implantação)</p>
-        <PriceTable rows={rows1} total={total1} currency={currency} />
+        <PriceTable rows={rows1} total={total1} />
       </div>
       <div>
         <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Anos seguintes</p>
-        <PriceTable rows={rows2} total={total2} currency={currency} />
+        <PriceTable rows={rows2} total={total2} />
       </div>
-
     </div>
   );
 }
 
-function PriceTable({ rows, total, currency }: { rows: { item: string; monthly: string; annual: string; note?: string }[]; total: { monthly: string; annual: string }; currency: Currency }) {
-  const label = currency === "EUR" ? "EUR" : currency === "USD" ? "USD" : "MZN";
+function PriceTable({ rows, total }: { rows: { item: string; monthly: string; annual: string; note?: string }[]; total: { monthly: string; annual: string } }) {
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-foreground/10">
             <th className="text-left py-3 pr-4 text-xs uppercase tracking-widest opacity-40 font-normal">Item</th>
-            <th className="text-right py-3 px-4 text-xs uppercase tracking-widest opacity-40 font-normal">Mensal ({label})</th>
-            <th className="text-right py-3 pl-4 text-xs uppercase tracking-widest opacity-40 font-normal">Anual ({label})</th>
+            <th className="text-right py-3 px-4 text-xs uppercase tracking-widest opacity-40 font-normal">Mensal (EUR)</th>
+            <th className="text-right py-3 pl-4 text-xs uppercase tracking-widest opacity-40 font-normal">Anual (EUR)</th>
           </tr>
         </thead>
         <tbody>
@@ -220,7 +195,7 @@ function PriceTable({ rows, total, currency }: { rows: { item: string; monthly: 
   );
 }
 
-function BillingFlowView({ currency }: { currency: Currency }) {
+function BillingFlowView() {
   return (
     <div className="space-y-8">
       <p className="text-sm opacity-50">
@@ -228,48 +203,45 @@ function BillingFlowView({ currency }: { currency: Currency }) {
       </p>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {/* Mês 1 */}
         <div className="border border-foreground/10 p-6">
           <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Mês 1 — Início</p>
           <div className="space-y-3 text-sm">
             <div className="flex justify-between opacity-60">
               <span>Implantação Factorial (one-time)</span>
-              <span>{conv(implantacao, currency)}</span>
+              <span>{formatEUR(implantacao)}</span>
             </div>
             <div className="flex justify-between opacity-60">
               <span>Primavera E2E</span>
-              <span>{conv(primaveraMensal, currency)}</span>
+              <span>{formatEUR(primaveraMensal)}</span>
             </div>
             <div className="flex justify-between border-t border-foreground/10 pt-3 font-medium">
               <span>Total Mês 1</span>
-              <span>{conv(mes1Total, currency)}</span>
+              <span>{formatEUR(mes1Total)}</span>
             </div>
           </div>
         </div>
 
-        {/* Mês 2+ */}
         <div className="border border-foreground/10 p-6">
           <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Mês 2 em diante — Recorrente</p>
           <div className="space-y-3 text-sm">
             <div className="flex justify-between opacity-60">
               <span>Factorial ({d.totalColaboradores} × €4,90)</span>
-              <span>{conv(factorialMensal, currency)}/mês</span>
+              <span>{formatEUR(factorialMensal)}/mês</span>
             </div>
             <div className="flex justify-between opacity-60">
               <span>Primavera E2E ({d.totalColaboradores} × €0,60)</span>
-              <span>{conv(primaveraMensal, currency)}/mês</span>
+              <span>{formatEUR(primaveraMensal)}/mês</span>
             </div>
             <div className="flex justify-between border-t border-foreground/10 pt-3 font-medium">
               <span>Total Mensal</span>
-              <span>{conv(mensalRecorrente, currency)}/mês</span>
+              <span>{formatEUR(mensalRecorrente)}/mês</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Billing note */}
       <div className="border border-foreground/10 p-4 text-sm opacity-50">
-        <p><strong>Nota:</strong> O valor do Primavera ({conv(primaveraMensal, currency)}/mês) será faturado diretamente pela E2E.</p>
+        <p><strong>Nota:</strong> O valor do Primavera ({formatEUR(primaveraMensal)}/mês) será faturado diretamente pela E2E.</p>
       </div>
     </div>
   );
