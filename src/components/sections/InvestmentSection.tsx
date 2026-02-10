@@ -84,7 +84,7 @@ const InvestmentSection = () => {
             </div>
           </div>
           <p className="text-xs opacity-40 max-w-xs">
-            Barato para uma solução que toca payroll, horas extras e compliance para todo o grupo.
+            Solução completa que abrange payroll, horas extras e compliance para todo o grupo.
           </p>
         </div>
 
@@ -180,20 +180,6 @@ function ConsolidatedView({ currency }: { currency: Currency }) {
         <PriceTable rows={rows2} total={total2} currency={currency} />
       </div>
 
-      {/* Strategic reading */}
-      <div className="border border-foreground/10 p-6 space-y-4">
-        <p className="text-xs uppercase tracking-widest opacity-50 mb-3">Leitura Estratégica</p>
-        <div className="grid md:grid-cols-2 gap-6 text-sm opacity-60">
-          <div>
-            <p className="font-medium opacity-80 mb-1">Primavera ≈ 11% do custo total</p>
-            <p>O core do contrato é Factorial. O Primavera (E2E) é complemento, faturado separadamente.</p>
-          </div>
-          <div>
-            <p className="font-medium opacity-80 mb-1">Implantação de €2.000 é custo único</p>
-            <p>Apenas no mês 1 — a partir do mês 2 o custo estabiliza em €2.750/mês.</p>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
