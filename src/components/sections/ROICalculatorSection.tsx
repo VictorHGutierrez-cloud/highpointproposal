@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { DEFAULT_VALUES, SCENARIOS, type ScenarioKey } from "@/utils/constants";
 import { useROICalculation, type ROIInputs } from "@/hooks/useROICalculation";
-import { formatUSD, formatMZN, formatPercent, formatMonths } from "@/utils/formatters";
+import { formatUSD, formatEUR, formatMZN, formatPercent, formatMonths } from "@/utils/formatters";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell,
   PieChart, Pie,
@@ -18,7 +18,7 @@ const ROICalculatorSection = () => {
     salarioAnalista: DEFAULT_VALUES.salarioAnalista_MZN,
     tempoFechamentoAtual: DEFAULT_VALUES.tempoFechamentoAtual,
     cenario: "realista",
-    moeda: "USD",
+    moeda: "EUR",
   });
 
   const results = useROICalculation(inputs);
@@ -27,8 +27,11 @@ const ROICalculatorSection = () => {
     setInputs((prev) => ({ ...prev, [key]: value }));
   }, []);
 
-  const fmtDual = (usd: number, mzn: number) =>
-    inputs.moeda === "USD" ? formatUSD(usd) : formatMZN(mzn);
+  const fmt = (usd: number, mzn: number) => {
+    if (inputs.moeda === "EUR") return formatEUR(usd / DEFAULT_VALUES.conversaoEUR_USD);
+    if (inputs.moeda === "MZN") return formatMZN(mzn);
+    return formatUSD(usd);
+  };
 
   const scenarioKeys: ScenarioKey[] = ["conservador", "realista", "otimista"];
 
@@ -81,7 +84,7 @@ const ROICalculatorSection = () => {
           {/* Input Panel */}
           <div className="space-y-5">
             <div className="flex gap-2 mb-4">
-              {(["USD", "MZN"] as const).map((m) => (
+              {(["EUR", "USD", "MZN"] as const).map((m) => (
                 <button
                   key={m}
                   onClick={() => update("moeda", m)}
@@ -101,16 +104,17 @@ const ROICalculatorSection = () => {
             {/* Investment breakdown */}
             <div className="border border-foreground/10 p-4 mt-6 space-y-2">
               <p className="text-xs uppercase tracking-widest opacity-40 mb-2">Breakdown do investimento</p>
-              <Row label="Factorial ($4,90/colab/mês)" value={formatUSD(results.factorialAnual)} />
-              <Row label="Integração licença (anual)" value={formatUSD(results.integracaoLicencaAnual)} />
-              <Row label="Setup Overtime (one-time)" value={formatUSD(results.integracaoSetup)} />
+              <Row label={`Factorial (€4,90 × ${inputs.totalColaboradores})`} value={formatEUR(results.factorialMensal_EUR)} sub="/mês" />
+              <Row label={`Primavera E2E (€0,60 × ${inputs.totalColaboradores})`} value={formatEUR(results.primaveraMensal_EUR)} sub="/mês" />
+              <Row label="Implantação (one-time)" value={formatEUR(results.implantacao_EUR)} />
               <div className="border-t border-foreground/10 pt-2 mt-2">
-                <Row label="Total Ano 1" value={formatUSD(results.investimentoAno1)} bold />
-                <Row label="Total Ano 2+" value={formatUSD(results.investimentoAno2)} />
+                <Row label="Mensal recorrente (mês 2+)" value={formatEUR(results.mensalRecorrente_EUR)} bold />
+                <Row label="Total Ano 1" value={formatEUR(results.investimentoAno1EUR)} />
+                <Row label="Total Ano 2+" value={formatEUR(results.investimentoAno2EUR)} />
               </div>
               <div className="border-t border-foreground/10 pt-2 mt-2">
-                <Row label="Custo/colab/mês (Ano 1)" value={formatUSD(results.custoPorColabMesAno1)} />
-                <Row label="Custo/colab/mês (Ano 2+)" value={formatUSD(results.custoPorColabMesAno2)} />
+                <Row label="Custo/colab/mês (Ano 1)" value={formatEUR(results.custoPorColabMesAno1EUR)} />
+                <Row label="Custo/colab/mês (Ano 2+)" value={formatEUR(results.custoPorColabMesAno2EUR)} />
               </div>
             </div>
           </div>
@@ -118,10 +122,10 @@ const ROICalculatorSection = () => {
           {/* Results Panel */}
           <div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
-              <ResultCard label="Custo Atual Anual" value={fmtDual(results.custoAtualAnual, results.custoAtualAnualMZN)} />
-              <ResultCard label="Investimento Ano 1" value={fmtDual(results.investimentoAno1, results.investimentoAno1MZN)} />
-              <ResultCard label="Economia Anual" value={fmtDual(results.economiaAnual, results.economiaAnualMZN)} />
-              <ResultCard label="Ganho Líquido (Ano 1)" value={fmtDual(results.ganhoLiquidoAno1, results.ganhoLiquidoAno1MZN)} highlight />
+              <ResultCard label="Custo Atual Anual" value={fmt(results.custoAtualAnual, results.custoAtualAnualMZN)} />
+              <ResultCard label="Investimento Ano 1" value={fmt(results.investimentoAno1, results.investimentoAno1MZN)} />
+              <ResultCard label="Economia Anual" value={fmt(results.economiaAnual, results.economiaAnualMZN)} />
+              <ResultCard label="Ganho Líquido (Ano 1)" value={fmt(results.ganhoLiquidoAno1, results.ganhoLiquidoAno1MZN)} highlight />
               <ResultCard label="ROI (Ano 1)" value={formatPercent(results.roiPercentAno1)} highlight />
               <ResultCard label="Payback" value={formatMonths(results.paybackMeses)} />
             </div>
@@ -130,11 +134,11 @@ const ROICalculatorSection = () => {
             <div className="border border-foreground/20 bg-foreground/5 p-4 mb-10 grid grid-cols-3 gap-4">
               <div>
                 <p className="text-[10px] uppercase opacity-40">Investimento Ano 2+</p>
-                <p className="text-lg font-light">{fmtDual(results.investimentoAno2, results.investimentoAno2MZN)}</p>
+                <p className="text-lg font-light">{fmt(results.investimentoAno2, results.investimentoAno2MZN)}</p>
               </div>
               <div>
                 <p className="text-[10px] uppercase opacity-40">Ganho Líquido Ano 2+</p>
-                <p className="text-lg font-light">{fmtDual(results.ganhoLiquidoAno2, results.ganhoLiquidoAno2MZN)}</p>
+                <p className="text-lg font-light">{fmt(results.ganhoLiquidoAno2, results.ganhoLiquidoAno2MZN)}</p>
               </div>
               <div>
                 <p className="text-[10px] uppercase opacity-40">ROI Ano 2+</p>
@@ -199,11 +203,11 @@ function ChartBlock({ title, children, className, height = "h-48" }: { title: st
   );
 }
 
-function Row({ label, value, bold }: { label: string; value: string; bold?: boolean }) {
+function Row({ label, value, bold, sub }: { label: string; value: string; bold?: boolean; sub?: string }) {
   return (
     <div className={cn("flex justify-between text-sm", bold ? "font-medium" : "opacity-60")}>
       <span>{label}</span>
-      <span>{value}</span>
+      <span>{value}{sub && <span className="text-xs opacity-40">{sub}</span>}</span>
     </div>
   );
 }

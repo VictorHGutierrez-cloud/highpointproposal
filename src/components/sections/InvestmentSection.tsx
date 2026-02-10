@@ -1,53 +1,70 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { DEFAULT_VALUES } from "@/utils/constants";
 
 const TABS = ["visao-geral", "por-entidade", "incluido"] as const;
 type Tab = typeof TABS[number];
+type Currency = "EUR" | "USD" | "MZN";
 
 const TAB_LABELS: Record<Tab, string> = {
   "visao-geral": "Visão Consolidada",
-  "por-entidade": "Por Entidade Legal",
+  "por-entidade": "Fluxo de Cobrança",
   "incluido": "O que está incluído",
 };
 
+const d = DEFAULT_VALUES;
+const factorialMensal = d.totalColaboradores * d.custoColaboradorMes_EUR; // 2,450 EUR
+const primaveraMensal = d.totalColaboradores * d.custoPrimaveraMes_EUR; // 300 EUR
+const mensalRecorrente = factorialMensal + primaveraMensal; // 2,750 EUR
+const implantacao = d.implantacaoFactorial_EUR; // 2,000 EUR
+const mes1Total = implantacao + primaveraMensal; // 2,300 EUR
+const ano1Total = implantacao + (factorialMensal * 11) + (primaveraMensal * 12); // 32,550 EUR
+const ano2Total = mensalRecorrente * 12; // 33,000 EUR
+
+function conv(eur: number, currency: Currency): string {
+  if (currency === "EUR") return `€${eur.toLocaleString("pt-PT")}`;
+  if (currency === "USD") return `$${Math.round(eur * d.conversaoEUR_USD).toLocaleString("en-US")}`;
+  return `${Math.round(eur * d.conversaoEUR_MZN).toLocaleString("pt-BR")} MZN`;
+}
+
 const InvestmentSection = () => {
   const [tab, setTab] = useState<Tab>("visao-geral");
-  const [showMZN, setShowMZN] = useState(false);
+  const [currency, setCurrency] = useState<Currency>("EUR");
 
   return (
     <section id="investment" className="py-24 md:py-32 lg:py-40 bg-background text-foreground px-6 md:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-sm tracking-widest uppercase opacity-60 mb-4">Investimento</h2>
         <p className="text-2xl md:text-3xl font-light mb-4 max-w-2xl">
-          Factorial Starter Planning + Integração Primavera
+          Factorial + Integração Primavera (E2E)
         </p>
         <p className="text-sm opacity-50 mb-10 max-w-xl">
-          3 entidades legais · 500 colaboradores · $4,90 USD/colaborador/mês
+          3 entidades legais · 500 colaboradores · €4,90 EUR/colaborador/mês
         </p>
 
         {/* Currency toggle */}
         <div className="flex gap-2 mb-8">
-          {[false, true].map((isMZN) => (
+          {(["EUR", "USD", "MZN"] as const).map((c) => (
             <button
-              key={String(isMZN)}
-              onClick={() => setShowMZN(isMZN)}
+              key={c}
+              onClick={() => setCurrency(c)}
               className={cn(
                 "px-4 py-1.5 text-xs border transition-colors rounded-sm",
-                showMZN === isMZN ? "bg-foreground/10 border-foreground/30" : "border-foreground/10"
+                currency === c ? "bg-foreground/10 border-foreground/30" : "border-foreground/10"
               )}
             >
-              {isMZN ? "MZN" : "USD"}
+              {c}
             </button>
           ))}
         </div>
 
         {/* Summary cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <SummaryCard label="Factorial (anual)" usd="$29.400" mzn="1.837.500 MZN" showMZN={showMZN} />
-          <SummaryCard label="Integração Ano 1" usd="$6.270" mzn="391.875 MZN" showMZN={showMZN} sub="(licença + setup)" />
-          <SummaryCard label="Total Ano 1" usd="$35.670" mzn="2.229.375 MZN" showMZN={showMZN} highlight />
-          <SummaryCard label="Total Ano 2+" usd="$32.370" mzn="2.023.125 MZN" showMZN={showMZN} />
+          <SummaryCard label="Mês 1 (implantação)" value={conv(mes1Total, currency)} sub="One-time + Primavera" />
+          <SummaryCard label="Mensal Recorrente" value={conv(mensalRecorrente, currency)} sub="Mês 2 em diante" />
+          <SummaryCard label="Total Ano 1" value={conv(ano1Total, currency)} highlight />
+          <SummaryCard label="Total Ano 2+" value={conv(ano2Total, currency)} />
         </div>
 
         {/* Cost per collaborator highlight */}
@@ -57,12 +74,12 @@ const InvestmentSection = () => {
             <div className="flex items-baseline gap-4">
               <div>
                 <p className="text-xs opacity-40">Ano 1</p>
-                <p className="text-2xl font-light">{showMZN ? "367 MZN" : "$5,88"}</p>
+                <p className="text-2xl font-light">{conv(ano1Total / (d.totalColaboradores * 12), currency)}</p>
               </div>
               <span className="text-foreground/20">→</span>
               <div>
                 <p className="text-xs opacity-40">Ano 2+</p>
-                <p className="text-2xl font-light">{showMZN ? "334 MZN" : "$5,35"}</p>
+                <p className="text-2xl font-light">{conv(ano2Total / (d.totalColaboradores * 12), currency)}</p>
               </div>
             </div>
           </div>
@@ -89,8 +106,8 @@ const InvestmentSection = () => {
 
         {/* Tab content */}
         <motion.div key={tab} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
-          {tab === "visao-geral" && <ConsolidatedView showMZN={showMZN} />}
-          {tab === "por-entidade" && <PerEntityView showMZN={showMZN} />}
+          {tab === "visao-geral" && <ConsolidatedView currency={currency} />}
+          {tab === "por-entidade" && <BillingFlowView currency={currency} />}
           {tab === "incluido" && <IncludedView />}
         </motion.div>
 
@@ -100,27 +117,30 @@ const InvestmentSection = () => {
           <p className="text-sm opacity-60 mb-3">
             A proposta atual contempla 3 entidades legais e 500 colaboradores. Para expandir para as 20 unidades do grupo:
           </p>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             <div className="text-sm">
               <p className="opacity-40 text-xs mb-1">Factorial</p>
-              <p className="opacity-70">+$4,90 USD/mês por colaborador adicional</p>
+              <p className="opacity-70">+€4,90 EUR/mês por colaborador adicional</p>
             </div>
             <div className="text-sm">
-              <p className="opacity-40 text-xs mb-1">Integração</p>
-              <p className="opacity-70">+900 EUR/ano por entidade legal adicional</p>
-            </div>
-            <div className="text-sm">
-              <p className="opacity-40 text-xs mb-1">Setup Overtime</p>
-              <p className="opacity-70">+1.000 EUR por entidade (one-time)</p>
+              <p className="opacity-40 text-xs mb-1">Primavera (E2E)</p>
+              <p className="opacity-70">+€0,60 EUR/mês por colaborador adicional</p>
             </div>
           </div>
+        </div>
+
+        {/* Billing note */}
+        <div className="mt-6 border border-foreground/10 p-4">
+          <p className="text-xs opacity-40">
+            <strong>Nota:</strong> O valor do Primavera será faturado diretamente pela E2E.
+          </p>
         </div>
       </div>
     </section>
   );
 };
 
-function SummaryCard({ label, usd, mzn, showMZN, highlight, sub }: { label: string; usd: string; mzn: string; showMZN: boolean; highlight?: boolean; sub?: string }) {
+function SummaryCard({ label, value, highlight, sub }: { label: string; value: string; highlight?: boolean; sub?: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -130,36 +150,34 @@ function SummaryCard({ label, usd, mzn, showMZN, highlight, sub }: { label: stri
     >
       <p className="text-xs opacity-50 mb-1">{label}</p>
       {sub && <p className="text-[10px] opacity-30 mb-1">{sub}</p>}
-      <p className={cn("font-light", highlight ? "text-xl md:text-2xl" : "text-lg")}>{showMZN ? mzn : usd}</p>
+      <p className={cn("font-light", highlight ? "text-xl md:text-2xl" : "text-lg")}>{value}</p>
     </motion.div>
   );
 }
 
-function ConsolidatedView({ showMZN }: { showMZN: boolean }) {
+function ConsolidatedView({ currency }: { currency: Currency }) {
   const rows1 = [
-    { item: "Factorial Starter Planning", monthly: showMZN ? "153.125" : "2.450", annual: showMZN ? "1.837.500" : "29.400" },
-    { item: "Integração Primavera (licença)", monthly: showMZN ? "17.031" : "247,50", annual: showMZN ? "185.625" : "2.970" },
-    { item: "Integração Primavera (setup Overtime)", monthly: "—", annual: showMZN ? "206.250" : "3.300", note: "one-time" },
+    { item: "Implantação Factorial (one-time)", monthly: "—", annual: conv(implantacao, currency), note: "mês 1 apenas" },
+    { item: `Factorial (${d.totalColaboradores} × €4,90)`, monthly: conv(factorialMensal, currency), annual: conv(factorialMensal * 11, currency), note: "11 meses" },
+    { item: `Primavera E2E (${d.totalColaboradores} × €0,60)`, monthly: conv(primaveraMensal, currency), annual: conv(primaveraMensal * 12, currency) },
   ];
-  const total1 = { monthly: showMZN ? "170.156" : "2.697,50", annual: showMZN ? "2.229.375" : "35.670" };
+  const total1 = { monthly: "—", annual: conv(ano1Total, currency) };
 
   const rows2 = [
-    { item: "Factorial Starter Planning", monthly: showMZN ? "153.125" : "2.450", annual: showMZN ? "1.837.500" : "29.400" },
-    { item: "Integração Primavera (licença)", monthly: showMZN ? "17.031" : "247,50", annual: showMZN ? "185.625" : "2.970" },
+    { item: `Factorial (${d.totalColaboradores} × €4,90)`, monthly: conv(factorialMensal, currency), annual: conv(factorialMensal * 12, currency) },
+    { item: `Primavera E2E (${d.totalColaboradores} × €0,60)`, monthly: conv(primaveraMensal, currency), annual: conv(primaveraMensal * 12, currency) },
   ];
-  const total2 = { monthly: showMZN ? "170.156" : "2.697,50", annual: showMZN ? "2.023.125" : "32.370" };
-
-  const cur = showMZN ? "MZN" : "USD";
+  const total2 = { monthly: conv(mensalRecorrente, currency), annual: conv(ano2Total, currency) };
 
   return (
     <div className="space-y-10">
       <div>
-        <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Ano 1 (com setup)</p>
-        <PriceTable rows={rows1} total={total1} currency={cur} />
+        <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Ano 1 (com implantação)</p>
+        <PriceTable rows={rows1} total={total1} currency={currency} />
       </div>
       <div>
-        <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Anos seguintes (sem setup)</p>
-        <PriceTable rows={rows2} total={total2} currency={cur} />
+        <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Anos seguintes</p>
+        <PriceTable rows={rows2} total={total2} currency={currency} />
       </div>
 
       {/* Strategic reading */}
@@ -167,12 +185,12 @@ function ConsolidatedView({ showMZN }: { showMZN: boolean }) {
         <p className="text-xs uppercase tracking-widest opacity-50 mb-3">Leitura Estratégica</p>
         <div className="grid md:grid-cols-2 gap-6 text-sm opacity-60">
           <div>
-            <p className="font-medium opacity-80 mb-1">Integração &lt; 10% do total (ano 2+)</p>
-            <p>O core do contrato é Factorial. A integração é complemento, não produto principal.</p>
+            <p className="font-medium opacity-80 mb-1">Primavera ≈ 11% do custo total</p>
+            <p>O core do contrato é Factorial. O Primavera (E2E) é complemento, faturado separadamente.</p>
           </div>
           <div>
-            <p className="font-medium opacity-80 mb-1">Setup de 3.000 EUR é custo único</p>
-            <p>Apenas no ano 1 — facilita ancoragem: "depois fica mais barato".</p>
+            <p className="font-medium opacity-80 mb-1">Implantação de €2.000 é custo único</p>
+            <p>Apenas no mês 1 — a partir do mês 2 o custo estabiliza em €2.750/mês.</p>
           </div>
         </div>
       </div>
@@ -180,15 +198,16 @@ function ConsolidatedView({ showMZN }: { showMZN: boolean }) {
   );
 }
 
-function PriceTable({ rows, total, currency }: { rows: { item: string; monthly: string; annual: string; note?: string }[]; total: { monthly: string; annual: string }; currency: string }) {
+function PriceTable({ rows, total, currency }: { rows: { item: string; monthly: string; annual: string; note?: string }[]; total: { monthly: string; annual: string }; currency: Currency }) {
+  const label = currency === "EUR" ? "EUR" : currency === "USD" ? "USD" : "MZN";
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-foreground/10">
             <th className="text-left py-3 pr-4 text-xs uppercase tracking-widest opacity-40 font-normal">Item</th>
-            <th className="text-right py-3 px-4 text-xs uppercase tracking-widest opacity-40 font-normal">Mensal ({currency})</th>
-            <th className="text-right py-3 pl-4 text-xs uppercase tracking-widest opacity-40 font-normal">Anual ({currency})</th>
+            <th className="text-right py-3 px-4 text-xs uppercase tracking-widest opacity-40 font-normal">Mensal ({label})</th>
+            <th className="text-right py-3 pl-4 text-xs uppercase tracking-widest opacity-40 font-normal">Anual ({label})</th>
           </tr>
         </thead>
         <tbody>
@@ -215,57 +234,56 @@ function PriceTable({ rows, total, currency }: { rows: { item: string; monthly: 
   );
 }
 
-function PerEntityView({ showMZN }: { showMZN: boolean }) {
-  const conv = (usd: number) => showMZN ? `${(usd * 62.5).toLocaleString("pt-BR", { maximumFractionDigits: 0 })} MZN` : `$${usd.toLocaleString("en-US")}`;
-
+function BillingFlowView({ currency }: { currency: Currency }) {
   return (
     <div className="space-y-8">
       <p className="text-sm opacity-50">
-        Valores por entidade legal (~167 colaboradores cada)
+        Fluxo de cobrança mensal detalhado
       </p>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {/* Ano 1 */}
+        {/* Mês 1 */}
         <div className="border border-foreground/10 p-6">
-          <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Por entidade — Ano 1</p>
+          <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Mês 1 — Início</p>
           <div className="space-y-3 text-sm">
             <div className="flex justify-between opacity-60">
-              <span>Factorial (~167 × $4,90)</span>
-              <span>{conv(9800)}/ano</span>
+              <span>Implantação Factorial (one-time)</span>
+              <span>{conv(implantacao, currency)}</span>
             </div>
             <div className="flex justify-between opacity-60">
-              <span>Integração (licença)</span>
-              <span>{conv(990)}/ano</span>
-            </div>
-            <div className="flex justify-between opacity-60">
-              <span>Setup Overtime (one-time)</span>
-              <span>{conv(1100)}</span>
+              <span>Primavera E2E</span>
+              <span>{conv(primaveraMensal, currency)}</span>
             </div>
             <div className="flex justify-between border-t border-foreground/10 pt-3 font-medium">
-              <span>Total (Ano 1)</span>
-              <span>{conv(11890)}</span>
+              <span>Total Mês 1</span>
+              <span>{conv(mes1Total, currency)}</span>
             </div>
           </div>
         </div>
 
-        {/* Ano 2+ */}
+        {/* Mês 2+ */}
         <div className="border border-foreground/10 p-6">
-          <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Por entidade — Ano 2+</p>
+          <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Mês 2 em diante — Recorrente</p>
           <div className="space-y-3 text-sm">
             <div className="flex justify-between opacity-60">
-              <span>Factorial (~167 × $4,90)</span>
-              <span>{conv(9800)}/ano</span>
+              <span>Factorial ({d.totalColaboradores} × €4,90)</span>
+              <span>{conv(factorialMensal, currency)}/mês</span>
             </div>
             <div className="flex justify-between opacity-60">
-              <span>Integração (licença)</span>
-              <span>{conv(990)}/ano</span>
+              <span>Primavera E2E ({d.totalColaboradores} × €0,60)</span>
+              <span>{conv(primaveraMensal, currency)}/mês</span>
             </div>
             <div className="flex justify-between border-t border-foreground/10 pt-3 font-medium">
-              <span>Total</span>
-              <span>{conv(10790)}/ano</span>
+              <span>Total Mensal</span>
+              <span>{conv(mensalRecorrente, currency)}/mês</span>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Billing note */}
+      <div className="border border-foreground/10 p-4 text-sm opacity-50">
+        <p><strong>Nota:</strong> O valor do Primavera ({conv(primaveraMensal, currency)}/mês) será faturado diretamente pela E2E.</p>
       </div>
     </div>
   );
@@ -283,12 +301,12 @@ function IncludedView() {
       ],
     },
     {
-      title: "Integração Primavera (Advanced)",
+      title: "Integração Primavera (E2E)",
       modules: [
         { name: "Sincronização", items: ["Admissão automática", "Cessação automática", "Atualização bidirecional de dados"] },
         { name: "Time Off", items: ["Exportação de ausências e férias", "Sincronização de justificativas"] },
         { name: "Documents", items: ["Envio de recibos de vencimento", "Declarações anuais"] },
-        { name: "Overtime", items: ["Importação de horas extra aprovadas", "Cálculo automático no Primavera", "Horas noturnas, feriados, fim de semana", "Setup: 1.000 EUR/entidade (one-time)"] },
+        { name: "Overtime", items: ["Importação de horas extra aprovadas", "Cálculo automático no Primavera", "Horas noturnas, feriados, fim de semana"] },
         { name: "Compensation", items: ["Informação contratual sincronizada", "Dados de remuneração"] },
       ],
     },

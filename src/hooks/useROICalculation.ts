@@ -8,7 +8,7 @@ export interface ROIInputs {
   salarioAnalista: number;
   tempoFechamentoAtual: number;
   cenario: ScenarioKey;
-  moeda: "USD" | "MZN";
+  moeda: "USD" | "MZN" | "EUR";
 }
 
 export interface ROIResults {
@@ -16,8 +16,10 @@ export interface ROIResults {
   custoAtualAnualMZN: number;
   investimentoAno1: number;
   investimentoAno1MZN: number;
+  investimentoAno1EUR: number;
   investimentoAno2: number;
   investimentoAno2MZN: number;
+  investimentoAno2EUR: number;
   economiaAnual: number;
   economiaAnualMZN: number;
   ganhoLiquidoAno1: number;
@@ -30,12 +32,19 @@ export interface ROIResults {
   breakdownFechamento: number;
   breakdownRetrabalho: number;
   breakdownErros: number;
-  custoPorColabMesAno1: number;
-  custoPorColabMesAno2: number;
-  // Investment breakdown
+  custoPorColabMesAno1EUR: number;
+  custoPorColabMesAno2EUR: number;
+  // Investment breakdown (EUR)
+  factorialMensal_EUR: number;
+  primaveraMensal_EUR: number;
+  implantacao_EUR: number;
+  factorialAnual_EUR: number;
+  primaveraAnual_EUR: number;
+  mensalRecorrente_EUR: number;
+  // USD equivalents
   factorialAnual: number;
-  integracaoLicencaAnual: number;
-  integracaoSetup: number;
+  primaveraAnual: number;
+  implantacao: number;
   timeline5anos: { ano: number; economiaAcumulada: number; investimentoAcumulado: number }[];
 }
 
@@ -74,13 +83,27 @@ export function useROICalculation(inputs: ROIInputs): ROIResults {
     const economiaErros = custoErrosAnual * scenario.reducaoErros;
     const economiaAnual = economiaFechamento + economiaRetrabalho + economiaErros;
 
-    // REAL Factorial investment (from proposal)
-    const factorialAnual = inputs.totalColaboradores * d.custoColaboradorMes_USD * 12;
-    const integracaoLicencaAnual = d.integracaoLicencaAnual_EUR * d.conversaoEUR_USD * inputs.unidades;
-    const integracaoSetup = d.integracaoSetup_EUR * d.conversaoEUR_USD * inputs.unidades;
+    // NEW pricing structure (EUR-based)
+    const factorialMensal_EUR = inputs.totalColaboradores * d.custoColaboradorMes_EUR; // 2,450 EUR
+    const primaveraMensal_EUR = inputs.totalColaboradores * d.custoPrimaveraMes_EUR; // 300 EUR
+    const implantacao_EUR = d.implantacaoFactorial_EUR; // 2,000 EUR (one-time)
+    const mensalRecorrente_EUR = factorialMensal_EUR + primaveraMensal_EUR; // 2,750 EUR
 
-    const investimentoAno1 = factorialAnual + integracaoLicencaAnual + integracaoSetup;
-    const investimentoAno2 = factorialAnual + integracaoLicencaAnual;
+    const factorialAnual_EUR = factorialMensal_EUR * 11; // No license month 1
+    const primaveraAnual_EUR = primaveraMensal_EUR * 12;
+
+    // Year 1: implementation + 11 months Factorial + 12 months Primavera
+    const investimentoAno1EUR = implantacao_EUR + factorialAnual_EUR + primaveraAnual_EUR;
+    // Year 2+: 12 months Factorial + 12 months Primavera
+    const investimentoAno2EUR = (factorialMensal_EUR * 12) + primaveraAnual_EUR;
+
+    // Convert to USD for ROI calculations
+    const eurToUsd = d.conversaoEUR_USD;
+    const investimentoAno1 = investimentoAno1EUR * eurToUsd;
+    const investimentoAno2 = investimentoAno2EUR * eurToUsd;
+    const factorialAnual = factorialAnual_EUR * eurToUsd;
+    const primaveraAnual = primaveraAnual_EUR * eurToUsd;
+    const implantacao = implantacao_EUR * eurToUsd;
 
     // Net gain & ROI
     const ganhoLiquidoAno1 = economiaAnual - investimentoAno1;
@@ -89,11 +112,11 @@ export function useROICalculation(inputs: ROIInputs): ROIResults {
     const roiPercentAno2 = investimentoAno2 > 0 ? (ganhoLiquidoAno2 / investimentoAno2) * 100 : 0;
     const paybackMeses = economiaAnual > 0 ? (investimentoAno1 / economiaAnual) * 12 : 0;
 
-    // Cost per collaborator per month
-    const custoPorColabMesAno1 = inputs.totalColaboradores > 0 ? investimentoAno1 / (inputs.totalColaboradores * 12) : 0;
-    const custoPorColabMesAno2 = inputs.totalColaboradores > 0 ? investimentoAno2 / (inputs.totalColaboradores * 12) : 0;
+    // Cost per collaborator per month (EUR)
+    const custoPorColabMesAno1EUR = inputs.totalColaboradores > 0 ? investimentoAno1EUR / (inputs.totalColaboradores * 12) : 0;
+    const custoPorColabMesAno2EUR = inputs.totalColaboradores > 0 ? investimentoAno2EUR / (inputs.totalColaboradores * 12) : 0;
 
-    // 5-year timeline
+    // 5-year timeline (USD)
     const timeline5anos = Array.from({ length: 5 }, (_, i) => {
       const ano = i + 1;
       return {
@@ -110,8 +133,10 @@ export function useROICalculation(inputs: ROIInputs): ROIResults {
       custoAtualAnualMZN: toMZN(custoAtualAnual),
       investimentoAno1,
       investimentoAno1MZN: toMZN(investimentoAno1),
+      investimentoAno1EUR,
       investimentoAno2,
       investimentoAno2MZN: toMZN(investimentoAno2),
+      investimentoAno2EUR,
       economiaAnual,
       economiaAnualMZN: toMZN(economiaAnual),
       ganhoLiquidoAno1,
@@ -124,11 +149,17 @@ export function useROICalculation(inputs: ROIInputs): ROIResults {
       breakdownFechamento: economiaFechamento,
       breakdownRetrabalho: economiaRetrabalho,
       breakdownErros: economiaErros,
-      custoPorColabMesAno1,
-      custoPorColabMesAno2,
+      custoPorColabMesAno1EUR,
+      custoPorColabMesAno2EUR,
+      factorialMensal_EUR,
+      primaveraMensal_EUR,
+      implantacao_EUR,
+      factorialAnual_EUR,
+      primaveraAnual_EUR,
+      mensalRecorrente_EUR,
       factorialAnual,
-      integracaoLicencaAnual,
-      integracaoSetup,
+      primaveraAnual,
+      implantacao,
       timeline5anos,
     };
   }, [inputs]);

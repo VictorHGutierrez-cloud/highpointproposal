@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useROICalculation } from "@/hooks/useROICalculation";
 import { DEFAULT_VALUES } from "@/utils/constants";
-import { formatUSD, formatMZN, formatPercent, formatMonths } from "@/utils/formatters";
+import { formatUSD, formatEUR, formatMZN, formatPercent, formatMonths } from "@/utils/formatters";
 
 const ROIHeroSection = () => {
   const results = useROICalculation({
@@ -11,13 +11,13 @@ const ROIHeroSection = () => {
     salarioAnalista: DEFAULT_VALUES.salarioAnalista_MZN,
     tempoFechamentoAtual: DEFAULT_VALUES.tempoFechamentoAtual,
     cenario: "realista",
-    moeda: "USD",
+    moeda: "EUR",
   });
 
   const cards = [
-    { label: "Investimento (Ano 1)", usd: results.investimentoAno1, mzn: results.investimentoAno1MZN },
-    { label: "Economia Anual", usd: results.economiaAnual, mzn: results.economiaAnualMZN },
-    { label: "Ganho Líquido (Ano 1)", usd: results.ganhoLiquidoAno1, mzn: results.ganhoLiquidoAno1MZN },
+    { label: "Investimento (Ano 1)", eur: results.investimentoAno1EUR, usd: results.investimentoAno1 },
+    { label: "Economia Anual", eur: results.economiaAnual / DEFAULT_VALUES.conversaoEUR_USD, usd: results.economiaAnual },
+    { label: "Ganho Líquido (Ano 1)", eur: results.ganhoLiquidoAno1 / DEFAULT_VALUES.conversaoEUR_USD, usd: results.ganhoLiquidoAno1 },
   ];
 
   return (
@@ -36,8 +36,8 @@ const ROIHeroSection = () => {
               className="border border-primary-foreground/20 p-5"
             >
               <p className="text-xs opacity-50 mb-2">{c.label}</p>
-              <p className="text-xl md:text-2xl font-light">{formatUSD(c.usd)}</p>
-              <p className="text-xs opacity-40 mt-1">{formatMZN(c.mzn)}</p>
+              <p className="text-xl md:text-2xl font-light">{formatEUR(c.eur)}</p>
+              <p className="text-xs opacity-40 mt-1">{formatUSD(c.usd)}</p>
             </motion.div>
           ))}
           <motion.div
