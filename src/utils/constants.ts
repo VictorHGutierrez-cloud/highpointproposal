@@ -11,12 +11,14 @@ export const DEFAULT_VALUES = {
   numPessoasRH: 2,
   horasRetrabalho: 33,
   estimativaErros: 83,
-  // Real pricing from proposal
-  custoColaboradorMes_USD: 4.90, // Factorial Starter Planning per seat/month
-  integracaoLicencaAnual_EUR: 900, // per entity/year
-  integracaoSetup_EUR: 1000, // per entity one-time (Overtime)
+  // Real pricing from proposal (EUR-based)
+  custoColaboradorMes_EUR: 4.90, // Factorial per seat/month
+  custoPrimaveraMes_EUR: 0.60, // Primavera (E2E) per seat/month
+  implantacaoFactorial_EUR: 2000, // one-time implementation
+  // Conversions
   conversaoEUR_USD: 1.10,
   conversaoUSD_MZN: 62.5,
+  conversaoEUR_MZN: 68.75,
   // Legacy (kept for backward compat)
   setupFactorial: 1500,
   custoMensalFactorial: 140,

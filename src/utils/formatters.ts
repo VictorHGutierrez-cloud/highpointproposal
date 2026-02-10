@@ -7,6 +7,15 @@ export function formatUSD(value: number): string {
   }).format(value);
 }
 
+export function formatEUR(value: number): string {
+  return new Intl.NumberFormat("pt-PT", {
+    style: "currency",
+    currency: "EUR",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
 export function formatMZN(value: number): string {
   return new Intl.NumberFormat("pt-MZ", {
     minimumFractionDigits: 0,
