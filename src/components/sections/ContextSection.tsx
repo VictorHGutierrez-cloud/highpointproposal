@@ -1,8 +1,34 @@
+import { motion } from "framer-motion";
+
 const stats = [
-  { number: "200", label: "Employees with computers" },
-  { number: "160+", label: "Software licenses to manage" },
-  { number: "150+", label: "Creative professionals" },
+  { number: "400+", label: "Colaboradores na Dulceria" },
+  { number: "~20", label: "Unidades no Grupo" },
+  { number: "3.000+", label: "Colaboradores no Grupo Webcore" },
 ];
+
+const cards = [
+  {
+    title: "Empresa",
+    description: "Dulceria Nacional, parte do Grupo Webcore — parceria entre Arcor e Webcore, com operações em Angola e Moçambique.",
+  },
+  {
+    title: "Escala",
+    description: "Mais de 400 colaboradores apenas na Dulceria, distribuídos em cerca de 20 unidades. Turnos rotativos em linhas de produção.",
+  },
+  {
+    title: "Sistemas Atuais",
+    description: "ERP Primavera para folha de pagamento e SisQual para gestão de ponto e turnos — com graves falhas de integração.",
+  },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.5 },
+  }),
+};
 
 const ContextSection = () => {
   return (
@@ -12,21 +38,33 @@ const ContextSection = () => {
     >
       <div className="max-w-5xl mx-auto">
         <h2 className="text-sm tracking-widest uppercase opacity-60 mb-12">
-          Understanding Swaybox Studios
+          Contexto
         </h2>
 
         <div className="space-y-8 text-lg md:text-xl leading-relaxed font-light mb-16">
           <p className="text-2xl md:text-3xl font-normal">
-            Swaybox builds films differently.
+            Conheça o contexto da Dulceria Nacional e do Grupo Webcore.
           </p>
-          
-          <div className="space-y-2 opacity-90">
-            <p>Real sets. Real materials. Real people.</p>
-          </div>
-          
-          <p className="pt-4 opacity-80">
-            Since 2014, Swaybox has revolutionized practical puppetry, bringing unprecedented visual storytelling to the big screen. Currently producing a feature film with Matt Reeves and 6th & Idaho, requiring enterprise-level technology management.
+          <p className="opacity-80">
+            Um grupo industrial com operações em Angola e Moçambique, enfrentando desafios críticos na gestão de pessoas e integração de sistemas.
           </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {cards.map((card, i) => (
+            <motion.div
+              key={i}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={fadeUp}
+              className="border border-foreground/10 p-8 hover:border-foreground/30 transition-colors"
+            >
+              <h3 className="text-lg font-normal mb-3">{card.title}</h3>
+              <p className="text-sm opacity-70 leading-relaxed">{card.description}</p>
+            </motion.div>
+          ))}
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 pt-8 border-t border-foreground/10">

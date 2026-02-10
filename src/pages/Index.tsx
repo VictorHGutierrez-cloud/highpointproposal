@@ -1,28 +1,29 @@
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/sections/HeroSection";
 import ContextSection from "@/components/sections/ContextSection";
 import ProblemSection from "@/components/sections/ProblemSection";
 import SolutionSection from "@/components/sections/SolutionSection";
-import FeaturesSection from "@/components/sections/FeaturesSection";
-import RoadmapSection from "@/components/sections/RoadmapSection";
-import BenefitsSection from "@/components/sections/BenefitsSection";
-import ScopeSection from "@/components/sections/ScopeSection";
-import PricingSection from "@/components/sections/PricingSection";
+import ComparisonSection from "@/components/sections/ComparisonSection";
+import IntegrationSection from "@/components/sections/IntegrationSection";
 import NextStepSection from "@/components/sections/NextStepSection";
 
 const Index = () => {
   return (
-    <main className="min-h-screen">
-      <HeroSection />
-      <ContextSection />
-      <ProblemSection />
-      <SolutionSection />
-      <FeaturesSection />
-      <RoadmapSection />
-      <BenefitsSection />
-      <ScopeSection />
-      <PricingSection />
-      <NextStepSection />
-    </main>
+    <>
+      <Header />
+      <main className="min-h-screen">
+        <HeroSection />
+        <ContextSection />
+        <ProblemSection />
+        <SolutionSection />
+        <ComparisonSection />
+        <IntegrationSection />
+        {/* MEDDPIC and ROI Calculator sections coming in next phase */}
+        <NextStepSection />
+      </main>
+      <Footer />
+    </>
   );
 };
 
