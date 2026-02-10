@@ -1,41 +1,58 @@
-import swayboxLogo from "@/assets/swaybox-logo.png";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
-  const scrollToProposal = () => {
+  const scrollToROI = () => {
+    document.getElementById("roi-calculator")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToContext = () => {
     document.getElementById("context")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center bg-primary text-primary-foreground px-6 md:px-12 lg:px-24"
+      className="min-h-screen flex flex-col justify-center bg-primary text-primary-foreground px-6 md:px-12 lg:px-24 pt-14"
     >
       <div className="max-w-4xl mx-auto w-full">
-        <div className="mb-16">
-          <div className="flex items-center gap-4 mb-2">
-            <span className="text-lg tracking-wide opacity-80">Factorial IT ×</span>
-          </div>
-          <img
-            src={swayboxLogo}
-            alt="Swaybox Studios"
-            className="h-10 md:h-12 w-auto brightness-0 invert"
-          />
-        </div>
-
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-light leading-tight mb-8 max-w-3xl">
-          Operational structure for studios that create with their hands.
-        </h1>
-
-        <p className="text-lg md:text-xl opacity-80 max-w-2xl mb-12 font-light leading-relaxed">
-          A comprehensive IT Asset Management platform designed specifically for creative production studios.
-        </p>
-
-        <button
-          onClick={scrollToProposal}
-          className="inline-flex items-center gap-2 border border-primary-foreground/40 px-8 py-4 text-sm tracking-wide hover:bg-primary-foreground hover:text-primary transition-colors duration-300"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          View the proposal
-        </button>
+          <div className="mb-16">
+            <span className="text-sm tracking-widest uppercase opacity-60">
+              Proposta Factorial
+            </span>
+          </div>
+
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-light leading-tight mb-8 max-w-3xl">
+            Dulceria Nacional / Grupo Webcore
+          </h1>
+
+          <p className="text-lg md:text-xl opacity-80 max-w-2xl mb-4 font-light leading-relaxed">
+            Substituição do SisQual + Integração com Primavera
+          </p>
+
+          <p className="text-base opacity-60 max-w-xl mb-12 font-light leading-relaxed">
+            Plataforma completa de gestão de RH para 400+ colaboradores, com integração robusta ao ERP Primavera.
+          </p>
+
+          <div className="flex flex-wrap gap-4">
+            <button
+              onClick={scrollToROI}
+              className="inline-flex items-center gap-2 bg-primary-foreground text-primary px-8 py-4 text-sm tracking-wide hover:opacity-90 transition-opacity duration-300"
+            >
+              Calcular ROI Agora
+            </button>
+            <button
+              onClick={scrollToContext}
+              className="inline-flex items-center gap-2 border border-primary-foreground/40 px-8 py-4 text-sm tracking-wide hover:bg-primary-foreground hover:text-primary transition-colors duration-300"
+            >
+              Ver a proposta
+            </button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
