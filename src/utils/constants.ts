@@ -1,7 +1,7 @@
 export const DEFAULT_VALUES = {
   empresa: "Dulceria Nacional / Grupo Webcore",
-  unidades: 3, // 3 entidades legais
-  colaboradoresPorUnidade: 167, // ~500/3
+  unidades: 3,
+  colaboradoresPorUnidade: 167,
   totalColaboradores: 500,
   salarioResponsavelRH_MZN: 108927,
   salarioAnalista_MZN: 25000,
@@ -11,19 +11,15 @@ export const DEFAULT_VALUES = {
   numPessoasRH: 2,
   horasRetrabalho: 33,
   estimativaErros: 83,
-  // Real pricing from proposal (EUR-based)
-  custoColaboradorMes_EUR: 4.90, // Factorial per seat/month
-  custoPrimaveraMes_EUR: 0.60, // Primavera (E2E) per seat/month
-  implantacaoFactorial_EUR: 2000, // one-time implementation
+  // Pricing (EUR)
+  custoColaboradorMes_EUR: 4.90,
+  custoPrimaveraMes_EUR: 0.60,
+  implantacaoFactorial_EUR: 2000,
   // Conversions
-  conversaoEUR_USD: 1.10,
-  conversaoUSD_MZN: 62.5,
   conversaoEUR_MZN: 68.75,
-  // Legacy (kept for backward compat)
-  setupFactorial: 1500,
-  custoMensalFactorial: 140,
-  conversaoMZN_USD: 0.016,
+  // Legacy
   percentualEncargos: 0.30,
+  conversaoMZN_EUR: 0.01455, // 1 MZN ≈ 0.01455 EUR
 };
 
 export const SCENARIOS = {

@@ -101,7 +101,7 @@ const NextStepSection = () => {
             Pronto para Transformar a Gestão de RH do Grupo Webcore?
           </p>
           <p className="text-sm opacity-60 max-w-md mx-auto">
-            Investindo no primeiro ano, o Grupo Webcore pode economizar mais de 300.000 USD/ano com um ROI superior a 400%.
+            Investindo no primeiro ano, o Grupo Webcore pode gerar economias significativas com um ROI superior a 400%.
           </p>
           <a
             href={mailtoLink}

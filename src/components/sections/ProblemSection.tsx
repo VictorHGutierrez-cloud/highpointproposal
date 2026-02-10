@@ -15,7 +15,7 @@ const painPoints = [
   {
     title: "Fecho de Mês Lento e Caro",
     description: "~10 dias com toda a equipa dedicada só ao processo de ponto/integração. Tempo do Oscar, que deveria ser estratégico, consumido em correções operacionais.",
-    impact: "Custo de 381.488–457.788 USD/ano para o grupo",
+    impact: "Custo elevado para o grupo",
   },
   {
     title: "Risco de Erros em Folha",
@@ -32,7 +32,7 @@ const painPoints = [
 const impactMetrics = [
   { value: "10 dias", label: "Fechamento mensal" },
   { value: "419", label: "Colaboradores não exportados" },
-  { value: "~457K USD", label: "Custo anual estimado" },
+  { value: "~415K EUR", label: "Custo anual estimado" },
 ];
 
 const fadeUp = {
