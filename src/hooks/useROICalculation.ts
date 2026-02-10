@@ -11,27 +11,27 @@ export interface ROIInputs {
 }
 
 export interface ROIResults {
-  custoAtualAnual: number;
-  investimentoAno1: number;
-  investimentoAno2: number;
-  economiaAnual: number;
-  ganhoLiquidoAno1: number;
-  ganhoLiquidoAno2: number;
-  roiPercentAno1: number;
-  roiPercentAno2: number;
-  paybackMeses: number;
-  breakdownFechamento: number;
-  breakdownRetrabalho: number;
-  breakdownErros: number;
-  custoPorColabMesAno1: number;
-  custoPorColabMesAno2: number;
+  // Custos atuais (mensal)
+  custoAtualMensal: number;
+  // Investimento mensal
+  mes1Total: number;
+  mensalRecorrente: number;
   factorialMensal: number;
   primaveraMensal: number;
   implantacao: number;
-  factorialAnual: number;
-  primaveraAnual: number;
-  mensalRecorrente: number;
-  timeline5anos: { ano: number; economiaAcumulada: number; investimentoAcumulado: number }[];
+  custoPorColabMes1: number;
+  custoPorColabMes2: number;
+  // Economia mensal
+  economiaMensal: number;
+  breakdownFechamento: number;
+  breakdownRetrabalho: number;
+  breakdownErros: number;
+  // ROI
+  ganhoLiquidoMensal: number;
+  roiPercent: number;
+  paybackMeses: number;
+  // Timeline 12 meses
+  timeline12meses: { mes: number; economiaAcumulada: number; investimentoAcumulado: number }[];
 }
 
 export function useROICalculation(inputs: ROIInputs): ROIResults {
@@ -40,94 +40,82 @@ export function useROICalculation(inputs: ROIInputs): ROIResults {
     const scenario = SCENARIOS[inputs.cenario];
     const conv = d.conversaoMZN_EUR;
 
-    // Salary cost in EUR
+    // Salary cost in EUR (monthly)
     const salResponsavelEUR = inputs.salarioResponsavelRH * conv;
     const salAnalistaEUR = inputs.salarioAnalista * conv;
     const custoHoraResp = (salResponsavelEUR * (1 + d.percentualEncargos)) / (22 * d.horasPorDia);
     const custoHoraAnalista = (salAnalistaEUR * (1 + d.percentualEncargos)) / (22 * d.horasPorDia);
 
-    // Current monthly closing cost
-    const custoFechamentoMensal =
+    // Custo mensal atual de fechamento (por unidade)
+    const custoFechamentoMensalUnidade =
       (custoHoraResp * inputs.tempoFechamentoAtual * d.horasPorDia) +
       (custoHoraAnalista * inputs.tempoFechamentoAtual * d.horasPorDia);
-    const custoFechamentoAnualUnidade = custoFechamentoMensal * 12;
-    const custoFechamentoAnualTotal = custoFechamentoAnualUnidade * inputs.unidades;
+    const custoFechamentoMensalTotal = custoFechamentoMensalUnidade * inputs.unidades;
 
-    // Rework cost
-    const custoRetrabalhoMensal = d.horasRetrabalho * custoHoraAnalista;
-    const custoRetrabalhoAnual = custoRetrabalhoMensal * 12 * inputs.unidades;
+    // Custo mensal de retrabalho
+    const custoRetrabalhoMensal = d.horasRetrabalho * custoHoraAnalista * inputs.unidades;
 
-    // Error cost
-    const custoErroMensal = d.estimativaErros * conv; // convert from MZN implicit to EUR
-    const custoErrosAnual = d.estimativaErros * 12 * inputs.unidades * conv;
+    // Custo mensal de erros
+    const custoErrosMensal = d.estimativaErros * inputs.unidades * conv;
 
-    // Total current cost (EUR)
-    const custoAtualAnual = custoFechamentoAnualTotal + custoRetrabalhoAnual + custoErrosAnual;
+    // Custo atual total mensal
+    const custoAtualMensal = custoFechamentoMensalTotal + custoRetrabalhoMensal + custoErrosMensal;
 
-    // Savings with Factorial
-    const economiaFechamento = custoFechamentoAnualTotal * scenario.reducaoTempo;
-    const economiaRetrabalho = custoRetrabalhoAnual * scenario.reducaoRetrabalho;
-    const economiaErros = custoErrosAnual * scenario.reducaoErros;
-    const economiaAnual = economiaFechamento + economiaRetrabalho + economiaErros;
+    // Economia mensal com Factorial
+    const economiaFechamento = custoFechamentoMensalTotal * scenario.reducaoTempo;
+    const economiaRetrabalho = custoRetrabalhoMensal * scenario.reducaoRetrabalho;
+    const economiaErros = custoErrosMensal * scenario.reducaoErros;
+    const economiaMensal = economiaFechamento + economiaRetrabalho + economiaErros;
 
-    // Investment (EUR)
+    // Investimento mensal (EUR)
     const factorialMensal = inputs.totalColaboradores * d.custoColaboradorMes_EUR;
     const primaveraMensal = inputs.totalColaboradores * d.custoPrimaveraMes_EUR;
     const implantacao = d.implantacaoFactorial_EUR;
     const mensalRecorrente = factorialMensal + primaveraMensal;
+    const mes1Total = implantacao + primaveraMensal; // Mês 1: implantação + Primavera
 
-    const factorialAnual11 = factorialMensal * 11;
-    const primaveraAnual = primaveraMensal * 12;
-    const factorialAnual = factorialMensal * 12;
+    // Custo por colaborador
+    const custoPorColabMes1 = inputs.totalColaboradores > 0 ? mes1Total / inputs.totalColaboradores : 0;
+    const custoPorColabMes2 = inputs.totalColaboradores > 0 ? mensalRecorrente / inputs.totalColaboradores : 0;
 
-    // Year 1: implementation + 11 months Factorial + 12 months Primavera
-    const investimentoAno1 = implantacao + factorialAnual11 + primaveraAnual;
-    // Year 2+: 12 months all
-    const investimentoAno2 = factorialAnual + primaveraAnual;
+    // ROI mensal (baseado no recorrente, mês 2+)
+    const ganhoLiquidoMensal = economiaMensal - mensalRecorrente;
+    const roiPercent = mensalRecorrente > 0 ? (ganhoLiquidoMensal / mensalRecorrente) * 100 : 0;
 
-    // Net gain & ROI
-    const ganhoLiquidoAno1 = economiaAnual - investimentoAno1;
-    const ganhoLiquidoAno2 = economiaAnual - investimentoAno2;
-    const roiPercentAno1 = investimentoAno1 > 0 ? (ganhoLiquidoAno1 / investimentoAno1) * 100 : 0;
-    const roiPercentAno2 = investimentoAno2 > 0 ? (ganhoLiquidoAno2 / investimentoAno2) * 100 : 0;
-    const paybackMeses = economiaAnual > 0 ? (investimentoAno1 / economiaAnual) * 12 : 0;
+    // Payback: quantos meses para recuperar implantação
+    const paybackMeses = ganhoLiquidoMensal > 0 ? implantacao / ganhoLiquidoMensal : 0;
 
-    // Cost per collaborator per month
-    const custoPorColabMesAno1 = inputs.totalColaboradores > 0 ? investimentoAno1 / (inputs.totalColaboradores * 12) : 0;
-    const custoPorColabMesAno2 = inputs.totalColaboradores > 0 ? investimentoAno2 / (inputs.totalColaboradores * 12) : 0;
-
-    // 5-year timeline (EUR)
-    const timeline5anos = Array.from({ length: 5 }, (_, i) => {
-      const ano = i + 1;
-      return {
-        ano,
-        economiaAcumulada: economiaAnual * ano,
-        investimentoAcumulado: investimentoAno1 + investimentoAno2 * Math.max(0, ano - 1),
-      };
+    // Timeline 12 meses
+    const timeline12meses = Array.from({ length: 12 }, (_, i) => {
+      const mes = i + 1;
+      // Mês 1: implantação + primavera, sem economia (ainda implementando)
+      // Mês 2+: economia - custo recorrente
+      const investimentoAcumulado = mes === 1
+        ? mes1Total
+        : mes1Total + mensalRecorrente * (mes - 1);
+      const economiaAcumulada = mes === 1
+        ? 0
+        : economiaMensal * (mes - 1);
+      return { mes, economiaAcumulada, investimentoAcumulado };
     });
 
     return {
-      custoAtualAnual,
-      investimentoAno1,
-      investimentoAno2,
-      economiaAnual,
-      ganhoLiquidoAno1,
-      ganhoLiquidoAno2,
-      roiPercentAno1,
-      roiPercentAno2,
-      paybackMeses,
-      breakdownFechamento: economiaFechamento,
-      breakdownRetrabalho: economiaRetrabalho,
-      breakdownErros: economiaErros,
-      custoPorColabMesAno1,
-      custoPorColabMesAno2,
+      custoAtualMensal,
+      mes1Total,
+      mensalRecorrente,
       factorialMensal,
       primaveraMensal,
       implantacao,
-      factorialAnual,
-      primaveraAnual,
-      mensalRecorrente,
-      timeline5anos,
+      custoPorColabMes1,
+      custoPorColabMes2,
+      economiaMensal,
+      breakdownFechamento: economiaFechamento,
+      breakdownRetrabalho: economiaRetrabalho,
+      breakdownErros: economiaErros,
+      ganhoLiquidoMensal,
+      roiPercent,
+      paybackMeses,
+      timeline12meses,
     };
   }, [inputs]);
 }
