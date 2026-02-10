@@ -26,7 +26,7 @@ const phases = [
     phase: 4,
     title: "Aprovação Final e Implementação",
     description: "Envolver CFO, HRBPs e direção. Decisão sobre escopo inicial e contratação.",
-    participants: ["CFO", "HRBPs", "Big Boss / Direção"],
+    participants: ["CFO", "HRBPs", "Direção"],
     status: "Pendente",
   },
 ];
