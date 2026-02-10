@@ -37,7 +37,7 @@ const ROICalculatorSection = () => {
   const pieData = [
     { name: "Fechamento", value: results.breakdownFechamento },
     { name: "Retrabalho", value: results.breakdownRetrabalho },
-    { name: "Erros", value: results.breakdownErros },
+    { name: "Erros/Compliance", value: results.breakdownErros },
   ];
 
   const PIE_COLORS = ["hsl(var(--foreground) / 0.8)", "hsl(var(--foreground) / 0.5)", "hsl(var(--foreground) / 0.3)"];
@@ -49,6 +49,37 @@ const ROICalculatorSection = () => {
         <p className="text-2xl md:text-3xl font-light mb-12 max-w-2xl">
           Calcule o retorno sobre investimento mensal
         </p>
+
+        {/* RESUMO OPERACIONAL ATUAL */}
+        <div className="border border-foreground/20 bg-foreground/[0.02] p-6 md:p-8 mb-12">
+          <p className="text-xs uppercase tracking-widest opacity-50 mb-6">Situação operacional atual — Custo mensal</p>
+          <div className="grid md:grid-cols-3 gap-6 mb-6">
+            <div>
+              <p className="text-xs opacity-40 mb-1">Fechamento de mês</p>
+              <p className="text-xl font-light">{formatEUR(results.custoFechamentoMensal)}<span className="text-xs opacity-40">/mês</span></p>
+              <p className="text-xs opacity-40 mt-1">{inputs.tempoFechamentoAtual} dias com equipa dedicada × {inputs.unidades} entidades</p>
+            </div>
+            <div>
+              <p className="text-xs opacity-40 mb-1">Retrabalho manual</p>
+              <p className="text-xl font-light">{formatEUR(results.custoRetrabalhoMensal)}<span className="text-xs opacity-40">/mês</span></p>
+              <p className="text-xs opacity-40 mt-1">{DEFAULT_VALUES.horasRetrabalho}h/mês de trabalho duplicado × {inputs.unidades} entidades</p>
+            </div>
+            <div>
+              <p className="text-xs opacity-40 mb-1">Erros de folha e compliance</p>
+              <p className="text-xl font-light">{formatEUR(results.custoErrosMensal)}<span className="text-xs opacity-40">/mês</span></p>
+              <p className="text-xs opacity-40 mt-1">Pagamentos incorretos, horas extra erradas, correções</p>
+            </div>
+          </div>
+          <div className="border-t border-foreground/10 pt-4 flex items-baseline justify-between">
+            <div>
+              <p className="text-xs uppercase tracking-widest opacity-40">Total custo operacional mensal</p>
+              <p className="text-2xl md:text-3xl font-light mt-1">{formatEUR(results.custoAtualMensal)}<span className="text-sm opacity-40">/mês</span></p>
+            </div>
+            <p className="text-xs opacity-30 max-w-xs text-right">
+              Custos invisíveis com processo manual — tempo de RH, erros de payroll e risco de compliance
+            </p>
+          </div>
+        </div>
 
         {/* Scenario Selector */}
         <div className="grid grid-cols-3 gap-3 mb-10">
@@ -82,7 +113,7 @@ const ROICalculatorSection = () => {
             <InputField label="Salário Analista RH (MZN)" value={inputs.salarioAnalista} onChange={(v) => update("salarioAnalista", v)} min={5000} max={200000} />
             <InputField label="Tempo fechamento atual (dias)" value={inputs.tempoFechamentoAtual} onChange={(v) => update("tempoFechamentoAtual", v)} min={1} max={30} />
 
-            {/* Investment breakdown mensal */}
+            {/* Investment breakdown */}
             <div className="border border-foreground/10 p-4 mt-6 space-y-2">
               <p className="text-xs uppercase tracking-widest opacity-40 mb-2">Investimento mensal</p>
               <Row label={`Factorial (€4,90 × ${inputs.totalColaboradores})`} value={formatEUR(results.factorialMensal)} sub="/mês" />
@@ -94,19 +125,15 @@ const ROICalculatorSection = () => {
                 <Row label="Implantação (mês 1, one-time)" value={formatEUR(results.implantacao)} />
                 <Row label="Total mês 1" value={formatEUR(results.mes1Total)} />
               </div>
-              <div className="border-t border-foreground/10 pt-2 mt-2">
-                <Row label="Custo/colab (mês 1)" value={formatEUR(results.custoPorColabMes1)} />
-                <Row label="Custo/colab (mês 2+)" value={formatEUR(results.custoPorColabMes2)} />
-              </div>
             </div>
           </div>
 
           {/* Results Panel */}
           <div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
-              <ResultCard label="Custo Atual Mensal" value={formatEUR(results.custoAtualMensal)} />
-              <ResultCard label="Investimento Mensal" value={formatEUR(results.mensalRecorrente)} />
-              <ResultCard label="Economia Mensal" value={formatEUR(results.economiaMensal)} />
+              <ResultCard label="Custo Atual/mês" value={formatEUR(results.custoAtualMensal)} />
+              <ResultCard label="Investimento/mês" value={formatEUR(results.mensalRecorrente)} />
+              <ResultCard label="Economia/mês" value={formatEUR(results.economiaMensal)} />
               <ResultCard label="Ganho Líquido/mês" value={formatEUR(results.ganhoLiquidoMensal)} highlight />
               <ResultCard label="ROI Mensal" value={formatPercent(results.roiPercent)} highlight />
               <ResultCard label="Payback" value={formatMonths(results.paybackMeses)} />
