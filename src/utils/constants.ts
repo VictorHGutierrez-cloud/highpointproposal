@@ -10,7 +10,10 @@ export const DEFAULT_VALUES = {
   horasPorDia: 8,
   numPessoasRH: 2,
   horasRetrabalho: 33,
-  estimativaErros: 83,
+  // Custo real de erros de folha/compliance por unidade por mês (EUR)
+  // Inclui: pagamentos incorretos de horas extra, faltas mal contabilizadas,
+  // correções manuais, risco de compliance
+  custoErrosUnidade_EUR: 350,
   // Pricing mensal (EUR)
   custoColaboradorMes_EUR: 4.90,
   custoPrimaveraMes_EUR: 0.60,

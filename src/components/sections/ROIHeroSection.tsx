@@ -14,9 +14,9 @@ const ROIHeroSection = () => {
   });
 
   const cards = [
-    { label: "Investimento Mensal", value: formatEUR(results.mensalRecorrente) },
-    { label: "Economia Mensal", value: formatEUR(results.economiaMensal) },
-    { label: "Ganho Líquido/mês", value: formatEUR(results.ganhoLiquidoMensal) },
+    { label: "Custo Operacional Atual", value: formatEUR(results.custoAtualMensal), sub: "/mês" },
+    { label: "Investimento Factorial", value: formatEUR(results.mensalRecorrente), sub: "/mês" },
+    { label: "Ganho Líquido", value: formatEUR(results.ganhoLiquidoMensal), sub: "/mês" },
   ];
 
   return (
@@ -35,7 +35,7 @@ const ROIHeroSection = () => {
               className="border border-primary-foreground/20 p-5"
             >
               <p className="text-xs opacity-50 mb-2">{c.label}</p>
-              <p className="text-xl md:text-2xl font-light">{c.value}</p>
+              <p className="text-xl md:text-2xl font-light">{c.value}<span className="text-xs opacity-40">{c.sub}</span></p>
             </motion.div>
           ))}
           <motion.div
@@ -61,7 +61,7 @@ const ROIHeroSection = () => {
         </div>
 
         <p className="text-sm opacity-60 max-w-lg mx-auto">
-          Com o cenário realista, o Grupo Webcore recupera a implantação em {results.paybackMeses.toFixed(1)} meses, com um ganho líquido mensal de {formatEUR(results.ganhoLiquidoMensal)}.
+          Com o cenário realista, o Grupo Webcore recupera a implantação em {results.paybackMeses.toFixed(1)} meses, gerando um ganho líquido de {formatEUR(results.ganhoLiquidoMensal)}/mês.
         </p>
       </div>
     </section>
