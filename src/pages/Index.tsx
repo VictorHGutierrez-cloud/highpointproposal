@@ -7,6 +7,7 @@ import SolutionSection from "@/components/sections/SolutionSection";
 import ComparisonSection from "@/components/sections/ComparisonSection";
 import IntegrationSection from "@/components/sections/IntegrationSection";
 import MEDDPICSection from "@/components/sections/MEDDPICSection";
+import InvestmentSection from "@/components/sections/InvestmentSection";
 import ROICalculatorSection from "@/components/sections/ROICalculatorSection";
 import ROIHeroSection from "@/components/sections/ROIHeroSection";
 import NextStepSection from "@/components/sections/NextStepSection";
@@ -23,6 +24,7 @@ const Index = () => {
         <ComparisonSection />
         <IntegrationSection />
         <MEDDPICSection />
+        <InvestmentSection />
         <ROICalculatorSection />
         <ROIHeroSection />
         <NextStepSection />

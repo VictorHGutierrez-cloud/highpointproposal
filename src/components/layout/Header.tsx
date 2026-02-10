@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { id: "comparison", label: "Comparação" },
   { id: "integration", label: "Integração" },
   { id: "meddpic", label: "MEDDPIC" },
+  { id: "investment", label: "Investimento" },
   { id: "roi-calculator", label: "ROI Calculator" },
   { id: "next-steps", label: "Próximos Passos" },
 ];

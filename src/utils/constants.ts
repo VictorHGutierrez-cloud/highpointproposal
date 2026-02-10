@@ -1,8 +1,8 @@
 export const DEFAULT_VALUES = {
   empresa: "Dulceria Nacional / Grupo Webcore",
-  unidades: 20,
-  colaboradoresPorUnidade: 400,
-  totalColaboradores: 3000,
+  unidades: 3, // 3 entidades legais
+  colaboradoresPorUnidade: 167, // ~500/3
+  totalColaboradores: 500,
   salarioResponsavelRH_MZN: 108927,
   salarioAnalista_MZN: 25000,
   tempoFechamentoAtual: 10,
@@ -11,6 +11,13 @@ export const DEFAULT_VALUES = {
   numPessoasRH: 2,
   horasRetrabalho: 33,
   estimativaErros: 83,
+  // Real pricing from proposal
+  custoColaboradorMes_USD: 4.90, // Factorial Starter Planning per seat/month
+  integracaoLicencaAnual_EUR: 900, // per entity/year
+  integracaoSetup_EUR: 1000, // per entity one-time (Overtime)
+  conversaoEUR_USD: 1.10,
+  conversaoUSD_MZN: 62.5,
+  // Legacy (kept for backward compat)
   setupFactorial: 1500,
   custoMensalFactorial: 140,
   conversaoMZN_USD: 0.016,

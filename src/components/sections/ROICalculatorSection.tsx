@@ -13,7 +13,7 @@ import {
 const ROICalculatorSection = () => {
   const [inputs, setInputs] = useState<ROIInputs>({
     unidades: DEFAULT_VALUES.unidades,
-    colaboradoresPorUnidade: DEFAULT_VALUES.colaboradoresPorUnidade,
+    totalColaboradores: DEFAULT_VALUES.totalColaboradores,
     salarioResponsavelRH: DEFAULT_VALUES.salarioResponsavelRH_MZN,
     salarioAnalista: DEFAULT_VALUES.salarioAnalista_MZN,
     tempoFechamentoAtual: DEFAULT_VALUES.tempoFechamentoAtual,
@@ -27,7 +27,6 @@ const ROICalculatorSection = () => {
     setInputs((prev) => ({ ...prev, [key]: value }));
   }, []);
 
-  const fmt = (v: number) => inputs.moeda === "USD" ? formatUSD(v) : formatMZN(v / DEFAULT_VALUES.conversaoMZN_USD);
   const fmtDual = (usd: number, mzn: number) =>
     inputs.moeda === "USD" ? formatUSD(usd) : formatMZN(mzn);
 
@@ -35,7 +34,7 @@ const ROICalculatorSection = () => {
 
   const comparisonData = [
     { name: "Custo Atual", value: results.custoAtualAnual },
-    { name: "Investimento", value: results.investimentoAno1 },
+    { name: "Investimento Y1", value: results.investimentoAno1 },
     { name: "Economia", value: results.economiaAnual },
   ];
 
@@ -93,11 +92,27 @@ const ROICalculatorSection = () => {
               ))}
             </div>
 
-            <InputField label="Número de unidades" value={inputs.unidades} onChange={(v) => update("unidades", v)} min={1} max={50} />
-            <InputField label="Colaboradores por unidade" value={inputs.colaboradoresPorUnidade} onChange={(v) => update("colaboradoresPorUnidade", v)} min={10} max={2000} />
+            <InputField label="Entidades legais (CNPJs)" value={inputs.unidades} onChange={(v) => update("unidades", v)} min={1} max={50} />
+            <InputField label="Total de colaboradores" value={inputs.totalColaboradores} onChange={(v) => update("totalColaboradores", v)} min={10} max={10000} />
             <InputField label="Salário Responsável RH (MZN)" value={inputs.salarioResponsavelRH} onChange={(v) => update("salarioResponsavelRH", v)} min={10000} max={500000} />
             <InputField label="Salário Analista RH (MZN)" value={inputs.salarioAnalista} onChange={(v) => update("salarioAnalista", v)} min={5000} max={200000} />
             <InputField label="Tempo fechamento atual (dias)" value={inputs.tempoFechamentoAtual} onChange={(v) => update("tempoFechamentoAtual", v)} min={1} max={30} />
+
+            {/* Investment breakdown */}
+            <div className="border border-foreground/10 p-4 mt-6 space-y-2">
+              <p className="text-xs uppercase tracking-widest opacity-40 mb-2">Breakdown do investimento</p>
+              <Row label="Factorial ($4,90/colab/mês)" value={formatUSD(results.factorialAnual)} />
+              <Row label="Integração licença (anual)" value={formatUSD(results.integracaoLicencaAnual)} />
+              <Row label="Setup Overtime (one-time)" value={formatUSD(results.integracaoSetup)} />
+              <div className="border-t border-foreground/10 pt-2 mt-2">
+                <Row label="Total Ano 1" value={formatUSD(results.investimentoAno1)} bold />
+                <Row label="Total Ano 2+" value={formatUSD(results.investimentoAno2)} />
+              </div>
+              <div className="border-t border-foreground/10 pt-2 mt-2">
+                <Row label="Custo/colab/mês (Ano 1)" value={formatUSD(results.custoPorColabMesAno1)} />
+                <Row label="Custo/colab/mês (Ano 2+)" value={formatUSD(results.custoPorColabMesAno2)} />
+              </div>
+            </div>
           </div>
 
           {/* Results Panel */}
@@ -106,69 +121,92 @@ const ROICalculatorSection = () => {
               <ResultCard label="Custo Atual Anual" value={fmtDual(results.custoAtualAnual, results.custoAtualAnualMZN)} />
               <ResultCard label="Investimento Ano 1" value={fmtDual(results.investimentoAno1, results.investimentoAno1MZN)} />
               <ResultCard label="Economia Anual" value={fmtDual(results.economiaAnual, results.economiaAnualMZN)} />
-              <ResultCard label="Ganho Líquido" value={fmtDual(results.ganhoLiquido, results.ganhoLiquidoMZN)} highlight />
-              <ResultCard label="ROI" value={formatPercent(results.roiPercent)} highlight />
+              <ResultCard label="Ganho Líquido (Ano 1)" value={fmtDual(results.ganhoLiquidoAno1, results.ganhoLiquidoAno1MZN)} highlight />
+              <ResultCard label="ROI (Ano 1)" value={formatPercent(results.roiPercentAno1)} highlight />
               <ResultCard label="Payback" value={formatMonths(results.paybackMeses)} />
+            </div>
+
+            {/* Ano 2+ highlight */}
+            <div className="border border-foreground/20 bg-foreground/5 p-4 mb-10 grid grid-cols-3 gap-4">
+              <div>
+                <p className="text-[10px] uppercase opacity-40">Investimento Ano 2+</p>
+                <p className="text-lg font-light">{fmtDual(results.investimentoAno2, results.investimentoAno2MZN)}</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase opacity-40">Ganho Líquido Ano 2+</p>
+                <p className="text-lg font-light">{fmtDual(results.ganhoLiquidoAno2, results.ganhoLiquidoAno2MZN)}</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase opacity-40">ROI Ano 2+</p>
+                <p className="text-lg font-light">{formatPercent(results.roiPercentAno2)}</p>
+              </div>
             </div>
 
             {/* Charts */}
             <div className="grid md:grid-cols-2 gap-8">
-              {/* Comparison Bar */}
-              <div>
-                <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Comparação Anual (USD)</p>
-                <div className="h-48">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={comparisonData}>
-                      <XAxis dataKey="name" tick={{ fill: "hsl(var(--foreground))", opacity: 0.6, fontSize: 11 }} />
-                      <YAxis tick={{ fill: "hsl(var(--foreground))", opacity: 0.4, fontSize: 10 }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
-                      <Tooltip formatter={(v: number) => formatUSD(v)} contentStyle={{ backgroundColor: "hsl(var(--primary))", border: "none", borderRadius: 4, color: "hsl(var(--primary-foreground))", fontSize: 12 }} />
-                      <Bar dataKey="value" radius={[4, 4, 0, 0]}>
-                        {comparisonData.map((_, i) => <Cell key={i} fill={`hsl(var(--foreground) / ${[0.3, 0.5, 0.8][i]})`} />)}
-                      </Bar>
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
-              </div>
+              <ChartBlock title="Comparação Anual (USD)">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={comparisonData}>
+                    <XAxis dataKey="name" tick={{ fill: "hsl(var(--foreground))", opacity: 0.6, fontSize: 11 }} />
+                    <YAxis tick={{ fill: "hsl(var(--foreground))", opacity: 0.4, fontSize: 10 }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
+                    <Tooltip formatter={(v: number) => formatUSD(v)} contentStyle={{ backgroundColor: "hsl(var(--primary))", border: "none", borderRadius: 4, color: "hsl(var(--primary-foreground))", fontSize: 12 }} />
+                    <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+                      {comparisonData.map((_, i) => <Cell key={i} fill={`hsl(var(--foreground) / ${[0.3, 0.5, 0.8][i]})`} />)}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </ChartBlock>
 
-              {/* Pie breakdown */}
-              <div>
-                <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Fontes de Economia</p>
-                <div className="h-48 flex items-center">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <PieChart>
-                      <Pie data={pieData} dataKey="value" cx="50%" cy="50%" outerRadius={70} label={({ name }) => name}>
-                        {pieData.map((_, i) => <Cell key={i} fill={PIE_COLORS[i]} />)}
-                      </Pie>
-                      <Tooltip formatter={(v: number) => formatUSD(v)} contentStyle={{ backgroundColor: "hsl(var(--primary))", border: "none", borderRadius: 4, color: "hsl(var(--primary-foreground))", fontSize: 12 }} />
-                    </PieChart>
-                  </ResponsiveContainer>
-                </div>
-              </div>
+              <ChartBlock title="Fontes de Economia">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie data={pieData} dataKey="value" cx="50%" cy="50%" outerRadius={70} label={({ name }) => name}>
+                      {pieData.map((_, i) => <Cell key={i} fill={PIE_COLORS[i]} />)}
+                    </Pie>
+                    <Tooltip formatter={(v: number) => formatUSD(v)} contentStyle={{ backgroundColor: "hsl(var(--primary))", border: "none", borderRadius: 4, color: "hsl(var(--primary-foreground))", fontSize: 12 }} />
+                  </PieChart>
+                </ResponsiveContainer>
+              </ChartBlock>
             </div>
 
             {/* 5-year timeline */}
-            <div className="mt-8">
-              <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Economia Acumulada (5 anos, USD)</p>
-              <div className="h-56">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={results.timeline5anos}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--foreground) / 0.1)" />
-                    <XAxis dataKey="ano" tick={{ fill: "hsl(var(--foreground))", opacity: 0.6, fontSize: 11 }} tickFormatter={(v) => `Ano ${v}`} />
-                    <YAxis tick={{ fill: "hsl(var(--foreground))", opacity: 0.4, fontSize: 10 }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
-                    <Tooltip formatter={(v: number) => formatUSD(v)} contentStyle={{ backgroundColor: "hsl(var(--primary))", border: "none", borderRadius: 4, color: "hsl(var(--primary-foreground))", fontSize: 12 }} />
-                    <Legend />
-                    <Line type="monotone" dataKey="economiaAcumulada" name="Economia" stroke="hsl(var(--foreground) / 0.8)" strokeWidth={2} dot={{ r: 4 }} />
-                    <Line type="monotone" dataKey="investimentoAcumulado" name="Investimento" stroke="hsl(var(--foreground) / 0.3)" strokeWidth={2} dot={{ r: 4 }} />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
+            <ChartBlock title="Economia Acumulada (5 anos, USD)" className="mt-8" height="h-56">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={results.timeline5anos}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--foreground) / 0.1)" />
+                  <XAxis dataKey="ano" tick={{ fill: "hsl(var(--foreground))", opacity: 0.6, fontSize: 11 }} tickFormatter={(v) => `Ano ${v}`} />
+                  <YAxis tick={{ fill: "hsl(var(--foreground))", opacity: 0.4, fontSize: 10 }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
+                  <Tooltip formatter={(v: number) => formatUSD(v)} contentStyle={{ backgroundColor: "hsl(var(--primary))", border: "none", borderRadius: 4, color: "hsl(var(--primary-foreground))", fontSize: 12 }} />
+                  <Legend />
+                  <Line type="monotone" dataKey="economiaAcumulada" name="Economia" stroke="hsl(var(--foreground) / 0.8)" strokeWidth={2} dot={{ r: 4 }} />
+                  <Line type="monotone" dataKey="investimentoAcumulado" name="Investimento" stroke="hsl(var(--foreground) / 0.3)" strokeWidth={2} dot={{ r: 4 }} />
+                </LineChart>
+              </ResponsiveContainer>
+            </ChartBlock>
           </div>
         </div>
       </div>
     </section>
   );
 };
+
+function ChartBlock({ title, children, className, height = "h-48" }: { title: string; children: React.ReactNode; className?: string; height?: string }) {
+  return (
+    <div className={className}>
+      <p className="text-xs uppercase tracking-widest opacity-50 mb-4">{title}</p>
+      <div className={height}>{children}</div>
+    </div>
+  );
+}
+
+function Row({ label, value, bold }: { label: string; value: string; bold?: boolean }) {
+  return (
+    <div className={cn("flex justify-between text-sm", bold ? "font-medium" : "opacity-60")}>
+      <span>{label}</span>
+      <span>{value}</span>
+    </div>
+  );
+}
 
 function InputField({ label, value, onChange, min, max }: { label: string; value: number; onChange: (v: number) => void; min: number; max: number }) {
   return (
