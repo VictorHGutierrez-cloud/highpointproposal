@@ -4,12 +4,12 @@ import { cn } from "@/lib/utils";
 import { DEFAULT_VALUES } from "@/utils/constants";
 import { formatEUR } from "@/utils/formatters";
 
-const TABS = ["visao-geral", "por-entidade", "incluido"] as const;
+const TABS = ["visao-geral", "fluxo", "incluido"] as const;
 type Tab = typeof TABS[number];
 
 const TAB_LABELS: Record<Tab, string> = {
   "visao-geral": "Visão Consolidada",
-  "por-entidade": "Fluxo de Cobrança",
+  "fluxo": "Fluxo de Cobrança",
   "incluido": "O que está incluído",
 };
 
@@ -19,8 +19,6 @@ const primaveraMensal = d.totalColaboradores * d.custoPrimaveraMes_EUR;
 const mensalRecorrente = factorialMensal + primaveraMensal;
 const implantacao = d.implantacaoFactorial_EUR;
 const mes1Total = implantacao + primaveraMensal;
-const ano1Total = implantacao + (factorialMensal * 11) + (primaveraMensal * 12);
-const ano2Total = mensalRecorrente * 12;
 
 const InvestmentSection = () => {
   const [tab, setTab] = useState<Tab>("visao-geral");
@@ -36,33 +34,52 @@ const InvestmentSection = () => {
           3 entidades legais · 500 colaboradores · €4,90/colaborador/mês
         </p>
 
-        {/* Summary cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <SummaryCard label="Mês 1 (implantação)" value={formatEUR(mes1Total)} sub="One-time + Primavera" />
-          <SummaryCard label="Mensal Recorrente" value={formatEUR(mensalRecorrente)} sub="Mês 2 em diante" />
-          <SummaryCard label="Total Ano 1" value={formatEUR(ano1Total)} highlight />
-          <SummaryCard label="Total Ano 2+" value={formatEUR(ano2Total)} />
+        {/* Summary cards - MENSAL */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+          <SummaryCard label="Mês 1" value={formatEUR(mes1Total)} sub="Implantação + Primavera" highlight />
+          <SummaryCard label="Mês 2 em diante" value={formatEUR(mensalRecorrente)} sub="Factorial + Primavera" />
+          <SummaryCard label="Custo/colaborador" value={formatEUR(mensalRecorrente / d.totalColaboradores)} sub="Mensal recorrente" />
         </div>
 
-        {/* Cost per collaborator highlight */}
-        <div className="border border-foreground/10 p-6 mb-12 flex flex-col md:flex-row md:items-center gap-6">
-          <div className="flex-1">
-            <p className="text-xs uppercase tracking-widest opacity-50 mb-2">Custo por colaborador/mês (all-in)</p>
-            <div className="flex items-baseline gap-4">
-              <div>
-                <p className="text-xs opacity-40">Ano 1</p>
-                <p className="text-2xl font-light">{formatEUR(ano1Total / (d.totalColaboradores * 12))}</p>
+        {/* Breakdown mensal */}
+        <div className="border border-foreground/10 p-6 mb-12">
+          <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Composição mensal</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <p className="text-xs opacity-40 mb-3">Mês 1 — Início</p>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between opacity-60">
+                  <span>Implantação Factorial (one-time)</span>
+                  <span>{formatEUR(implantacao)}</span>
+                </div>
+                <div className="flex justify-between opacity-60">
+                  <span>Primavera E2E ({d.totalColaboradores} × €0,60)</span>
+                  <span>{formatEUR(primaveraMensal)}</span>
+                </div>
+                <div className="flex justify-between border-t border-foreground/10 pt-2 font-medium">
+                  <span>Total Mês 1</span>
+                  <span>{formatEUR(mes1Total)}</span>
+                </div>
               </div>
-              <span className="text-foreground/20">→</span>
-              <div>
-                <p className="text-xs opacity-40">Ano 2+</p>
-                <p className="text-2xl font-light">{formatEUR(ano2Total / (d.totalColaboradores * 12))}</p>
+            </div>
+            <div>
+              <p className="text-xs opacity-40 mb-3">Mês 2+ — Recorrente</p>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between opacity-60">
+                  <span>Factorial ({d.totalColaboradores} × €4,90)</span>
+                  <span>{formatEUR(factorialMensal)}/mês</span>
+                </div>
+                <div className="flex justify-between opacity-60">
+                  <span>Primavera E2E ({d.totalColaboradores} × €0,60)</span>
+                  <span>{formatEUR(primaveraMensal)}/mês</span>
+                </div>
+                <div className="flex justify-between border-t border-foreground/10 pt-2 font-medium">
+                  <span>Total Mensal</span>
+                  <span>{formatEUR(mensalRecorrente)}/mês</span>
+                </div>
               </div>
             </div>
           </div>
-          <p className="text-xs opacity-40 max-w-xs">
-            Solução completa que abrange payroll, horas extras e compliance para todo o grupo.
-          </p>
         </div>
 
         {/* Tabs */}
@@ -81,18 +98,17 @@ const InvestmentSection = () => {
           ))}
         </div>
 
-        {/* Tab content */}
         <motion.div key={tab} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
           {tab === "visao-geral" && <ConsolidatedView />}
-          {tab === "por-entidade" && <BillingFlowView />}
+          {tab === "fluxo" && <BillingFlowView />}
           {tab === "incluido" && <IncludedView />}
         </motion.div>
 
-        {/* Scalability note */}
+        {/* Escalabilidade */}
         <div className="mt-12 border border-foreground/10 p-6">
           <p className="text-xs uppercase tracking-widest opacity-50 mb-3">Escalabilidade</p>
           <p className="text-sm opacity-60 mb-3">
-            A proposta atual contempla 3 entidades legais e 500 colaboradores. Para expandir para as 20 unidades do grupo:
+            Para expandir além das 3 entidades e 500 colaboradores:
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="text-sm">
@@ -106,7 +122,6 @@ const InvestmentSection = () => {
           </div>
         </div>
 
-        {/* Billing note */}
         <div className="mt-6 border border-foreground/10 p-4">
           <p className="text-xs opacity-40">
             <strong>Nota:</strong> O valor do Primavera será faturado diretamente pela E2E.
@@ -133,64 +148,39 @@ function SummaryCard({ label, value, highlight, sub }: { label: string; value: s
 }
 
 function ConsolidatedView() {
-  const rows1 = [
-    { item: "Implantação Factorial (one-time)", monthly: "—", annual: formatEUR(implantacao), note: "mês 1 apenas" },
-    { item: `Factorial (${d.totalColaboradores} × €4,90)`, monthly: formatEUR(factorialMensal), annual: formatEUR(factorialMensal * 11), note: "11 meses" },
-    { item: `Primavera E2E (${d.totalColaboradores} × €0,60)`, monthly: formatEUR(primaveraMensal), annual: formatEUR(primaveraMensal * 12) },
+  const meses = [
+    { mes: "Mês 1", factorial: "—", primavera: formatEUR(primaveraMensal), implantacao: formatEUR(implantacao), total: formatEUR(mes1Total) },
+    { mes: "Mês 2", factorial: formatEUR(factorialMensal), primavera: formatEUR(primaveraMensal), implantacao: "—", total: formatEUR(mensalRecorrente) },
+    { mes: "Mês 3+", factorial: formatEUR(factorialMensal), primavera: formatEUR(primaveraMensal), implantacao: "—", total: formatEUR(mensalRecorrente) },
   ];
-  const total1 = { monthly: "—", annual: formatEUR(ano1Total) };
-
-  const rows2 = [
-    { item: `Factorial (${d.totalColaboradores} × €4,90)`, monthly: formatEUR(factorialMensal), annual: formatEUR(factorialMensal * 12) },
-    { item: `Primavera E2E (${d.totalColaboradores} × €0,60)`, monthly: formatEUR(primaveraMensal), annual: formatEUR(primaveraMensal * 12) },
-  ];
-  const total2 = { monthly: formatEUR(mensalRecorrente), annual: formatEUR(ano2Total) };
 
   return (
-    <div className="space-y-10">
-      <div>
-        <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Ano 1 (com implantação)</p>
-        <PriceTable rows={rows1} total={total1} />
-      </div>
-      <div>
-        <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Anos seguintes</p>
-        <PriceTable rows={rows2} total={total2} />
-      </div>
-    </div>
-  );
-}
-
-function PriceTable({ rows, total }: { rows: { item: string; monthly: string; annual: string; note?: string }[]; total: { monthly: string; annual: string } }) {
-  return (
-    <div className="overflow-x-auto">
-      <table className="w-full text-sm">
-        <thead>
-          <tr className="border-b border-foreground/10">
-            <th className="text-left py-3 pr-4 text-xs uppercase tracking-widest opacity-40 font-normal">Item</th>
-            <th className="text-right py-3 px-4 text-xs uppercase tracking-widest opacity-40 font-normal">Mensal (EUR)</th>
-            <th className="text-right py-3 pl-4 text-xs uppercase tracking-widest opacity-40 font-normal">Anual (EUR)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((r, i) => (
-            <tr key={i} className="border-b border-foreground/5">
-              <td className="py-3 pr-4 opacity-70">{r.item}</td>
-              <td className="py-3 px-4 text-right opacity-60">{r.monthly}</td>
-              <td className="py-3 pl-4 text-right opacity-70">
-                {r.annual}
-                {r.note && <span className="text-xs opacity-40 ml-1">({r.note})</span>}
-              </td>
+    <div>
+      <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Evolução mensal</p>
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-foreground/10">
+              <th className="text-left py-3 pr-4 text-xs uppercase tracking-widest opacity-40 font-normal">Período</th>
+              <th className="text-right py-3 px-4 text-xs uppercase tracking-widest opacity-40 font-normal">Factorial</th>
+              <th className="text-right py-3 px-4 text-xs uppercase tracking-widest opacity-40 font-normal">Primavera</th>
+              <th className="text-right py-3 px-4 text-xs uppercase tracking-widest opacity-40 font-normal">Implantação</th>
+              <th className="text-right py-3 pl-4 text-xs uppercase tracking-widest opacity-40 font-normal">Total</th>
             </tr>
-          ))}
-        </tbody>
-        <tfoot>
-          <tr className="border-t border-foreground/20">
-            <td className="py-3 pr-4 font-medium">TOTAL</td>
-            <td className="py-3 px-4 text-right font-medium">{total.monthly}</td>
-            <td className="py-3 pl-4 text-right font-medium">{total.annual}</td>
-          </tr>
-        </tfoot>
-      </table>
+          </thead>
+          <tbody>
+            {meses.map((r, i) => (
+              <tr key={i} className="border-b border-foreground/5">
+                <td className="py-3 pr-4 opacity-70 font-medium">{r.mes}</td>
+                <td className="py-3 px-4 text-right opacity-60">{r.factorial}</td>
+                <td className="py-3 px-4 text-right opacity-60">{r.primavera}</td>
+                <td className="py-3 px-4 text-right opacity-60">{r.implantacao}</td>
+                <td className="py-3 pl-4 text-right font-medium">{r.total}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
@@ -198,9 +188,7 @@ function PriceTable({ rows, total }: { rows: { item: string; monthly: string; an
 function BillingFlowView() {
   return (
     <div className="space-y-8">
-      <p className="text-sm opacity-50">
-        Fluxo de cobrança mensal detalhado
-      </p>
+      <p className="text-sm opacity-50">Fluxo de cobrança mês a mês</p>
 
       <div className="grid md:grid-cols-2 gap-6">
         <div className="border border-foreground/10 p-6">
@@ -222,7 +210,7 @@ function BillingFlowView() {
         </div>
 
         <div className="border border-foreground/10 p-6">
-          <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Mês 2 em diante — Recorrente</p>
+          <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Mês 2 em diante</p>
           <div className="space-y-3 text-sm">
             <div className="flex justify-between opacity-60">
               <span>Factorial ({d.totalColaboradores} × €4,90)</span>

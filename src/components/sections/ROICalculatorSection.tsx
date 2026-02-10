@@ -29,9 +29,9 @@ const ROICalculatorSection = () => {
   const scenarioKeys: ScenarioKey[] = ["conservador", "realista", "otimista"];
 
   const comparisonData = [
-    { name: "Custo Atual", value: results.custoAtualAnual },
-    { name: "Investimento Y1", value: results.investimentoAno1 },
-    { name: "Economia", value: results.economiaAnual },
+    { name: "Custo Atual", value: results.custoAtualMensal },
+    { name: "Investimento", value: results.mensalRecorrente },
+    { name: "Economia", value: results.economiaMensal },
   ];
 
   const pieData = [
@@ -47,7 +47,7 @@ const ROICalculatorSection = () => {
       <div className="max-w-6xl mx-auto">
         <h2 className="text-sm tracking-widest uppercase opacity-60 mb-4">ROI Calculator</h2>
         <p className="text-2xl md:text-3xl font-light mb-12 max-w-2xl">
-          Calcule o retorno sobre investimento em tempo real
+          Calcule o retorno sobre investimento mensal
         </p>
 
         {/* Scenario Selector */}
@@ -82,20 +82,21 @@ const ROICalculatorSection = () => {
             <InputField label="Salário Analista RH (MZN)" value={inputs.salarioAnalista} onChange={(v) => update("salarioAnalista", v)} min={5000} max={200000} />
             <InputField label="Tempo fechamento atual (dias)" value={inputs.tempoFechamentoAtual} onChange={(v) => update("tempoFechamentoAtual", v)} min={1} max={30} />
 
-            {/* Investment breakdown */}
+            {/* Investment breakdown mensal */}
             <div className="border border-foreground/10 p-4 mt-6 space-y-2">
-              <p className="text-xs uppercase tracking-widest opacity-40 mb-2">Breakdown do investimento</p>
+              <p className="text-xs uppercase tracking-widest opacity-40 mb-2">Investimento mensal</p>
               <Row label={`Factorial (€4,90 × ${inputs.totalColaboradores})`} value={formatEUR(results.factorialMensal)} sub="/mês" />
               <Row label={`Primavera E2E (€0,60 × ${inputs.totalColaboradores})`} value={formatEUR(results.primaveraMensal)} sub="/mês" />
-              <Row label="Implantação (one-time)" value={formatEUR(results.implantacao)} />
               <div className="border-t border-foreground/10 pt-2 mt-2">
-                <Row label="Mensal recorrente (mês 2+)" value={formatEUR(results.mensalRecorrente)} bold />
-                <Row label="Total Ano 1" value={formatEUR(results.investimentoAno1)} />
-                <Row label="Total Ano 2+" value={formatEUR(results.investimentoAno2)} />
+                <Row label="Total mensal (mês 2+)" value={formatEUR(results.mensalRecorrente)} bold sub="/mês" />
               </div>
               <div className="border-t border-foreground/10 pt-2 mt-2">
-                <Row label="Custo/colab/mês (Ano 1)" value={formatEUR(results.custoPorColabMesAno1)} />
-                <Row label="Custo/colab/mês (Ano 2+)" value={formatEUR(results.custoPorColabMesAno2)} />
+                <Row label="Implantação (mês 1, one-time)" value={formatEUR(results.implantacao)} />
+                <Row label="Total mês 1" value={formatEUR(results.mes1Total)} />
+              </div>
+              <div className="border-t border-foreground/10 pt-2 mt-2">
+                <Row label="Custo/colab (mês 1)" value={formatEUR(results.custoPorColabMes1)} />
+                <Row label="Custo/colab (mês 2+)" value={formatEUR(results.custoPorColabMes2)} />
               </div>
             </div>
           </div>
@@ -103,37 +104,21 @@ const ROICalculatorSection = () => {
           {/* Results Panel */}
           <div>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
-              <ResultCard label="Custo Atual Anual" value={formatEUR(results.custoAtualAnual)} />
-              <ResultCard label="Investimento Ano 1" value={formatEUR(results.investimentoAno1)} />
-              <ResultCard label="Economia Anual" value={formatEUR(results.economiaAnual)} />
-              <ResultCard label="Ganho Líquido (Ano 1)" value={formatEUR(results.ganhoLiquidoAno1)} highlight />
-              <ResultCard label="ROI (Ano 1)" value={formatPercent(results.roiPercentAno1)} highlight />
+              <ResultCard label="Custo Atual Mensal" value={formatEUR(results.custoAtualMensal)} />
+              <ResultCard label="Investimento Mensal" value={formatEUR(results.mensalRecorrente)} />
+              <ResultCard label="Economia Mensal" value={formatEUR(results.economiaMensal)} />
+              <ResultCard label="Ganho Líquido/mês" value={formatEUR(results.ganhoLiquidoMensal)} highlight />
+              <ResultCard label="ROI Mensal" value={formatPercent(results.roiPercent)} highlight />
               <ResultCard label="Payback" value={formatMonths(results.paybackMeses)} />
-            </div>
-
-            {/* Ano 2+ highlight */}
-            <div className="border border-foreground/20 bg-foreground/5 p-4 mb-10 grid grid-cols-3 gap-4">
-              <div>
-                <p className="text-[10px] uppercase opacity-40">Investimento Ano 2+</p>
-                <p className="text-lg font-light">{formatEUR(results.investimentoAno2)}</p>
-              </div>
-              <div>
-                <p className="text-[10px] uppercase opacity-40">Ganho Líquido Ano 2+</p>
-                <p className="text-lg font-light">{formatEUR(results.ganhoLiquidoAno2)}</p>
-              </div>
-              <div>
-                <p className="text-[10px] uppercase opacity-40">ROI Ano 2+</p>
-                <p className="text-lg font-light">{formatPercent(results.roiPercentAno2)}</p>
-              </div>
             </div>
 
             {/* Charts */}
             <div className="grid md:grid-cols-2 gap-8">
-              <ChartBlock title="Comparação Anual (EUR)">
+              <ChartBlock title="Comparação Mensal (EUR)">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={comparisonData}>
                     <XAxis dataKey="name" tick={{ fill: "hsl(var(--foreground))", opacity: 0.6, fontSize: 11 }} />
-                    <YAxis tick={{ fill: "hsl(var(--foreground))", opacity: 0.4, fontSize: 10 }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
+                    <YAxis tick={{ fill: "hsl(var(--foreground))", opacity: 0.4, fontSize: 10 }} tickFormatter={(v) => `${(v / 1000).toFixed(1)}k`} />
                     <Tooltip formatter={(v: number) => formatEUR(v)} contentStyle={{ backgroundColor: "hsl(var(--primary))", border: "none", borderRadius: 4, color: "hsl(var(--primary-foreground))", fontSize: 12 }} />
                     <Bar dataKey="value" radius={[4, 4, 0, 0]}>
                       {comparisonData.map((_, i) => <Cell key={i} fill={`hsl(var(--foreground) / ${[0.3, 0.5, 0.8][i]})`} />)}
@@ -154,17 +139,17 @@ const ROICalculatorSection = () => {
               </ChartBlock>
             </div>
 
-            {/* 5-year timeline */}
-            <ChartBlock title="Economia Acumulada (5 anos, EUR)" className="mt-8" height="h-56">
+            {/* 12-month timeline */}
+            <ChartBlock title="Evolução 12 meses (EUR)" className="mt-8" height="h-56">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={results.timeline5anos}>
+                <LineChart data={results.timeline12meses}>
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--foreground) / 0.1)" />
-                  <XAxis dataKey="ano" tick={{ fill: "hsl(var(--foreground))", opacity: 0.6, fontSize: 11 }} tickFormatter={(v) => `Ano ${v}`} />
+                  <XAxis dataKey="mes" tick={{ fill: "hsl(var(--foreground))", opacity: 0.6, fontSize: 11 }} tickFormatter={(v) => `M${v}`} />
                   <YAxis tick={{ fill: "hsl(var(--foreground))", opacity: 0.4, fontSize: 10 }} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
                   <Tooltip formatter={(v: number) => formatEUR(v)} contentStyle={{ backgroundColor: "hsl(var(--primary))", border: "none", borderRadius: 4, color: "hsl(var(--primary-foreground))", fontSize: 12 }} />
                   <Legend />
-                  <Line type="monotone" dataKey="economiaAcumulada" name="Economia" stroke="hsl(var(--foreground) / 0.8)" strokeWidth={2} dot={{ r: 4 }} />
-                  <Line type="monotone" dataKey="investimentoAcumulado" name="Investimento" stroke="hsl(var(--foreground) / 0.3)" strokeWidth={2} dot={{ r: 4 }} />
+                  <Line type="monotone" dataKey="economiaAcumulada" name="Economia Acumulada" stroke="hsl(var(--foreground) / 0.8)" strokeWidth={2} dot={{ r: 3 }} />
+                  <Line type="monotone" dataKey="investimentoAcumulado" name="Investimento Acumulado" stroke="hsl(var(--foreground) / 0.3)" strokeWidth={2} dot={{ r: 3 }} />
                 </LineChart>
               </ResponsiveContainer>
             </ChartBlock>

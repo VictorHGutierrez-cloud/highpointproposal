@@ -11,15 +11,14 @@ export const DEFAULT_VALUES = {
   numPessoasRH: 2,
   horasRetrabalho: 33,
   estimativaErros: 83,
-  // Pricing (EUR)
+  // Pricing mensal (EUR)
   custoColaboradorMes_EUR: 4.90,
   custoPrimaveraMes_EUR: 0.60,
   implantacaoFactorial_EUR: 2000,
   // Conversions
   conversaoEUR_MZN: 68.75,
-  // Legacy
   percentualEncargos: 0.30,
-  conversaoMZN_EUR: 0.01455, // 1 MZN ≈ 0.01455 EUR
+  conversaoMZN_EUR: 0.01455,
 };
 
 export const SCENARIOS = {
