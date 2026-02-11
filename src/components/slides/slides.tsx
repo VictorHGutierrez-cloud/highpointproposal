@@ -606,17 +606,17 @@ export const slides: SlideData[] = [
       <div className="flex flex-col justify-center items-center h-full px-[120px] text-center">
         <SectionLabel>Visualize o futuro</SectionLabel>
         <SlideTitle>Imagine o vosso RH assim</SlideTitle>
-        <div className="w-[960px] h-[540px] border-2 border-white/20 bg-white/10 flex flex-col items-center justify-center mt-8 relative">
-          <div className="w-24 h-24 rounded-full border-2 border-white/40 flex items-center justify-center mb-6 cursor-pointer hover:bg-white/15 transition-colors">
-            <Play size={40} className="opacity-75 ml-2" />
-          </div>
-          <p className="text-[24px] opacity-60">3 minutos que mudam a perspectiva</p>
-          <p className="text-[18px] opacity-40 mt-2">
-            Turnos em massa · Relatórios instantâneos · Integração com folha
-          </p>
-          <p className="absolute bottom-6 text-[14px] opacity-35">
-            Vídeo em produção — peça uma demonstração ao vivo, será ainda melhor
-          </p>
+        <div className="w-[960px] h-[540px] mt-8">
+          <iframe
+            width="960"
+            height="540"
+            src="https://www.youtube.com/embed/6sUn2w1hRv0?start=26"
+            title="Factorial Demo"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full border-2 border-white/20"
+          />
         </div>
       </div>
     ),
