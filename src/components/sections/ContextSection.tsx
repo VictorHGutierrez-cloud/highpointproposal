@@ -1,10 +1,7 @@
 import { motion } from "framer-motion";
 
-const stats = [
-  { number: "400+", label: "Colaboradores na Dulceria" },
-  { number: "~20", label: "Unidades no Grupo" },
-  { number: "3.000+", label: "Colaboradores no Grupo Webcor" },
-];
+
+
 
 const cards = [
   {
@@ -67,14 +64,6 @@ const ContextSection = () => {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 pt-8 border-t border-foreground/10">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center md:text-left">
-              <div className="text-4xl md:text-5xl font-light mb-2">{stat.number}</div>
-              <div className="text-sm opacity-60 tracking-wide">{stat.label}</div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
