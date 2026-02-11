@@ -30,22 +30,24 @@ const SlideSubtitle = ({ children }: { children: ReactNode }) => (
 );
 
 export const slides: SlideData[] = [
-  // 1. COVER
+  // ─── 1. CAPA ───────────────────────────────────────────
+  // Psicologia: abertura com identidade + propósito. O nome do cliente vem primeiro.
+  // A frase de apoio posiciona o projeto como parceria, não como venda.
   {
     id: "cover",
     title: "Capa",
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Proposta Factorial</SectionLabel>
+        <SectionLabel>Proposta de Parceria</SectionLabel>
         <h1 className="text-[96px] font-light leading-[1.1] mb-8 max-w-[1500px]">
           Dulceria Nacional /<br />Grupo Webcor
         </h1>
         <p className="text-[36px] opacity-80 font-light mb-6">
-          Substituição do SisQual + Integração com Primavera
+          Uma nova era na gestão de pessoas
         </p>
         <p className="text-[24px] opacity-60 font-light">
-          Plataforma completa de gestão de RH para 400+ colaboradores
+          Como libertar o RH do operacional e transformá-lo em motor estratégico do grupo
         </p>
         <div className="mt-16 flex items-center gap-6">
           <div className="w-12 h-12 border border-white/30 flex items-center justify-center">
@@ -53,38 +55,40 @@ export const slides: SlideData[] = [
           </div>
           <div>
             <p className="text-[20px] opacity-70">Victor Henrique Aguiar Gutierrez Duarte</p>
-            <p className="text-[16px] opacity-50">Gerente de Expansão | Factorial</p>
+            <p className="text-[16px] opacity-50">Gerente de Expansão · Factorial</p>
           </div>
         </div>
       </div>
     ),
   },
 
-  // 2. CONTEXTO — VISÃO GERAL
+  // ─── 2. CONTEXTO — VISÃO GERAL ───────────────────────
+  // Psicologia: validação. Mostramos que entendemos o cliente antes de propor qualquer coisa.
+  // Linguagem empática: "sabemos que...", "reconhecemos..."
   {
     id: "context-overview",
-    title: "Contexto",
+    title: "Quem vocês são",
     bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Contexto</SectionLabel>
-        <SlideTitle>O Grupo e o Desafio</SlideTitle>
+        <SlideTitle>Nós ouvimos vocês</SlideTitle>
         <div className="grid grid-cols-2 gap-16 mt-4">
           <div>
             <p className="text-[24px] opacity-70 leading-[1.7] mb-8">
-              A Dulceria Nacional faz parte de um grande grupo empresarial em Angola, com cerca de <strong className="opacity-100">~20 unidades</strong> e mais de <strong className="opacity-100">3.000 colaboradores</strong>. Recentemente, houve uma centralização da área de payroll para otimizar processos entre as diferentes empresas do grupo.
+              A Dulceria Nacional opera num grupo com <strong className="opacity-100">~20 unidades</strong> e mais de <strong className="opacity-100">3.000 colaboradores</strong> em Angola. Recentemente, centralizaram o payroll — um passo estratégico que exige ferramentas à altura.
             </p>
             <p className="text-[24px] opacity-70 leading-[1.7]">
-              O RH atua de forma estratégica, mas enfrenta <strong className="opacity-100">desafios operacionais significativos</strong> devido às limitações das ferramentas atuais — especialmente na gestão de ponto, turnos e integração de dados para folha de pagamento.
+              O vosso RH já pensa de forma estratégica. Mas as ferramentas atuais <strong className="opacity-100">prendem a equipa no operacional</strong> — e isso não é culpa de ninguém. É uma questão de tecnologia.
             </p>
           </div>
           <div className="space-y-5">
             {[
-              { icon: "⚙️", title: "Processos altamente manuais", desc: "Sujeitos a retrabalho constante em todas as unidades." },
-              { icon: "📊", title: "Sem automação em massa", desc: "Atualização de horários, férias e ausências feita um a um." },
-              { icon: "🔗", title: "Falhas frequentes de integração", desc: "Atrasos e erros no fechamento da folha por dados inconsistentes." },
-              { icon: "📋", title: "Controles paralelos em Excel", desc: "Suprem a falta de relatórios gerenciais e indicadores no sistema." },
-              { icon: "👷", title: "Baixa digitalização operacional", desc: "RH insere dados manualmente por colaboradores sem acesso digital." },
+              { icon: "⚙️", title: "Processos que consomem tempo", desc: "Tarefas repetitivas que poderiam ser automáticas." },
+              { icon: "📊", title: "Atualizações uma a uma", desc: "Horários, férias e ausências sem opção de lote." },
+              { icon: "🔗", title: "Dados que não conversam", desc: "Atrasos no fecho da folha por falhas de integração." },
+              { icon: "📋", title: "Excel como plano B", desc: "Controles paralelos porque o sistema não entrega." },
+              { icon: "👷", title: "Equipa sobrecarregada", desc: "O RH insere o que os colaboradores não conseguem." },
             ].map((item) => (
               <div key={item.title} className="flex gap-5 border border-foreground/15 p-5">
                 <span className="text-[28px] shrink-0">{item.icon}</span>
@@ -100,15 +104,17 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // 3. CONTEXTO — FERRAMENTAS ATUAIS
+  // ─── 3. FERRAMENTAS ATUAIS ────────────────────────────
+  // Psicologia: diagnóstico sem julgamento. Mostramos o ecossistema como ele é,
+  // respeitando as escolhas anteriores, mas evidenciando os limites.
   {
     id: "context-tools",
     title: "Ferramentas Atuais",
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Ferramentas Atuais</SectionLabel>
-        <SlideTitle>O ecossistema atual do grupo</SlideTitle>
+        <SectionLabel>Diagnóstico</SectionLabel>
+        <SlideTitle>O que vocês usam hoje — e onde dói</SlideTitle>
         <div className="grid grid-cols-3 gap-10 mt-6">
           {/* SisQual */}
           <div className="border border-white/20 p-10">
@@ -122,11 +128,11 @@ export const slides: SlideData[] = [
               </div>
             </div>
             <p className="text-[18px] opacity-70 leading-relaxed mb-6">
-              Gestão de ponto biométrico, controle de frequência, férias, ausências e exportação para folha.
+              Cumpre o básico, mas não acompanha a complexidade de um grupo com 20+ unidades.
             </p>
             <div className="space-y-3 border-t border-white/15 pt-5">
-              <p className="text-[14px] opacity-45 uppercase tracking-widest mb-3">Limitações</p>
-              {["Sem atualização de horários em grupo", "Falta de relatórios gerenciais", "Exportação com falhas recorrentes", "Lançamentos individuais obrigatórios"].map((l) => (
+              <p className="text-[14px] opacity-45 uppercase tracking-widest mb-3">Onde limita</p>
+              {["Horários só se atualizam um a um", "Relatórios gerenciais inexistentes", "Exportações que falham sem aviso", "Cada lançamento exige entrada manual"].map((l) => (
                 <p key={l} className="text-[16px] opacity-65 flex items-center gap-3">
                   <X size={14} className="opacity-50 shrink-0" /> {l}
                 </p>
@@ -146,11 +152,11 @@ export const slides: SlideData[] = [
               </div>
             </div>
             <p className="text-[18px] opacity-70 leading-relaxed mb-6">
-              Sistema de folha de pagamento e gestão financeira. Centraliza o processamento para todas as unidades do grupo.
+              Robusto na folha, mas refém dos dados que recebe. Se a fonte falha, tudo atrasa.
             </p>
             <div className="space-y-3 border-t border-white/15 pt-5">
-              <p className="text-[14px] opacity-45 uppercase tracking-widest mb-3">Dependência crítica</p>
-              {["Eficiência depende dos dados do SisQual", "Recebe exportações com falhas", "Retrabalho na validação de dados", "Processamento atrasado por erros"].map((l) => (
+              <p className="text-[14px] opacity-45 uppercase tracking-widest mb-3">O que sofre</p>
+              {["Qualidade depende do SisQual", "Importações chegam incompletas", "Equipa valida tudo manualmente", "Fecho da folha atrasa a cada mês"].map((l) => (
                 <p key={l} className="text-[16px] opacity-65 flex items-center gap-3">
                   <AlertTriangle size={14} className="opacity-50 shrink-0" /> {l}
                 </p>
@@ -166,15 +172,15 @@ export const slides: SlideData[] = [
               </div>
               <div>
                 <h3 className="text-[26px] font-medium">Excel</h3>
-                <p className="text-[14px] opacity-50 uppercase tracking-widest">Controles Manuais</p>
+                <p className="text-[14px] opacity-50 uppercase tracking-widest">O remendo</p>
               </div>
             </div>
             <p className="text-[18px] opacity-70 leading-relaxed mb-6">
-              Controle manual de ausências, faltas, relatórios de RH e indicadores para o comitê.
+              Não é uma ferramenta de gestão — é um sinal de que o sistema não dá conta.
             </p>
             <div className="space-y-3 border-t border-white/15 pt-5">
-              <p className="text-[14px] opacity-45 uppercase tracking-widest mb-3">Problemas</p>
-              {["Sujeito a erros e retrabalho", "Sem padronização entre unidades", "Dificulta análise rápida", "Tomada de decisão sem base sólida"].map((l) => (
+              <p className="text-[14px] opacity-45 uppercase tracking-widest mb-3">O risco</p>
+              {["Erros invisíveis até à folha", "Cada unidade faz diferente", "Impossível ter visão de grupo", "Decisões sem dados confiáveis"].map((l) => (
                 <p key={l} className="text-[16px] opacity-65 flex items-center gap-3">
                   <X size={14} className="opacity-50 shrink-0" /> {l}
                 </p>
@@ -186,69 +192,73 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // 4. CONTEXTO — IMPACTO NA OPERAÇÃO
+  // ─── 4. IMPACTO NA OPERAÇÃO ───────────────────────────
+  // Psicologia: amplificação da dor com empatia. Não culpamos — mostramos consequências.
+  // "Isto é o que acontece quando ferramentas não acompanham o talento da equipa."
   {
     id: "context-impact",
     title: "Impacto Operacional",
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Diagnóstico</SectionLabel>
-        <SlideTitle>O impacto na operação do grupo</SlideTitle>
+        <SectionLabel>O impacto real</SectionLabel>
+        <SlideTitle>O que o grupo perde — todos os meses</SlideTitle>
         <div className="grid grid-cols-3 gap-10 mt-8">
           <div className="border border-white/20 p-10">
             <div className="w-16 h-16 border border-white/25 flex items-center justify-center mb-6">
               <span className="text-[32px]">⏱️</span>
             </div>
-            <h3 className="text-[26px] font-medium mb-3">Eficiência & Produtividade</h3>
+            <h3 className="text-[26px] font-medium mb-3">Tempo desperdiçado</h3>
             <p className="text-[19px] opacity-70 leading-relaxed">
-              O excesso de tarefas manuais, a falta de automação e as falhas de integração reduzem significativamente a eficiência do RH, que dedica tempo excessivo a atividades operacionais em vez de estratégicas.
+              A equipa de RH dedica semanas inteiras a tarefas que sistemas modernos resolvem em horas. Esse tempo deveria ir para pessoas, não para planilhas.
             </p>
           </div>
           <div className="border border-white/20 p-10">
             <div className="w-16 h-16 border border-white/25 flex items-center justify-center mb-6">
               <span className="text-[32px]">⚠️</span>
             </div>
-            <h3 className="text-[26px] font-medium mb-3">Risco Operacional</h3>
+            <h3 className="text-[26px] font-medium mb-3">Risco acumulado</h3>
             <p className="text-[19px] opacity-70 leading-relaxed">
-              A dependência de controles manuais e a ausência de relatórios integrados aumentam o risco de erros, atrasos no fechamento da folha e insatisfação dos colaboradores.
+              Cada erro manual é uma bomba-relógio: pagamentos incorretos, colaboradores insatisfeitos, auditoria que encontra inconsistências. O risco cresce silenciosamente.
             </p>
           </div>
           <div className="border border-white/20 p-10">
             <div className="w-16 h-16 border border-white/25 flex items-center justify-center mb-6">
               <span className="text-[32px]">📈</span>
             </div>
-            <h3 className="text-[26px] font-medium mb-3">Baixa Escalabilidade</h3>
+            <h3 className="text-[26px] font-medium mb-3">Crescimento travado</h3>
             <p className="text-[19px] opacity-70 leading-relaxed">
-              As limitações das ferramentas atuais dificultam a padronização e expansão dos processos de RH para todas as ~20 unidades do grupo, travando o crescimento.
+              O grupo quer expandir, mas os processos de RH não escalam. Cada nova unidade multiplica o retrabalho em vez de se integrar.
             </p>
           </div>
         </div>
         <div className="mt-12 border border-white/15 p-8 text-center">
           <p className="text-[24px] opacity-75 font-light leading-relaxed max-w-[1200px] mx-auto">
-            <strong className="opacity-100">Conclusão:</strong> O cenário atual apresenta grande potencial de melhoria, com oportunidades claras para automação, integração e padronização — liberando o RH para atividades estratégicas.
+            A boa notícia? <strong className="opacity-100">Nada disto é inevitável.</strong> Existe um caminho claro para transformar esta realidade — e começa agora.
           </p>
         </div>
       </div>
     ),
   },
 
-  // 3. DORES IDENTIFICADAS
+  // ─── 5. DORES IDENTIFICADAS ───────────────────────────
+  // Psicologia: especificidade cria credibilidade. Números exatos mostram
+  // que investigámos a fundo — não é um pitch genérico.
   {
     id: "problems",
     title: "Dores",
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Problemas Identificados</SectionLabel>
-        <SlideTitle>As 5 principais dores com o SisQual</SlideTitle>
+        <SectionLabel>O que identificámos</SectionLabel>
+        <SlideTitle>5 dores que não deviam existir em 2025</SlideTitle>
         <div className="grid grid-cols-3 gap-6 mt-4">
           {[
-            { title: "Retrabalho Massivo", impact: "10 dias/mês com equipe focada", desc: "Atualização manual de horários, férias e ausências para 400+ colaboradores." },
-            { title: "Falhas de Integração", impact: "419 colaboradores não exportados", desc: "Exportações SisQual → Primavera que deixam centenas de fora sem explicação." },
-            { title: "Fecho de Mês Lento", impact: "~33h de retrabalho mensal", desc: "~10 dias com toda a equipa dedicada ao processo de ponto/integração." },
-            { title: "Erros em Folha", impact: "Pagamentos incorretos", desc: "Horas extra erradas e faltas mal contabilizadas por horários desatualizados." },
-            { title: "Sem BI / Visibilidade", impact: "Decisões sem dados", desc: "Relatórios de absenteísmo em Excel manual, sem visão por unidade ou área." },
+            { title: "Retrabalho massivo", impact: "10 dias/mês, 4 pessoas dedicadas", desc: "Horários, férias e ausências atualizados manualmente, um colaborador de cada vez." },
+            { title: "Integração que falha", impact: "419 colaboradores não exportados", desc: "Dados que saem do SisQual e não chegam ao Primavera — sem explicação visível." },
+            { title: "Fecho de mês interminável", impact: "~320 horas mensais consumidas", desc: "A equipa inteira para tudo para fechar o ponto. Dez dias. Todos os meses." },
+            { title: "Folha com erros", impact: "Pagamentos incorretos", desc: "Horas extra mal calculadas, faltas não contabilizadas. O colaborador é quem sofre." },
+            { title: "Zero visibilidade", impact: "Decisões no escuro", desc: "Sem dashboards, sem BI. Quando pedem um relatório, alguém abre o Excel." },
           ].map((p) => (
             <div key={p.title} className="border border-white/20 p-8">
               <div className="flex items-center gap-3 mb-4">
@@ -257,7 +267,7 @@ export const slides: SlideData[] = [
               </div>
               <p className="text-[18px] opacity-75 leading-relaxed mb-5">{p.desc}</p>
               <p className="text-[16px] opacity-55 border-t border-white/15 pt-4">
-                Impacto: {p.impact}
+                {p.impact}
               </p>
             </div>
           ))}
@@ -266,23 +276,25 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // 5. CUSTO DO CENÁRIO ATUAL — DETALHADO
+  // ─── 6. CUSTO DO CENÁRIO ATUAL ────────────────────────
+  // Psicologia: loss aversion. Mostrar o custo de NÃO agir é mais poderoso
+  // que mostrar o benefício de agir. O número grande é o protagonista.
   {
     id: "cost-analysis",
     title: "Custo Atual",
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Custo do Cenário Atual</SectionLabel>
-        <SlideTitle>O preço de não mudar</SlideTitle>
+        <SectionLabel>O custo de ficar parado</SectionLabel>
+        <SlideTitle>Quanto custa não mudar?</SlideTitle>
 
         <div className="grid grid-cols-2 gap-16 mt-4">
           {/* Left: calculation breakdown */}
           <div>
-            <h3 className="text-[24px] font-medium opacity-80 mb-6">Cálculo do trabalho manual — por unidade</h3>
+            <h3 className="text-[24px] font-medium opacity-80 mb-6">O cálculo é simples</h3>
             <div className="border border-white/20 p-8 space-y-4">
               <div className="flex justify-between text-[20px]">
-                <span className="opacity-65">Pessoas de RH envolvidas</span>
+                <span className="opacity-65">Pessoas envolvidas no fecho</span>
                 <span className="font-medium">4 pessoas</span>
               </div>
               <div className="flex justify-between text-[20px]">
@@ -290,48 +302,48 @@ export const slides: SlideData[] = [
                 <span className="font-medium">8 horas/dia</span>
               </div>
               <div className="flex justify-between text-[20px]">
-                <span className="opacity-65">Dias dedicados ao fecho</span>
-                <span className="font-medium">10 dias/mês</span>
+                <span className="opacity-65">Dias dedicados por mês</span>
+                <span className="font-medium">10 dias</span>
               </div>
               <div className="flex justify-between text-[20px] border-t border-white/15 pt-4">
-                <span className="opacity-75 font-medium">Horas mensais consumidas</span>
-                <span className="font-medium text-[22px]">320 h/mês</span>
+                <span className="opacity-75 font-medium">Horas consumidas / mês</span>
+                <span className="font-medium text-[22px]">320 h</span>
               </div>
               <div className="flex justify-between text-[20px] mt-2">
-                <span className="opacity-65">Custo hora (ref. US$ 1.000/mês)</span>
-                <span className="font-medium">US$ 5,68/h</span>
+                <span className="opacity-65">Custo por hora (ref. US$ 1.000/mês)</span>
+                <span className="font-medium">US$ 5,68</span>
               </div>
               <div className="flex justify-between text-[20px] border-t border-white/15 pt-4">
-                <span className="opacity-75 font-medium">Custo mensal direto</span>
-                <span className="font-medium text-[22px]">US$ 1.818/mês</span>
+                <span className="opacity-75 font-medium">Custo mensal (1 unidade)</span>
+                <span className="font-medium text-[22px]">US$ 1.818</span>
               </div>
               <div className="flex justify-between text-[20px]">
                 <span className="opacity-75 font-medium">Custo anual (1 unidade)</span>
-                <span className="font-medium text-[22px]">US$ 21.800/ano</span>
+                <span className="font-medium text-[22px]">US$ 21.800</span>
               </div>
             </div>
           </div>
 
           {/* Right: group impact + indirect costs */}
           <div>
-            <h3 className="text-[24px] font-medium opacity-80 mb-6">Projeção para o grupo (~20 unidades)</h3>
+            <h3 className="text-[24px] font-medium opacity-80 mb-6">Agora multiplique por 20 unidades</h3>
             
             {/* Big number */}
             <div className="border border-white/25 bg-white/10 p-10 text-center mb-8">
               <p className="text-[18px] opacity-55 mb-2">Custo anual estimado — todo o grupo</p>
               <p className="text-[80px] font-light leading-none">US$ 436K</p>
-              <p className="text-[16px] opacity-45 mt-3">Apenas com trabalho manual e retrabalho do RH</p>
+              <p className="text-[16px] opacity-45 mt-3">Apenas em trabalho manual e retrabalho</p>
             </div>
 
-            {/* Indirect costs not included */}
+            {/* Indirect costs */}
             <div className="border border-white/15 p-6">
-              <p className="text-[16px] opacity-55 uppercase tracking-widest mb-4">Custos indiretos não quantificados</p>
+              <p className="text-[16px] opacity-55 uppercase tracking-widest mb-4">E isto ainda não conta...</p>
               <div className="space-y-3">
                 {[
-                  "Pagamentos incorretos ou atrasados (multas, passivos trabalhistas)",
-                  "Perda de produtividade de gestores e colaboradores",
-                  "Riscos de compliance e auditoria",
-                  "Oportunidade perdida de atuação estratégica do RH",
+                  "Multas e passivos por pagamentos incorretos",
+                  "Produtividade perdida de gestores e colaboradores",
+                  "Riscos de compliance em auditorias",
+                  "O custo invisível: um RH que não consegue ser estratégico",
                 ].map((c) => (
                   <p key={c} className="text-[17px] opacity-65 flex items-start gap-3">
                     <AlertTriangle size={16} className="opacity-55 shrink-0 mt-1" /> {c}
@@ -343,28 +355,30 @@ export const slides: SlideData[] = [
         </div>
 
         <div className="mt-8 border border-white/15 p-5 text-center">
-          <p className="text-[20px] opacity-65 font-light">
-            <strong className="opacity-90">Nota:</strong> Valores referem-se apenas ao custo direto de trabalho manual. O impacto real, incluindo custos indiretos, pode ser significativamente maior.
+          <p className="text-[20px] opacity-70 font-light">
+            Cada mês sem mudança é um mês a pagar este preço. <strong className="opacity-100">A pergunta não é "se" — é "quando".</strong>
           </p>
         </div>
       </div>
     ),
   },
 
-  // 5. SOLUÇÃO FACTORIAL
+  // ─── 7. SOLUÇÃO FACTORIAL ─────────────────────────────
+  // Psicologia: alívio. Depois da tensão, a solução aparece como resposta natural.
+  // Tom muda de "problema" para "possibilidade". Reciprocidade: damos acesso demo.
   {
     id: "solution",
     title: "Solução",
     bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>A Solução</SectionLabel>
-        <SlideTitle>Como a Factorial resolve cada dor</SlideTitle>
+        <SectionLabel>A resposta</SectionLabel>
+        <SlideTitle>Cada dor tem uma solução concreta</SlideTitle>
 
         {/* Demo access banner */}
         <div className="border-2 border-foreground/25 bg-foreground/[0.06] p-6 mb-10 flex items-center justify-between">
           <div>
-            <p className="text-[20px] font-medium opacity-90 mb-1">🔑 Acesse o ambiente de demonstração exclusivo</p>
+            <p className="text-[20px] font-medium opacity-90 mb-1">🔑 Preparámos um ambiente só para vocês</p>
             <p className="text-[16px] opacity-55">Login: <span className="font-mono opacity-80">hellen@demof1d496c1.com</span> · Senha: <span className="font-mono opacity-80">Papapapa333!</span></p>
           </div>
           <a
@@ -373,37 +387,37 @@ export const slides: SlideData[] = [
             rel="noopener noreferrer"
             className="shrink-0 bg-foreground text-background px-8 py-4 text-[18px] font-medium hover:opacity-90 transition-opacity"
           >
-            Entrar no Ambiente Demo →
+            Entrar no Demo →
           </a>
         </div>
 
         <div className="grid grid-cols-2 gap-16">
           {/* Left: interactive feature links */}
           <div>
-            <h3 className="text-[28px] font-normal mb-8 opacity-80">Veja na prática</h3>
+            <h3 className="text-[28px] font-normal mb-8 opacity-80">Veja com os vossos próprios olhos</h3>
             <div className="space-y-4">
               {[
                 {
-                  label: "Gestão de Turnos em Massa",
-                  desc: "Atualize horários de centenas de colaboradores em segundos.",
+                  label: "Turnos em massa",
+                  desc: "Centenas de horários atualizados em segundos. Nunca mais um a um.",
                   url: "https://app.eu2.demo.factorial.dev/shifts/monthly/employees/2026/1/1",
                   isDemo: true,
                 },
                 {
-                  label: "Lançamento de Férias em Massa",
-                  desc: "Atribua ausências em lote — sem lançar um a um.",
+                  label: "Férias em lote",
+                  desc: "Atribua ausências para equipas inteiras de uma só vez.",
                   url: "https://help.factorialhr.com/ausencias-e-aprovacoes/how-to-assign-the-absence-in-bulk-?from_search=218380148",
                   isDemo: false,
                 },
                 {
-                  label: "Ausências Automatizadas",
-                  desc: "Aprovações inteligentes com IA para gestão de time-off.",
+                  label: "Aprovações com IA",
+                  desc: "A IA sugere aprovações inteligentes baseadas em padrões da equipa.",
                   url: "https://help.factorialhr.com/one/one-ai-%E2%80%93-time-off-management-approvals?from_search=218384939",
                   isDemo: false,
                 },
                 {
-                  label: "Pergunte para a IA",
-                  desc: "\"Me dê um gráfico de pizza com os maiores motivos de ausências por departamento\"",
+                  label: "Pergunte qualquer coisa à IA",
+                  desc: "\"Quais os principais motivos de ausência por departamento?\" — e receba um gráfico.",
                   url: "https://app.eu2.demo.factorial.dev/analytics/reports/dashboards/105102/list/question",
                   isDemo: true,
                 },
@@ -421,7 +435,7 @@ export const slides: SlideData[] = [
                     <p className="text-[17px] opacity-55 mt-1">{f.desc}</p>
                   </div>
                   <span className="text-[16px] opacity-40 group-hover:opacity-70 shrink-0 mt-1 transition-opacity">
-                    {f.isDemo ? "🔗 Demo" : "📖 Help Center"}
+                    {f.isDemo ? "🔗 Demo" : "📖 Saiba mais"}
                   </span>
                 </a>
               ))}
@@ -430,12 +444,12 @@ export const slides: SlideData[] = [
 
           {/* Right: expected gains */}
           <div>
-            <h3 className="text-[28px] font-normal mb-8 opacity-80">Ganhos Esperados</h3>
+            <h3 className="text-[28px] font-normal mb-8 opacity-80">O que muda na prática</h3>
             <div className="space-y-6">
               {[
-                { title: "Redução de Tempo", desc: "De 10 para 2–3 dias de fechamento mensal" },
-                { title: "Eliminação de Retrabalho", desc: "Processos em massa substituem lançamentos individuais" },
-                { title: "Redução de Erros", desc: "Exportação automática e validada para o Primavera" },
+                { title: "De 10 dias para 2–3 dias", desc: "O fecho de mês deixa de ser um pesadelo." },
+                { title: "Zero retrabalho", desc: "Processos em massa eliminam lançamentos individuais." },
+                { title: "Integração que funciona", desc: "Dados validados automaticamente antes de ir para o Primavera." },
               ].map((g) => (
                 <div key={g.title} className="border border-foreground/15 p-8">
                   <h4 className="text-[24px] font-normal mb-2">{g.title}</h4>
@@ -445,8 +459,8 @@ export const slides: SlideData[] = [
             </div>
             <div className="mt-6 space-y-4">
               {[
-                "Integração Robusta com Primavera",
-                "Escalabilidade para 20+ unidades",
+                "Primavera integrado de forma robusta",
+                "Preparado para 20+ unidades desde o dia 1",
               ].map((f) => (
                 <div key={f} className="flex items-center gap-4 text-[22px] opacity-70 border border-foreground/15 p-5">
                   <Check size={20} className="opacity-60 shrink-0" /> {f}
@@ -459,15 +473,17 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // 6. INTEGRAÇÃO FACTORIAL + PRIMAVERA
+  // ─── 8. INTEGRAÇÃO ────────────────────────────────────
+  // Psicologia: reassurance. O medo da migração é real. Mostramos que
+  // o Primavera fica — a Factorial se junta, não substitui.
   {
     id: "integration",
     title: "Integração",
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Integração</SectionLabel>
-        <SlideTitle>Factorial + Primavera</SlideTitle>
+        <SectionLabel>Como funciona</SectionLabel>
+        <SlideTitle>O Primavera fica. A Factorial entra.</SlideTitle>
         <div className="flex items-center justify-center gap-0 mt-8">
           {/* Factorial */}
           <div className="w-[500px] border border-white/25 bg-white/10 p-12 text-center">
@@ -475,7 +491,7 @@ export const slides: SlideData[] = [
               <span className="text-[28px] font-light">F</span>
             </div>
             <p className="text-[28px] font-medium mb-1">Factorial</p>
-            <p className="text-[16px] opacity-55 uppercase tracking-[0.2em] mb-6">Camada de Gestão</p>
+            <p className="text-[16px] opacity-55 uppercase tracking-[0.2em] mb-6">A nova camada de gestão</p>
             <div className="space-y-3 text-left">
               {["Gestão de colaboradores", "Controlo de ausências", "Portal do colaborador", "Aprovações e workflows"].map((item) => (
                 <p key={item} className="text-[18px] opacity-70 flex items-center gap-3">
@@ -506,7 +522,7 @@ export const slides: SlideData[] = [
               <span className="text-[28px] font-light">P</span>
             </div>
             <p className="text-[28px] font-medium mb-1">Primavera</p>
-            <p className="text-[16px] opacity-55 uppercase tracking-[0.2em] mb-6">Sistema de Folha</p>
+            <p className="text-[16px] opacity-55 uppercase tracking-[0.2em] mb-6">Folha — como sempre</p>
             <div className="space-y-3 text-left">
               {["Processamento salarial", "Obrigações fiscais", "Declarações legais", "Arquivo contabilístico"].map((item) => (
                 <p key={item} className="text-[18px] opacity-70 flex items-center gap-3">
@@ -519,10 +535,10 @@ export const slides: SlideData[] = [
 
         <div className="grid grid-cols-4 gap-6 mt-12 pt-8 border-t border-white/15">
           {[
-            { label: "Colaboradores", desc: "Dados pessoais e contratuais" },
-            { label: "Ausências", desc: "Férias, faltas e licenças" },
-            { label: "Horas Extra", desc: "Registos validados" },
-            { label: "Folha", desc: "Ficheiro pronto" },
+            { label: "Colaboradores", desc: "Dados sincronizados em tempo real" },
+            { label: "Ausências", desc: "Férias, faltas e licenças — sem export" },
+            { label: "Horas Extra", desc: "Validadas antes de enviar" },
+            { label: "Folha", desc: "Ficheiro pronto, sem retrabalho" },
           ].map((f) => (
             <div key={f.label} className="text-center">
               <p className="text-[20px] font-medium opacity-80">{f.label}</p>
@@ -534,28 +550,30 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // 7. COMPARAÇÃO FACTORIAL x SISQUAL
+  // ─── 9. COMPARAÇÃO ────────────────────────────────────
+  // Psicologia: contraste. Lado a lado, a escolha torna-se óbvia.
+  // Não atacamos o SisQual — deixamos os factos falar.
   {
     id: "comparison",
     title: "Comparação",
     bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Comparação</SectionLabel>
-        <SlideTitle>SisQual vs. Factorial</SlideTitle>
+        <SectionLabel>Antes e depois</SectionLabel>
+        <SlideTitle>O que muda — ponto a ponto</SlideTitle>
         <div className="border border-foreground/20 mt-6">
           <div className="grid grid-cols-[1fr_1fr_1fr] text-[20px]">
             <div className="px-10 py-6 border-b border-foreground/20 font-medium opacity-60">Critério</div>
-            <div className="px-10 py-6 border-b border-foreground/20 font-medium opacity-60 text-center">SisQual (Atual)</div>
-            <div className="px-10 py-6 border-b border-foreground/20 font-medium opacity-60 text-center">Factorial</div>
+            <div className="px-10 py-6 border-b border-foreground/20 font-medium opacity-60 text-center">Hoje (SisQual)</div>
+            <div className="px-10 py-6 border-b border-foreground/20 font-medium opacity-60 text-center">Com Factorial</div>
             {[
-              { c: "Tempo de Fechamento", s: "~10 dias/mês", f: "2–3 dias/mês" },
-              { c: "Atualização de Turnos", s: "Um a um, manual", f: "Em massa, por grupo" },
-              { c: "Lançamento de Férias", s: "Colaborador por colaborador", f: "Em massa, por equipe" },
-              { c: "Exportação p/ Primavera", s: "Com falhas recorrentes", f: "Integração robusta" },
-              { c: "Visibilidade de Erros", s: "Zero rastreabilidade", f: "Logs por colaborador" },
-              { c: "Relatórios", s: "Excel manual", f: "BI automatizado" },
-              { c: "Escalabilidade", s: "Limitada a 1 unidade", f: "Multi-unidade (20+)" },
+              { c: "Tempo de fechamento", s: "~10 dias/mês", f: "2–3 dias/mês" },
+              { c: "Atualização de turnos", s: "Um a um", f: "Em massa" },
+              { c: "Lançamento de férias", s: "Colaborador por colaborador", f: "Em lote, por equipa" },
+              { c: "Exportação p/ Primavera", s: "Falhas recorrentes", f: "Integração validada" },
+              { c: "Rastreabilidade de erros", s: "Nenhuma", f: "Logs por colaborador" },
+              { c: "Relatórios e BI", s: "Excel manual", f: "Dashboards + IA" },
+              { c: "Escalabilidade", s: "1 unidade por vez", f: "20+ unidades nativas" },
             ].map((row, i) => (
               <>
                 <div key={`c${i}`} className={`px-10 py-5 flex items-center text-[18px] ${i < 6 ? "border-b border-foreground/10" : ""}`}>
@@ -577,25 +595,27 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // 8. VÍDEO DEMONSTRATIVO (Placeholder)
+  // ─── 10. VÍDEO DEMO ───────────────────────────────────
+  // Psicologia: future pacing. O vídeo não é só uma demo —
+  // é uma janela para o futuro do RH do grupo.
   {
     id: "video",
     title: "Vídeo Demo",
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center items-center h-full px-[120px] text-center">
-        <SectionLabel>Vídeo Demonstrativo</SectionLabel>
-        <SlideTitle>Veja a Factorial em ação</SlideTitle>
+        <SectionLabel>Visualize o futuro</SectionLabel>
+        <SlideTitle>Imagine o vosso RH assim</SlideTitle>
         <div className="w-[960px] h-[540px] border-2 border-white/20 bg-white/10 flex flex-col items-center justify-center mt-8 relative">
           <div className="w-24 h-24 rounded-full border-2 border-white/40 flex items-center justify-center mb-6 cursor-pointer hover:bg-white/15 transition-colors">
             <Play size={40} className="opacity-75 ml-2" />
           </div>
-          <p className="text-[24px] opacity-55">Demonstração de 3-5 minutos</p>
+          <p className="text-[24px] opacity-60">3 minutos que mudam a perspectiva</p>
           <p className="text-[18px] opacity-40 mt-2">
-            Funcionalidades-chave: turnos em massa, relatórios, integração com folha
+            Turnos em massa · Relatórios instantâneos · Integração com folha
           </p>
           <p className="absolute bottom-6 text-[14px] opacity-35">
-            Vídeo em breve — solicite uma demonstração ao vivo
+            Vídeo em produção — peça uma demonstração ao vivo, será ainda melhor
           </p>
         </div>
       </div>
