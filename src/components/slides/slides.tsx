@@ -266,26 +266,86 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // 4. IMPACTO QUANTIFICADO
+  // 5. CUSTO DO CENÁRIO ATUAL — DETALHADO
   {
-    id: "impact",
-    title: "Impacto",
+    id: "cost-analysis",
+    title: "Custo Atual",
     bg: "dark",
     content: (
-      <div className="flex flex-col justify-center items-center h-full px-[120px] text-center">
-        <SectionLabel>Impacto Quantificado</SectionLabel>
-        <SlideTitle>O custo de não mudar</SlideTitle>
-        <div className="grid grid-cols-3 gap-16 mt-12">
-          {[
-            { value: "10 dias", label: "Tempo de fecho de mês atual" },
-            { value: "~33h", label: "Retrabalho mensal evitável" },
-            { value: "~415K €", label: "Custo anual estimado" },
-          ].map((m) => (
-            <div key={m.label}>
-              <p className="text-[96px] font-light leading-none mb-4">{m.value}</p>
-              <p className="text-[24px] opacity-50">{m.label}</p>
+      <div className="flex flex-col justify-center h-full px-[120px]">
+        <SectionLabel>Custo do Cenário Atual</SectionLabel>
+        <SlideTitle>O preço de não mudar</SlideTitle>
+
+        <div className="grid grid-cols-2 gap-16 mt-4">
+          {/* Left: calculation breakdown */}
+          <div>
+            <h3 className="text-[24px] font-medium opacity-70 mb-6">Cálculo do trabalho manual — por unidade</h3>
+            <div className="border border-white/15 p-8 space-y-4">
+              <div className="flex justify-between text-[20px]">
+                <span className="opacity-50">Pessoas de RH envolvidas</span>
+                <span className="font-medium">4 pessoas</span>
+              </div>
+              <div className="flex justify-between text-[20px]">
+                <span className="opacity-50">Jornada diária</span>
+                <span className="font-medium">8 horas/dia</span>
+              </div>
+              <div className="flex justify-between text-[20px]">
+                <span className="opacity-50">Dias dedicados ao fecho</span>
+                <span className="font-medium">10 dias/mês</span>
+              </div>
+              <div className="flex justify-between text-[20px] border-t border-white/10 pt-4">
+                <span className="opacity-60 font-medium">Horas mensais consumidas</span>
+                <span className="font-medium text-[22px]">320 h/mês</span>
+              </div>
+              <div className="flex justify-between text-[20px] mt-2">
+                <span className="opacity-50">Custo hora (ref. US$ 1.000/mês)</span>
+                <span className="font-medium">US$ 5,68/h</span>
+              </div>
+              <div className="flex justify-between text-[20px] border-t border-white/10 pt-4">
+                <span className="opacity-60 font-medium">Custo mensal direto</span>
+                <span className="font-medium text-[22px]">US$ 1.818/mês</span>
+              </div>
+              <div className="flex justify-between text-[20px]">
+                <span className="opacity-60 font-medium">Custo anual (1 unidade)</span>
+                <span className="font-medium text-[22px]">US$ 21.800/ano</span>
+              </div>
             </div>
-          ))}
+          </div>
+
+          {/* Right: group impact + indirect costs */}
+          <div>
+            <h3 className="text-[24px] font-medium opacity-70 mb-6">Projeção para o grupo (~20 unidades)</h3>
+            
+            {/* Big number */}
+            <div className="border border-white/20 bg-white/5 p-10 text-center mb-8">
+              <p className="text-[18px] opacity-40 mb-2">Custo anual estimado — todo o grupo</p>
+              <p className="text-[80px] font-light leading-none">US$ 436K</p>
+              <p className="text-[16px] opacity-30 mt-3">Apenas com trabalho manual e retrabalho do RH</p>
+            </div>
+
+            {/* Indirect costs not included */}
+            <div className="border border-white/10 p-6">
+              <p className="text-[16px] opacity-40 uppercase tracking-widest mb-4">Custos indiretos não quantificados</p>
+              <div className="space-y-3">
+                {[
+                  "Pagamentos incorretos ou atrasados (multas, passivos trabalhistas)",
+                  "Perda de produtividade de gestores e colaboradores",
+                  "Riscos de compliance e auditoria",
+                  "Oportunidade perdida de atuação estratégica do RH",
+                ].map((c) => (
+                  <p key={c} className="text-[17px] opacity-50 flex items-start gap-3">
+                    <AlertTriangle size={16} className="opacity-40 shrink-0 mt-1" /> {c}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 border border-white/10 p-5 text-center">
+          <p className="text-[20px] opacity-50 font-light">
+            <strong className="opacity-80">Nota:</strong> Valores referem-se apenas ao custo direto de trabalho manual. O impacto real, incluindo custos indiretos, pode ser significativamente maior.
+          </p>
         </div>
       </div>
     ),
