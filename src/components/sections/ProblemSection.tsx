@@ -30,8 +30,8 @@ const painPoints = [
 ];
 
 const impactMetrics = [
-  { value: "10 dias", label: "Fechamento mensal" },
-  { value: "419", label: "Colaboradores não exportados" },
+  { value: "10 dias", label: "Tempo de fecho de mês atual" },
+  { value: "~33h", label: "Retrabalho mensal evitável" },
   { value: "~415K EUR", label: "Custo anual estimado" },
 ];
 
