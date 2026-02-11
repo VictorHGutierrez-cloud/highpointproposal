@@ -12,7 +12,7 @@ const NAV_ITEMS = [
   { id: "integration", label: "Integração" },
   { id: "investment", label: "Investimento" },
   { id: "roi-calculator", label: "ROI Calculator" },
-  { id: "next-steps", label: "Próximos Passos" },
+  
 ];
 
 const SECTION_IDS = NAV_ITEMS.map((i) => i.id);

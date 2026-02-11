@@ -9,7 +9,7 @@ import IntegrationSection from "@/components/sections/IntegrationSection";
 import InvestmentSection from "@/components/sections/InvestmentSection";
 import ROICalculatorSection from "@/components/sections/ROICalculatorSection";
 import ROIHeroSection from "@/components/sections/ROIHeroSection";
-import NextStepSection from "@/components/sections/NextStepSection";
+
 
 const Index = () => {
   return (
@@ -25,7 +25,7 @@ const Index = () => {
         <InvestmentSection />
         <ROICalculatorSection />
         <ROIHeroSection />
-        <NextStepSection />
+        
       </main>
       <Footer />
     </>
