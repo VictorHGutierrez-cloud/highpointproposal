@@ -11,8 +11,6 @@ const NAV_ITEMS = [
   { id: "comparison", label: "Comparação" },
   { id: "integration", label: "Integração" },
   { id: "investment", label: "Investimento" },
-  { id: "roi-calculator", label: "ROI Calculator" },
-  
 ];
 
 const SECTION_IDS = NAV_ITEMS.map((i) => i.id);
