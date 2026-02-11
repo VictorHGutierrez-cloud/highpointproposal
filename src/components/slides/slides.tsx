@@ -60,26 +60,174 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // 2. CONTEXTO
+  // 2. CONTEXTO — VISÃO GERAL
   {
-    id: "context",
+    id: "context-overview",
     title: "Contexto",
     bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Contexto</SectionLabel>
-        <SlideTitle>Dulceria Nacional & Grupo Webcor</SlideTitle>
-        <div className="grid grid-cols-3 gap-10 mt-8">
-          {[
-            { title: "Empresa", desc: "Dulceria Nacional, parte do Grupo Webcor — parceria entre Arcor e Webcor, com operações em Angola e Moçambique." },
-            { title: "Escala", desc: "400+ colaboradores apenas na Dulceria, ~20 unidades. Turnos rotativos em linhas de produção." },
-            { title: "Sistemas Atuais", desc: "ERP Primavera para folha + SisQual para ponto/turnos — com graves falhas de integração." },
-          ].map((c) => (
-            <div key={c.title} className="border border-foreground/15 p-10">
-              <h3 className="text-[28px] font-normal mb-4">{c.title}</h3>
-              <p className="text-[22px] opacity-60 leading-relaxed">{c.desc}</p>
+        <SlideTitle>O Grupo e o Desafio</SlideTitle>
+        <div className="grid grid-cols-2 gap-16 mt-4">
+          <div>
+            <p className="text-[24px] opacity-60 leading-[1.7] mb-8">
+              A Dulceria Nacional faz parte de um grande grupo empresarial em Angola, com cerca de <strong className="opacity-90">~20 unidades</strong> e mais de <strong className="opacity-90">3.000 colaboradores</strong>. Recentemente, houve uma centralização da área de payroll para otimizar processos entre as diferentes empresas do grupo.
+            </p>
+            <p className="text-[24px] opacity-60 leading-[1.7]">
+              O RH atua de forma estratégica, mas enfrenta <strong className="opacity-90">desafios operacionais significativos</strong> devido às limitações das ferramentas atuais — especialmente na gestão de ponto, turnos e integração de dados para folha de pagamento.
+            </p>
+          </div>
+          <div className="space-y-5">
+            {[
+              { icon: "⚙️", title: "Processos altamente manuais", desc: "Sujeitos a retrabalho constante em todas as unidades." },
+              { icon: "📊", title: "Sem automação em massa", desc: "Atualização de horários, férias e ausências feita um a um." },
+              { icon: "🔗", title: "Falhas frequentes de integração", desc: "Atrasos e erros no fechamento da folha por dados inconsistentes." },
+              { icon: "📋", title: "Controles paralelos em Excel", desc: "Suprem a falta de relatórios gerenciais e indicadores no sistema." },
+              { icon: "👷", title: "Baixa digitalização operacional", desc: "RH insere dados manualmente por colaboradores sem acesso digital." },
+            ].map((item) => (
+              <div key={item.title} className="flex gap-5 border border-foreground/10 p-5">
+                <span className="text-[28px] shrink-0">{item.icon}</span>
+                <div>
+                  <h4 className="text-[20px] font-medium mb-1">{item.title}</h4>
+                  <p className="text-[17px] opacity-50">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    ),
+  },
+
+  // 3. CONTEXTO — FERRAMENTAS ATUAIS
+  {
+    id: "context-tools",
+    title: "Ferramentas Atuais",
+    bg: "neutral",
+    content: (
+      <div className="flex flex-col justify-center h-full px-[120px]">
+        <SectionLabel>Ferramentas Atuais</SectionLabel>
+        <SlideTitle>O ecossistema atual do grupo</SlideTitle>
+        <div className="grid grid-cols-3 gap-10 mt-6">
+          {/* SisQual */}
+          <div className="border border-white/15 p-10">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 border border-white/20 flex items-center justify-center">
+                <span className="text-[24px] font-light">SQ</span>
+              </div>
+              <div>
+                <h3 className="text-[26px] font-medium">SisQual</h3>
+                <p className="text-[14px] opacity-40 uppercase tracking-widest">Ponto & Turnos</p>
+              </div>
             </div>
-          ))}
+            <p className="text-[18px] opacity-50 leading-relaxed mb-6">
+              Gestão de ponto biométrico, controle de frequência, férias, ausências e exportação para folha.
+            </p>
+            <div className="space-y-3 border-t border-white/10 pt-5">
+              <p className="text-[14px] opacity-30 uppercase tracking-widest mb-3">Limitações</p>
+              {["Sem atualização de horários em grupo", "Falta de relatórios gerenciais", "Exportação com falhas recorrentes", "Lançamentos individuais obrigatórios"].map((l) => (
+                <p key={l} className="text-[16px] opacity-50 flex items-center gap-3">
+                  <X size={14} className="opacity-40 shrink-0" /> {l}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          {/* Primavera */}
+          <div className="border border-white/15 p-10">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 border border-white/20 flex items-center justify-center">
+                <span className="text-[24px] font-light">P</span>
+              </div>
+              <div>
+                <h3 className="text-[26px] font-medium">Primavera</h3>
+                <p className="text-[14px] opacity-40 uppercase tracking-widest">Folha & Financeiro</p>
+              </div>
+            </div>
+            <p className="text-[18px] opacity-50 leading-relaxed mb-6">
+              Sistema de folha de pagamento e gestão financeira. Centraliza o processamento para todas as unidades do grupo.
+            </p>
+            <div className="space-y-3 border-t border-white/10 pt-5">
+              <p className="text-[14px] opacity-30 uppercase tracking-widest mb-3">Dependência crítica</p>
+              {["Eficiência depende dos dados do SisQual", "Recebe exportações com falhas", "Retrabalho na validação de dados", "Processamento atrasado por erros"].map((l) => (
+                <p key={l} className="text-[16px] opacity-50 flex items-center gap-3">
+                  <AlertTriangle size={14} className="opacity-40 shrink-0" /> {l}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          {/* Excel */}
+          <div className="border border-white/15 p-10">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-14 h-14 border border-white/20 flex items-center justify-center">
+                <span className="text-[24px] font-light">XL</span>
+              </div>
+              <div>
+                <h3 className="text-[26px] font-medium">Excel</h3>
+                <p className="text-[14px] opacity-40 uppercase tracking-widest">Controles Manuais</p>
+              </div>
+            </div>
+            <p className="text-[18px] opacity-50 leading-relaxed mb-6">
+              Controle manual de ausências, faltas, relatórios de RH e indicadores para o comitê.
+            </p>
+            <div className="space-y-3 border-t border-white/10 pt-5">
+              <p className="text-[14px] opacity-30 uppercase tracking-widest mb-3">Problemas</p>
+              {["Sujeito a erros e retrabalho", "Sem padronização entre unidades", "Dificulta análise rápida", "Tomada de decisão sem base sólida"].map((l) => (
+                <p key={l} className="text-[16px] opacity-50 flex items-center gap-3">
+                  <X size={14} className="opacity-40 shrink-0" /> {l}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+
+  // 4. CONTEXTO — IMPACTO NA OPERAÇÃO
+  {
+    id: "context-impact",
+    title: "Impacto Operacional",
+    bg: "dark",
+    content: (
+      <div className="flex flex-col justify-center h-full px-[120px]">
+        <SectionLabel>Diagnóstico</SectionLabel>
+        <SlideTitle>O impacto na operação do grupo</SlideTitle>
+        <div className="grid grid-cols-3 gap-10 mt-8">
+          <div className="border border-white/15 p-10">
+            <div className="w-16 h-16 border border-white/20 flex items-center justify-center mb-6">
+              <span className="text-[32px]">⏱️</span>
+            </div>
+            <h3 className="text-[26px] font-medium mb-3">Eficiência & Produtividade</h3>
+            <p className="text-[19px] opacity-50 leading-relaxed">
+              O excesso de tarefas manuais, a falta de automação e as falhas de integração reduzem significativamente a eficiência do RH, que dedica tempo excessivo a atividades operacionais em vez de estratégicas.
+            </p>
+          </div>
+          <div className="border border-white/15 p-10">
+            <div className="w-16 h-16 border border-white/20 flex items-center justify-center mb-6">
+              <span className="text-[32px]">⚠️</span>
+            </div>
+            <h3 className="text-[26px] font-medium mb-3">Risco Operacional</h3>
+            <p className="text-[19px] opacity-50 leading-relaxed">
+              A dependência de controles manuais e a ausência de relatórios integrados aumentam o risco de erros, atrasos no fechamento da folha e insatisfação dos colaboradores.
+            </p>
+          </div>
+          <div className="border border-white/15 p-10">
+            <div className="w-16 h-16 border border-white/20 flex items-center justify-center mb-6">
+              <span className="text-[32px]">📈</span>
+            </div>
+            <h3 className="text-[26px] font-medium mb-3">Baixa Escalabilidade</h3>
+            <p className="text-[19px] opacity-50 leading-relaxed">
+              As limitações das ferramentas atuais dificultam a padronização e expansão dos processos de RH para todas as ~20 unidades do grupo, travando o crescimento.
+            </p>
+          </div>
+        </div>
+        <div className="mt-12 border border-white/10 p-8 text-center">
+          <p className="text-[24px] opacity-60 font-light leading-relaxed max-w-[1200px] mx-auto">
+            <strong className="opacity-90">Conclusão:</strong> O cenário atual apresenta grande potencial de melhoria, com oportunidades claras para automação, integração e padronização — liberando o RH para atividades estratégicas.
+          </p>
         </div>
       </div>
     ),
