@@ -27,7 +27,7 @@ const HeroSection = () => {
           </div>
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-light leading-tight mb-8 max-w-3xl">
-            Dulceria Nacional / Grupo Webcore
+            Dulceria Nacional / Grupo Webcor
           </h1>
 
           <p className="text-lg md:text-xl opacity-80 max-w-2xl mb-4 font-light leading-relaxed">

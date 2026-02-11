@@ -98,10 +98,10 @@ const NextStepSection = () => {
         {/* CTA */}
         <div className="text-center space-y-6">
           <p className="text-xl md:text-2xl font-light">
-            Pronto para Transformar a Gestão de RH do Grupo Webcore?
+            Pronto para Transformar a Gestão de RH do Grupo Webcor?
           </p>
           <p className="text-sm opacity-60 max-w-md mx-auto">
-            Investindo no primeiro ano, o Grupo Webcore pode gerar economias significativas com um ROI superior a 400%.
+            Investindo no primeiro ano, o Grupo Webcor pode gerar economias significativas com um ROI superior a 400%.
           </p>
           <a
             href={mailtoLink}
@@ -110,7 +110,7 @@ const NextStepSection = () => {
             Agendar Próxima Reunião
           </a>
           <p className="mt-12 text-xs opacity-40">
-            Proposta preparada para Dulceria Nacional / Grupo Webcore — 2026
+            Proposta preparada para Dulceria Nacional / Grupo Webcor — 2026
           </p>
         </div>
       </div>

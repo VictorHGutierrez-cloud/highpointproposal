@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 const stats = [
   { number: "400+", label: "Colaboradores na Dulceria" },
   { number: "~20", label: "Unidades no Grupo" },
-  { number: "3.000+", label: "Colaboradores no Grupo Webcore" },
+  { number: "3.000+", label: "Colaboradores no Grupo Webcor" },
 ];
 
 const cards = [
   {
     title: "Empresa",
-    description: "Dulceria Nacional, parte do Grupo Webcore — parceria entre Arcor e Webcore, com operações em Angola e Moçambique.",
+    description: "Dulceria Nacional, parte do Grupo Webcor — parceria entre Arcor e Webcor, com operações em Angola e Moçambique.",
   },
   {
     title: "Escala",
@@ -43,7 +43,7 @@ const ContextSection = () => {
 
         <div className="space-y-8 text-lg md:text-xl leading-relaxed font-light mb-16">
           <p className="text-2xl md:text-3xl font-normal">
-            Conheça o contexto da Dulceria Nacional e do Grupo Webcore.
+            Conheça o contexto da Dulceria Nacional e do Grupo Webcor.
           </p>
           <p className="opacity-80">
             Um grupo industrial com operações em Angola e Moçambique, enfrentando desafios críticos na gestão de pessoas e integração de sistemas.
