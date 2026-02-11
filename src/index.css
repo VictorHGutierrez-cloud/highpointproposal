@@ -6,49 +6,49 @@
    All colors MUST be HSL.
    
    Palette:
-   - Dark Craft (#392c2c): 12 15% 20% — Hero, narrative, footer
-   - Industrial Neutral (#595858): 0 1% 35% — Cards, alternating sections
-   - Pure White (#ffffff): 0 0% 100% — Text, CTAs
+   - Factorial Red (#FF355E): 347 100% 60% — Primary, hero, CTAs
+   - Amber Accent (#FFB940): 37 100% 63% — Warm accents
+   - Teal Accent (#07A2AD): 184 93% 35% — Cool accents, highlights
 */
 
 @layer base {
   :root {
-    /* Primary: Dark Craft - artesanato, cinema, madeira */
+    /* Primary: Factorial Red */
     --background: 0 0% 100%;
-    --foreground: 12 15% 20%;
+    --foreground: 347 80% 15%;
 
-    --card: 0 1% 35%;
+    --card: 347 60% 20%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 12 15% 20%;
+    --popover: 347 70% 18%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 12 15% 20%;
+    --primary: 347 100% 60%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Industrial Neutral - estúdio, infraestrutura */
-    --secondary: 0 1% 35%;
+    /* Secondary: Deep red-dark for contrast sections */
+    --secondary: 347 50% 18%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 1% 35%;
+    --muted: 347 30% 25%;
     --muted-foreground: 0 0% 80%;
 
-    --accent: 12 15% 25%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 37 100% 63%;
+    --accent-foreground: 347 80% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 12 10% 30%;
-    --input: 12 10% 30%;
-    --ring: 0 0% 100%;
+    --border: 347 40% 30%;
+    --input: 347 40% 30%;
+    --ring: 37 100% 63%;
 
     --radius: 0.25rem;
 
-    /* Custom tokens for the proposal */
-    --dark-craft: 12 15% 20%;
-    --industrial: 0 1% 35%;
-    --pure-white: 0 0% 100%;
+    /* Custom tokens */
+    --factorial-red: 347 100% 60%;
+    --amber-accent: 37 100% 63%;
+    --teal-accent: 184 93% 35%;
   }
 }
 
