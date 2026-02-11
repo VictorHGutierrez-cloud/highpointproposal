@@ -360,36 +360,99 @@ export const slides: SlideData[] = [
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>A Solução</SectionLabel>
         <SlideTitle>Como a Factorial resolve cada dor</SlideTitle>
-        <div className="grid grid-cols-2 gap-16 mt-8">
+
+        {/* Demo access banner */}
+        <div className="border-2 border-foreground/20 bg-foreground/[0.04] p-6 mb-10 flex items-center justify-between">
           <div>
-            <h3 className="text-[28px] font-normal mb-8 opacity-70">Funcionalidades Principais</h3>
-            <ul className="space-y-5">
+            <p className="text-[20px] font-medium opacity-80 mb-1">🔑 Acesse o ambiente de demonstração exclusivo</p>
+            <p className="text-[16px] opacity-40">Login: <span className="font-mono opacity-70">hellen@demof1d496c1.com</span> · Senha: <span className="font-mono opacity-70">Papapapa333!</span></p>
+          </div>
+          <a
+            href="https://app.eu2.demo.factorial.dev/dashboard?switchToCompanyId=63800&redirect_uri=https://api.eu2.demo.factorial.dev/users/sign_in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 bg-foreground text-background px-8 py-4 text-[18px] font-medium hover:opacity-90 transition-opacity"
+          >
+            Entrar no Ambiente Demo →
+          </a>
+        </div>
+
+        <div className="grid grid-cols-2 gap-16">
+          {/* Left: interactive feature links */}
+          <div>
+            <h3 className="text-[28px] font-normal mb-8 opacity-70">Veja na prática</h3>
+            <div className="space-y-4">
               {[
-                "Gestão de Turnos em Massa",
-                "Lançamento de Férias em Massa",
-                "Ausências Automatizadas",
-                "Relatórios Automáticos (BI)",
+                {
+                  label: "Gestão de Turnos em Massa",
+                  desc: "Atualize horários de centenas de colaboradores em segundos.",
+                  url: "https://app.eu2.demo.factorial.dev/shifts/monthly/employees/2026/1/1",
+                  isDemo: true,
+                },
+                {
+                  label: "Lançamento de Férias em Massa",
+                  desc: "Atribua ausências em lote — sem lançar um a um.",
+                  url: "https://help.factorialhr.com/ausencias-e-aprovacoes/how-to-assign-the-absence-in-bulk-?from_search=218380148",
+                  isDemo: false,
+                },
+                {
+                  label: "Ausências Automatizadas",
+                  desc: "Aprovações inteligentes com IA para gestão de time-off.",
+                  url: "https://help.factorialhr.com/one/one-ai-%E2%80%93-time-off-management-approvals?from_search=218384939",
+                  isDemo: false,
+                },
+                {
+                  label: "Pergunte para a IA",
+                  desc: "\"Me dê um gráfico de pizza com os maiores motivos de ausências por departamento\"",
+                  url: "https://app.eu2.demo.factorial.dev/analytics/reports/dashboards/105102/list/question",
+                  isDemo: true,
+                },
+              ].map((f) => (
+                <a
+                  key={f.label}
+                  href={f.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 border border-foreground/10 p-6 hover:border-foreground/30 hover:bg-foreground/[0.03] transition-all group cursor-pointer"
+                >
+                  <Check size={22} className="opacity-50 shrink-0 mt-1" />
+                  <div className="flex-1">
+                    <p className="text-[22px] font-medium opacity-80 group-hover:opacity-100 transition-opacity">{f.label}</p>
+                    <p className="text-[17px] opacity-45 mt-1">{f.desc}</p>
+                  </div>
+                  <span className="text-[16px] opacity-30 group-hover:opacity-60 shrink-0 mt-1 transition-opacity">
+                    {f.isDemo ? "🔗 Demo" : "📖 Help Center"}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: expected gains */}
+          <div>
+            <h3 className="text-[28px] font-normal mb-8 opacity-70">Ganhos Esperados</h3>
+            <div className="space-y-6">
+              {[
+                { title: "Redução de Tempo", desc: "De 10 para 2–3 dias de fechamento mensal" },
+                { title: "Eliminação de Retrabalho", desc: "Processos em massa substituem lançamentos individuais" },
+                { title: "Redução de Erros", desc: "Exportação automática e validada para o Primavera" },
+              ].map((g) => (
+                <div key={g.title} className="border border-foreground/10 p-8">
+                  <h4 className="text-[24px] font-normal mb-2">{g.title}</h4>
+                  <p className="text-[20px] opacity-50">{g.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 space-y-4">
+              {[
                 "Integração Robusta com Primavera",
                 "Escalabilidade para 20+ unidades",
               ].map((f) => (
-                <li key={f} className="flex items-center gap-4 text-[24px] opacity-70">
-                  <Check size={22} className="opacity-50 shrink-0" /> {f}
-                </li>
+                <div key={f} className="flex items-center gap-4 text-[22px] opacity-60 border border-foreground/10 p-5">
+                  <Check size={20} className="opacity-50 shrink-0" /> {f}
+                </div>
               ))}
-            </ul>
-          </div>
-          <div className="space-y-6">
-            <h3 className="text-[28px] font-normal mb-8 opacity-70">Ganhos Esperados</h3>
-            {[
-              { title: "Redução de Tempo", desc: "De 10 para 2–3 dias de fechamento mensal" },
-              { title: "Eliminação de Retrabalho", desc: "Processos em massa substituem lançamentos individuais" },
-              { title: "Redução de Erros", desc: "Exportação automática e validada para o Primavera" },
-            ].map((g) => (
-              <div key={g.title} className="border border-foreground/10 p-8">
-                <h4 className="text-[24px] font-normal mb-2">{g.title}</h4>
-                <p className="text-[20px] opacity-50">{g.desc}</p>
-              </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
