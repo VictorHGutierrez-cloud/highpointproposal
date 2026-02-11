@@ -1,10 +1,6 @@
 import { motion } from "framer-motion";
 
 const HeroSection = () => {
-  const scrollToROI = () => {
-    document.getElementById("roi-calculator")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const scrollToContext = () => {
     document.getElementById("context")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -40,14 +36,8 @@ const HeroSection = () => {
 
           <div className="flex flex-wrap gap-4">
             <button
-              onClick={scrollToROI}
-              className="inline-flex items-center gap-2 bg-primary-foreground text-primary px-8 py-4 text-sm tracking-wide hover:opacity-90 transition-opacity duration-300"
-            >
-              Calcular ROI Agora
-            </button>
-            <button
               onClick={scrollToContext}
-              className="inline-flex items-center gap-2 border border-primary-foreground/40 px-8 py-4 text-sm tracking-wide hover:bg-primary-foreground hover:text-primary transition-colors duration-300"
+              className="inline-flex items-center gap-2 bg-primary-foreground text-primary px-8 py-4 text-sm tracking-wide hover:opacity-90 transition-opacity duration-300"
             >
               Ver a proposta
             </button>
