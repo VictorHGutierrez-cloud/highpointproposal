@@ -61,7 +61,7 @@ const ROIHeroSection = () => {
         </div>
 
         <p className="text-sm opacity-60 max-w-lg mx-auto">
-          Com o cenário realista, o Grupo Webcore recupera a implantação em {results.paybackMeses.toFixed(1)} meses, gerando um ganho líquido de {formatEUR(results.ganhoLiquidoMensal)}/mês.
+          Com o cenário realista, o Grupo Webcor recupera a implantação em {results.paybackMeses.toFixed(1)} meses, gerando um ganho líquido de {formatEUR(results.ganhoLiquidoMensal)}/mês.
         </p>
       </div>
     </section>

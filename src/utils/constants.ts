@@ -1,5 +1,5 @@
 export const DEFAULT_VALUES = {
-  empresa: "Dulceria Nacional / Grupo Webcore",
+  empresa: "Dulceria Nacional / Grupo Webcor",
   unidades: 3,
   colaboradoresPorUnidade: 167,
   totalColaboradores: 500,
