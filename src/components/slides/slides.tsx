@@ -365,10 +365,10 @@ export const slides: SlideData[] = [
         <div className="border-2 border-foreground/25 bg-foreground/[0.06] p-6 mb-10 flex items-center justify-between">
           <div>
             <p className="text-[22px] font-medium opacity-90 mb-1">🔑 Preparámos um ambiente só para vocês</p>
-            <p className="text-[18px] opacity-55">Login: <span className="font-mono opacity-80">hellen@demof1d496c1.com</span> · Senha: <span className="font-mono opacity-80">Papapapa333!</span></p>
+            <p className="text-[18px] opacity-55">Login: <span className="font-mono opacity-80">hellen@demob25acc00.com</span> · Senha: <span className="font-mono opacity-80">Papapapa333!</span></p>
           </div>
           <a
-            href="https://app.eu2.demo.factorial.dev/dashboard?switchToCompanyId=63800&redirect_uri=https://api.eu2.demo.factorial.dev/users/sign_in"
+            href="https://app.eu2.demo.factorial.dev/dashboard?switchToCompanyId=75113&redirect_uri=https://api.eu2.demo.factorial.dev/users/sign_in"
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0 bg-foreground text-background px-8 py-4 text-[20px] font-medium hover:opacity-90 transition-opacity"
