@@ -9,7 +9,7 @@ const Footer = () => (
           </p>
         </div>
         <div className="space-y-2 text-sm opacity-80">
-          <p className="font-medium opacity-100">Victor Henrique Aguiar Gutierrez Duarte</p>
+          <p className="font-medium opacity-100">Victor Gutierrez</p>
           <p className="opacity-60">Gerente de Expansão | Factorial</p>
           <p>
             <a href="mailto:victor.gutierrez@factorial.co" className="hover:opacity-100 transition-opacity">

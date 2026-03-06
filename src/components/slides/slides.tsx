@@ -18,21 +18,19 @@ interface SlideData {
 }
 
 const SectionLabel = ({ children }: { children: ReactNode }) => (
-  <p className="text-[28px] tracking-[0.25em] uppercase opacity-60 mb-8">{children}</p>
+  <p className="text-[32px] tracking-[0.25em] uppercase opacity-60 mb-8">{children}</p>
 );
 
 const SlideTitle = ({ children }: { children: ReactNode }) => (
-  <h2 className="text-[72px] font-light leading-[1.15] mb-10 max-w-[1400px]">{children}</h2>
+  <h2 className="text-[80px] font-light leading-[1.15] mb-10 max-w-[1400px]">{children}</h2>
 );
 
 const SlideSubtitle = ({ children }: { children: ReactNode }) => (
-  <p className="text-[32px] opacity-80 font-light leading-relaxed max-w-[1200px]">{children}</p>
+  <p className="text-[36px] opacity-80 font-light leading-relaxed max-w-[1200px]">{children}</p>
 );
 
 export const slides: SlideData[] = [
   // ─── 1. CAPA ───────────────────────────────────────────
-  // Psicologia: abertura com identidade + propósito. O nome do cliente vem primeiro.
-  // A frase de apoio posiciona o projeto como parceria, não como venda.
   {
     id: "cover",
     title: "Capa",
@@ -46,7 +44,7 @@ export const slides: SlideData[] = [
         <p className="text-[36px] opacity-80 font-light mb-6">
           Uma nova era na gestão de pessoas
         </p>
-        <p className="text-[24px] opacity-60 font-light">
+        <p className="text-[26px] opacity-60 font-light">
           Como libertar o RH do operacional e transformá-lo em motor estratégico do grupo
         </p>
         <div className="mt-16 flex items-center gap-6">
@@ -54,8 +52,8 @@ export const slides: SlideData[] = [
             <span className="text-[24px] font-light">F</span>
           </div>
           <div>
-            <p className="text-[20px] opacity-70">Victor Henrique Aguiar Gutierrez Duarte</p>
-            <p className="text-[16px] opacity-50">Gerente de Expansão · Factorial</p>
+            <p className="text-[22px] opacity-70">Victor Gutierrez</p>
+            <p className="text-[18px] opacity-50">Gerente de Expansão · Factorial</p>
           </div>
         </div>
       </div>
@@ -63,8 +61,6 @@ export const slides: SlideData[] = [
   },
 
   // ─── 2. CONTEXTO — VISÃO GERAL ───────────────────────
-  // Psicologia: validação. Mostramos que entendemos o cliente antes de propor qualquer coisa.
-  // Linguagem empática: "sabemos que...", "reconhecemos..."
   {
     id: "context-overview",
     title: "Quem vocês são",
@@ -75,10 +71,10 @@ export const slides: SlideData[] = [
         <SlideTitle>Nós ouvimos vocês</SlideTitle>
         <div className="grid grid-cols-2 gap-16 mt-4">
           <div>
-            <p className="text-[24px] opacity-70 leading-[1.7] mb-8">
+            <p className="text-[26px] opacity-70 leading-[1.7] mb-8">
               A Dulceria Nacional opera num grupo com <strong className="opacity-100">~20 unidades</strong> e mais de <strong className="opacity-100">3.000 colaboradores</strong> em Angola. Recentemente, centralizaram o payroll — um passo estratégico que exige ferramentas à altura.
             </p>
-            <p className="text-[24px] opacity-70 leading-[1.7]">
+            <p className="text-[26px] opacity-70 leading-[1.7]">
               O vosso RH já pensa de forma estratégica. Mas as ferramentas atuais <strong className="opacity-100">prendem a equipa no operacional</strong> — e isso não é culpa de ninguém. É uma questão de tecnologia.
             </p>
           </div>
@@ -91,10 +87,10 @@ export const slides: SlideData[] = [
               { icon: "👷", title: "Equipa sobrecarregada", desc: "O RH insere o que os colaboradores não conseguem." },
             ].map((item) => (
               <div key={item.title} className="flex gap-5 border border-foreground/15 p-5">
-                <span className="text-[28px] shrink-0">{item.icon}</span>
+                <span className="text-[30px] shrink-0">{item.icon}</span>
                 <div>
-                  <h4 className="text-[20px] font-medium mb-1">{item.title}</h4>
-                  <p className="text-[17px] opacity-60">{item.desc}</p>
+                  <h4 className="text-[22px] font-medium mb-1">{item.title}</h4>
+                  <p className="text-[19px] opacity-60">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -105,8 +101,6 @@ export const slides: SlideData[] = [
   },
 
   // ─── 3. FERRAMENTAS ATUAIS ────────────────────────────
-  // Psicologia: diagnóstico sem julgamento. Mostramos o ecossistema como ele é,
-  // respeitando as escolhas anteriores, mas evidenciando os limites.
   {
     id: "context-tools",
     title: "Ferramentas Atuais",
@@ -123,18 +117,18 @@ export const slides: SlideData[] = [
                 <span className="text-[24px] font-light">SQ</span>
               </div>
               <div>
-                <h3 className="text-[26px] font-medium">SisQual</h3>
-                <p className="text-[14px] opacity-50 uppercase tracking-widest">Ponto & Turnos</p>
+                <h3 className="text-[28px] font-medium">SisQual</h3>
+                <p className="text-[16px] opacity-50 uppercase tracking-widest">Ponto & Turnos</p>
               </div>
             </div>
-            <p className="text-[18px] opacity-70 leading-relaxed mb-6">
+            <p className="text-[20px] opacity-70 leading-relaxed mb-6">
               Cumpre o básico, mas não acompanha a complexidade de um grupo com 20+ unidades.
             </p>
             <div className="space-y-3 border-t border-white/15 pt-5">
-              <p className="text-[14px] opacity-45 uppercase tracking-widest mb-3">Onde limita</p>
+              <p className="text-[16px] opacity-45 uppercase tracking-widest mb-3">Onde limita</p>
               {["Horários só se atualizam um a um", "Relatórios gerenciais inexistentes", "Exportações que falham sem aviso", "Cada lançamento exige entrada manual"].map((l) => (
-                <p key={l} className="text-[16px] opacity-65 flex items-center gap-3">
-                  <X size={14} className="opacity-50 shrink-0" /> {l}
+                <p key={l} className="text-[18px] opacity-65 flex items-center gap-3">
+                  <X size={16} className="opacity-50 shrink-0" /> {l}
                 </p>
               ))}
             </div>
@@ -147,18 +141,18 @@ export const slides: SlideData[] = [
                 <span className="text-[24px] font-light">P</span>
               </div>
               <div>
-                <h3 className="text-[26px] font-medium">Primavera</h3>
-                <p className="text-[14px] opacity-50 uppercase tracking-widest">Folha & Financeiro</p>
+                <h3 className="text-[28px] font-medium">Primavera</h3>
+                <p className="text-[16px] opacity-50 uppercase tracking-widest">Folha & Financeiro</p>
               </div>
             </div>
-            <p className="text-[18px] opacity-70 leading-relaxed mb-6">
+            <p className="text-[20px] opacity-70 leading-relaxed mb-6">
               Robusto na folha, mas refém dos dados que recebe. Se a fonte falha, tudo atrasa.
             </p>
             <div className="space-y-3 border-t border-white/15 pt-5">
-              <p className="text-[14px] opacity-45 uppercase tracking-widest mb-3">O que sofre</p>
+              <p className="text-[16px] opacity-45 uppercase tracking-widest mb-3">O que sofre</p>
               {["Qualidade depende do SisQual", "Importações chegam incompletas", "Equipa valida tudo manualmente", "Fecho da folha atrasa a cada mês"].map((l) => (
-                <p key={l} className="text-[16px] opacity-65 flex items-center gap-3">
-                  <AlertTriangle size={14} className="opacity-50 shrink-0" /> {l}
+                <p key={l} className="text-[18px] opacity-65 flex items-center gap-3">
+                  <AlertTriangle size={16} className="opacity-50 shrink-0" /> {l}
                 </p>
               ))}
             </div>
@@ -171,18 +165,18 @@ export const slides: SlideData[] = [
                 <span className="text-[24px] font-light">XL</span>
               </div>
               <div>
-                <h3 className="text-[26px] font-medium">Excel</h3>
-                <p className="text-[14px] opacity-50 uppercase tracking-widest">O remendo</p>
+                <h3 className="text-[28px] font-medium">Excel</h3>
+                <p className="text-[16px] opacity-50 uppercase tracking-widest">O remendo</p>
               </div>
             </div>
-            <p className="text-[18px] opacity-70 leading-relaxed mb-6">
+            <p className="text-[20px] opacity-70 leading-relaxed mb-6">
               Não é uma ferramenta de gestão — é um sinal de que o sistema não dá conta.
             </p>
             <div className="space-y-3 border-t border-white/15 pt-5">
-              <p className="text-[14px] opacity-45 uppercase tracking-widest mb-3">O risco</p>
+              <p className="text-[16px] opacity-45 uppercase tracking-widest mb-3">O risco</p>
               {["Erros invisíveis até à folha", "Cada unidade faz diferente", "Impossível ter visão de grupo", "Decisões sem dados confiáveis"].map((l) => (
-                <p key={l} className="text-[16px] opacity-65 flex items-center gap-3">
-                  <X size={14} className="opacity-50 shrink-0" /> {l}
+                <p key={l} className="text-[18px] opacity-65 flex items-center gap-3">
+                  <X size={16} className="opacity-50 shrink-0" /> {l}
                 </p>
               ))}
             </div>
@@ -193,8 +187,6 @@ export const slides: SlideData[] = [
   },
 
   // ─── 4. IMPACTO NA OPERAÇÃO ───────────────────────────
-  // Psicologia: amplificação da dor com empatia. Não culpamos — mostramos consequências.
-  // "Isto é o que acontece quando ferramentas não acompanham o talento da equipa."
   {
     id: "context-impact",
     title: "Impacto Operacional",
@@ -208,8 +200,8 @@ export const slides: SlideData[] = [
             <div className="w-16 h-16 border border-white/25 flex items-center justify-center mb-6">
               <span className="text-[32px]">⏱️</span>
             </div>
-            <h3 className="text-[26px] font-medium mb-3">Tempo desperdiçado</h3>
-            <p className="text-[19px] opacity-70 leading-relaxed">
+            <h3 className="text-[28px] font-medium mb-3">Tempo desperdiçado</h3>
+            <p className="text-[21px] opacity-70 leading-relaxed">
               A equipa de RH dedica semanas inteiras a tarefas que sistemas modernos resolvem em horas. Esse tempo deveria ir para pessoas, não para planilhas.
             </p>
           </div>
@@ -217,8 +209,8 @@ export const slides: SlideData[] = [
             <div className="w-16 h-16 border border-white/25 flex items-center justify-center mb-6">
               <span className="text-[32px]">⚠️</span>
             </div>
-            <h3 className="text-[26px] font-medium mb-3">Risco acumulado</h3>
-            <p className="text-[19px] opacity-70 leading-relaxed">
+            <h3 className="text-[28px] font-medium mb-3">Risco acumulado</h3>
+            <p className="text-[21px] opacity-70 leading-relaxed">
               Cada erro manual é uma bomba-relógio: pagamentos incorretos, colaboradores insatisfeitos, auditoria que encontra inconsistências. O risco cresce silenciosamente.
             </p>
           </div>
@@ -226,14 +218,14 @@ export const slides: SlideData[] = [
             <div className="w-16 h-16 border border-white/25 flex items-center justify-center mb-6">
               <span className="text-[32px]">📈</span>
             </div>
-            <h3 className="text-[26px] font-medium mb-3">Crescimento travado</h3>
-            <p className="text-[19px] opacity-70 leading-relaxed">
+            <h3 className="text-[28px] font-medium mb-3">Crescimento travado</h3>
+            <p className="text-[21px] opacity-70 leading-relaxed">
               O grupo quer expandir, mas os processos de RH não escalam. Cada nova unidade multiplica o retrabalho em vez de se integrar.
             </p>
           </div>
         </div>
         <div className="mt-12 border border-white/15 p-8 text-center">
-          <p className="text-[24px] opacity-75 font-light leading-relaxed max-w-[1200px] mx-auto">
+          <p className="text-[26px] opacity-75 font-light leading-relaxed max-w-[1200px] mx-auto">
             A boa notícia? <strong className="opacity-100">Nada disto é inevitável.</strong> Existe um caminho claro para transformar esta realidade — e começa agora.
           </p>
         </div>
@@ -242,8 +234,6 @@ export const slides: SlideData[] = [
   },
 
   // ─── 5. DORES IDENTIFICADAS ───────────────────────────
-  // Psicologia: especificidade cria credibilidade. Números exatos mostram
-  // que investigámos a fundo — não é um pitch genérico.
   {
     id: "problems",
     title: "Dores",
@@ -262,11 +252,11 @@ export const slides: SlideData[] = [
           ].map((p) => (
             <div key={p.title} className="border border-white/20 p-8">
               <div className="flex items-center gap-3 mb-4">
-                <AlertTriangle size={22} className="opacity-65" />
-                <h3 className="text-[24px] font-normal">{p.title}</h3>
+                <AlertTriangle size={24} className="opacity-65" />
+                <h3 className="text-[26px] font-normal">{p.title}</h3>
               </div>
-              <p className="text-[18px] opacity-75 leading-relaxed mb-5">{p.desc}</p>
-              <p className="text-[16px] opacity-55 border-t border-white/15 pt-4">
+              <p className="text-[20px] opacity-75 leading-relaxed mb-5">{p.desc}</p>
+              <p className="text-[18px] opacity-55 border-t border-white/15 pt-4">
                 {p.impact}
               </p>
             </div>
@@ -277,8 +267,6 @@ export const slides: SlideData[] = [
   },
 
   // ─── 6. CUSTO DO CENÁRIO ATUAL ────────────────────────
-  // Psicologia: loss aversion. Mostrar o custo de NÃO agir é mais poderoso
-  // que mostrar o benefício de agir. O número grande é o protagonista.
   {
     id: "cost-analysis",
     title: "Custo Atual",
@@ -291,53 +279,53 @@ export const slides: SlideData[] = [
         <div className="grid grid-cols-2 gap-16 mt-4">
           {/* Left: calculation breakdown */}
           <div>
-            <h3 className="text-[24px] font-medium opacity-80 mb-6">O cálculo é simples</h3>
+            <h3 className="text-[26px] font-medium opacity-80 mb-6">O cálculo é simples</h3>
             <div className="border border-white/20 p-8 space-y-4">
-              <div className="flex justify-between text-[20px]">
+              <div className="flex justify-between text-[22px]">
                 <span className="opacity-65">Pessoas envolvidas no fecho</span>
                 <span className="font-medium">4 pessoas</span>
               </div>
-              <div className="flex justify-between text-[20px]">
+              <div className="flex justify-between text-[22px]">
                 <span className="opacity-65">Jornada diária</span>
                 <span className="font-medium">8 horas/dia</span>
               </div>
-              <div className="flex justify-between text-[20px]">
+              <div className="flex justify-between text-[22px]">
                 <span className="opacity-65">Dias dedicados por mês</span>
                 <span className="font-medium">10 dias</span>
               </div>
-              <div className="flex justify-between text-[20px] border-t border-white/15 pt-4">
+              <div className="flex justify-between text-[22px] border-t border-white/15 pt-4">
                 <span className="opacity-75 font-medium">Horas consumidas / mês</span>
-                <span className="font-medium text-[22px]">320 h</span>
+                <span className="font-medium text-[24px]">320 h</span>
               </div>
-              <div className="flex justify-between text-[20px] mt-2">
+              <div className="flex justify-between text-[22px] mt-2">
                 <span className="opacity-65">Custo por hora (ref. US$ 1.000/mês)</span>
                 <span className="font-medium">US$ 5,68</span>
               </div>
-              <div className="flex justify-between text-[20px] border-t border-white/15 pt-4">
+              <div className="flex justify-between text-[22px] border-t border-white/15 pt-4">
                 <span className="opacity-75 font-medium">Custo mensal (1 unidade)</span>
-                <span className="font-medium text-[22px]">US$ 1.818</span>
+                <span className="font-medium text-[24px]">US$ 1.818</span>
               </div>
-              <div className="flex justify-between text-[20px]">
+              <div className="flex justify-between text-[22px]">
                 <span className="opacity-75 font-medium">Custo anual (1 unidade)</span>
-                <span className="font-medium text-[22px]">US$ 21.800</span>
+                <span className="font-medium text-[24px]">US$ 21.800</span>
               </div>
             </div>
           </div>
 
           {/* Right: group impact + indirect costs */}
           <div>
-            <h3 className="text-[24px] font-medium opacity-80 mb-6">Agora multiplique por 20 unidades</h3>
+            <h3 className="text-[26px] font-medium opacity-80 mb-6">Agora multiplique por 20 unidades</h3>
             
             {/* Big number */}
             <div className="border border-white/25 bg-white/10 p-10 text-center mb-8">
-              <p className="text-[18px] opacity-55 mb-2">Custo anual estimado — todo o grupo</p>
+              <p className="text-[20px] opacity-55 mb-2">Custo anual estimado — todo o grupo</p>
               <p className="text-[80px] font-light leading-none">US$ 436K</p>
-              <p className="text-[16px] opacity-45 mt-3">Apenas em trabalho manual e retrabalho</p>
+              <p className="text-[18px] opacity-45 mt-3">Apenas em trabalho manual e retrabalho</p>
             </div>
 
             {/* Indirect costs */}
             <div className="border border-white/15 p-6">
-              <p className="text-[16px] opacity-55 uppercase tracking-widest mb-4">E isto ainda não conta...</p>
+              <p className="text-[18px] opacity-55 uppercase tracking-widest mb-4">E isto ainda não conta...</p>
               <div className="space-y-3">
                 {[
                   "Multas e passivos por pagamentos incorretos",
@@ -345,8 +333,8 @@ export const slides: SlideData[] = [
                   "Riscos de compliance em auditorias",
                   "O custo invisível: um RH que não consegue ser estratégico",
                 ].map((c) => (
-                  <p key={c} className="text-[17px] opacity-65 flex items-start gap-3">
-                    <AlertTriangle size={16} className="opacity-55 shrink-0 mt-1" /> {c}
+                  <p key={c} className="text-[19px] opacity-65 flex items-start gap-3">
+                    <AlertTriangle size={18} className="opacity-55 shrink-0 mt-1" /> {c}
                   </p>
                 ))}
               </div>
@@ -355,7 +343,7 @@ export const slides: SlideData[] = [
         </div>
 
         <div className="mt-8 border border-white/15 p-5 text-center">
-          <p className="text-[20px] opacity-70 font-light">
+          <p className="text-[22px] opacity-70 font-light">
             Cada mês sem mudança é um mês a pagar este preço. <strong className="opacity-100">A pergunta não é "se" — é "quando".</strong>
           </p>
         </div>
@@ -364,8 +352,6 @@ export const slides: SlideData[] = [
   },
 
   // ─── 7. SOLUÇÃO FACTORIAL ─────────────────────────────
-  // Psicologia: alívio. Depois da tensão, a solução aparece como resposta natural.
-  // Tom muda de "problema" para "possibilidade". Reciprocidade: damos acesso demo.
   {
     id: "solution",
     title: "Solução",
@@ -378,14 +364,14 @@ export const slides: SlideData[] = [
         {/* Demo access banner */}
         <div className="border-2 border-foreground/25 bg-foreground/[0.06] p-6 mb-10 flex items-center justify-between">
           <div>
-            <p className="text-[20px] font-medium opacity-90 mb-1">🔑 Preparámos um ambiente só para vocês</p>
-            <p className="text-[16px] opacity-55">Login: <span className="font-mono opacity-80">hellen@demof1d496c1.com</span> · Senha: <span className="font-mono opacity-80">Papapapa333!</span></p>
+            <p className="text-[22px] font-medium opacity-90 mb-1">🔑 Preparámos um ambiente só para vocês</p>
+            <p className="text-[18px] opacity-55">Login: <span className="font-mono opacity-80">hellen@demof1d496c1.com</span> · Senha: <span className="font-mono opacity-80">Papapapa333!</span></p>
           </div>
           <a
             href="https://app.eu2.demo.factorial.dev/dashboard?switchToCompanyId=63800&redirect_uri=https://api.eu2.demo.factorial.dev/users/sign_in"
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 bg-foreground text-background px-8 py-4 text-[18px] font-medium hover:opacity-90 transition-opacity"
+            className="shrink-0 bg-foreground text-background px-8 py-4 text-[20px] font-medium hover:opacity-90 transition-opacity"
           >
             Entrar no Demo →
           </a>
@@ -429,12 +415,12 @@ export const slides: SlideData[] = [
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 border border-foreground/15 p-6 hover:border-foreground/35 hover:bg-foreground/[0.04] transition-all group cursor-pointer"
                 >
-                  <Check size={22} className="opacity-60 shrink-0 mt-1" />
+                  <Check size={24} className="opacity-60 shrink-0 mt-1" />
                   <div className="flex-1">
-                    <p className="text-[22px] font-medium opacity-90 group-hover:opacity-100 transition-opacity">{f.label}</p>
-                    <p className="text-[17px] opacity-55 mt-1">{f.desc}</p>
+                    <p className="text-[24px] font-medium opacity-90 group-hover:opacity-100 transition-opacity">{f.label}</p>
+                    <p className="text-[19px] opacity-55 mt-1">{f.desc}</p>
                   </div>
-                  <span className="text-[16px] opacity-40 group-hover:opacity-70 shrink-0 mt-1 transition-opacity">
+                  <span className="text-[18px] opacity-40 group-hover:opacity-70 shrink-0 mt-1 transition-opacity">
                     {f.isDemo ? "🔗 Demo" : "📖 Saiba mais"}
                   </span>
                 </a>
@@ -452,8 +438,8 @@ export const slides: SlideData[] = [
                 { title: "Integração que funciona", desc: "Dados validados automaticamente antes de ir para o Primavera." },
               ].map((g) => (
                 <div key={g.title} className="border border-foreground/15 p-8">
-                  <h4 className="text-[24px] font-normal mb-2">{g.title}</h4>
-                  <p className="text-[20px] opacity-60">{g.desc}</p>
+                  <h4 className="text-[26px] font-normal mb-2">{g.title}</h4>
+                  <p className="text-[22px] opacity-60">{g.desc}</p>
                 </div>
               ))}
             </div>
@@ -462,8 +448,8 @@ export const slides: SlideData[] = [
                 "Primavera integrado de forma robusta",
                 "Preparado para 20+ unidades desde o dia 1",
               ].map((f) => (
-                <div key={f} className="flex items-center gap-4 text-[22px] opacity-70 border border-foreground/15 p-5">
-                  <Check size={20} className="opacity-60 shrink-0" /> {f}
+                <div key={f} className="flex items-center gap-4 text-[24px] opacity-70 border border-foreground/15 p-5">
+                  <Check size={22} className="opacity-60 shrink-0" /> {f}
                 </div>
               ))}
             </div>
@@ -474,8 +460,6 @@ export const slides: SlideData[] = [
   },
 
   // ─── 8. INTEGRAÇÃO ────────────────────────────────────
-  // Psicologia: reassurance. O medo da migração é real. Mostramos que
-  // o Primavera fica — a Factorial se junta, não substitui.
   {
     id: "integration",
     title: "Integração",
@@ -490,11 +474,11 @@ export const slides: SlideData[] = [
             <div className="w-16 h-16 mx-auto mb-5 border border-white/25 flex items-center justify-center">
               <span className="text-[28px] font-light">F</span>
             </div>
-            <p className="text-[28px] font-medium mb-1">Factorial</p>
-            <p className="text-[16px] opacity-55 uppercase tracking-[0.2em] mb-6">A nova camada de gestão</p>
+            <p className="text-[30px] font-medium mb-1">Factorial</p>
+            <p className="text-[18px] opacity-55 uppercase tracking-[0.2em] mb-6">A nova camada de gestão</p>
             <div className="space-y-3 text-left">
               {["Gestão de colaboradores", "Controlo de ausências", "Portal do colaborador", "Aprovações e workflows"].map((item) => (
-                <p key={item} className="text-[18px] opacity-70 flex items-center gap-3">
+                <p key={item} className="text-[20px] opacity-70 flex items-center gap-3">
                   <span className="w-2 h-2 bg-white/40 rounded-full shrink-0" /> {item}
                 </p>
               ))}
@@ -510,8 +494,8 @@ export const slides: SlideData[] = [
                 <span className="w-2 h-2 bg-white/50 rounded-full animate-pulse" style={{ animationDelay: "0.3s" }} />
                 <span className="w-2 h-2 bg-white/50 rounded-full animate-pulse" style={{ animationDelay: "0.6s" }} />
               </div>
-              <p className="text-[18px] font-medium opacity-80">Sincronização</p>
-              <p className="text-[14px] opacity-55 mt-1">Automática · Bidirecional</p>
+              <p className="text-[20px] font-medium opacity-80">Sincronização</p>
+              <p className="text-[16px] opacity-55 mt-1">Automática · Bidirecional</p>
             </div>
             <div className="w-20 h-px bg-white/25" />
           </div>
@@ -521,11 +505,11 @@ export const slides: SlideData[] = [
             <div className="w-16 h-16 mx-auto mb-5 border border-white/25 flex items-center justify-center">
               <span className="text-[28px] font-light">P</span>
             </div>
-            <p className="text-[28px] font-medium mb-1">Primavera</p>
-            <p className="text-[16px] opacity-55 uppercase tracking-[0.2em] mb-6">Folha — como sempre</p>
+            <p className="text-[30px] font-medium mb-1">Primavera</p>
+            <p className="text-[18px] opacity-55 uppercase tracking-[0.2em] mb-6">Folha — como sempre</p>
             <div className="space-y-3 text-left">
               {["Processamento salarial", "Obrigações fiscais", "Declarações legais", "Arquivo contabilístico"].map((item) => (
-                <p key={item} className="text-[18px] opacity-70 flex items-center gap-3">
+                <p key={item} className="text-[20px] opacity-70 flex items-center gap-3">
                   <span className="w-2 h-2 bg-white/40 rounded-full shrink-0" /> {item}
                 </p>
               ))}
@@ -541,8 +525,8 @@ export const slides: SlideData[] = [
             { label: "Folha", desc: "Ficheiro pronto, sem retrabalho" },
           ].map((f) => (
             <div key={f.label} className="text-center">
-              <p className="text-[20px] font-medium opacity-80">{f.label}</p>
-              <p className="text-[16px] opacity-55 mt-1">{f.desc}</p>
+              <p className="text-[22px] font-medium opacity-80">{f.label}</p>
+              <p className="text-[18px] opacity-55 mt-1">{f.desc}</p>
             </div>
           ))}
         </div>
@@ -551,8 +535,6 @@ export const slides: SlideData[] = [
   },
 
   // ─── 9. COMPARAÇÃO ────────────────────────────────────
-  // Psicologia: contraste. Lado a lado, a escolha torna-se óbvia.
-  // Não atacamos o SisQual — deixamos os factos falar.
   {
     id: "comparison",
     title: "Comparação",
@@ -562,7 +544,7 @@ export const slides: SlideData[] = [
         <SectionLabel>Antes e depois</SectionLabel>
         <SlideTitle>O que muda — ponto a ponto</SlideTitle>
         <div className="border border-foreground/20 mt-6">
-          <div className="grid grid-cols-[1fr_1fr_1fr] text-[20px]">
+          <div className="grid grid-cols-[1fr_1fr_1fr] text-[22px]">
             <div className="px-10 py-6 border-b border-foreground/20 font-medium opacity-60">Critério</div>
             <div className="px-10 py-6 border-b border-foreground/20 font-medium opacity-60 text-center">Hoje (SisQual)</div>
             <div className="px-10 py-6 border-b border-foreground/20 font-medium opacity-60 text-center">Com Factorial</div>
@@ -576,16 +558,16 @@ export const slides: SlideData[] = [
               { c: "Escalabilidade", s: "1 unidade por vez", f: "20+ unidades nativas" },
             ].map((row, i) => (
               <>
-                <div key={`c${i}`} className={`px-10 py-5 flex items-center text-[18px] ${i < 6 ? "border-b border-foreground/10" : ""}`}>
+                <div key={`c${i}`} className={`px-10 py-5 flex items-center text-[20px] ${i < 6 ? "border-b border-foreground/10" : ""}`}>
                   {row.c}
                 </div>
                 <div key={`s${i}`} className={`px-10 py-5 flex items-center justify-center gap-3 opacity-70 ${i < 6 ? "border-b border-foreground/10" : ""}`}>
-                  <X size={18} className="opacity-60 shrink-0" />
-                  <span className="text-[17px]">{row.s}</span>
+                  <X size={20} className="opacity-60 shrink-0" />
+                  <span className="text-[20px]">{row.s}</span>
                 </div>
                 <div key={`f${i}`} className={`px-10 py-5 flex items-center justify-center gap-3 ${i < 6 ? "border-b border-foreground/10" : ""}`}>
-                  <Check size={18} className="opacity-80 shrink-0" />
-                  <span className="text-[17px]">{row.f}</span>
+                  <Check size={20} className="opacity-80 shrink-0" />
+                  <span className="text-[20px]">{row.f}</span>
                 </div>
               </>
             ))}
@@ -596,8 +578,6 @@ export const slides: SlideData[] = [
   },
 
   // ─── 10. VÍDEO DEMO ───────────────────────────────────
-  // Psicologia: future pacing. O vídeo não é só uma demo —
-  // é uma janela para o futuro do RH do grupo.
   {
     id: "video",
     title: "Vídeo Demo",
@@ -621,5 +601,4 @@ export const slides: SlideData[] = [
       </div>
     ),
   },
-
 ];
