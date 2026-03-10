@@ -11,8 +11,8 @@ const phases = [
   {
     phase: 2,
     title: "Sessão de Implantação",
-    description: "5 horas de configuração guiada da plataforma Factorial para a SIGA CV.",
-    participants: ["Equipa SIGA CV", "Factorial"],
+    description: "5 horas de configuração guiada da plataforma Factorial para a SIGA.",
+    participants: ["Equipa SIGA", "Factorial"],
     status: "Pendente",
   },
   {
