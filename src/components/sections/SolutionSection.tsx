@@ -63,7 +63,7 @@ const SolutionSection = () => {
           </div>
 
           <div className="space-y-6">
-            <h3 className="text-lg font-normal mb-6 opacity-80">O que muda na SIGA CV</h3>
+            <h3 className="text-lg font-normal mb-6 opacity-80">O que muda na SIGA</h3>
             {gains.map((g, i) => (
               <motion.div
                 key={i}

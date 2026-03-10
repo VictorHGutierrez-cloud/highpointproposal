@@ -523,7 +523,7 @@ export const slides: SlideData[] = [
               <p className="text-[18px] opacity-40 mt-6">victor.gutierrez@factorial.co</p>
             </div>
             <p className="text-center mt-8 text-[16px] opacity-30">
-              Proposta preparada para SIGA CV — 2026
+              Proposta preparada para SIGA — 2026
             </p>
           </div>
         </div>

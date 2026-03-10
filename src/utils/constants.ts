@@ -1,5 +1,5 @@
 export const DEFAULT_VALUES = {
-  empresa: "SIGA CV",
+  empresa: "SIGA",
   totalColaboradores: 15,
   custoColaboradorMes_EUR: 8.30,
   desconto: 0.10,

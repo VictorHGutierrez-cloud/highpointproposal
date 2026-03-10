@@ -37,7 +37,7 @@ const ContextSection = () => {
 
         <div className="space-y-8 text-lg md:text-xl leading-relaxed font-light mb-16">
           <p className="text-2xl md:text-3xl font-normal">
-            Conheça o contexto da SIGA CV.
+            Conheça o contexto da SIGA.
           </p>
           <p className="opacity-80">
             Uma empresa de gestão administrativa em Cabo Verde que utiliza o Primavera e procura uma plataforma completa de gestão de pessoas.
