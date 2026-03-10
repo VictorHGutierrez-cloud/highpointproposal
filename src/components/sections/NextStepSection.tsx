@@ -5,7 +5,7 @@ const phases = [
     phase: 1,
     title: "Pagamento da Implantação",
     description: "€500 — pagamento até semana que vem para iniciar o processo de configuração.",
-    participants: ["SIGA CV"],
+    participants: ["SIGA"],
     status: "Pendente",
   },
   {
