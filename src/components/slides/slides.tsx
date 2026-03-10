@@ -200,7 +200,7 @@ export const slides: SlideData[] = [
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Funcionalidades</SectionLabel>
         <SlideTitle>Gestão de Projetos</SlideTitle>
-        <SlideSubtitle>Ideal para uma empresa de contabilidade que gere múltiplos clientes e projetos em simultâneo.</SlideSubtitle>
+        <SlideSubtitle>Ideal para uma empresa de gestão administrativa que gere múltiplos clientes e projetos em simultâneo.</SlideSubtitle>
         <div className="grid grid-cols-3 gap-6 mt-10">
           {[
             { icon: "📁", title: "Criação e duplicação", desc: "Projetos e subprojetos com duplicação rápida." },
