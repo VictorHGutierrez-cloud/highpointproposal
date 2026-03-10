@@ -38,7 +38,7 @@ const SolutionSection = () => {
           A Solução Factorial
         </h2>
         <p className="text-2xl md:text-3xl lg:text-4xl font-light mb-16 max-w-3xl">
-          Tudo o que a SIGA CV precisa para gerir pessoas.
+          Tudo o que a SIGA precisa para gerir pessoas.
         </p>
 
         <div className="grid md:grid-cols-2 gap-16 mb-16">
