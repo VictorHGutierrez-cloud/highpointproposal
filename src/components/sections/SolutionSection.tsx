@@ -2,20 +2,20 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 const features = [
-  "Gestão de Turnos em Massa",
-  "Lançamento de Férias em Massa",
-  "Gestão de Ausências Automatizada",
-  "Relatórios Automáticos de Absenteísmo",
-  "Integração Robusta com Primavera",
-  "Visibilidade Completa",
-  "BI Integrado",
-  "Escalabilidade para 20+ unidades",
+  "Gestão de documentos centralizada",
+  "Assinatura eletrónica legal",
+  "Controlo de horários completo",
+  "Gestão de ausências e férias",
+  "Gestão de projetos",
+  "Organograma e directório",
+  "Comunicados internos",
+  "Relatórios personalizados",
 ];
 
 const gains = [
-  { title: "Redução de Tempo", description: "De 10 para 2–3 dias de fechamento mensal" },
-  { title: "Eliminação de Retrabalho", description: "Processos em massa substituem lançamentos individuais" },
-  { title: "Redução de Erros", description: "Exportação automática e validada para o Primavera" },
+  { title: "Tudo centralizado", description: "Documentos, ausências, horários e projetos numa só plataforma." },
+  { title: "Menos tempo no operacional", description: "Automatize processos que hoje são manuais e repetitivos." },
+  { title: "Integrado com Primavera", description: "Dados fluem automaticamente — sem retrabalho nem exportações manuais." },
 ];
 
 const fadeUp = {
@@ -38,13 +38,12 @@ const SolutionSection = () => {
           A Solução Factorial
         </h2>
         <p className="text-2xl md:text-3xl lg:text-4xl font-light mb-16 max-w-3xl">
-          Como a Factorial resolve cada problema.
+          Tudo o que a SIGA CV precisa para gerir pessoas.
         </p>
 
         <div className="grid md:grid-cols-2 gap-16 mb-16">
-          {/* Feature list */}
           <div>
-            <h3 className="text-lg font-normal mb-6 opacity-80">Funcionalidades Principais</h3>
+            <h3 className="text-lg font-normal mb-6 opacity-80">Funcionalidades Incluídas</h3>
             <ul className="space-y-3">
               {features.map((f, i) => (
                 <motion.li
@@ -63,9 +62,8 @@ const SolutionSection = () => {
             </ul>
           </div>
 
-          {/* Gains */}
           <div className="space-y-6">
-            <h3 className="text-lg font-normal mb-6 opacity-80">Ganhos Esperados</h3>
+            <h3 className="text-lg font-normal mb-6 opacity-80">O que muda na SIGA CV</h3>
             {gains.map((g, i) => (
               <motion.div
                 key={i}

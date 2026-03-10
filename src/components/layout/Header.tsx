@@ -6,9 +6,7 @@ import { cn } from "@/lib/utils";
 const NAV_ITEMS = [
   { id: "hero", label: "Início" },
   { id: "context", label: "Contexto" },
-  { id: "problems", label: "Problemas" },
   { id: "solution", label: "Solução" },
-  { id: "comparison", label: "Comparação" },
   { id: "integration", label: "Integração" },
   { id: "investment", label: "Investimento" },
 ];
@@ -27,12 +25,10 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-sm border-b border-primary-foreground/10">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-14">
-        {/* Logo */}
         <button onClick={() => scrollTo("hero")} className="text-primary-foreground font-semibold text-lg tracking-tight">
           Factorial
         </button>
 
-        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-1">
           {NAV_ITEMS.map((item) => (
             <button
@@ -50,7 +46,6 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="lg:hidden text-primary-foreground"
@@ -60,7 +55,6 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
         <nav className="lg:hidden bg-primary border-t border-primary-foreground/10 px-6 py-4 space-y-1">
           {NAV_ITEMS.map((item) => (

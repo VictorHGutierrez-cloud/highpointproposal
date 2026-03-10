@@ -1,20 +1,17 @@
 import { motion } from "framer-motion";
 
-
-
-
 const cards = [
   {
     title: "Empresa",
-    description: "Dulceria Nacional, parte do Grupo Webcor — parceria entre Arcor e Webcor, com operações em Angola e Moçambique.",
+    description: "SIGA CV — empresa de contabilidade em Moçambique, especializada em serviços contabilísticos e fiscais.",
   },
   {
-    title: "Escala",
-    description: "Mais de 400 colaboradores apenas na Dulceria, distribuídos em cerca de 20 unidades. Turnos rotativos em linhas de produção.",
+    title: "Equipa",
+    description: "15 colaboradores que precisam de uma plataforma moderna para gestão de pessoas.",
   },
   {
-    title: "Sistemas Atuais",
-    description: "ERP Primavera para folha de pagamento e SisQual para gestão de ponto e turnos — com graves falhas de integração.",
+    title: "Sistema Atual",
+    description: "ERP Primavera para contabilidade e folha — a Factorial entra como complemento para gestão de RH.",
   },
 ];
 
@@ -40,10 +37,10 @@ const ContextSection = () => {
 
         <div className="space-y-8 text-lg md:text-xl leading-relaxed font-light mb-16">
           <p className="text-2xl md:text-3xl font-normal">
-            Conheça o contexto da Dulceria Nacional e do Grupo Webcor.
+            Conheça o contexto da SIGA CV.
           </p>
           <p className="opacity-80">
-            Um grupo industrial com operações em Angola e Moçambique, enfrentando desafios críticos na gestão de pessoas e integração de sistemas.
+            Uma empresa de contabilidade em Moçambique que utiliza o Primavera e procura uma plataforma completa de gestão de pessoas.
           </p>
         </div>
 
@@ -63,7 +60,6 @@ const ContextSection = () => {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
