@@ -98,7 +98,7 @@ const NextStepSection = () => {
         {/* CTA */}
         <div className="text-center space-y-6">
           <p className="text-xl md:text-2xl font-light">
-            Pronto para modernizar a gestão de pessoas da SIGA CV?
+            Pronto para modernizar a gestão de pessoas da SIGA?
           </p>
           <p className="text-sm opacity-60 max-w-md mx-auto">
             Total a pagar até Abril: €612,05 (Implantação + Mensalidade com 10% de desconto)
