@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Check, Mail } from "lucide-react";
-import sigaLogo from "@/assets/siga-logo.png";
+
 
 interface SlideData {
   id: string;
