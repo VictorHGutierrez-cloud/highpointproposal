@@ -64,18 +64,20 @@ export const slides: SlideData[] = [
         <div className="grid grid-cols-2 gap-16 mt-4">
           <div>
             <p className="text-[26px] opacity-70 leading-[1.7] mb-8">
-              A SIGA CV é uma empresa de contabilidade de Moçambique que utiliza o <strong className="opacity-100">Primavera</strong> como sistema central de gestão financeira e contabilística.
+              A SIGA oferece <strong className="opacity-100">serviços integrados de gestão administrativa</strong> para micro, pequenas e médias empresas em Cabo Verde, promovendo eficiência e crescimento sustentável.
             </p>
             <p className="text-[26px] opacity-70 leading-[1.7]">
-              Com <strong className="opacity-100">15 colaboradores</strong>, a SIGA CV procura uma plataforma moderna para centralizar a gestão de pessoas — sem abandonar o Primavera.
+              Com <strong className="opacity-100">15 colaboradores</strong> e o <strong className="opacity-100">Primavera</strong> como sistema central, a SIGA procura uma plataforma moderna para centralizar a gestão de pessoas.
             </p>
+            <img src={sigaLogo} alt="SIGA Logo" className="mt-8 max-w-[400px] opacity-80" />
           </div>
           <div className="space-y-5">
             {[
-              { icon: "🏢", title: "Empresa de contabilidade", desc: "Operações em Moçambique, focada em serviços contabilísticos." },
+              { icon: "📊", title: "Consultoria Empresarial", desc: "Apoio estratégico para micro, pequenas e médias empresas." },
+              { icon: "💰", title: "Fiscalidade", desc: "Serviços fiscais e conformidade tributária." },
+              { icon: "📒", title: "Contabilidade Financeira", desc: "Gestão contabilística completa e rigorosa." },
+              { icon: "🏢", title: "Gestão Administrativa", desc: "Soluções integradas para a gestão eficiente da empresa." },
               { icon: "👥", title: "15 colaboradores", desc: "Equipa compacta que precisa de ferramentas ágeis." },
-              { icon: "💻", title: "Utiliza Primavera", desc: "O Primavera continua como base — a Factorial complementa." },
-              { icon: "📋", title: "Processos manuais", desc: "Documentos, ausências e horários geridos sem plataforma dedicada." },
             ].map((item) => (
               <div key={item.title} className="flex gap-5 border border-foreground/15 p-5">
                 <span className="text-[30px] shrink-0">{item.icon}</span>
