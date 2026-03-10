@@ -237,7 +237,7 @@ export const slides: SlideData[] = [
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Integração</SectionLabel>
         <SlideTitle>O Primavera fica. A Factorial entra.</SlideTitle>
-        <SlideSubtitle>A SIGA CV continua a usar o Primavera para contabilidade e folha. A Factorial entra como camada de gestão de pessoas.</SlideSubtitle>
+        <SlideSubtitle>A SIGA continua a usar o Primavera para gestão financeira e folha. A Factorial entra como camada de gestão de pessoas.</SlideSubtitle>
         <div className="flex items-center justify-center gap-0 mt-12">
           {/* Factorial */}
           <div className="w-[500px] border border-white/25 bg-white/10 p-12 text-center">
