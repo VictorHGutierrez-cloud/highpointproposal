@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Check, Mail } from "lucide-react";
-import sigaLogo from "@/assets/siga-logo.png";
+
 
 interface SlideData {
   id: string;
@@ -69,7 +69,7 @@ export const slides: SlideData[] = [
             <p className="text-[26px] opacity-70 leading-[1.7]">
               Com <strong className="opacity-100">15 colaboradores</strong> e o <strong className="opacity-100">Primavera</strong> como sistema central, a SIGA procura uma plataforma moderna para centralizar a gestão de pessoas.
             </p>
-            <img src={sigaLogo} alt="SIGA Logo" className="mt-8 max-w-[400px] opacity-80" />
+            
           </div>
           <div className="space-y-5">
             {[
