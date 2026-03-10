@@ -26,7 +26,7 @@ const phases = [
     phase: 4,
     title: "Equipa Operacional",
     description: "15 colaboradores com acesso total à plataforma Factorial, integrada com Primavera.",
-    participants: ["Todos os colaboradores SIGA CV"],
+    participants: ["Todos os colaboradores SIGA"],
     status: "Pendente",
   },
 ];
