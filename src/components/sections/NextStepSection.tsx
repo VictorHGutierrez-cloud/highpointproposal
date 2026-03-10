@@ -3,30 +3,30 @@ import { motion } from "framer-motion";
 const phases = [
   {
     phase: 1,
-    title: "Validação Técnica/Funcional",
-    description: "Reunião entre Oscar (Dulceria) e colega da GMA para avaliar a Factorial como substituto do SisQual.",
-    participants: ["Oscar Fernandes (Dulceria)", "Responsável RH GMA"],
-    status: "Em andamento",
+    title: "Pagamento da Implantação",
+    description: "€500 — pagamento até semana que vem para iniciar o processo de configuração.",
+    participants: ["SIGA CV"],
+    status: "Pendente",
   },
   {
     phase: 2,
-    title: "Alinhamento com Líderes de RH",
-    description: "Reunião com os HR leaders das ~20 unidades para validar se a Factorial resolve as dores comuns.",
-    participants: ["HR Leaders das 20 unidades"],
+    title: "Sessão de Implantação",
+    description: "5 horas de configuração guiada da plataforma Factorial para a SIGA CV.",
+    participants: ["Equipa SIGA CV", "Factorial"],
     status: "Pendente",
   },
   {
     phase: 3,
-    title: "Apresentação aos HRBPs e CFO",
-    description: "Apresentar projeto consolidado, já validado pelos líderes de RH. Mostrar business case, comparação e roadmap.",
-    participants: ["HRBPs do Grupo", "CFO do Grupo"],
+    title: "Pagamento da Mensalidade",
+    description: "€112,05 (com 10% de desconto) — pagamento apenas em Abril.",
+    participants: ["SIGA CV"],
     status: "Pendente",
   },
   {
     phase: 4,
-    title: "Aprovação Final e Implementação",
-    description: "Envolver CFO, HRBPs e direção. Decisão sobre escopo inicial e contratação.",
-    participants: ["CFO", "HRBPs", "Direção"],
+    title: "Equipa Operacional",
+    description: "15 colaboradores com acesso total à plataforma Factorial, integrada com Primavera.",
+    participants: ["Todos os colaboradores SIGA CV"],
     status: "Pendente",
   },
 ];
@@ -42,8 +42,8 @@ const fadeUp = {
 
 const NextStepSection = () => {
   const emailAddress = "victor.gutierrez@factorial.co";
-  const emailSubject = "Dulceria Nacional — Agendar Próxima Reunião";
-  const emailBody = "Olá Victor,\n\nGostaria de agendar a próxima reunião para avançar com a proposta Factorial.\n\nCumprimentos";
+  const emailSubject = "SIGA CV — Avançar com Factorial";
+  const emailBody = "Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a SIGA CV.\n\nCumprimentos";
   const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
@@ -98,19 +98,19 @@ const NextStepSection = () => {
         {/* CTA */}
         <div className="text-center space-y-6">
           <p className="text-xl md:text-2xl font-light">
-            Pronto para Transformar a Gestão de RH do Grupo Webcor?
+            Pronto para modernizar a gestão de pessoas da SIGA CV?
           </p>
           <p className="text-sm opacity-60 max-w-md mx-auto">
-            Investindo no primeiro ano, o Grupo Webcor pode gerar economias significativas com um ROI superior a 400%.
+            Total a pagar até Abril: €612,05 (Implantação + Mensalidade com 10% de desconto)
           </p>
           <a
             href={mailtoLink}
             className="inline-flex items-center gap-2 bg-primary-foreground text-primary px-8 py-4 text-sm tracking-wide hover:opacity-90 transition-opacity duration-300"
           >
-            Agendar Próxima Reunião
+            Contactar Victor Gutierrez
           </a>
           <p className="mt-12 text-xs opacity-40">
-            Proposta preparada para Dulceria Nacional / Grupo Webcor — 2026
+            Proposta preparada para SIGA CV — 2026
           </p>
         </div>
       </div>

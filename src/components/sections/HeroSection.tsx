@@ -23,15 +23,15 @@ const HeroSection = () => {
           </div>
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-light leading-tight mb-8 max-w-3xl">
-            Dulceria Nacional / Grupo Webcor
+            SIGA CV
           </h1>
 
           <p className="text-lg md:text-xl opacity-80 max-w-2xl mb-4 font-light leading-relaxed">
-            Substituição do SisQual + Integração com Primavera
+            Gestão de pessoas simples, completa e integrada com Primavera
           </p>
 
           <p className="text-base opacity-60 max-w-xl mb-12 font-light leading-relaxed">
-            Plataforma completa de gestão de RH para 400+ colaboradores, com integração robusta ao ERP Primavera.
+            Plataforma completa para 15 colaboradores — documentos, horários, ausências, projetos e muito mais.
           </p>
 
           <div className="flex flex-wrap gap-4">
