@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Check, Mail } from "lucide-react";
+import sigaLogo from "@/assets/siga-logo.png";
 
 interface SlideData {
   id: string;
@@ -30,13 +31,13 @@ export const slides: SlideData[] = [
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Proposta Factorial</SectionLabel>
         <h1 className="text-[96px] font-light leading-[1.1] mb-8 max-w-[1500px]">
-          SIGA CV
+          SIGA
         </h1>
         <p className="text-[36px] opacity-80 font-light mb-6">
           Gestão de pessoas simples, completa e integrada com Primavera
         </p>
         <p className="text-[26px] opacity-60 font-light">
-          Tudo o que a SIGA CV precisa para gerir colaboradores, horários, ausências e documentos — numa só plataforma.
+          Tudo o que a SIGA precisa para gerir colaboradores, horários, ausências e documentos — numa só plataforma.
         </p>
         <div className="mt-16 flex items-center gap-6">
           <div className="w-12 h-12 border border-white/30 flex items-center justify-center">
@@ -51,7 +52,7 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 2. QUEM É A SIGA CV ─────────────────────────────
+  // ─── 2. QUEM É A SIGA ──────────────────────────────
   {
     id: "context",
     title: "Contexto",
@@ -59,22 +60,24 @@ export const slides: SlideData[] = [
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Contexto</SectionLabel>
-        <SlideTitle>Conhecemos a SIGA CV</SlideTitle>
+        <SlideTitle>Conhecemos a SIGA</SlideTitle>
         <div className="grid grid-cols-2 gap-16 mt-4">
           <div>
             <p className="text-[26px] opacity-70 leading-[1.7] mb-8">
-              A SIGA CV é uma empresa de contabilidade de Moçambique que utiliza o <strong className="opacity-100">Primavera</strong> como sistema central de gestão financeira e contabilística.
+              A SIGA oferece <strong className="opacity-100">serviços integrados de gestão administrativa</strong> para micro, pequenas e médias empresas em Cabo Verde, promovendo eficiência e crescimento sustentável.
             </p>
             <p className="text-[26px] opacity-70 leading-[1.7]">
-              Com <strong className="opacity-100">15 colaboradores</strong>, a SIGA CV procura uma plataforma moderna para centralizar a gestão de pessoas — sem abandonar o Primavera.
+              Com <strong className="opacity-100">15 colaboradores</strong> e o <strong className="opacity-100">Primavera</strong> como sistema central, a SIGA procura uma plataforma moderna para centralizar a gestão de pessoas.
             </p>
+            <img src={sigaLogo} alt="SIGA Logo" className="mt-8 max-w-[400px] opacity-80" />
           </div>
           <div className="space-y-5">
             {[
-              { icon: "🏢", title: "Empresa de contabilidade", desc: "Operações em Moçambique, focada em serviços contabilísticos." },
+              { icon: "📊", title: "Consultoria Empresarial", desc: "Apoio estratégico para micro, pequenas e médias empresas." },
+              { icon: "💰", title: "Fiscalidade", desc: "Serviços fiscais e conformidade tributária." },
+              { icon: "📒", title: "Contabilidade Financeira", desc: "Gestão contabilística completa e rigorosa." },
+              { icon: "🏢", title: "Gestão Administrativa", desc: "Soluções integradas para a gestão eficiente da empresa." },
               { icon: "👥", title: "15 colaboradores", desc: "Equipa compacta que precisa de ferramentas ágeis." },
-              { icon: "💻", title: "Utiliza Primavera", desc: "O Primavera continua como base — a Factorial complementa." },
-              { icon: "📋", title: "Processos manuais", desc: "Documentos, ausências e horários geridos sem plataforma dedicada." },
             ].map((item) => (
               <div key={item.title} className="flex gap-5 border border-foreground/15 p-5">
                 <span className="text-[30px] shrink-0">{item.icon}</span>
@@ -167,12 +170,12 @@ export const slides: SlideData[] = [
         <SlideTitle>Ausências e Férias</SlideTitle>
         <div className="grid grid-cols-2 gap-10 mt-6">
           {[
-            { icon: "📜", title: "Políticas de ausências e férias", desc: "Configure políticas específicas para a SIGA CV." },
+            { icon: "📜", title: "Políticas de ausências e férias", desc: "Configure políticas específicas para a SIGA." },
             { icon: "📤", title: "Exportação de ausências", desc: "Exporte dados de ausências para qualquer sistema." },
             { icon: "🏷️", title: "Tipos personalizados", desc: "Crie tipos de ausências adaptados à realidade da equipa." },
             { icon: "📅", title: "Múltiplas vistas de calendário", desc: "Visualize ausências por dia, semana ou mês." },
             { icon: "✅", title: "Níveis de aprovação", desc: "Defina cadeia de aprovação personalizada (Enterprise)." },
-            { icon: "🗓️", title: "Ciclos de férias personalizados", desc: "Configure ciclos adaptados ao calendário de Moçambique (Enterprise)." },
+            { icon: "🗓️", title: "Ciclos de férias personalizados", desc: "Configure ciclos adaptados ao calendário de Cabo Verde (Enterprise)." },
             { icon: "🚫", title: "Bloqueio de períodos de pico", desc: "Bloqueie pedidos de férias em períodos críticos (Enterprise)." },
           ].map((f) => (
             <div key={f.title} className="flex gap-5 border border-foreground/15 p-8">
@@ -197,7 +200,7 @@ export const slides: SlideData[] = [
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Funcionalidades</SectionLabel>
         <SlideTitle>Gestão de Projetos</SlideTitle>
-        <SlideSubtitle>Ideal para uma empresa de contabilidade que gere múltiplos clientes e projetos em simultâneo.</SlideSubtitle>
+        <SlideSubtitle>Ideal para uma empresa de gestão administrativa que gere múltiplos clientes e projetos em simultâneo.</SlideSubtitle>
         <div className="grid grid-cols-3 gap-6 mt-10">
           {[
             { icon: "📁", title: "Criação e duplicação", desc: "Projetos e subprojetos com duplicação rápida." },
@@ -234,7 +237,7 @@ export const slides: SlideData[] = [
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Integração</SectionLabel>
         <SlideTitle>O Primavera fica. A Factorial entra.</SlideTitle>
-        <SlideSubtitle>A SIGA CV continua a usar o Primavera para contabilidade e folha. A Factorial entra como camada de gestão de pessoas.</SlideSubtitle>
+        <SlideSubtitle>A SIGA continua a usar o Primavera para gestão financeira e folha. A Factorial entra como camada de gestão de pessoas.</SlideSubtitle>
         <div className="flex items-center justify-center gap-0 mt-12">
           {/* Factorial */}
           <div className="w-[500px] border border-white/25 bg-white/10 p-12 text-center">
@@ -273,9 +276,9 @@ export const slides: SlideData[] = [
               <span className="text-[28px] font-light">P</span>
             </div>
             <p className="text-[30px] font-medium mb-1">Primavera</p>
-            <p className="text-[18px] opacity-55 uppercase tracking-[0.2em] mb-6">Contabilidade & Folha</p>
+            <p className="text-[18px] opacity-55 uppercase tracking-[0.2em] mb-6">Gestão Financeira & Folha</p>
             <div className="space-y-3 text-left">
-              {["Processamento salarial", "Obrigações fiscais", "Declarações legais", "Contabilidade geral", "Arquivo contabilístico"].map((item) => (
+              {["Processamento salarial", "Obrigações fiscais", "Declarações legais", "Gestão financeira", "Arquivo documental"].map((item) => (
                 <p key={item} className="text-[20px] opacity-70 flex items-center gap-3">
                   <span className="w-2 h-2 bg-white/40 rounded-full shrink-0" /> {item}
                 </p>
@@ -358,7 +361,7 @@ export const slides: SlideData[] = [
           </div>
 
           <div>
-            <h3 className="text-[28px] font-normal mb-8 opacity-80">O que muda na SIGA CV</h3>
+            <h3 className="text-[28px] font-normal mb-8 opacity-80">O que muda na SIGA</h3>
             <div className="space-y-6">
               {[
                 { title: "Tudo centralizado", desc: "Documentos, ausências e horários numa só plataforma." },
@@ -508,10 +511,10 @@ export const slides: SlideData[] = [
           <div className="flex flex-col justify-center">
             <div className="border border-foreground/20 bg-foreground/[0.04] p-12 text-center">
               <p className="text-[28px] font-light mb-6">
-                Pronto para modernizar a gestão de pessoas da SIGA CV?
+                Pronto para modernizar a gestão de pessoas da SIGA?
               </p>
               <a
-                href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent("SIGA CV — Avançar com Factorial")}&body=${encodeURIComponent("Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a SIGA CV.\n\nCumprimentos")}`}
+                href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent("SIGA — Avançar com Factorial")}&body=${encodeURIComponent("Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a SIGA.\n\nCumprimentos")}`}
                 className="inline-flex items-center gap-3 bg-foreground text-background px-10 py-5 text-[22px] font-medium hover:opacity-90 transition-opacity"
               >
                 <Mail size={22} />
@@ -520,7 +523,7 @@ export const slides: SlideData[] = [
               <p className="text-[18px] opacity-40 mt-6">victor.gutierrez@factorial.co</p>
             </div>
             <p className="text-center mt-8 text-[16px] opacity-30">
-              Proposta preparada para SIGA CV — 2026
+              Proposta preparada para SIGA — 2026
             </p>
           </div>
         </div>

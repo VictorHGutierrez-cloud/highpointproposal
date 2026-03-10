@@ -24,7 +24,7 @@ const Footer = () => (
         </div>
       </div>
       <p className="mt-12 text-xs opacity-40 text-center">
-        Proposta preparada especificamente para SIGA CV — 2026
+        Proposta preparada especificamente para SIGA — 2026
       </p>
     </div>
   </footer>

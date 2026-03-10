@@ -5,28 +5,28 @@ const phases = [
     phase: 1,
     title: "Pagamento da Implantação",
     description: "€500 — pagamento até semana que vem para iniciar o processo de configuração.",
-    participants: ["SIGA CV"],
+    participants: ["SIGA"],
     status: "Pendente",
   },
   {
     phase: 2,
     title: "Sessão de Implantação",
-    description: "5 horas de configuração guiada da plataforma Factorial para a SIGA CV.",
-    participants: ["Equipa SIGA CV", "Factorial"],
+    description: "5 horas de configuração guiada da plataforma Factorial para a SIGA.",
+    participants: ["Equipa SIGA", "Factorial"],
     status: "Pendente",
   },
   {
     phase: 3,
     title: "Pagamento da Mensalidade",
     description: "€112,05 (com 10% de desconto) — pagamento apenas em Abril.",
-    participants: ["SIGA CV"],
+    participants: ["SIGA"],
     status: "Pendente",
   },
   {
     phase: 4,
     title: "Equipa Operacional",
     description: "15 colaboradores com acesso total à plataforma Factorial, integrada com Primavera.",
-    participants: ["Todos os colaboradores SIGA CV"],
+    participants: ["Todos os colaboradores SIGA"],
     status: "Pendente",
   },
 ];
@@ -42,8 +42,8 @@ const fadeUp = {
 
 const NextStepSection = () => {
   const emailAddress = "victor.gutierrez@factorial.co";
-  const emailSubject = "SIGA CV — Avançar com Factorial";
-  const emailBody = "Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a SIGA CV.\n\nCumprimentos";
+  const emailSubject = "SIGA — Avançar com Factorial";
+  const emailBody = "Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a SIGA.\n\nCumprimentos";
   const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
@@ -98,7 +98,7 @@ const NextStepSection = () => {
         {/* CTA */}
         <div className="text-center space-y-6">
           <p className="text-xl md:text-2xl font-light">
-            Pronto para modernizar a gestão de pessoas da SIGA CV?
+            Pronto para modernizar a gestão de pessoas da SIGA?
           </p>
           <p className="text-sm opacity-60 max-w-md mx-auto">
             Total a pagar até Abril: €612,05 (Implantação + Mensalidade com 10% de desconto)
@@ -110,7 +110,7 @@ const NextStepSection = () => {
             Contactar Victor Gutierrez
           </a>
           <p className="mt-12 text-xs opacity-40">
-            Proposta preparada para SIGA CV — 2026
+            Proposta preparada para SIGA — 2026
           </p>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const cards = [
   {
     title: "Empresa",
-    description: "SIGA CV — empresa de contabilidade em Moçambique, especializada em serviços contabilísticos e fiscais.",
+    description: "SIGA — empresa de gestão administrativa em Cabo Verde, oferecendo consultoria empresarial, fiscalidade, contabilidade financeira e gestão administrativa.",
   },
   {
     title: "Equipa",
@@ -11,7 +11,7 @@ const cards = [
   },
   {
     title: "Sistema Atual",
-    description: "ERP Primavera para contabilidade e folha — a Factorial entra como complemento para gestão de RH.",
+    description: "ERP Primavera para gestão financeira e folha — a Factorial entra como complemento para gestão de RH.",
   },
 ];
 
@@ -37,10 +37,10 @@ const ContextSection = () => {
 
         <div className="space-y-8 text-lg md:text-xl leading-relaxed font-light mb-16">
           <p className="text-2xl md:text-3xl font-normal">
-            Conheça o contexto da SIGA CV.
+            Conheça o contexto da SIGA.
           </p>
           <p className="opacity-80">
-            Uma empresa de contabilidade em Moçambique que utiliza o Primavera e procura uma plataforma completa de gestão de pessoas.
+            Uma empresa de gestão administrativa em Cabo Verde que utiliza o Primavera e procura uma plataforma completa de gestão de pessoas.
           </p>
         </div>
 
