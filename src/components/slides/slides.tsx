@@ -37,7 +37,7 @@ export const slides: SlideData[] = [
           Gestão de pessoas simples, completa e integrada com Primavera
         </p>
         <p className="text-[26px] opacity-60 font-light">
-          Tudo o que a SIGA CV precisa para gerir colaboradores, horários, ausências e documentos — numa só plataforma.
+          Tudo o que a SIGA precisa para gerir colaboradores, horários, ausências e documentos — numa só plataforma.
         </p>
         <div className="mt-16 flex items-center gap-6">
           <div className="w-12 h-12 border border-white/30 flex items-center justify-center">
