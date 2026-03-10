@@ -110,7 +110,7 @@ const NextStepSection = () => {
             Contactar Victor Gutierrez
           </a>
           <p className="mt-12 text-xs opacity-40">
-            Proposta preparada para SIGA CV — 2026
+            Proposta preparada para SIGA — 2026
           </p>
         </div>
       </div>

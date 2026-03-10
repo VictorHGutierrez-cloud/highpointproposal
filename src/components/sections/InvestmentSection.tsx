@@ -12,7 +12,7 @@ const InvestmentSection = () => {
       <div className="max-w-6xl mx-auto">
         <h2 className="text-sm tracking-widest uppercase opacity-60 mb-4">Investimento</h2>
         <p className="text-2xl md:text-3xl font-light mb-4 max-w-2xl">
-          Proposta comercial — SIGA CV
+          Proposta comercial — SIGA
         </p>
         <p className="text-sm opacity-50 mb-10 max-w-xl">
           15 colaboradores · €8,30/colaborador/mês · 10% de desconto
