@@ -60,7 +60,7 @@ export const slides: SlideData[] = [
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Contexto</SectionLabel>
-        <SlideTitle>Conhecemos a SIGA CV</SlideTitle>
+        <SlideTitle>Conhecemos a SIGA</SlideTitle>
         <div className="grid grid-cols-2 gap-16 mt-4">
           <div>
             <p className="text-[26px] opacity-70 leading-[1.7] mb-8">
