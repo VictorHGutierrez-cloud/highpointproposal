@@ -511,7 +511,7 @@ export const slides: SlideData[] = [
           <div className="flex flex-col justify-center">
             <div className="border border-foreground/20 bg-foreground/[0.04] p-12 text-center">
               <p className="text-[28px] font-light mb-6">
-                Pronto para modernizar a gestão de pessoas da SIGA CV?
+                Pronto para modernizar a gestão de pessoas da SIGA?
               </p>
               <a
                 href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent("SIGA CV — Avançar com Factorial")}&body=${encodeURIComponent("Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a SIGA CV.\n\nCumprimentos")}`}
