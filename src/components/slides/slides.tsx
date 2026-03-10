@@ -170,7 +170,7 @@ export const slides: SlideData[] = [
         <SlideTitle>Ausências e Férias</SlideTitle>
         <div className="grid grid-cols-2 gap-10 mt-6">
           {[
-            { icon: "📜", title: "Políticas de ausências e férias", desc: "Configure políticas específicas para a SIGA CV." },
+            { icon: "📜", title: "Políticas de ausências e férias", desc: "Configure políticas específicas para a SIGA." },
             { icon: "📤", title: "Exportação de ausências", desc: "Exporte dados de ausências para qualquer sistema." },
             { icon: "🏷️", title: "Tipos personalizados", desc: "Crie tipos de ausências adaptados à realidade da equipa." },
             { icon: "📅", title: "Múltiplas vistas de calendário", desc: "Visualize ausências por dia, semana ou mês." },
