@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Maximize, Minimize, Grid3X3 } from "lucide-react";
 import SlideLayout from "./SlideLayout";
@@ -15,6 +15,7 @@ const SlidePresenter = () => {
   const [current, setCurrent] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showGrid, setShowGrid] = useState(false);
+  const touchStartX = useRef<number | null>(null);
 
   const goTo = useCallback((i: number) => {
     setCurrent(Math.max(0, Math.min(i, slides.length - 1)));
@@ -50,19 +51,33 @@ const SlidePresenter = () => {
     return () => window.removeEventListener("keydown", onKey);
   }, [next, prev, showGrid, toggleFullscreen]);
 
+  // Swipe support for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) next();
+      else prev();
+    }
+    touchStartX.current = null;
+  };
+
   const slide = slides[current];
 
   // Grid View
   if (showGrid) {
     return (
-      <div className="min-h-screen bg-primary text-primary-foreground p-8">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-xl font-light">Todos os slides</h2>
+      <div className="min-h-screen bg-primary text-primary-foreground p-4 md:p-8">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-lg md:text-xl font-light">Todos os slides</h2>
           <button onClick={() => setShowGrid(false)} className="text-sm opacity-60 hover:opacity-100 transition-opacity">
-            Fechar (G)
+            Fechar
           </button>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
           {slides.map((s, i) => (
             <button
               key={s.id}
@@ -89,7 +104,7 @@ const SlidePresenter = () => {
     <div className="h-screen flex flex-col bg-primary">
       {/* Main slide area */}
       <div className="flex-1 flex min-h-0">
-        {/* Thumbnail sidebar */}
+        {/* Thumbnail sidebar - hidden on mobile */}
         <div className="hidden lg:flex flex-col w-48 border-r border-white/10 overflow-y-auto bg-primary py-2 px-2 gap-1.5">
           {slides.map((s, i) => (
             <button
@@ -110,8 +125,12 @@ const SlidePresenter = () => {
           ))}
         </div>
 
-        {/* Slide canvas */}
-        <div className="flex-1 relative overflow-hidden">
+        {/* Slide canvas with swipe */}
+        <div
+          className="flex-1 relative overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -124,31 +143,45 @@ const SlidePresenter = () => {
               <SlideLayout>{slide.content}</SlideLayout>
             </motion.div>
           </AnimatePresence>
+
+          {/* Large tap zones on mobile */}
+          <button
+            onClick={prev}
+            disabled={current === 0}
+            className="absolute left-0 top-0 bottom-0 w-1/4 z-10 lg:hidden disabled:hidden"
+            aria-label="Slide anterior"
+          />
+          <button
+            onClick={next}
+            disabled={current === slides.length - 1}
+            className="absolute right-0 top-0 bottom-0 w-1/4 z-10 lg:hidden disabled:hidden"
+            aria-label="Próximo slide"
+          />
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="h-12 border-t border-white/10 bg-primary flex items-center justify-between px-4">
+      {/* Bottom bar - bigger on mobile */}
+      <div className="h-14 md:h-12 border-t border-white/10 bg-primary flex items-center justify-between px-4">
         <div className="flex items-center gap-2">
-          <button onClick={() => setShowGrid(true)} className="p-1.5 opacity-50 hover:opacity-100 transition-opacity text-white" title="Grid (G)">
-            <Grid3X3 size={18} />
+          <button onClick={() => setShowGrid(true)} className="p-2 opacity-50 hover:opacity-100 transition-opacity text-white" title="Grid (G)">
+            <Grid3X3 size={22} />
           </button>
-          <span className="text-xs text-white/40 ml-2">
+          <span className="text-sm text-white/40 ml-1">
             {current + 1} / {slides.length}
           </span>
         </div>
 
-        <div className="flex items-center gap-1">
-          <button onClick={prev} disabled={current === 0} className="p-2 text-white/60 hover:text-white disabled:opacity-20 transition-all">
-            <ChevronLeft size={20} />
+        <div className="flex items-center gap-2">
+          <button onClick={prev} disabled={current === 0} className="p-3 text-white/60 hover:text-white disabled:opacity-20 transition-all">
+            <ChevronLeft size={28} />
           </button>
-          <button onClick={next} disabled={current === slides.length - 1} className="p-2 text-white/60 hover:text-white disabled:opacity-20 transition-all">
-            <ChevronRight size={20} />
+          <button onClick={next} disabled={current === slides.length - 1} className="p-3 text-white/60 hover:text-white disabled:opacity-20 transition-all">
+            <ChevronRight size={28} />
           </button>
         </div>
 
-        <button onClick={toggleFullscreen} className="p-1.5 opacity-50 hover:opacity-100 transition-opacity text-white" title="Fullscreen (F)">
-          {isFullscreen ? <Minimize size={18} /> : <Maximize size={18} />}
+        <button onClick={toggleFullscreen} className="p-2 opacity-50 hover:opacity-100 transition-opacity text-white" title="Fullscreen (F)">
+          {isFullscreen ? <Minimize size={22} /> : <Maximize size={22} />}
         </button>
       </div>
     </div>
