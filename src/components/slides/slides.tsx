@@ -175,7 +175,7 @@ export const slides: SlideData[] = [
             { icon: "🏷️", title: "Tipos personalizados", desc: "Crie tipos de ausências adaptados à realidade da equipa." },
             { icon: "📅", title: "Múltiplas vistas de calendário", desc: "Visualize ausências por dia, semana ou mês." },
             { icon: "✅", title: "Níveis de aprovação", desc: "Defina cadeia de aprovação personalizada (Enterprise)." },
-            { icon: "🗓️", title: "Ciclos de férias personalizados", desc: "Configure ciclos adaptados ao calendário de Moçambique (Enterprise)." },
+            { icon: "🗓️", title: "Ciclos de férias personalizados", desc: "Configure ciclos adaptados ao calendário de Cabo Verde (Enterprise)." },
             { icon: "🚫", title: "Bloqueio de períodos de pico", desc: "Bloqueie pedidos de férias em períodos críticos (Enterprise)." },
           ].map((f) => (
             <div key={f.title} className="flex gap-5 border border-foreground/15 p-8">
