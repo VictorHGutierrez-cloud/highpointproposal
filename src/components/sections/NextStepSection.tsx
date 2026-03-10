@@ -42,8 +42,8 @@ const fadeUp = {
 
 const NextStepSection = () => {
   const emailAddress = "victor.gutierrez@factorial.co";
-  const emailSubject = "SIGA CV — Avançar com Factorial";
-  const emailBody = "Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a SIGA CV.\n\nCumprimentos";
+  const emailSubject = "SIGA — Avançar com Factorial";
+  const emailBody = "Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a SIGA.\n\nCumprimentos";
   const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
   return (
