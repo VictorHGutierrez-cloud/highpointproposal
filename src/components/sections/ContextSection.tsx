@@ -40,7 +40,7 @@ const ContextSection = () => {
             Conheça o contexto da SIGA CV.
           </p>
           <p className="opacity-80">
-            Uma empresa de contabilidade em Moçambique que utiliza o Primavera e procura uma plataforma completa de gestão de pessoas.
+            Uma empresa de gestão administrativa em Cabo Verde que utiliza o Primavera e procura uma plataforma completa de gestão de pessoas.
           </p>
         </div>
 

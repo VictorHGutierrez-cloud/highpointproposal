@@ -276,9 +276,9 @@ export const slides: SlideData[] = [
               <span className="text-[28px] font-light">P</span>
             </div>
             <p className="text-[30px] font-medium mb-1">Primavera</p>
-            <p className="text-[18px] opacity-55 uppercase tracking-[0.2em] mb-6">Contabilidade & Folha</p>
+            <p className="text-[18px] opacity-55 uppercase tracking-[0.2em] mb-6">Gestão Financeira & Folha</p>
             <div className="space-y-3 text-left">
-              {["Processamento salarial", "Obrigações fiscais", "Declarações legais", "Contabilidade geral", "Arquivo contabilístico"].map((item) => (
+              {["Processamento salarial", "Obrigações fiscais", "Declarações legais", "Gestão financeira", "Arquivo documental"].map((item) => (
                 <p key={item} className="text-[20px] opacity-70 flex items-center gap-3">
                   <span className="w-2 h-2 bg-white/40 rounded-full shrink-0" /> {item}
                 </p>
