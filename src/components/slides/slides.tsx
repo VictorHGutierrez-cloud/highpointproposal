@@ -52,7 +52,7 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 2. QUEM É A SIGA CV ─────────────────────────────
+  // ─── 2. QUEM É A SIGA ──────────────────────────────
   {
     id: "context",
     title: "Contexto",
