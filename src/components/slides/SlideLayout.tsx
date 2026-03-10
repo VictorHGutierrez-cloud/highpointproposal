@@ -7,19 +7,27 @@ interface SlideLayoutProps {
 
 const SLIDE_W = 1920;
 const SLIDE_H = 1080;
+const MOBILE_BREAKPOINT = 768;
 
 const SlideLayout = ({ children, className = "" }: SlideLayoutProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const update = () => {
       if (!containerRef.current) return;
       const parent = containerRef.current.parentElement;
       if (!parent) return;
-      const scaleX = parent.clientWidth / SLIDE_W;
-      const scaleY = parent.clientHeight / SLIDE_H;
-      setScale(Math.min(scaleX, scaleY));
+
+      const mobile = parent.clientWidth < MOBILE_BREAKPOINT;
+      setIsMobile(mobile);
+
+      if (!mobile) {
+        const scaleX = parent.clientWidth / SLIDE_W;
+        const scaleY = parent.clientHeight / SLIDE_H;
+        setScale(Math.min(scaleX, scaleY));
+      }
     };
 
     update();
@@ -29,6 +37,18 @@ const SlideLayout = ({ children, className = "" }: SlideLayoutProps) => {
     }
     return () => ro.disconnect();
   }, []);
+
+  // Mobile: render content naturally with scroll
+  if (isMobile) {
+    return (
+      <div
+        ref={containerRef}
+        className={`w-full h-full overflow-y-auto slide-content-mobile ${className}`}
+      >
+        {children}
+      </div>
+    );
+  }
 
   return (
     <div
