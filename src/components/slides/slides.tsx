@@ -361,7 +361,7 @@ export const slides: SlideData[] = [
           </div>
 
           <div>
-            <h3 className="text-[28px] font-normal mb-8 opacity-80">O que muda na SIGA CV</h3>
+            <h3 className="text-[28px] font-normal mb-8 opacity-80">O que muda na SIGA</h3>
             <div className="space-y-6">
               {[
                 { title: "Tudo centralizado", desc: "Documentos, ausências e horários numa só plataforma." },
