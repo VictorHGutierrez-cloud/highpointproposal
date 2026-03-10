@@ -19,7 +19,7 @@ const phases = [
     phase: 3,
     title: "Pagamento da Mensalidade",
     description: "€112,05 (com 10% de desconto) — pagamento apenas em Abril.",
-    participants: ["SIGA CV"],
+    participants: ["SIGA"],
     status: "Pendente",
   },
   {
