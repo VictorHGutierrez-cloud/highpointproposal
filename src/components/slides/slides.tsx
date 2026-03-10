@@ -514,7 +514,7 @@ export const slides: SlideData[] = [
                 Pronto para modernizar a gestão de pessoas da SIGA?
               </p>
               <a
-                href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent("SIGA CV — Avançar com Factorial")}&body=${encodeURIComponent("Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a SIGA CV.\n\nCumprimentos")}`}
+                href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent("SIGA — Avançar com Factorial")}&body=${encodeURIComponent("Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a SIGA.\n\nCumprimentos")}`}
                 className="inline-flex items-center gap-3 bg-foreground text-background px-10 py-5 text-[22px] font-medium hover:opacity-90 transition-opacity"
               >
                 <Mail size={22} />
