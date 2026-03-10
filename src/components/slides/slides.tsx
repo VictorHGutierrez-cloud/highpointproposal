@@ -31,7 +31,7 @@ export const slides: SlideData[] = [
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Proposta Factorial</SectionLabel>
         <h1 className="text-[96px] font-light leading-[1.1] mb-8 max-w-[1500px]">
-          SIGA CV
+          SIGA
         </h1>
         <p className="text-[36px] opacity-80 font-light mb-6">
           Gestão de pessoas simples, completa e integrada com Primavera
