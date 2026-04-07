@@ -31,13 +31,13 @@ export const slides: SlideData[] = [
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Proposta Factorial</SectionLabel>
         <h1 className="text-[96px] font-light leading-[1.1] mb-8 max-w-[1500px]">
-          SIGA
+          Aztech
         </h1>
         <p className="text-[36px] opacity-80 font-light mb-6">
-          Gestão de pessoas simples, completa e integrada com Primavera
+          Gestão de pessoas moderna, com dados reais e automação inteligente
         </p>
         <p className="text-[26px] opacity-60 font-light">
-          Tudo o que a SIGA precisa para gerir colaboradores, horários, ausências e documentos — numa só plataforma.
+          Avaliação de desempenho, engajamento, treinamentos, recrutamento e despesas — tudo num único sistema com IA integrada.
         </p>
         <div className="mt-16 flex items-center gap-6">
           <div className="w-12 h-12 border border-white/30 flex items-center justify-center">
@@ -52,7 +52,7 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 2. QUEM É A SIGA ──────────────────────────────
+  // ─── 2. QUEM É A AZTECH ──────────────────────────────
   {
     id: "context",
     title: "Contexto",
@@ -60,24 +60,26 @@ export const slides: SlideData[] = [
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Contexto</SectionLabel>
-        <SlideTitle>Conhecemos a SIGA</SlideTitle>
+        <SlideTitle>Conhecemos a Aztech</SlideTitle>
         <div className="grid grid-cols-2 gap-16 mt-4">
           <div>
             <p className="text-[26px] opacity-70 leading-[1.7] mb-8">
-              A SIGA oferece <strong className="opacity-100">serviços integrados de gestão administrativa</strong> para micro, pequenas e médias empresas em Cabo Verde, promovendo eficiência e crescimento sustentável.
+              A Aztech é uma empresa focada em <strong className="opacity-100">gestão de pessoas e desenvolvimento organizacional</strong>, com processos de Business Development orientados a dados e satisfação do cliente.
+            </p>
+            <p className="text-[26px] opacity-70 leading-[1.7] mb-8">
+              Com <strong className="opacity-100">15 colaboradores internos</strong> e mais de <strong className="opacity-100">100 contratos ativos</strong>, a Aztech precisa de ferramentas que eliminem processos manuais e entreguem dados precisos.
             </p>
             <p className="text-[26px] opacity-70 leading-[1.7]">
-              Com <strong className="opacity-100">15 colaboradores</strong> e o <strong className="opacity-100">Primavera</strong> como sistema central, a SIGA procura uma plataforma moderna para centralizar a gestão de pessoas.
+              Hoje, tudo é manual — e a <strong className="opacity-100">margem de erro é alta</strong>. A grande chave? <strong className="opacity-100">Tempo.</strong>
             </p>
-            
           </div>
           <div className="space-y-5">
             {[
-              { icon: "📊", title: "Consultoria Empresarial", desc: "Apoio estratégico para micro, pequenas e médias empresas." },
-              { icon: "💰", title: "Fiscalidade", desc: "Serviços fiscais e conformidade tributária." },
-              { icon: "📒", title: "Contabilidade Financeira", desc: "Gestão contabilística completa e rigorosa." },
-              { icon: "🏢", title: "Gestão Administrativa", desc: "Soluções integradas para a gestão eficiente da empresa." },
-              { icon: "👥", title: "15 colaboradores", desc: "Equipa compacta que precisa de ferramentas ágeis." },
+              { icon: "⏱️", title: "Tempo é a prioridade", desc: "Automatizar o operacional para focar no estratégico." },
+              { icon: "📊", title: "Dados realistas", desc: "Eliminar margem de erro dos processos manuais." },
+              { icon: "😊", title: "Satisfação do cliente", desc: "KPI principal: satisfação e feedback contínuo." },
+              { icon: "👥", title: "100+ contratos ativos", desc: "Escala que exige uma plataforma profissional." },
+              { icon: "🔄", title: "Reuniões 2x/semana", desc: "Gestores e colaboradores em contacto frequente." },
             ].map((item) => (
               <div key={item.title} className="flex gap-5 border border-foreground/15 p-5">
                 <span className="text-[30px] shrink-0">{item.icon}</span>
@@ -93,24 +95,24 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 3. O QUE ESTÁ INCLUÍDO — FACTORIAL CORE ─────────
+  // ─── 3. AVALIAÇÃO DE DESEMPENHO ─────────────────────
   {
-    id: "core",
-    title: "Factorial Core",
+    id: "performance",
+    title: "Avaliação de Desempenho",
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Funcionalidades</SectionLabel>
-        <SlideTitle>Factorial Core</SlideTitle>
-        <div className="grid grid-cols-3 gap-8 mt-4">
+        <SectionLabel>Módulo Principal</SectionLabel>
+        <SlideTitle>Avaliação de Desempenho</SlideTitle>
+        <SlideSubtitle>A Mercedes destacou que avaliações profissionais são essenciais — aqui está como a Factorial transforma esse processo.</SlideSubtitle>
+        <div className="grid grid-cols-3 gap-8 mt-10">
           {[
-            { icon: "📂", title: "Gestão de documentos", desc: "Centraliza e gere todos os ficheiros importantes num só lugar." },
-            { icon: "✍️", title: "Assinatura eletrónica legal", desc: "Assina documentos com validade legal, 100% online." },
-            { icon: "👥", title: "Directório de colaboradores", desc: "Organiza documentos por colaborador de forma intuitiva." },
-            { icon: "🏢", title: "Organograma da empresa", desc: "Estrutura, hierarquia e etiquetas — visualize a equipa." },
-            { icon: "📣", title: "Comunicados", desc: "Criação e envio de comunicados internos para toda a equipa." },
-            { icon: "📋", title: "Onboarding / Offboarding", desc: "Modelos de tarefas de entrada e saída automatizados." },
-            { icon: "📊", title: "Relatórios personalizados", desc: "Extrai dados do Factorial com relatórios Enterprise." },
+            { icon: "📋", title: "Avaliações 360°", desc: "Auto-avaliação, pares, gestores — visão completa do colaborador." },
+            { icon: "🎯", title: "OKRs e Objetivos", desc: "Defina metas claras e acompanhe o progresso em tempo real." },
+            { icon: "📅", title: "Ciclos personalizados", desc: "Configure ciclos trimestrais, semestrais ou anuais." },
+            { icon: "🤖", title: "IA integrada", desc: "A IA analisa padrões e sugere insights sobre desempenho." },
+            { icon: "📊", title: "Relatórios automáticos", desc: "Dashboards com dados reais — sem margem de erro." },
+            { icon: "💬", title: "Reuniões 1:1", desc: "Agende, grave e analise reuniões gestor-colaborador com IA." },
           ].map((f) => (
             <div key={f.title} className="border border-white/20 p-8">
               <span className="text-[36px] block mb-4">{f.icon}</span>
@@ -123,28 +125,24 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 4. CONTROLO DE HORÁRIOS ──────────────────────────
+  // ─── 4. ENGAJAMENTO E CLIMA ──────────────────────────
   {
-    id: "time-tracking",
-    title: "Controlo de Horários",
+    id: "engagement",
+    title: "Engajamento e Clima",
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Funcionalidades</SectionLabel>
-        <SlideTitle>Controlo de Horários</SlideTitle>
-        <div className="grid grid-cols-3 gap-6 mt-4">
+        <SectionLabel>Módulo</SectionLabel>
+        <SlideTitle>Engajamento e Clima</SlideTitle>
+        <SlideSubtitle>Meça a satisfação, identifique rotatividade e actue com dados — exactamente o que a Aztech precisa.</SlideSubtitle>
+        <div className="grid grid-cols-3 gap-6 mt-10">
           {[
-            { icon: "🖊️", title: "Registo manual", desc: "Registo simples e rápido de horas trabalhadas." },
-            { icon: "💻", title: "Registo pelo computador", desc: "Os colaboradores registam o ponto diretamente no PC." },
-            { icon: "✅", title: "Aprovação de horários", desc: "Aprovação de registos com fluxo definido." },
-            { icon: "✍️", title: "Assinatura de registos", desc: "Assinatura digital dos registos de horário." },
-            { icon: "⏱️", title: "Pausas", desc: "Pausas manuais e automáticas configuráveis." },
-            { icon: "📲", title: "Sistema QR / ID", desc: "Registo por QR Code ou número de identificação." },
-            { icon: "🔒", title: "Períodos bloqueados", desc: "Bloqueio de edição após fecho do período." },
-            { icon: "📍", title: "Geolocalização", desc: "Geolocalização e alertas de registo de ponto." },
-            { icon: "🧑‍💼", title: "Reconhecimento facial", desc: "Identificação por reconhecimento facial (Enterprise)." },
-            { icon: "💰", title: "Horas extra", desc: "Compensação automática de horas extraordinárias." },
-            { icon: "⚖️", title: "Múltiplas políticas", desc: "Políticas e períodos personalizados (Enterprise)." },
+            { icon: "🌡️", title: "Pesquisa de clima", desc: "Pulse surveys automatizadas para medir o sentimento da equipa." },
+            { icon: "📈", title: "NPS interno", desc: "Net Promoter Score dos colaboradores — quantificado." },
+            { icon: "🔄", title: "Rotatividade", desc: "Acompanhe e analise taxas de turnover por equipa." },
+            { icon: "💬", title: "Feedback contínuo", desc: "Recolha feedback e crie planos de acção de melhoria." },
+            { icon: "🤖", title: "Análise com IA", desc: "Pergunte à IA: 'Por que a rotatividade está alta?' e receba relatórios." },
+            { icon: "📊", title: "Dashboards em tempo real", desc: "Dados de satisfação sempre actualizados e acessíveis." },
           ].map((f) => (
             <div key={f.title} className="border border-white/20 p-6">
               <div className="flex items-center gap-4 mb-2">
@@ -159,24 +157,24 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 5. AUSÊNCIAS E FÉRIAS ────────────────────────────
+  // ─── 5. TREINAMENTOS ─────────────────────────────────
   {
-    id: "time-off",
-    title: "Ausências e Férias",
+    id: "training",
+    title: "Treinamentos",
     bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Funcionalidades</SectionLabel>
-        <SlideTitle>Ausências e Férias</SlideTitle>
+        <SectionLabel>Módulo</SectionLabel>
+        <SlideTitle>Treinamentos</SlideTitle>
+        <SlideSubtitle>Profissionalize a capacitação da equipa com cursos rastreáveis e certificações automáticas.</SlideSubtitle>
         <div className="grid grid-cols-2 gap-10 mt-6">
           {[
-            { icon: "📜", title: "Políticas de ausências e férias", desc: "Configure políticas específicas para a SIGA." },
-            { icon: "📤", title: "Exportação de ausências", desc: "Exporte dados de ausências para qualquer sistema." },
-            { icon: "🏷️", title: "Tipos personalizados", desc: "Crie tipos de ausências adaptados à realidade da equipa." },
-            { icon: "📅", title: "Múltiplas vistas de calendário", desc: "Visualize ausências por dia, semana ou mês." },
-            { icon: "✅", title: "Níveis de aprovação", desc: "Defina cadeia de aprovação personalizada (Enterprise)." },
-            { icon: "🗓️", title: "Ciclos de férias personalizados", desc: "Configure ciclos adaptados ao calendário de Cabo Verde (Enterprise)." },
-            { icon: "🚫", title: "Bloqueio de períodos de pico", desc: "Bloqueie pedidos de férias em períodos críticos (Enterprise)." },
+            { icon: "🎓", title: "Catálogo de cursos", desc: "Crie e organize cursos internos e externos." },
+            { icon: "📊", title: "Progresso rastreável", desc: "Acompanhe quem completou cada treinamento." },
+            { icon: "📜", title: "Certificações", desc: "Emita certificados automáticos ao concluir cursos." },
+            { icon: "📅", title: "Agendamento integrado", desc: "Sessões de treino no calendário do colaborador." },
+            { icon: "💰", title: "Controlo de custos", desc: "Monitorize investimento em formação por equipa." },
+            { icon: "🤖", title: "Recomendações IA", desc: "A IA sugere treinamentos com base no desempenho." },
           ].map((f) => (
             <div key={f.title} className="flex gap-5 border border-foreground/15 p-8">
               <span className="text-[32px] shrink-0">{f.icon}</span>
@@ -191,140 +189,75 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 6. GESTÃO DE PROJETOS ────────────────────────────
+  // ─── 6. RECRUTAMENTO E DESPESAS ──────────────────────
   {
-    id: "projects",
-    title: "Gestão de Projetos",
+    id: "recruitment-expenses",
+    title: "Recrutamento e Despesas",
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Funcionalidades</SectionLabel>
-        <SlideTitle>Gestão de Projetos</SlideTitle>
-        <SlideSubtitle>Ideal para uma empresa de gestão administrativa que gere múltiplos clientes e projetos em simultâneo.</SlideSubtitle>
-        <div className="grid grid-cols-3 gap-6 mt-10">
-          {[
-            { icon: "📁", title: "Criação e duplicação", desc: "Projetos e subprojetos com duplicação rápida." },
-            { icon: "⏱️", title: "Associação de horas", desc: "Associe horas trabalhadas a cada projeto." },
-            { icon: "🔄", title: "Importação automática", desc: "Importe e atribua colaboradores automaticamente." },
-            { icon: "👀", title: "Visibilidade completa", desc: "Painel principal com visão geral de todos os projetos." },
-            { icon: "💰", title: "Custos e despesas", desc: "Monitorize custos por projeto em tempo real." },
-            { icon: "🔌", title: "Integração via API", desc: "Conecte com outros sistemas através da API." },
-            { icon: "🏷️", title: "Categorização", desc: "Organize projetos por categorias e etiquetas." },
-            { icon: "🧑‍💼", title: "Project Manager", desc: "Atribua PM e Director a cada projeto." },
-            { icon: "📊", title: "Planeamento e análise", desc: "Análise de progresso e planeamento integrado." },
-            { icon: "💱", title: "Múltiplas moedas", desc: "Gestão de custos em múltiplas moedas (Enterprise)." },
-            { icon: "✅", title: "Resumo financeiro", desc: "Visão consolidada de custos e receitas por projeto." },
-          ].map((f) => (
-            <div key={f.title} className="border border-white/20 p-6">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-[26px]">{f.icon}</span>
-                <h3 className="text-[21px] font-medium">{f.title}</h3>
-              </div>
-              <p className="text-[18px] opacity-60 leading-relaxed">{f.desc}</p>
+        <SectionLabel>Módulos adicionais</SectionLabel>
+        <SlideTitle>Recrutamento e Despesas</SlideTitle>
+        <SlideSubtitle>Módulos que a Mercedes pediu para incluir — completam o ecossistema de gestão de pessoas.</SlideSubtitle>
+        <div className="grid grid-cols-2 gap-16 mt-8">
+          <div>
+            <h3 className="text-[30px] font-medium opacity-80 mb-8">🔍 Recrutamento e Seleção</h3>
+            <div className="space-y-5">
+              {[
+                { title: "Portal de vagas", desc: "Publique vagas e receba candidaturas automaticamente." },
+                { title: "Pipeline visual", desc: "Acompanhe candidatos em cada etapa do processo." },
+                { title: "Avaliação colaborativa", desc: "Gestores avaliam candidatos directamente na plataforma." },
+                { title: "Onboarding automático", desc: "Candidato aprovado → colaborador configurado automaticamente." },
+              ].map((f) => (
+                <div key={f.title} className="border border-white/20 p-6">
+                  <h4 className="text-[22px] font-medium mb-1">{f.title}</h4>
+                  <p className="text-[19px] opacity-60">{f.desc}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          <div>
+            <h3 className="text-[30px] font-medium opacity-80 mb-8">💰 Gestão de Despesas</h3>
+            <div className="space-y-5">
+              {[
+                { title: "Submissão por foto", desc: "Tire foto do recibo e a IA extrai os dados." },
+                { title: "Aprovação em cadeia", desc: "Fluxo de aprovação personalizado por valor e tipo." },
+                { title: "Categorias e políticas", desc: "Defina limites e regras por departamento." },
+                { title: "Relatórios financeiros", desc: "Visão consolidada de despesas por período e equipa." },
+              ].map((f) => (
+                <div key={f.title} className="border border-white/20 p-6">
+                  <h4 className="text-[22px] font-medium mb-1">{f.title}</h4>
+                  <p className="text-[19px] opacity-60">{f.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     ),
   },
 
-  // ─── 7. INTEGRAÇÃO COM PRIMAVERA ──────────────────────
-  {
-    id: "integration",
-    title: "Integração Primavera",
-    bg: "dark",
-    content: (
-      <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Integração</SectionLabel>
-        <SlideTitle>O Primavera fica. A Factorial entra.</SlideTitle>
-        <SlideSubtitle>A SIGA continua a usar o Primavera para gestão financeira e folha. A Factorial entra como camada de gestão de pessoas.</SlideSubtitle>
-        <div className="flex items-center justify-center gap-0 mt-12">
-          {/* Factorial */}
-          <div className="w-[500px] border border-white/25 bg-white/10 p-12 text-center">
-            <div className="w-16 h-16 mx-auto mb-5 border border-white/25 flex items-center justify-center">
-              <span className="text-[28px] font-light">F</span>
-            </div>
-            <p className="text-[30px] font-medium mb-1">Factorial</p>
-            <p className="text-[18px] opacity-55 uppercase tracking-[0.2em] mb-6">Gestão de Pessoas</p>
-            <div className="space-y-3 text-left">
-              {["Gestão de colaboradores", "Controlo de horários", "Ausências e férias", "Gestão de projetos", "Documentos e assinaturas"].map((item) => (
-                <p key={item} className="text-[20px] opacity-70 flex items-center gap-3">
-                  <span className="w-2 h-2 bg-white/40 rounded-full shrink-0" /> {item}
-                </p>
-              ))}
-            </div>
-          </div>
-
-          {/* Connector */}
-          <div className="flex items-center px-6">
-            <div className="w-20 h-px bg-white/25" />
-            <div className="border border-white/30 bg-white/10 px-8 py-6 text-center min-w-[180px]">
-              <div className="flex items-center justify-center gap-2 mb-3">
-                <span className="w-2 h-2 bg-white/50 rounded-full animate-pulse" />
-                <span className="w-2 h-2 bg-white/50 rounded-full animate-pulse" style={{ animationDelay: "0.3s" }} />
-                <span className="w-2 h-2 bg-white/50 rounded-full animate-pulse" style={{ animationDelay: "0.6s" }} />
-              </div>
-              <p className="text-[20px] font-medium opacity-80">Sincronização</p>
-              <p className="text-[16px] opacity-55 mt-1">Automática · Bidirecional</p>
-            </div>
-            <div className="w-20 h-px bg-white/25" />
-          </div>
-
-          {/* Primavera */}
-          <div className="w-[500px] border border-white/25 bg-white/10 p-12 text-center">
-            <div className="w-16 h-16 mx-auto mb-5 border border-white/25 flex items-center justify-center">
-              <span className="text-[28px] font-light">P</span>
-            </div>
-            <p className="text-[30px] font-medium mb-1">Primavera</p>
-            <p className="text-[18px] opacity-55 uppercase tracking-[0.2em] mb-6">Gestão Financeira & Folha</p>
-            <div className="space-y-3 text-left">
-              {["Processamento salarial", "Obrigações fiscais", "Declarações legais", "Gestão financeira", "Arquivo documental"].map((item) => (
-                <p key={item} className="text-[20px] opacity-70 flex items-center gap-3">
-                  <span className="w-2 h-2 bg-white/40 rounded-full shrink-0" /> {item}
-                </p>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-4 gap-6 mt-12 pt-8 border-t border-white/15">
-          {[
-            { label: "Colaboradores", desc: "Dados sincronizados em tempo real" },
-            { label: "Ausências", desc: "Férias e faltas — sem exportação manual" },
-            { label: "Horas Extra", desc: "Validadas antes de enviar ao Primavera" },
-            { label: "Documentos", desc: "Recibos e declarações centralizados" },
-          ].map((f) => (
-            <div key={f.label} className="text-center">
-              <p className="text-[22px] font-medium opacity-80">{f.label}</p>
-              <p className="text-[18px] opacity-55 mt-1">{f.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    ),
-  },
-
-  // ─── 8. DEMO ──────────────────────────────────────────
+  // ─── 7. DEMO ──────────────────────────────────────────
   {
     id: "demo",
     title: "Demo",
-    bg: "light",
+    bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Experimente</SectionLabel>
         <SlideTitle>Veja a Factorial em ação</SlideTitle>
 
         {/* Demo access banner */}
-        <div className="border-2 border-foreground/25 bg-foreground/[0.06] p-8 mb-10 flex items-center justify-between">
+        <div className="border-2 border-white/25 bg-white/[0.08] p-8 mb-10 flex items-center justify-between">
           <div>
-            <p className="text-[24px] font-medium opacity-90 mb-2">🔑 Preparámos um ambiente de demonstração</p>
+            <p className="text-[24px] font-medium opacity-90 mb-2">🔑 Ambiente de demonstração preparado</p>
             <p className="text-[20px] opacity-55">Login: <span className="font-mono opacity-80">hellen@demob25acc00.com</span> · Senha: <span className="font-mono opacity-80">Papapapa333!</span></p>
           </div>
           <a
             href="https://app.eu2.demo.factorial.dev/dashboard?switchToCompanyId=75113&redirect_uri=https://api.eu2.demo.factorial.dev/users/sign_in"
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 bg-foreground text-background px-8 py-4 text-[20px] font-medium hover:opacity-90 transition-opacity"
+            className="shrink-0 bg-white text-black px-8 py-4 text-[20px] font-medium hover:opacity-90 transition-opacity"
           >
             Entrar no Demo →
           </a>
@@ -345,7 +278,7 @@ export const slides: SlideData[] = [
                   href={f.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-4 border border-foreground/15 p-6 hover:border-foreground/35 hover:bg-foreground/[0.04] transition-all group cursor-pointer"
+                  className="flex items-start gap-4 border border-white/15 p-6 hover:border-white/35 hover:bg-white/[0.04] transition-all group cursor-pointer"
                 >
                   <Check size={24} className="opacity-60 shrink-0 mt-1" />
                   <div className="flex-1">
@@ -361,14 +294,14 @@ export const slides: SlideData[] = [
           </div>
 
           <div>
-            <h3 className="text-[28px] font-normal mb-8 opacity-80">O que muda na SIGA</h3>
+            <h3 className="text-[28px] font-normal mb-8 opacity-80">O que muda na Aztech</h3>
             <div className="space-y-6">
               {[
-                { title: "Tudo centralizado", desc: "Documentos, ausências e horários numa só plataforma." },
-                { title: "Menos tempo no operacional", desc: "Automatize processos que hoje são manuais." },
-                { title: "Integrado com Primavera", desc: "Dados de RH fluem para o Primavera sem retrabalho." },
+                { title: "Fim do trabalho manual", desc: "Processos automatizados — mais tempo para o estratégico." },
+                { title: "Dados precisos", desc: "Elimine a margem de erro dos processos manuais." },
+                { title: "IA que trabalha por si", desc: "Relatórios, insights e análises — pergunte e receba." },
               ].map((g) => (
-                <div key={g.title} className="border border-foreground/15 p-8">
+                <div key={g.title} className="border border-white/15 p-8">
                   <h4 className="text-[26px] font-normal mb-2">{g.title}</h4>
                   <p className="text-[22px] opacity-60">{g.desc}</p>
                 </div>
@@ -380,71 +313,64 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 9. INVESTIMENTO ──────────────────────────────────
+  // ─── 8. INVESTIMENTO ──────────────────────────────────
   {
     id: "investment",
     title: "Investimento",
-    bg: "neutral",
+    bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Investimento</SectionLabel>
         <SlideTitle>Proposta comercial</SlideTitle>
 
         <div className="grid grid-cols-2 gap-16 mt-4">
-          {/* Left: Licença */}
+          {/* Left: Pacote */}
           <div>
-            <h3 className="text-[28px] font-medium opacity-80 mb-8">1. Licença e Mensalidade</h3>
-            <div className="border border-white/20 p-10 space-y-5">
-              <div className="flex justify-between text-[22px]">
-                <span className="opacity-65">Número de colaboradores</span>
-                <span className="font-medium">15</span>
-              </div>
+            <h3 className="text-[28px] font-medium opacity-80 mb-8">Pacote Completo</h3>
+            <div className="border border-foreground/20 p-10 space-y-5">
+              <p className="text-[20px] opacity-55 mb-4">Core + Performance + Engajamento + Treinamentos + Recrutamento + Despesas</p>
               <div className="flex justify-between text-[22px]">
                 <span className="opacity-65">Preço por colaborador</span>
-                <span className="font-medium">€8,30/mês</span>
+                <span className="font-medium">$4,10/mês</span>
               </div>
               <div className="flex justify-between text-[22px]">
-                <span className="opacity-65">Total mensalidade</span>
-                <span className="font-medium">€124,50</span>
+                <span className="opacity-65">Preço de tabela (outros mercados)</span>
+                <span className="font-medium line-through opacity-40">£7,50/mês</span>
               </div>
-              <div className="flex justify-between text-[22px]">
-                <span className="opacity-65">Desconto aplicado</span>
-                <span className="font-medium">10%</span>
+              <div className="flex justify-between text-[22px] border-t border-foreground/15 pt-5">
+                <span className="opacity-65">Condição especial África</span>
+                <span className="font-medium text-[20px]">✅ Aplicada</span>
               </div>
-              <div className="flex justify-between text-[24px] border-t border-white/20 pt-5">
-                <span className="font-medium">Valor com desconto</span>
-                <span className="font-medium text-[28px]">€112,05</span>
-              </div>
-              <div className="flex justify-between text-[20px] opacity-60">
-                <span>Pagamento</span>
-                <span>Apenas em Abril (único pagamento)</span>
-              </div>
+            </div>
+
+            <div className="border border-foreground/20 p-8 mt-6">
+              <p className="text-[20px] opacity-55 mb-4">💡 Flexibilidade de contrato</p>
+              <p className="text-[22px] opacity-70 leading-relaxed">
+                Pode começar com um número menor de colaboradores (ex: 50) e escalar conforme a necessidade. O contrato é amarrado no mínimo.
+              </p>
             </div>
           </div>
 
-          {/* Right: Implantação + Total */}
+          {/* Right: Cenários */}
           <div>
-            <h3 className="text-[28px] font-medium opacity-80 mb-8">2. Implantação</h3>
-            <div className="border border-white/20 p-10 space-y-5 mb-8">
-              <div className="flex justify-between text-[22px]">
-                <span className="opacity-65">Horas previstas</span>
-                <span className="font-medium">5 horas</span>
+            <h3 className="text-[28px] font-medium opacity-80 mb-8">Cenários de investimento</h3>
+            
+            <div className="space-y-6">
+              <div className="border border-foreground/20 p-8 text-center">
+                <p className="text-[18px] opacity-55 mb-2">Cenário piloto — 50 colaboradores</p>
+                <p className="text-[64px] font-light leading-none">$205</p>
+                <p className="text-[18px] opacity-45 mt-3">/mês · 50 × $4,10</p>
               </div>
-              <div className="flex justify-between text-[22px]">
-                <span className="opacity-65">Custo</span>
-                <span className="font-medium">€500</span>
-              </div>
-              <div className="flex justify-between text-[20px] opacity-60">
-                <span>Prazo de pagamento</span>
-                <span>Até semana que vem</span>
-              </div>
-            </div>
 
-            {/* Total */}
-            <div className="border border-white/30 bg-white/10 p-10 text-center">
-              <p className="text-[20px] opacity-55 mb-3">Total a pagar até Abril</p>
-              <p className="text-[80px] font-light leading-none">€612,05</p>
-              <p className="text-[18px] opacity-45 mt-4">Implantação (€500) + Mensalidade de Abril (€112,05)</p>
+              <div className="border-2 border-foreground/30 bg-foreground/[0.06] p-8 text-center">
+                <p className="text-[18px] opacity-55 mb-2">Cenário completo — 100+ colaboradores</p>
+                <p className="text-[64px] font-light leading-none">$410</p>
+                <p className="text-[18px] opacity-45 mt-3">/mês · 100 × $4,10</p>
+              </div>
+
+              <p className="text-[20px] opacity-55 text-center mt-4">
+                Pagamento em dólares · Parceiros locais disponíveis para cobrança
+              </p>
             </div>
           </div>
         </div>
@@ -452,7 +378,7 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 10. VÍDEO DEMO ───────────────────────────────────
+  // ─── 9. VÍDEO DEMO ───────────────────────────────────
   {
     id: "video",
     title: "Vídeo Demo",
@@ -477,7 +403,7 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 11. PRÓXIMOS PASSOS ──────────────────────────────
+  // ─── 10. PRÓXIMOS PASSOS ──────────────────────────────
   {
     id: "next-steps",
     title: "Próximos Passos",
@@ -485,15 +411,15 @@ export const slides: SlideData[] = [
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Próximos Passos</SectionLabel>
-        <SlideTitle>Vamos começar?</SlideTitle>
+        <SlideTitle>Vamos avançar?</SlideTitle>
         <div className="grid grid-cols-2 gap-16 mt-4">
           <div>
             <div className="space-y-6">
               {[
-                { step: "1", title: "Pagamento da implantação", desc: "€500 — até semana que vem.", status: "Pendente" },
-                { step: "2", title: "Sessão de implantação", desc: "5 horas de configuração guiada da plataforma.", status: "Pendente" },
-                { step: "3", title: "Pagamento da mensalidade", desc: "€112,05 — apenas em Abril.", status: "Pendente" },
-                { step: "4", title: "Equipa a usar a Factorial", desc: "15 colaboradores com acesso total à plataforma.", status: "Pendente" },
+                { step: "1", title: "Mercedes analisa concorrentes", desc: "Pesquisa de mercado durante as férias — até dia 27." },
+                { step: "2", title: "Reunião de retorno — Dia 29", desc: "Debater preços, funcionalidades e próximos passos." },
+                { step: "3", title: "Apresentação à diretora", desc: "Mercedes apresenta a Factorial internamente." },
+                { step: "4", title: "Definição do plano e arranque", desc: "Escolha do cenário (50 ou 100+) e início da implantação." },
               ].map((p) => (
                 <div key={p.step} className="flex gap-6 items-start">
                   <div className="w-12 h-12 border border-foreground/30 flex items-center justify-center shrink-0">
@@ -511,10 +437,10 @@ export const slides: SlideData[] = [
           <div className="flex flex-col justify-center">
             <div className="border border-foreground/20 bg-foreground/[0.04] p-12 text-center">
               <p className="text-[28px] font-light mb-6">
-                Pronto para modernizar a gestão de pessoas da SIGA?
+                Pronta para modernizar a gestão de pessoas da Aztech?
               </p>
               <a
-                href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent("SIGA — Avançar com Factorial")}&body=${encodeURIComponent("Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a SIGA.\n\nCumprimentos")}`}
+                href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent("Aztech — Avançar com Factorial")}&body=${encodeURIComponent("Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a Aztech.\n\nCumprimentos,\nMercedes")}`}
                 className="inline-flex items-center gap-3 bg-foreground text-background px-10 py-5 text-[22px] font-medium hover:opacity-90 transition-opacity"
               >
                 <Mail size={22} />
@@ -523,7 +449,7 @@ export const slides: SlideData[] = [
               <p className="text-[18px] opacity-40 mt-6">victor.gutierrez@factorial.co</p>
             </div>
             <p className="text-center mt-8 text-[16px] opacity-30">
-              Proposta preparada para SIGA — 2026
+              Proposta preparada para Aztech — 2026
             </p>
           </div>
         </div>
