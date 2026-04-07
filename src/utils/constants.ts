@@ -1,10 +1,10 @@
 export const DEFAULT_VALUES = {
-  empresa: "SIGA",
-  totalColaboradores: 15,
-  custoColaboradorMes_EUR: 8.30,
-  desconto: 0.10,
-  mensalidadeBruta: 124.50,
-  mensalidadeComDesconto: 112.05,
-  implantacaoFactorial_EUR: 500,
-  horasImplantacao: 5,
+  empresa: "Aztech",
+  contacto: "Mercedes Poba",
+  totalColaboradoresInternos: 15,
+  totalColaboradoresExternos: 100,
+  custoColaboradorMes_USD: 4.10,
+  minimoContrato: 50,
+  valorMinimo_USD: 205,
+  valorTotal100_USD: 410,
 };
