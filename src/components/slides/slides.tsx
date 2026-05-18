@@ -138,7 +138,7 @@ export const slides: SlideData[] = [
         <SlideSubtitle>
           Best fit for your needs on the price list: <strong className="opacity-100">Core</strong>, <strong className="opacity-100">Time Tracking</strong>,{" "}
           <strong className="opacity-100">Time Off</strong>, and <strong className="opacity-100">Shifts</strong> — before nonprofit discount:{" "}
-          <strong className="opacity-100">${PRICING_ROW_USD.listPricePerSeatPerMonth}/seat/month</strong> (Business · monthly).
+          <strong className="opacity-100">${PRICING_ROW_USD.listPricePerSeatPerMonth}/seat/month</strong> (Enterprise · monthly).
         </SlideSubtitle>
         <div className="grid grid-cols-2 gap-6 mt-5">
           <div className="border border-white/20 p-5">

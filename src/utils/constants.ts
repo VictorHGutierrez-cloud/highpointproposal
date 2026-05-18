@@ -12,10 +12,10 @@ export const CLIENT = {
 
 const D = CLIENT.licenseDiscountPercent / 100;
 
-/** Starter Planning: Core + Time Tracking + Time Off + Shifts (Business tier, monthly). */
+/** Starter Planning: Core + Time Tracking + Time Off + Shifts (Enterprise tier, monthly ROW USD). */
 export const PRICING_ROW_USD = {
   bundleName: "Starter Planning",
-  listPricePerSeatPerMonth: 6,
+  listPricePerSeatPerMonth: 7.5,
   recruitment: {
     tier: "5 Active Jobs",
     /** ROW list price before nonprofit discount. */
