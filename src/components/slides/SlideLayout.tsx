@@ -5,8 +5,8 @@ interface SlideLayoutProps {
   className?: string;
 }
 
-const SLIDE_W = 1920;
-const SLIDE_H = 1080;
+const SLIDE_W = 1600;
+const SLIDE_H = 900;
 const MOBILE_BREAKPOINT = 768;
 
 const SlideLayout = ({ children, className = "" }: SlideLayoutProps) => {

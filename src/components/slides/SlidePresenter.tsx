@@ -105,7 +105,7 @@ const SlidePresenter = () => {
       {/* Main slide area */}
       <div className="flex-1 flex min-h-0">
         {/* Thumbnail sidebar - hidden on mobile */}
-        <div className="hidden lg:flex flex-col w-48 border-r border-white/10 overflow-y-auto bg-primary py-2 px-2 gap-1.5">
+        <div className="hidden xl:flex flex-col w-44 border-r border-white/10 overflow-y-auto bg-primary py-2 px-2 gap-1.5">
           {slides.map((s, i) => (
             <button
               key={s.id}

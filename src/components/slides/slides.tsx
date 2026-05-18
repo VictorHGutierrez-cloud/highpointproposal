@@ -37,7 +37,7 @@ export const slides: SlideData[] = [
           Gestão de pessoas moderna, com dados reais e automação inteligente
         </p>
         <p className="text-[26px] opacity-60 font-light">
-          Avaliação de desempenho, engajamento, treinamentos, recrutamento e despesas, tudo num único sistema com IA integrada.
+          Automatização com Primavera, integração ZKTeco para ponto e substituição de Excel por indicadores de RH e relatórios.
         </p>
         <div className="mt-16 flex items-center gap-6">
           <div className="w-12 h-12 border border-white/30 flex items-center justify-center">
@@ -67,7 +67,7 @@ export const slides: SlideData[] = [
               A Aztech, em Angola, está a reforçar a gestão de pessoas e o desenvolvimento organizacional, com foco em dados confiáveis e satisfação dos clientes.
             </p>
             <p className="text-[26px] opacity-70 leading-[1.7] mb-8">
-              Com <strong className="opacity-100">15 colaboradores internos</strong> e mais de <strong className="opacity-100">100 contratos ativos</strong>, a equipa precisa de processos mais rápidos, padronizados e com menos retrabalho.
+              Com <strong className="opacity-100">180 colaboradores</strong> e mais de <strong className="opacity-100">100 contratos ativos</strong>, a equipa precisa de processos mais rápidos, padronizados e com menos retrabalho.
             </p>
             <p className="text-[26px] opacity-70 leading-[1.7]">
               Hoje, grande parte da operação é manual e a <strong className="opacity-100">margem de erro é alta</strong>. A prioridade principal é <strong className="opacity-100">ganhar tempo</strong> sem perder controlo.
@@ -78,7 +78,7 @@ export const slides: SlideData[] = [
               { icon: "⏱️", title: "Tempo é a prioridade", desc: "Automatizar o operacional para focar no estratégico." },
               { icon: "📊", title: "Dados realistas", desc: "Eliminar margem de erro dos processos manuais." },
               { icon: "😊", title: "Satisfação do cliente", desc: "KPI principal: satisfação e feedback contínuo." },
-              { icon: "👥", title: "100+ contratos ativos", desc: "Escala que exige uma plataforma profissional." },
+              { icon: "👥", title: "180 colaboradores", desc: "Escala que exige operação padronizada e automação contínua." },
               { icon: "🔄", title: "Reuniões 2x por semana", desc: "Gestores e colaboradores em contacto frequente." },
             ].map((item) => (
               <div key={item.title} className="flex gap-5 border border-foreground/15 p-5">
@@ -95,24 +95,24 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 3. AVALIAÇÃO DE DESEMPENHO ─────────────────────
+  // ─── 3. INTEGRAÇÕES CRÍTICAS ─────────────────────
   {
-    id: "performance",
-    title: "Avaliação de Desempenho",
+    id: "critical-integrations",
+    title: "Integrações Críticas",
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Módulo Principal</SectionLabel>
-        <SlideTitle>Avaliação de Desempenho</SlideTitle>
-        <SlideSubtitle>A Mercedes destacou que avaliações profissionais são essenciais. Aqui está como a Factorial transforma esse processo.</SlideSubtitle>
+        <SectionLabel>Como funciona na prática</SectionLabel>
+        <SlideTitle>Primavera fica. ZKTeco fica. A Factorial conecta tudo.</SlideTitle>
+        <SlideSubtitle>Este foi o momento wow da Mercedes: resolver a dor central sem trocar o que já funciona.</SlideSubtitle>
         <div className="grid grid-cols-3 gap-8 mt-10">
           {[
-            { icon: "📋", title: "Avaliações 180° e 360°", desc: "Autoavaliação, pares e gestores numa visão completa do colaborador." },
-            { icon: "🎯", title: "OKRs e Objetivos", desc: "Defina metas claras e acompanhe o progresso em tempo real." },
-            { icon: "📅", title: "Ciclos personalizados", desc: "Configure ciclos trimestrais, semestrais ou anuais." },
-            { icon: "🤖", title: "IA integrada", desc: "A IA analisa padrões e sugere insights sobre desempenho." },
-            { icon: "📊", title: "Relatórios automáticos", desc: "Dashboards com dados reais, sem margem de erro de planilhas." },
-            { icon: "💬", title: "Reuniões 1:1", desc: "Agende, grave e analise reuniões entre gestor e colaborador com IA." },
+            { icon: "⏱️", title: "Ponto com ZKTeco", desc: "Picagens do relógio e da app entram no fluxo de RH sem retrabalho manual." },
+            { icon: "✅", title: "Horas extra e ausências", desc: "Pedidos com aprovação por hierarquia e notificações automáticas para gestores." },
+            { icon: "💼", title: "Integração com Primavera", desc: "Horas, ausências e eventos críticos chegam ao payroll com consistência." },
+            { icon: "🔁", title: "Sem trocar equipamento", desc: "A Aztech mantém o relógio atual e aproveita o investimento já feito." },
+            { icon: "📄", title: "Documentos e caducidade", desc: "Alertas de BI, exames e contratos para não perder prazos legais." },
+            { icon: "📊", title: "Indicadores e relatórios", desc: "Saída em Excel e PDF para defender decisões com dados confiáveis." },
           ].map((f) => (
             <div key={f.title} className="border border-white/20 p-8">
               <span className="text-[36px] block mb-4">{f.icon}</span>
@@ -196,18 +196,19 @@ export const slides: SlideData[] = [
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Módulos adicionais</SectionLabel>
-        <SlideTitle>Recrutamento e Operação RH</SlideTitle>
-        <SlideSubtitle>Módulos que a Mercedes pediu para incluir e que completam a operação de RH no dia a dia.</SlideSubtitle>
+        <SectionLabel>Escopo da proposta</SectionLabel>
+        <SlideTitle>Pacote base e módulos prioritários</SlideTitle>
+        <SlideSubtitle>A recomendação abaixo reflete os must have da Aztech para operar RH com automação e integração real.</SlideSubtitle>
         <div className="grid grid-cols-2 gap-16 mt-8">
           <div>
-            <h3 className="text-[30px] font-medium opacity-80 mb-8">🔍 Recrutamento, onboarding e formação</h3>
+            <h3 className="text-[30px] font-medium opacity-80 mb-8">📌 Pacote base obrigatório</h3>
             <div className="space-y-5">
               {[
-                { title: "Portal de vagas", desc: "Publique vagas e receba candidaturas automaticamente." },
-                { title: "Pipeline visual", desc: "Acompanhe candidatos em cada etapa do processo." },
-                { title: "Avaliação colaborativa", desc: "Gestores avaliam candidatos diretamente na plataforma." },
-                { title: "Onboarding estruturado", desc: "Tarefas para RH, gestor, buddy e TI com prazos e lembretes." },
+                { title: "Core RH e base de colaboradores", desc: "Registo único com dados contratuais, histórico e indicadores de RH." },
+                { title: "Ausências e férias", desc: "Pedidos, aprovações e regras por política com rastreabilidade completa." },
+                { title: "Ponto com ZKTeco", desc: "Picagem integrada para automatizar banco de horas e horas extra." },
+                { title: "Documentos e alertas", desc: "Validades de BI, exames médicos e contratos com alertas configuráveis." },
+                { title: "Integração com Primavera", desc: "Envio de ausências, horas e eventos para processamento salarial." },
               ].map((f) => (
                 <div key={f.title} className="border border-white/20 p-6">
                   <h4 className="text-[22px] font-medium mb-1">{f.title}</h4>
@@ -217,13 +218,14 @@ export const slides: SlideData[] = [
             </div>
           </div>
           <div>
-            <h3 className="text-[30px] font-medium opacity-80 mb-8">⚙️ Operação RH e pedidos internos</h3>
+            <h3 className="text-[30px] font-medium opacity-80 mb-8">🚀 Add ons prioritários</h3>
             <div className="space-y-5">
               {[
-                { title: "Controlo de ponto e ausências", desc: "Horas extras, banco de horas, férias e licenças com aprovação." },
-                { title: "Documentos com validade", desc: "Alertas de caducidade para BI, exames e contratos com histórico." },
-                { title: "Pedidos e tickets", desc: "Adiantamentos, declarações e solicitações com trilha de aprovação." },
-                { title: "Integrações críticas", desc: "Ligação com Primavera e compatibilidade com relógio ZKTeco." },
+                { title: "Avaliação de desempenho 180 e 360", desc: "Ciclos completos ligados a objetivos e evolução de cada colaborador." },
+                { title: "Formação", desc: "Planos de desenvolvimento por função com acompanhamento de progresso." },
+                { title: "Recrutamento e onboarding", desc: "Pipeline de vagas com entrada estruturada dos novos colaboradores." },
+                { title: "Pedidos internos e inquéritos", desc: "Tickets de RH e pesquisas de clima para melhorar experiência da equipa." },
+                { title: "IA como diferencial", desc: "Relatórios e assistente para produtividade sem inflacionar o custo total." },
               ].map((f) => (
                 <div key={f.title} className="border border-white/20 p-6">
                   <h4 className="text-[22px] font-medium mb-1">{f.title}</h4>
@@ -297,9 +299,9 @@ export const slides: SlideData[] = [
             <h3 className="text-[28px] font-normal mb-8 opacity-80">O que muda na Aztech</h3>
             <div className="space-y-6">
               {[
-                { title: "Fim do trabalho manual", desc: "Processos automatizados, mais tempo para o estratégico." },
-                { title: "Dados precisos", desc: "Elimine a margem de erro dos processos manuais." },
-                { title: "IA que trabalha por si", desc: "Relatórios, insights e análises com perguntas em linguagem natural." },
+                { title: "Integração com Primavera", desc: "Ponto super positivo para a realidade atual da Aztech e para o payroll." },
+                { title: "Integração com ZKTeco", desc: "Sem trocar relógio e sem custo de novo equipamento para começar." },
+                { title: "Automação operacional", desc: "Fluxo de ponto, horas extra e ausências com aprovação simples e rápida." },
               ].map((g) => (
                 <div key={g.title} className="border border-white/15 p-8">
                   <h4 className="text-[26px] font-normal mb-2">{g.title}</h4>
@@ -328,49 +330,64 @@ export const slides: SlideData[] = [
           <div>
             <h3 className="text-[28px] font-medium opacity-80 mb-8">Pacote recomendado para a Aztech</h3>
             <div className="border border-foreground/20 p-10 space-y-5">
-              <p className="text-[20px] opacity-55 mb-4">Productivity PRO + Recrutamento (5 vagas ativas)</p>
+              <p className="text-[20px] opacity-55 mb-4">Productivity PRO completo + Shift Management + Recrutamento (5 vagas ativas)</p>
               <div className="flex justify-between text-[22px]">
                 <span className="opacity-65">Productivity PRO</span>
                 <span className="font-medium">$6,25 por colaborador por mês</span>
               </div>
               <div className="flex justify-between text-[22px]">
+                <span className="opacity-65">Shift Management</span>
+                <span className="font-medium">$1,50 por colaborador por mês</span>
+              </div>
+              <div className="flex justify-between text-[22px]">
                 <span className="opacity-65">Recrutamento (5 vagas)</span>
                 <span className="font-medium">$64,50 por mês</span>
               </div>
-              <div className="flex justify-between text-[22px] border-t border-foreground/15 pt-5">
-                <span className="opacity-65">Composição de módulos</span>
-                <span className="font-medium text-[20px]">Core, ponto, ausências, desempenho, formação e engajamento</span>
+              <div className="border-t border-foreground/15 pt-5">
+                <p className="text-[22px] opacity-65 mb-3">Integrações obrigatórias (USD)</p>
+                <div className="space-y-2 text-[20px]">
+                  <p className="flex justify-between"><span className="opacity-70">ZKTeco Integration</span><span className="font-medium">$196,20 por mês</span></p>
+                  <p className="flex justify-between"><span className="opacity-70">Primavera Integration (EUR2,00/licença)</span><span className="font-medium">$392,40 por mês</span></p>
+                </div>
+              </div>
+              <div className="border-t border-foreground/15 pt-5">
+                <p className="text-[22px] opacity-65 mb-3">Tudo incluído no Productivity PRO</p>
+                <p className="text-[20px] font-medium leading-relaxed">
+                  Core RH, Time Tracking, Time Off, Performance, Trainings e Engagement.
+                </p>
               </div>
             </div>
 
-            <div className="border border-foreground/20 p-8 mt-6">
-              <p className="text-[20px] opacity-55 mb-4">💡 Módulo opcional para fase 2</p>
-              <p className="text-[22px] opacity-70 leading-relaxed">
-                Gestão de despesas pode ser adicionada depois: $44,50 fixo por mês + $3,00 por utilizador de despesas.
-              </p>
-            </div>
           </div>
 
           {/* Right: Cenários */}
           <div>
-            <h3 className="text-[28px] font-medium opacity-80 mb-8">Cenários de investimento</h3>
+            <h3 className="text-[28px] font-medium opacity-80 mb-8">Investimento mensal</h3>
             
             <div className="space-y-6">
-              <div className="border border-foreground/20 p-8 text-center">
-                <p className="text-[18px] opacity-55 mb-2">Piloto com 50 colaboradores</p>
-                <p className="text-[64px] font-light leading-none">$377,00</p>
-                <p className="text-[18px] opacity-45 mt-3">por mês = (50 × $6,25) + $64,50</p>
-              </div>
-
               <div className="border-2 border-foreground/30 bg-foreground/[0.06] p-8 text-center">
-                <p className="text-[18px] opacity-55 mb-2">Cenário recomendado com 100 colaboradores</p>
-                <p className="text-[64px] font-light leading-none">$689,50</p>
-                <p className="text-[18px] opacity-45 mt-3">por mês = (100 × $6,25) + $64,50</p>
+                <p className="text-[18px] opacity-55 mb-2">Arranque direto com 180 colaboradores</p>
+                <p className="text-[74px] font-light leading-none">$2.048,10</p>
+                <p className="text-[18px] opacity-45 mt-3">por mês = pacote RH ($1.459,50) + integrações ($588,60)</p>
               </div>
 
-              <p className="text-[20px] opacity-55 text-center mt-4">
-                Valor anual no cenário de 100 colaboradores: $633,05 por mês equivalente
-              </p>
+              <div className="border border-foreground/20 p-8">
+                <p className="text-[22px] opacity-75 mb-4">Composição do total mensal</p>
+                <div className="space-y-3 text-[21px]">
+                  <p className="flex justify-between"><span className="opacity-70">Productivity PRO (180 × $6,25)</span><span className="font-medium">$1.125,00</span></p>
+                  <p className="flex justify-between"><span className="opacity-70">Shift Management (180 × $1,50)</span><span className="font-medium">$270,00</span></p>
+                  <p className="flex justify-between"><span className="opacity-70">Recrutamento (5 vagas)</span><span className="font-medium">$64,50</span></p>
+                  <p className="flex justify-between"><span className="opacity-70">ZKTeco Integration (180 x EUR1,00)</span><span className="font-medium">$196,20</span></p>
+                  <p className="flex justify-between"><span className="opacity-70">Primavera Integration (180 x EUR2,00)</span><span className="font-medium">$392,40</span></p>
+                </div>
+              </div>
+
+              <div className="border border-foreground/20 p-6">
+                <p className="text-[22px] opacity-75 mb-3">Implantacao (servico de implementacao)</p>
+                <div className="space-y-2 text-[20px]">
+                  <p className="flex justify-between"><span className="opacity-70">Implementacao fixa (10 horas de sessao, one off)</span><span className="font-medium">$2.500,00</span></p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -378,7 +395,76 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 9. VÍDEO DEMO ───────────────────────────────────
+  // ─── 9. INVESTIMENTO COM DESCONTO ────────────────────
+  {
+    id: "investment-discount",
+    title: "Investimento com Desconto",
+    bg: "light",
+    content: (
+      <div className="flex flex-col justify-center h-full px-[120px]">
+        <SectionLabel>Investimento</SectionLabel>
+        <SlideTitle>Cenario comercial com desconto</SlideTitle>
+
+        <div className="grid grid-cols-2 gap-16 mt-4">
+          <div>
+            <h3 className="text-[28px] font-medium opacity-80 mb-8">Licenca Factorial com 20% de desconto</h3>
+            <div className="border border-foreground/20 p-10 space-y-5">
+              <p className="text-[20px] opacity-55 mb-4">Desconto aplicado apenas nas licencas Factorial</p>
+              <div className="flex justify-between text-[22px]">
+                <span className="opacity-65">Subtotal Factorial sem desconto</span>
+                <span className="font-medium">$1.459,50</span>
+              </div>
+              <div className="flex justify-between text-[22px]">
+                <span className="opacity-65">Desconto comercial (20%)</span>
+                <span className="font-medium">-$291,90</span>
+              </div>
+              <div className="flex justify-between text-[22px] border-t border-foreground/15 pt-5">
+                <span className="opacity-65">Subtotal Factorial com desconto</span>
+                <span className="font-medium">$1.167,60</span>
+              </div>
+              <div className="border-t border-foreground/15 pt-5">
+                <p className="text-[22px] opacity-65 mb-3">Integracoes neste cenario (USD)</p>
+                <div className="space-y-2 text-[20px]">
+                  <p className="flex justify-between"><span className="opacity-70">ZKTeco Integration</span><span className="font-medium">$196,20 por mes</span></p>
+                  <p className="flex justify-between"><span className="opacity-70">Primavera Integration (EUR1,15/licenca)</span><span className="font-medium">$225,63 por mes</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-[28px] font-medium opacity-80 mb-8">Investimento mensal</h3>
+
+            <div className="space-y-6">
+              <div className="border-2 border-foreground/30 bg-foreground/[0.06] p-8 text-center">
+                <p className="text-[18px] opacity-55 mb-2">Arranque com 180 colaboradores</p>
+                <p className="text-[74px] font-light leading-none">$1.589,43</p>
+                <p className="text-[18px] opacity-45 mt-3">por mes = Factorial com desconto ($1.167,60) + integracoes ($421,83)</p>
+              </div>
+
+              <div className="border border-foreground/20 p-8">
+                <p className="text-[22px] opacity-75 mb-4">Composicao do total mensal</p>
+                <div className="space-y-3 text-[21px]">
+                  <p className="flex justify-between"><span className="opacity-70">Factorial com desconto de 20%</span><span className="font-medium">$1.167,60</span></p>
+                  <p className="flex justify-between"><span className="opacity-70">ZKTeco Integration (180 x EUR1,00)</span><span className="font-medium">$196,20</span></p>
+                  <p className="flex justify-between"><span className="opacity-70">Primavera Integration (180 x EUR1,15)</span><span className="font-medium">$225,63</span></p>
+                </div>
+              </div>
+
+              <div className="border border-foreground/20 p-6">
+                <p className="text-[22px] opacity-75 mb-3">Implantacao (servico de implementacao)</p>
+                <div className="space-y-2 text-[20px]">
+                  <p className="flex justify-between"><span className="opacity-70">Implementacao fixa (10 horas de sessao, one off)</span><span className="font-medium">$2.000,00</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+
+  // ─── 10. VÍDEO DEMO ───────────────────────────────────
   {
     id: "video",
     title: "Vídeo Demo",
@@ -403,7 +489,7 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 10. PRÓXIMOS PASSOS ──────────────────────────────
+  // ─── 11. PRÓXIMOS PASSOS ──────────────────────────────
   {
     id: "next-steps",
     title: "Próximos Passos",
@@ -417,7 +503,7 @@ export const slides: SlideData[] = [
             <div className="space-y-6">
               {[
                 { step: "1", title: "Validação interna da proposta", desc: "Alinhamento com direção e RH sobre módulos e orçamento." },
-                { step: "2", title: "Confirmação de escopo", desc: "Definição do arranque com 50 ou 100 colaboradores." },
+                { step: "2", title: "Confirmação de escopo", desc: "Definição do arranque com 180 colaboradores, por fase de equipas." },
                 { step: "3", title: "Kickoff de implementação", desc: "Configuração inicial dos fluxos de RH e integrações." },
                 { step: "4", title: "Entrada em produção", desc: "Operação com acompanhamento e evolução por fases." },
               ].map((p) => (
