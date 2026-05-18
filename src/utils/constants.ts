@@ -24,7 +24,7 @@ export const PRICING_ROW_USD = {
   implementation: {
     /** Reference list before nonprofit discount (for transparency). */
     listPriceOneTime: 500,
-    /** Agreed nonprofit implementation fee (50% off list). */
+    /** Agreed nonprofit implementation fee (50% off list). Delivery: 1h/week sessions with Onboarding Specialist, ~1.5 months to go-live. */
     discountedOneTime: 250,
   },
 } as const;

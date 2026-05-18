@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Check, Mail } from "lucide-react";
+import { Check } from "lucide-react";
 import { CLIENT, PRICING_ROW_USD, PRICING_TOTALS_USD } from "@/utils/constants";
 
 interface SlideData {
@@ -383,7 +383,7 @@ export const slides: SlideData[] = [
                   <span>Your price</span>
                   <span>${PRICING_TOTALS_USD.implementationOneTime.toFixed(0)} USD</span>
                 </p>
-                <p className="text-[10px] opacity-45 leading-snug">Guided setup (~5 hours). Final scope confirmed in the order form.</p>
+                <p className="text-[10px] opacity-45 leading-snug">Onboarding: 1 hour / week with your Specialist; full implementation within ~1.5 months. Final scope in the order form.</p>
               </div>
 
               <p className="text-[11px] opacity-55 px-1 leading-snug">Card or bank transfer in USD/EUR as agreed.</p>
@@ -492,49 +492,50 @@ export const slides: SlideData[] = [
   },
 
   {
-    id: "next-steps",
-    title: "Next steps",
+    id: "onboarding",
+    title: "Onboarding",
     bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Next steps</SectionLabel>
-        <SlideTitle>How we move forward</SlideTitle>
-        <div className="grid grid-cols-2 gap-8 mt-2">
-          <div>
-            <div className="space-y-3">
-              {[
-                { step: "1", title: "Internal alignment", desc: "Confirm priorities: phase‑1 modules, seat count, and payroll partner export format." },
-                { step: "2", title: "Validation workshop (30–45 min)", desc: "Short session with HR + IT/Finance to lock assumptions and timeline." },
-                { step: "3", title: "Implementation kickoff", desc: "Guided configuration: policies, approvals, attendance, document templates, and recruiting pipeline." },
-                { step: "4", title: "Go-live + hypercare", desc: "Train admins/managers, migrate employees, and stabilize reporting exports to payroll." },
-              ].map((p) => (
-                <div key={p.step} className="flex gap-3 items-start">
-                  <div className="w-9 h-9 border border-foreground/30 flex items-center justify-center shrink-0">
-                    <span className="text-[14px] font-light">{p.step}</span>
-                  </div>
-                  <div>
-                    <h4 className="text-[15px] font-medium mb-0.5">{p.title}</h4>
-                    <p className="text-[12px] opacity-60 leading-snug">{p.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <SectionLabel>Implementation</SectionLabel>
+        <SlideTitle>Onboarding: how we get you live</SlideTitle>
+        <SlideSubtitle>
+          Structured, weekly sessions so your team adopts Factorial with confidence — without rushing day-to-day work.
+        </SlideSubtitle>
+
+        <div className="grid grid-cols-2 gap-6 mt-4">
+          <div className="border border-foreground/20 p-5 bg-foreground/[0.03]">
+            <p className="text-[11px] uppercase tracking-widest opacity-50 mb-2">During implementation</p>
+            <h3 className="text-[17px] font-medium mb-3">Dedicated Onboarding Specialist</h3>
+            <p className="text-[13px] opacity-70 leading-snug mb-4">
+              From kickoff to go-live, a <strong className="opacity-100">Factorial Onboarding Specialist</strong> runs your setup:
+              policies, approvals, time tracking, documents, recruiting basics, and handoff to payroll-friendly exports.
+            </p>
+            <ul className="space-y-2 text-[12px] opacity-75">
+              <li className="flex gap-2"><Check size={14} className="shrink-0 mt-0.5 opacity-70" /> One <strong>live session per week</strong></li>
+              <li className="flex gap-2"><Check size={14} className="shrink-0 mt-0.5 opacity-70" /> Each session: <strong>1 hour</strong>, focused and actionable</li>
+              <li className="flex gap-2"><Check size={14} className="shrink-0 mt-0.5 opacity-70" /> Plan: <strong>~1.5 months</strong> (≈6 weeks) to implementation at most</li>
+            </ul>
           </div>
 
-          <div className="flex flex-col justify-center">
-            <div className="border border-foreground/20 bg-foreground/[0.04] p-6 text-center">
-              <p className="text-[17px] font-light mb-4">Ready to proceed with Factorial for {ORG}?</p>
-              <a
-                href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent(`${ORG} | Next steps with Factorial`)}&body=${encodeURIComponent(`Hi Victor,\n\nWe’d like to move forward with Factorial for ${ORG}.\n\nBest regards`)}`}
-                className="inline-flex items-center gap-2 bg-foreground text-background px-6 py-3 text-[14px] font-medium hover:opacity-90 transition-opacity"
-              >
-                <Mail size={18} />
-                Email Victor Gutierrez
-              </a>
-              <p className="text-[12px] opacity-40 mt-4">victor.gutierrez@factorial.co</p>
-            </div>
-            <p className="text-center mt-4 text-[11px] opacity-30">Proposal prepared for {ORG} — 2026</p>
+          <div className="border border-foreground/20 p-5">
+            <p className="text-[11px] uppercase tracking-widest opacity-50 mb-2">After go-live</p>
+            <h3 className="text-[17px] font-medium mb-3">Your exclusive Account Manager</h3>
+            <p className="text-[13px] opacity-70 leading-snug mb-4">
+              When onboarding ends, you are not left on your own. Factorial assigns an <strong className="opacity-100">Account Manager dedicated to your organization</strong> — your day-to-day commercial and success contact for adoption, renewals, and growing the platform.
+            </p>
+            <ul className="space-y-2 text-[12px] opacity-75">
+              <li className="flex gap-2"><Check size={14} className="shrink-0 mt-0.5 opacity-70" /> Same partner mindset: Specialist first, then <strong className="opacity-100">one named Account Manager</strong></li>
+              <li className="flex gap-2"><Check size={14} className="shrink-0 mt-0.5 opacity-70" /> Ongoing alignment on usage, training, and next modules</li>
+            </ul>
           </div>
+        </div>
+
+        <div className="mt-4 border-t border-foreground/15 pt-4 flex flex-wrap gap-4 items-center justify-between text-[12px] opacity-65">
+          <span>
+            <strong className="opacity-90">Cadence:</strong> 1× week · 1 hour · ~6 sessions over ~1.5 months to full rollout
+          </span>
+          <span className="opacity-50">Proposal prepared for {ORG} — 2026</span>
         </div>
       </div>
     ),
