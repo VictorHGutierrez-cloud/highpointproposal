@@ -30,7 +30,7 @@ const HeroSection = () => {
           </p>
 
           <p className="text-base opacity-60 max-w-xl mb-12 font-light leading-relaxed">
-            {CLIENT.seatCount} seats · ROW USD · nonprofit license pricing included in the deck below.
+            {CLIENT.seatCount} seats · ROW USD · nonprofit pricing (licenses, recruitment & implementation)
           </p>
 
           <div className="flex flex-wrap gap-4">

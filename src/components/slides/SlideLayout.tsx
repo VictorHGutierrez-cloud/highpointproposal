@@ -52,8 +52,8 @@ const SlideLayout = ({ children, className = "" }: SlideLayoutProps) => {
       const overflowYRatio = el.scrollHeight / SLIDE_H;
       const overflowRatio = Math.max(1, overflowXRatio, overflowYRatio);
 
-      // When a slide is too tall/wide, shrink it just enough to fit.
-      const adjustedFit = overflowRatio > 1 ? 1 / overflowRatio : 1;
+      // Small safety margin so content is not clipped at the slide edge.
+      const adjustedFit = overflowRatio > 1 ? (1 / overflowRatio) * 0.96 : 1;
       setFitScale(adjustedFit);
     };
 

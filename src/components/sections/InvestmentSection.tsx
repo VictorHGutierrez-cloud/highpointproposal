@@ -4,8 +4,12 @@ import { CLIENT, PRICING_ROW_USD, PRICING_TOTALS_USD } from "@/utils/constants";
 import { formatUSD } from "@/utils/formatters";
 
 const InvestmentSection = () => {
-  const discountAmount =
+  const licenseDiscountAmount =
     PRICING_TOTALS_USD.licenseListSubtotal - PRICING_TOTALS_USD.licenseDiscountedSubtotal;
+  const recruitmentDiscountAmount =
+    PRICING_TOTALS_USD.recruitmentListPerMonth - PRICING_TOTALS_USD.recruitmentDiscountedSubtotal;
+  const implementationDiscountAmount =
+    PRICING_TOTALS_USD.implementationListOneTime - PRICING_TOTALS_USD.implementationOneTime;
 
   return (
     <section id="investment" className="py-24 md:py-32 lg:py-40 bg-background text-foreground px-6 md:px-12 lg:px-24">
@@ -15,21 +19,21 @@ const InvestmentSection = () => {
           Commercial summary — {CLIENT.organizationName}
         </p>
         <p className="text-sm opacity-50 mb-10 max-w-xl">
-          {CLIENT.seatCount} seats · ROW USD monthly · {CLIENT.licenseDiscountPercent}% nonprofit discount on Factorial licenses
+          {CLIENT.seatCount} seats · ROW USD monthly · {CLIENT.licenseDiscountPercent}% nonprofit discount on licenses, recruitment, and implementation
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
           <SummaryCard
             label="Implementation (one-time)"
             value={formatUSD(PRICING_TOTALS_USD.implementationOneTime)}
-            sub="Indicative · ~5 hours guided setup"
+            sub={`List ${formatUSD(PRICING_TOTALS_USD.implementationListOneTime)} · −${formatUSD(implementationDiscountAmount)} nonprofit`}
             highlight
           />
           <SummaryCard label="Licenses (after discount)" value={`${formatUSD(PRICING_TOTALS_USD.licenseDiscountedSubtotal)}/mo`} />
           <SummaryCard
             label="Total subscription (monthly)"
             value={`${formatUSD(PRICING_TOTALS_USD.monthlyTotal)}/mo`}
-            sub={`Includes recruitment (${PRICING_ROW_USD.recruitment.tier})`}
+            sub={`Recruitment included at ${formatUSD(PRICING_TOTALS_USD.recruitmentDiscountedSubtotal)}/mo after discount`}
           />
         </div>
 
@@ -55,15 +59,23 @@ const InvestmentSection = () => {
               </div>
               <div className="flex justify-between opacity-60">
                 <span>Nonprofit discount ({CLIENT.licenseDiscountPercent}%)</span>
-                <span>−{formatUSD(discountAmount)}</span>
+                <span>−{formatUSD(licenseDiscountAmount)}</span>
               </div>
               <div className="flex justify-between border-t border-foreground/10 pt-3 font-medium">
                 <span>Licenses after discount</span>
                 <span>{formatUSD(PRICING_TOTALS_USD.licenseDiscountedSubtotal)}/mo</span>
               </div>
               <div className="flex justify-between opacity-60">
-                <span>Recruitment ({PRICING_ROW_USD.recruitment.tier})</span>
-                <span>{formatUSD(PRICING_ROW_USD.recruitment.fixedPerMonth)}/mo</span>
+                <span>Recruitment list ({PRICING_ROW_USD.recruitment.tier})</span>
+                <span>{formatUSD(PRICING_TOTALS_USD.recruitmentListPerMonth)}/mo</span>
+              </div>
+              <div className="flex justify-between opacity-60">
+                <span>Nonprofit discount ({CLIENT.licenseDiscountPercent}%)</span>
+                <span>−{formatUSD(recruitmentDiscountAmount)}</span>
+              </div>
+              <div className="flex justify-between border-t border-foreground/10 pt-3 font-medium">
+                <span>Recruitment after discount</span>
+                <span>{formatUSD(PRICING_TOTALS_USD.recruitmentDiscountedSubtotal)}/mo</span>
               </div>
               <div className="flex justify-between border-t border-foreground/10 pt-3 font-medium">
                 <span>Estimated monthly total</span>
@@ -73,9 +85,23 @@ const InvestmentSection = () => {
           </div>
 
           <div className="border border-foreground/10 p-6">
-            <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Notes</p>
+            <p className="text-xs uppercase tracking-widest opacity-50 mb-4">Implementation & notes</p>
+            <div className="space-y-3 text-sm mb-4">
+              <div className="flex justify-between opacity-60">
+                <span>List (reference)</span>
+                <span>{formatUSD(PRICING_TOTALS_USD.implementationListOneTime)}</span>
+              </div>
+              <div className="flex justify-between opacity-60">
+                <span>Nonprofit discount ({CLIENT.licenseDiscountPercent}%)</span>
+                <span>−{formatUSD(implementationDiscountAmount)}</span>
+              </div>
+              <div className="flex justify-between border-t border-foreground/10 pt-3 font-medium">
+                <span>One-time fee</span>
+                <span>{formatUSD(PRICING_TOTALS_USD.implementationOneTime)}</span>
+              </div>
+            </div>
             <ul className="space-y-2 text-sm opacity-70">
-              <li>• Discount applies to per-seat Factorial licensing, not necessarily to every future add-on.</li>
+              <li>• {CLIENT.licenseDiscountPercent}% nonprofit pricing applies to this proposal’s license, recruitment, and implementation lines.</li>
               <li>• Final tax treatment and FX (USD vs EUR) are confirmed in the order form.</li>
               <li>• Payroll partner costs are separate from this subscription.</li>
             </ul>

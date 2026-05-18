@@ -6,9 +6,11 @@
 export const CLIENT = {
   organizationName: "Righteous Foundation",
   seatCount: 35,
-  /** Non-profit: 50% discount on Factorial licenses (per-seat bundle), not on fixed add-ons. */
+  /** Nonprofit: 50% discount on licenses, recruitment list price, and implementation list price. */
   licenseDiscountPercent: 50,
 } as const;
+
+const D = CLIENT.licenseDiscountPercent / 100;
 
 /** Starter Planning: Core + Time Tracking + Time Off + Shifts (Business tier, monthly). */
 export const PRICING_ROW_USD = {
@@ -16,23 +18,32 @@ export const PRICING_ROW_USD = {
   listPricePerSeatPerMonth: 6,
   recruitment: {
     tier: "5 Active Jobs",
-    fixedPerMonth: 89,
+    /** ROW list price before nonprofit discount. */
+    listPricePerMonth: 89,
   },
-  /** One-time guided setup (~5 hours) — confirm final amount in contract. */
-  implementationOneTimeEstimate: 500,
+  implementation: {
+    /** Reference list before nonprofit discount (for transparency). */
+    listPriceOneTime: 500,
+    /** Agreed nonprofit implementation fee (50% off list). */
+    discountedOneTime: 250,
+  },
 } as const;
 
 const licenseList = CLIENT.seatCount * PRICING_ROW_USD.listPricePerSeatPerMonth;
-const licenseDiscounted =
-  licenseList * (1 - CLIENT.licenseDiscountPercent / 100);
+const licenseDiscounted = licenseList * (1 - D);
+
+const recruitmentList = PRICING_ROW_USD.recruitment.listPricePerMonth;
+const recruitmentDiscounted = recruitmentList * (1 - D);
 
 export const PRICING_TOTALS_USD = {
   licenseListSubtotal: licenseList,
   licenseDiscountedSubtotal: licenseDiscounted,
-  recruitmentPerMonth: PRICING_ROW_USD.recruitment.fixedPerMonth,
-  /** Licenses (discounted) + recruitment fixed add-on. */
-  monthlyTotal: licenseDiscounted + PRICING_ROW_USD.recruitment.fixedPerMonth,
-  implementationOneTime: PRICING_ROW_USD.implementationOneTimeEstimate,
+  recruitmentListPerMonth: recruitmentList,
+  recruitmentDiscountedSubtotal: recruitmentDiscounted,
+  /** Licenses (discounted) + recruitment (discounted). */
+  monthlyTotal: licenseDiscounted + recruitmentDiscounted,
+  implementationListOneTime: PRICING_ROW_USD.implementation.listPriceOneTime,
+  implementationOneTime: PRICING_ROW_USD.implementation.discountedOneTime,
 } as const;
 
 export const DEFAULT_VALUES = {
