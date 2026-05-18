@@ -1,7 +1,7 @@
-import SlidePresenter from "@/components/slides/SlidePresenter";
+import ProposalFlow from "@/components/proposal/ProposalFlow";
 
 const Index = () => {
-  return <SlidePresenter />;
+  return <ProposalFlow />;
 };
 
 export default Index;
