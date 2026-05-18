@@ -30,13 +30,13 @@ export const slides: SlideData[] = [
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Factorial commercial proposal</SectionLabel>
+        <SectionLabel>Factorial proposal</SectionLabel>
         <h1 className="text-[44px] md:text-[52px] font-light leading-[1.08] mb-4 max-w-[1200px]">{ORG}</h1>
         <p className="text-[17px] md:text-[19px] opacity-80 font-light mb-3">
-          Bundle-first plan for a distributed nonprofit: start with the right base package, close only real gaps with add-ons, and go live fast.
+          HR operations for a distributed nonprofit — reliable attendance, clean data, and a strong mobile experience.
         </p>
         <p className="text-[14px] md:text-[15px] opacity-60 font-light">
-          {SEATS} employees · ROW USD monthly · {DISCOUNT_PCT}% nonprofit discount on licenses, recruitment, and implementation
+          {SEATS} seats · ROW USD (monthly) · {DISCOUNT_PCT}% nonprofit discount (licenses, recruitment, implementation) · 5 active jobs
         </p>
         <div className="mt-8 flex items-center gap-4">
           <div className="w-10 h-10 border border-white/30 flex items-center justify-center">
@@ -52,36 +52,38 @@ export const slides: SlideData[] = [
   },
 
   {
-    id: "golden-rule",
-    title: "Golden Rule",
+    id: "context",
+    title: "Context",
     bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Golden rule #0</SectionLabel>
-        <SlideTitle>Always sell and implement bundle-first</SlideTitle>
-        <SlideSubtitle>
-          We start with one bundle that covers core HR operations, then add add-ons only if a real functional gap appears in validation.
-        </SlideSubtitle>
-        <div className="grid grid-cols-2 gap-8 mt-4">
+        <SectionLabel>Context</SectionLabel>
+        <SlideTitle>Why Righteous Foundation is looking for a new HR system</SlideTitle>
+        <div className="grid grid-cols-2 gap-8 mt-2">
           <div>
-            <div className="border border-foreground/20 p-5 bg-foreground/[0.03]">
-              <h3 className="text-[17px] font-medium mb-3">Why this rule protects outcomes</h3>
-              <ul className="space-y-2 text-[14px] opacity-75">
-                <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Faster implementation and simpler change management</li>
-                <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Better cost control from day one</li>
-                <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Clear scope for HR, Finance, and managers</li>
-              </ul>
-            </div>
+            <p className="text-[15px] md:text-[16px] opacity-70 leading-snug mb-4">
+              Your team works <strong className="opacity-100">across the country, mostly remote</strong>. The previous HR tool had a{" "}
+              <strong className="opacity-100">weak mobile experience</strong>, and key workflows — especially{" "}
+              <strong className="opacity-100">reports and attendance</strong> — were unreliable.
+            </p>
+            <p className="text-[15px] md:text-[16px] opacity-70 leading-snug mb-4">
+              You moved to <strong className="opacity-100">manual processes</strong> to keep control, but that creates extra work, gaps, and errors when you need trustworthy records for managers and Finance/Payroll.
+            </p>
+            <p className="text-[15px] md:text-[16px] opacity-70 leading-snug">
+              As a <strong className="opacity-100">registered nonprofit</strong>, this proposal applies{" "}
+              <strong className="opacity-100">{DISCOUNT_PCT}%</strong> to <strong className="opacity-100">licenses</strong>,{" "}
+              <strong className="opacity-100">recruitment</strong>, and <strong className="opacity-100">implementation</strong>.
+            </p>
           </div>
           <div className="space-y-2">
             {[
-              { icon: "1", title: "Default starting point", desc: "Bundle first. Never begin with loose modules as the primary proposal." },
-              { icon: "2", title: "Add-ons by evidence", desc: "Add-ons are introduced only when validation proves missing coverage." },
-              { icon: "3", title: "Commercial clarity", desc: "Business vs Enterprise differences are shown only when they impact decision quality." },
-              { icon: "4", title: "Operational discipline", desc: "The team follows one consistent sales and implementation flow from diagnosis to launch." },
+              { icon: "📱", title: "Mobile-first", desc: "Employees should complete daily HR tasks on the phone, not only on a desktop." },
+              { icon: "🧾", title: "Clean reporting", desc: "Exports you can trust — fewer missing fields and less manual fixing." },
+              { icon: "🌍", title: "Distributed team", desc: "Consistent policies and approvals across locations and remote workers." },
+              { icon: "🤝", title: "Nonprofit footprint", desc: "Pricing designed to respect mission-driven budgets while staying enterprise-capable." },
             ].map((item) => (
               <div key={item.title} className="flex gap-3 border border-foreground/15 p-3">
-                <span className="text-[18px] shrink-0 w-7 h-7 border border-foreground/25 flex items-center justify-center">{item.icon}</span>
+                <span className="text-[22px] shrink-0">{item.icon}</span>
                 <div>
                   <h4 className="text-[14px] font-medium mb-0.5">{item.title}</h4>
                   <p className="text-[12px] opacity-60 leading-snug">{item.desc}</p>
@@ -95,24 +97,24 @@ export const slides: SlideData[] = [
   },
 
   {
-    id: "pain-diagnosis",
-    title: "Diagnosis",
+    id: "priorities",
+    title: "Priorities",
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Step 1: diagnose pain</SectionLabel>
-        <SlideTitle>What must be fixed first for {ORG}</SlideTitle>
+        <SectionLabel>What you asked for</SectionLabel>
+        <SlideTitle>Start with core HR operations — then scale</SlideTitle>
         <SlideSubtitle>
-          Before discussing modules, we confirm where operations are breaking today and which outcomes are most urgent for the team.
+          You want the fundamental modules first: employee records, documentation, attendance/time tracking, time off, and recruitment — with realistic payroll handoff to your provider.
         </SlideSubtitle>
         <div className="grid grid-cols-2 gap-4 mt-5">
           {[
-            { icon: "📱", title: "Weak mobile experience", desc: "Employees and managers need reliable mobile workflows for daily HR actions." },
-            { icon: "⏱️", title: "Remote clock-in reliability", desc: "Time events must be captured correctly for distributed teams and shifts." },
-            { icon: "📊", title: "Incomplete reporting", desc: "Operational and payroll-prep reports must be clean, consistent, and exportable." },
-            { icon: "🧾", title: "Manual workaround overload", desc: "Spreadsheets and ad-hoc processes create avoidable errors and rework." },
-            { icon: "🌍", title: "Distributed consistency", desc: "Policies and approvals should work the same across locations." },
-            { icon: "🤝", title: "Budget discipline", desc: "As a nonprofit, spend should stay tied to measurable business need." },
+            { icon: "👤", title: "Employee data & files", desc: "Single source of truth for contracts, IDs, and HR documents — with audit-friendly history." },
+            { icon: "⏱️", title: "Time tracking + shifts", desc: "Clock in/out that works for remote teams; shift planning when schedules matter." },
+            { icon: "🏖️", title: "Time off & approvals", desc: "Requests, policies, approvers, and a calendar everyone can trust." },
+            { icon: "📣", title: "Recruitment (≈3–5 roles)", desc: "Postings, applicants, and messaging — including channels your team already uses." },
+            { icon: "💸", title: "Payroll-ready outputs", desc: "Factorial does not run payroll checks here — it prepares the data your payroll partner needs." },
+            { icon: "📊", title: "Better operational reporting", desc: "Dashboards and exports (incl. AI-assisted reporting on your own data, where enabled)." },
           ].map((f) => (
             <div key={f.title} className="border border-white/20 p-4">
               <span className="text-[26px] block mb-2">{f.icon}</span>
@@ -126,36 +128,38 @@ export const slides: SlideData[] = [
   },
 
   {
-    id: "bundle-choice",
-    title: "Bundle Choice",
+    id: "recommended-package",
+    title: "Package",
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Step 2: choose the base bundle</SectionLabel>
-        <SlideTitle>Recommended starter package for {SEATS} employees</SlideTitle>
+        <SectionLabel>Commercial recommendation</SectionLabel>
+        <SlideTitle>Starter Planning (ROW USD)</SlideTitle>
         <SlideSubtitle>
-          Start with <strong className="opacity-100">{PRICING_ROW_USD.bundleName}</strong>: Core + Time Tracking + Time Off + Shifts. It is the best first-fit baseline for this case.
+          Best fit for your needs on the price list: <strong className="opacity-100">Core</strong>, <strong className="opacity-100">Time Tracking</strong>,{" "}
+          <strong className="opacity-100">Time Off</strong>, and <strong className="opacity-100">Shifts</strong> — before nonprofit discount:{" "}
+          <strong className="opacity-100">${PRICING_ROW_USD.listPricePerSeatPerMonth}/seat/month</strong> (Enterprise · monthly).
         </SlideSubtitle>
         <div className="grid grid-cols-2 gap-6 mt-5">
           <div className="border border-white/20 p-5">
-            <h3 className="text-[17px] font-medium mb-3">Bundle coverage in plain results language</h3>
+            <h3 className="text-[17px] font-medium mb-3">Included in the bundle</h3>
             <ul className="space-y-2 text-[14px] opacity-75 leading-snug">
-              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> One source of truth for employee data and HR records</li>
-              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Reliable attendance and clock-in routines for remote teams</li>
-              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Clear time-off policies, balances, and approvals</li>
-              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Shift planning where scheduling is operationally critical</li>
+              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Employee platform / Core HR workspace</li>
+              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Time tracking (mobile + web)</li>
+              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Time off policies, balances, approvals</li>
+              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Shift planning & scheduling</li>
             </ul>
           </div>
           <div className="border border-white/20 p-5">
-            <h3 className="text-[17px] font-medium mb-3">Commercial basis</h3>
+            <h3 className="text-[17px] font-medium mb-3">Add-on in this proposal</h3>
             <p className="text-[14px] opacity-75 leading-snug mb-3">
-              List price basis for this bundle: <strong className="opacity-100">${PRICING_ROW_USD.listPricePerSeatPerMonth}/employee/month</strong>.
-            </p>
-            <p className="text-[13px] opacity-65 leading-snug mb-3">
-              Nonprofit pricing applies {DISCOUNT_PCT}% discount to licenses, recruitment, and implementation in this proposal.
+              <strong className="opacity-100">Recruitment — {PRICING_ROW_USD.recruitment.tier}</strong>
+              <br />
+              Fixed monthly list: <strong className="opacity-100">${PRICING_TOTALS_USD.recruitmentListPerMonth}/mo</strong> → with nonprofit discount:{" "}
+              <strong className="opacity-100">${PRICING_TOTALS_USD.recruitmentDiscountedSubtotal.toFixed(2)}/mo</strong>.
             </p>
             <p className="text-[12px] opacity-55 leading-snug">
-              We only move beyond this bundle after formal coverage validation and gap analysis.
+              Optional modules (Performance, Training, etc.) can be activated later.
             </p>
           </div>
         </div>
@@ -164,21 +168,21 @@ export const slides: SlideData[] = [
   },
 
   {
-    id: "coverage-validation",
-    title: "Coverage Validation",
+    id: "mobile-remote",
+    title: "Mobile",
     bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Step 3: validate coverage</SectionLabel>
-        <SlideTitle>Does the bundle cover core, operations, and people needs?</SlideTitle>
+        <SectionLabel>Experience</SectionLabel>
+        <SlideTitle>Built for employees on their phones</SlideTitle>
         <SlideSubtitle>
-          We validate the bundle against real workflows before discussing any expansion.
+          Your team is remote — the HR experience should feel as easy as any consumer app: clock in/out, request time off, sign documents, and see what requires action in one inbox.
         </SlideSubtitle>
         <div className="grid grid-cols-3 gap-4 mt-5">
           {[
-            { title: "Core HR foundation", desc: "Profiles, contracts, documents, and access controls support compliance and daily administration." },
-            { title: "Operational stability", desc: "Clock-ins, shifts, time off, and approvals operate in one consistent workflow." },
-            { title: "People experience", desc: "Employees complete requests and managers approve actions with a clear mobile-first interface." },
+            { title: "One login, permission-based", desc: "HR/Admin sees everything; employees see only what they should — no separate “manager licenses” required." },
+            { title: "Works without a desk", desc: "Managers can approve on mobile; employees can complete tasks without a corporate machine." },
+            { title: "Optional geo controls", desc: "If needed, geofencing can help validate clock-in locations for roles that require it." },
           ].map((x) => (
             <div key={x.title} className="border border-foreground/15 p-4">
               <h3 className="text-[15px] font-medium mb-1.5">{x.title}</h3>
@@ -191,22 +195,20 @@ export const slides: SlideData[] = [
   },
 
   {
-    id: "gap-analysis",
-    title: "Gap Analysis",
+    id: "attendance-reporting",
+    title: "Attendance",
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Step 4 and 5: gap analysis and add-ons</SectionLabel>
-        <SlideTitle>Add add-ons only when they close a validated gap</SlideTitle>
-        <SlideSubtitle>
-          Add-ons are surgical: no extra modules unless they directly solve a confirmed business gap.
-        </SlideSubtitle>
+        <SectionLabel>Operations</SectionLabel>
+        <SlideTitle>Attendance you can prove — reports you can export</SlideTitle>
+        <SlideSubtitle>Fix the gap you felt in the previous system: missing fields, weak exports, and unreliable sign-in flows.</SlideSubtitle>
         <div className="grid grid-cols-2 gap-4 mt-4">
           {[
-            { icon: "🎯", title: "Likely add-on now", desc: `Recruitment (${PRICING_ROW_USD.recruitment.tier}) if active hiring is recurring.` },
-            { icon: "📈", title: "Possible future add-ons", desc: "Engagement, Performance, and Trainings only if future goals require them." },
-            { icon: "🧩", title: "No add-on by default", desc: "If the bundle already covers the process, we keep scope simple and focused." },
-            { icon: "✅", title: "Decision criterion", desc: "Every add-on must map to a measurable operational or business outcome." },
+            { icon: "📅", title: "Shifts + attendance together", desc: "Plan shifts, track attendance, and resolve exceptions with clear approvals." },
+            { icon: "📥", title: "Exports (Excel / PDF)", desc: "Download structured time tracking reports for internal control and payroll prep." },
+            { icon: "🧠", title: "AI on your company data", desc: "Ask operational questions against your own dataset (availability varies by workspace)." },
+            { icon: "✅", title: "Approval workflows", desc: "Time off, overtime/banks of hours (where configured), and audit-friendly trails." },
           ].map((f) => (
             <div key={f.title} className="flex gap-3 border border-white/20 p-4">
               <span className="text-[24px] shrink-0">{f.icon}</span>
@@ -222,23 +224,23 @@ export const slides: SlideData[] = [
   },
 
   {
-    id: "implementation-flow",
-    title: "Implementation Flow",
+    id: "documents-onboarding",
+    title: "Documents",
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Step 6: implementation</SectionLabel>
-        <SlideTitle>Simple, guided execution from kickoff to go-live</SlideTitle>
+        <SectionLabel>Compliance & onboarding</SectionLabel>
+        <SlideTitle>Documents, e-signatures, and structured onboarding</SlideTitle>
         <SlideSubtitle>
-          The implementation path stays practical: clear responsibilities, short cycles, and a target timeline around six weeks.
+          Send policies in bulk, collect signatures, and run onboarding tasks so new hires upload IDs and complete onboarding steps in a guided flow.
         </SlideSubtitle>
         <div className="grid grid-cols-2 gap-6 mt-5">
           <div className="space-y-2">
             {[
-              "Kickoff and role alignment (HR, Finance, IT)",
-              "Bundle setup: Core, Time Tracking, Time Off, Shifts",
-              "Data loading and approvals configuration",
-              "Pilot and go-live readiness check",
+              "Bulk document distribution with tracking",
+              "Fillable PDFs where needed",
+              "Employee inbox for tasks (sign, upload, acknowledge)",
+              "Audit trail for sensitive HR documents",
             ].map((t) => (
               <div key={t} className="flex items-start gap-2 border border-white/15 p-3">
                 <Check size={16} className="shrink-0 mt-0.5 opacity-70" />
@@ -247,9 +249,9 @@ export const slides: SlideData[] = [
             ))}
           </div>
           <div className="border border-white/20 p-5">
-            <h3 className="text-[16px] font-medium mb-2">Ownership and cadence</h3>
+            <h3 className="text-[16px] font-medium mb-2">From “offer accepted” to “ready to work”</h3>
             <p className="text-[13px] opacity-65 leading-snug">
-              One implementation specialist leads weekly sessions with your team. Scope is validated in sequence, and only confirmed gaps trigger add-on activation.
+              Keep recruitment and onboarding connected: signing the offer, collecting personal data, assigning mandatory training reads, and requesting file uploads into the right folders.
             </p>
           </div>
         </div>
@@ -258,25 +260,21 @@ export const slides: SlideData[] = [
   },
 
   {
-    id: "sales-sequence",
-    title: "Sales Sequence",
+    id: "recruitment",
+    title: "Recruitment",
     bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Commercial playbook</SectionLabel>
-        <SlideTitle>Seven-step sales flow to keep decisions clear</SlideTitle>
+        <SectionLabel>Talent acquisition</SectionLabel>
+        <SlideTitle>Recruitment with jobs postings and candidate experience</SlideTitle>
         <SlideSubtitle>
-          This is the sequence used in calls and proposals to keep commercial decisions objective and outcome-based.
+          Publish roles, capture applicants, and communicate by email — plus channels like WhatsApp where your team hires day-to-day.
         </SlideSubtitle>
-        <div className="grid grid-cols-2 gap-4 mt-5">
+        <div className="grid grid-cols-3 gap-4 mt-5">
           {[
-            { title: "1) Short diagnosis", desc: "Confirm pain points and prioritize what must improve first." },
-            { title: "2) Choose base bundle", desc: "Starter or PRO, based on real operational needs." },
-            { title: "3) Validate coverage", desc: "Check core, operations, and people requirements." },
-            { title: "4) Run gap analysis", desc: "Identify what the bundle does not cover." },
-            { title: "5) Add surgical add-ons", desc: "Only to close specific validated gaps." },
-            { title: "6) Plan implementation", desc: "Define phases, timeline, and owners." },
-            { title: "7) Clear next action", desc: "Issue final proposal and schedule a short confirmation call." },
+            { title: "Job board + landing links", desc: "Share a clean careers URL (also useful if candidates don’t arrive via a job board)." },
+            { title: "Indeed / LinkedIn direction", desc: "Bring applicants into one pipeline with consistent screening steps." },
+            { title: "5 active jobs package", desc: "Sized for your typical hiring volume; upgrade tiers only if recruiting scales up." },
           ].map((x) => (
             <div key={x.title} className="border border-foreground/15 p-4">
               <h3 className="text-[15px] font-medium mb-1">{x.title}</h3>
@@ -289,33 +287,31 @@ export const slides: SlideData[] = [
   },
 
   {
-    id: "investment",
-    title: "Investment",
+    id: "payroll",
+    title: "Payroll",
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Commercial summary</SectionLabel>
-        <SlideTitle>Starter package economics for {SEATS} employees</SlideTitle>
+        <SectionLabel>Finance handoff</SectionLabel>
+        <SlideTitle>Factorial prepares payroll inputs — your payroll partner runs payroll</SlideTitle>
         <SlideSubtitle>
-          Transparent pricing supports quick decision-making while preserving cost control and implementation simplicity.
+          If you want fully processed payslips inside the same system, Factorial is not positioned as the payroll engine in this scope. If you’re open to a best-in-class HR hub + payroll partner, Factorial fits cleanly.
         </SlideSubtitle>
         <div className="grid grid-cols-2 gap-6 mt-5">
           <div className="border border-white/20 p-5">
-            <h3 className="text-[16px] font-medium mb-2">Monthly subscription</h3>
+            <h3 className="text-[16px] font-medium mb-2">What Factorial covers</h3>
             <ul className="text-[13px] opacity-75 space-y-1.5 leading-snug">
-              <li>• Bundle list subtotal: ${PRICING_TOTALS_USD.licenseListSubtotal.toFixed(2)}/mo</li>
-              <li>• Bundle after nonprofit discount: ${PRICING_TOTALS_USD.licenseDiscountedSubtotal.toFixed(2)}/mo</li>
-              <li>• Recruitment ({PRICING_ROW_USD.recruitment.tier}) after discount: ${PRICING_TOTALS_USD.recruitmentDiscountedSubtotal.toFixed(2)}/mo</li>
-              <li>• Estimated total monthly subscription: ${PRICING_TOTALS_USD.monthlyTotal.toFixed(2)}/mo</li>
+              <li>• Salaries and compensation data (as configured)</li>
+              <li>• Time off/absences and time tracking outputs</li>
+              <li>• Exports matched to your payroll provider layout (project milestone)</li>
             </ul>
           </div>
           <div className="border border-white/20 p-5">
-            <h3 className="text-[16px] font-medium mb-2">One-time implementation</h3>
+            <h3 className="text-[16px] font-medium mb-2">What your payroll partner keeps</h3>
             <ul className="text-[13px] opacity-75 space-y-1.5 leading-snug">
-              <li>• List reference: ${PRICING_TOTALS_USD.implementationListOneTime.toFixed(0)}</li>
-              <li>• Nonprofit implementation price: ${PRICING_TOTALS_USD.implementationOneTime.toFixed(0)}</li>
-              <li>• Delivery cadence: 1 hour per week, about 6 weeks total</li>
-              <li>• Final taxes and currency terms confirmed in order form</li>
+              <li>• Payslip generation and statutory compliance execution</li>
+              <li>• Final bank file / local regulatory filings (as applicable)</li>
+              <li>• Authoritative accounting entries (depending on your finance stack)</li>
             </ul>
           </div>
         </div>
@@ -324,75 +320,141 @@ export const slides: SlideData[] = [
   },
 
   {
-    id: "proposal-message",
-    title: "Proposal Message",
+    id: "investment",
+    title: "Investment",
     bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Ready-to-use wording</SectionLabel>
-        <SlideTitle>Proposal message aligned with the bundle-first strategy</SlideTitle>
+        <SectionLabel>Investment</SectionLabel>
+        <SlideTitle>Monthly estimate (ROW USD · monthly billing)</SlideTitle>
 
-        <div className="mt-4 border border-foreground/20 bg-foreground/[0.03] p-8 max-w-[1200px]">
-          <p className="text-[18px] leading-relaxed font-light">
-            “To keep implementation simple and costs controlled, we follow a bundle-first model: we start with a bundle that covers essential HR operations and add add-ons only when there is a specific business need.”
-          </p>
-          <p className="text-[13px] opacity-60 mt-4">
-            Suggested bundle for this case: {PRICING_ROW_USD.bundleName} for {SEATS} employees, with Recruitment ({PRICING_ROW_USD.recruitment.tier}) if recurring active hiring is confirmed.
-          </p>
+        <div className="grid grid-cols-2 gap-8 mt-2">
+          <div>
+            <h3 className="text-[17px] font-medium opacity-80 mb-3">Monthly subscription</h3>
+            <div className="border border-foreground/20 p-5 space-y-2 text-[13px]">
+              <div className="flex justify-between gap-2">
+                <span className="opacity-65">{PRICING_ROW_USD.bundleName} ({SEATS} × ${PRICING_ROW_USD.listPricePerSeatPerMonth})</span>
+                <span className="font-medium shrink-0">${PRICING_TOTALS_USD.licenseListSubtotal.toFixed(2)}/mo</span>
+              </div>
+              <div className="flex justify-between gap-2 text-emerald-700 dark:text-emerald-400">
+                <span className="opacity-80">Nonprofit discount ({DISCOUNT_PCT}%)</span>
+                <span className="font-medium shrink-0">−${(PRICING_TOTALS_USD.licenseListSubtotal - PRICING_TOTALS_USD.licenseDiscountedSubtotal).toFixed(2)}/mo</span>
+              </div>
+              <div className="flex justify-between gap-2 border-t border-foreground/15 pt-2">
+                <span className="opacity-65">Licenses after discount</span>
+                <span className="font-medium">${PRICING_TOTALS_USD.licenseDiscountedSubtotal.toFixed(2)}/mo</span>
+              </div>
+              <div className="flex justify-between gap-2">
+                <span className="opacity-65">Recruitment ({PRICING_ROW_USD.recruitment.tier}) — list</span>
+                <span className="font-medium">${PRICING_TOTALS_USD.recruitmentListPerMonth.toFixed(2)}/mo</span>
+              </div>
+              <div className="flex justify-between gap-2 text-emerald-700 dark:text-emerald-400">
+                <span className="opacity-80">Nonprofit discount ({DISCOUNT_PCT}%)</span>
+                <span className="font-medium shrink-0">−${(PRICING_TOTALS_USD.recruitmentListPerMonth - PRICING_TOTALS_USD.recruitmentDiscountedSubtotal).toFixed(2)}/mo</span>
+              </div>
+              <div className="flex justify-between gap-2 border-t border-foreground/15 pt-2">
+                <span className="opacity-65">Recruitment after discount</span>
+                <span className="font-medium">${PRICING_TOTALS_USD.recruitmentDiscountedSubtotal.toFixed(2)}/mo</span>
+              </div>
+              <p className="text-[11px] opacity-50 pt-1 leading-snug">{DISCOUNT_PCT}% nonprofit pricing on licenses and recruitment in this proposal.</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-[17px] font-medium opacity-80 mb-3">Totals & implementation</h3>
+            <div className="space-y-3">
+              <div className="border-2 border-foreground/30 bg-foreground/[0.06] p-4 text-center">
+                <p className="text-[12px] opacity-55 mb-1">Estimated monthly subscription</p>
+                <p className="text-[44px] font-light leading-none">${PRICING_TOTALS_USD.monthlyTotal.toFixed(2)}</p>
+                <p className="text-[11px] opacity-45 mt-1">USD · before taxes/fees if applicable</p>
+              </div>
+
+              <div className="border border-foreground/20 p-4 text-[12px] space-y-1.5">
+                <p className="font-medium opacity-90">Implementation (one-time)</p>
+                <p className="flex justify-between gap-2">
+                  <span className="opacity-70">List (reference)</span>
+                  <span>${PRICING_TOTALS_USD.implementationListOneTime.toFixed(0)}</span>
+                </p>
+                <p className="flex justify-between gap-2 text-emerald-700 dark:text-emerald-400">
+                  <span>Nonprofit discount ({DISCOUNT_PCT}%)</span>
+                  <span>−${(PRICING_TOTALS_USD.implementationListOneTime - PRICING_TOTALS_USD.implementationOneTime).toFixed(0)}</span>
+                </p>
+                <p className="flex justify-between gap-2 border-t border-foreground/15 pt-2 font-medium">
+                  <span>Your price</span>
+                  <span>${PRICING_TOTALS_USD.implementationOneTime.toFixed(0)} USD</span>
+                </p>
+                <p className="text-[10px] opacity-45 leading-snug">Onboarding: 1 hour / week with your Specialist; full implementation within ~1.5 months. Final scope in the order form.</p>
+              </div>
+
+              <p className="text-[11px] opacity-55 px-1 leading-snug">Card or bank transfer in USD/EUR as agreed.</p>
+            </div>
+          </div>
         </div>
       </div>
     ),
   },
 
   {
-    id: "next-action",
-    title: "Next Action",
+    id: "demo",
+    title: "Demo",
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Step 7: clear CTA</SectionLabel>
-        <SlideTitle>Confirm bundle scope and schedule the final short call</SlideTitle>
+        <SectionLabel>Try it</SectionLabel>
+        <SlideTitle>Explore Factorial in a demo workspace</SlideTitle>
 
         <div className="border-2 border-white/25 bg-white/[0.08] p-4 mb-4 flex items-center justify-between flex-wrap gap-3">
           <div>
-            <p className="text-[15px] font-medium opacity-90 mb-1">Recommended decision path</p>
-            <p className="text-[12px] opacity-55 leading-snug">Approve the base bundle, confirm any validated gaps, and receive the final proposal version.</p>
+            <p className="text-[15px] font-medium opacity-90 mb-1">Demo environment</p>
+            <p className="text-[12px] opacity-55 leading-snug">
+              Login: <span className="font-mono opacity-80 text-[11px]">hellen@demob25acc00.com</span> · Password:{" "}
+              <span className="font-mono opacity-80 text-[11px]">Papapapa333!</span>
+            </p>
           </div>
           <a
-            href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent(`${ORG} — Bundle-first final proposal`)}`}
+            href="https://app.eu2.demo.factorial.dev/dashboard?switchToCompanyId=75113&redirect_uri=https://api.eu2.demo.factorial.dev/users/sign_in"
+            target="_blank"
+            rel="noopener noreferrer"
             className="shrink-0 bg-white text-black px-5 py-2.5 text-[13px] font-medium hover:opacity-90 transition-opacity"
           >
-            Send approval email →
+            Open demo →
           </a>
         </div>
 
         <div className="grid grid-cols-2 gap-6">
           <div>
-            <h3 className="text-[16px] font-normal mb-3 opacity-80">What happens after approval</h3>
+            <h3 className="text-[16px] font-normal mb-3 opacity-80">Deep links</h3>
             <div className="space-y-2">
               {[
-                { label: "1) Final proposal sent", desc: "Bundle scope, optional add-ons, and implementation timeline are documented." },
-                { label: "2) Commercial confirmation call", desc: "Short call to validate ownership, dates, and billing details." },
-                { label: "3) Kickoff booked", desc: "Implementation specialist starts weekly sessions immediately after signature." },
+                { label: "Shifts (monthly view)", desc: "See how scheduling maps to attendance.", url: "https://app.eu2.demo.factorial.dev/shifts/monthly/employees/2026/1/1", isDemo: true },
+                { label: "Time off approvals (Help Center)", desc: "How approvals and policies behave at scale.", url: "https://help.factorialhr.com/one/one-ai-%E2%80%93-time-off-management-approvals?from_search=218384939", isDemo: false },
+                { label: "AI reports entry point", desc: "Explore the reporting experience in demo.", url: "https://app.eu2.demo.factorial.dev/analytics/reports/dashboards/105102/list/question", isDemo: true },
               ].map((f) => (
-                <div key={f.label} className="flex items-start gap-2 border border-white/15 p-3">
+                <a
+                  key={f.label}
+                  href={f.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2 border border-white/15 p-3 hover:border-white/35 hover:bg-white/[0.04] transition-all group cursor-pointer"
+                >
                   <Check size={16} className="opacity-60 shrink-0 mt-0.5" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-[14px] font-medium opacity-90">{f.label}</p>
+                    <p className="text-[14px] font-medium opacity-90 group-hover:opacity-100 transition-opacity">{f.label}</p>
                     <p className="text-[11px] opacity-55 mt-0.5 leading-snug">{f.desc}</p>
                   </div>
-                </div>
+                  <span className="text-[10px] opacity-40 group-hover:opacity-70 shrink-0 mt-0.5">{f.isDemo ? "Demo" : "Help"}</span>
+                </a>
               ))}
             </div>
           </div>
 
           <div>
-            <h3 className="text-[16px] font-normal mb-3 opacity-80">Final fit check for this case</h3>
+            <h3 className="text-[16px] font-normal mb-3 opacity-80">Why this matches your priorities</h3>
             <div className="space-y-2">
               {[
-                { title: "Bundle-first discipline", desc: "Scope starts simple, implementation risk stays low, and costs remain controlled." },
-                { title: "Gap-based add-ons", desc: "Recruitment and future modules are activated only when clearly justified." },
-                { title: "Clear commercial next step", desc: "Decision makers can approve quickly because the proposal is structured and explicit." },
+                { title: "Mobile workflows", desc: "Employees can execute HR tasks without depending on a desktop machine." },
+                { title: "Operational reliability", desc: "Designed to reduce missing fields and inconsistent exports vs. manual spreadsheets." },
+                { title: "Recruitment connectivity", desc: "Keep hiring structured while staying practical for day-to-day messaging." },
               ].map((g) => (
                 <div key={g.title} className="border border-white/15 p-4">
                   <h4 className="text-[14px] font-normal mb-1">{g.title}</h4>
@@ -401,6 +463,79 @@ export const slides: SlideData[] = [
               ))}
             </div>
           </div>
+        </div>
+      </div>
+    ),
+  },
+
+  {
+    id: "video",
+    title: "Video",
+    bg: "dark",
+    content: (
+      <div className="flex flex-col justify-center items-center h-full px-14 text-center">
+        <SectionLabel>Overview</SectionLabel>
+        <SlideTitle>See the employee experience</SlideTitle>
+        <div className="w-full max-w-[900px] mt-4 mx-auto aspect-video max-h-[340px]">
+          <iframe
+            width="960"
+            height="540"
+            src="https://www.youtube.com/embed/6sUn2w1hRv0?start=26"
+            title="Factorial product overview"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full border-2 border-white/20"
+          />
+        </div>
+      </div>
+    ),
+  },
+
+  {
+    id: "onboarding",
+    title: "Onboarding",
+    bg: "light",
+    content: (
+      <div className="flex flex-col justify-center h-full px-14">
+        <SectionLabel>Implementation</SectionLabel>
+        <SlideTitle>Onboarding: how we get you live</SlideTitle>
+        <SlideSubtitle>
+          Structured, weekly sessions so your team adopts Factorial with confidence — without rushing day-to-day work.
+        </SlideSubtitle>
+
+        <div className="grid grid-cols-2 gap-6 mt-4">
+          <div className="border border-foreground/20 p-5 bg-foreground/[0.03]">
+            <p className="text-[11px] uppercase tracking-widest opacity-50 mb-2">During implementation</p>
+            <h3 className="text-[17px] font-medium mb-3">Dedicated Onboarding Specialist</h3>
+            <p className="text-[13px] opacity-70 leading-snug mb-4">
+              From kickoff to go-live, a <strong className="opacity-100">Factorial Onboarding Specialist</strong> runs your setup:
+              policies, approvals, time tracking, documents, recruiting basics, and handoff to payroll-friendly exports.
+            </p>
+            <ul className="space-y-2 text-[12px] opacity-75">
+              <li className="flex gap-2"><Check size={14} className="shrink-0 mt-0.5 opacity-70" /> One <strong>live session per week</strong></li>
+              <li className="flex gap-2"><Check size={14} className="shrink-0 mt-0.5 opacity-70" /> Each session: <strong>1 hour</strong>, focused and actionable</li>
+              <li className="flex gap-2"><Check size={14} className="shrink-0 mt-0.5 opacity-70" /> Plan: <strong>~1.5 months</strong> (≈6 weeks) to implementation at most</li>
+            </ul>
+          </div>
+
+          <div className="border border-foreground/20 p-5">
+            <p className="text-[11px] uppercase tracking-widest opacity-50 mb-2">After go-live</p>
+            <h3 className="text-[17px] font-medium mb-3">Your exclusive Account Manager</h3>
+            <p className="text-[13px] opacity-70 leading-snug mb-4">
+              When onboarding ends, you are not left on your own. Factorial assigns an <strong className="opacity-100">Account Manager dedicated to your organization</strong> — your day-to-day commercial and success contact for adoption, renewals, and growing the platform.
+            </p>
+            <ul className="space-y-2 text-[12px] opacity-75">
+              <li className="flex gap-2"><Check size={14} className="shrink-0 mt-0.5 opacity-70" /> Same partner mindset: Specialist first, then <strong className="opacity-100">one named Account Manager</strong></li>
+              <li className="flex gap-2"><Check size={14} className="shrink-0 mt-0.5 opacity-70" /> Ongoing alignment on usage, training, and next modules</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-4 border-t border-foreground/15 pt-4 flex flex-wrap gap-4 items-center justify-between text-[12px] opacity-65">
+          <span>
+            <strong className="opacity-90">Cadence:</strong> 1× week · 1 hour · ~6 sessions over ~1.5 months to full rollout
+          </span>
+          <span className="opacity-50">Proposal prepared for {ORG} — 2026</span>
         </div>
       </div>
     ),
