@@ -37,7 +37,7 @@ export const slides: SlideData[] = [
           Gestão de pessoas moderna, com dados reais e automação inteligente
         </p>
         <p className="text-[26px] opacity-60 font-light">
-          Avaliação de desempenho, engajamento, treinamentos, recrutamento e despesas — tudo num único sistema com IA integrada.
+          Avaliação de desempenho, engajamento, treinamentos, recrutamento e despesas, tudo num único sistema com IA integrada.
         </p>
         <div className="mt-16 flex items-center gap-6">
           <div className="w-12 h-12 border border-white/30 flex items-center justify-center">
@@ -64,13 +64,13 @@ export const slides: SlideData[] = [
         <div className="grid grid-cols-2 gap-16 mt-4">
           <div>
             <p className="text-[26px] opacity-70 leading-[1.7] mb-8">
-              A Aztech é uma empresa focada em <strong className="opacity-100">gestão de pessoas e desenvolvimento organizacional</strong>, com processos de Business Development orientados a dados e satisfação do cliente.
+              A Aztech, em Angola, está a reforçar a gestão de pessoas e o desenvolvimento organizacional, com foco em dados confiáveis e satisfação dos clientes.
             </p>
             <p className="text-[26px] opacity-70 leading-[1.7] mb-8">
-              Com <strong className="opacity-100">15 colaboradores internos</strong> e mais de <strong className="opacity-100">100 contratos ativos</strong>, a Aztech precisa de ferramentas que eliminem processos manuais e entreguem dados precisos.
+              Com <strong className="opacity-100">15 colaboradores internos</strong> e mais de <strong className="opacity-100">100 contratos ativos</strong>, a equipa precisa de processos mais rápidos, padronizados e com menos retrabalho.
             </p>
             <p className="text-[26px] opacity-70 leading-[1.7]">
-              Hoje, tudo é manual — e a <strong className="opacity-100">margem de erro é alta</strong>. A grande chave? <strong className="opacity-100">Tempo.</strong>
+              Hoje, grande parte da operação é manual e a <strong className="opacity-100">margem de erro é alta</strong>. A prioridade principal é <strong className="opacity-100">ganhar tempo</strong> sem perder controlo.
             </p>
           </div>
           <div className="space-y-5">
@@ -79,7 +79,7 @@ export const slides: SlideData[] = [
               { icon: "📊", title: "Dados realistas", desc: "Eliminar margem de erro dos processos manuais." },
               { icon: "😊", title: "Satisfação do cliente", desc: "KPI principal: satisfação e feedback contínuo." },
               { icon: "👥", title: "100+ contratos ativos", desc: "Escala que exige uma plataforma profissional." },
-              { icon: "🔄", title: "Reuniões 2x/semana", desc: "Gestores e colaboradores em contacto frequente." },
+              { icon: "🔄", title: "Reuniões 2x por semana", desc: "Gestores e colaboradores em contacto frequente." },
             ].map((item) => (
               <div key={item.title} className="flex gap-5 border border-foreground/15 p-5">
                 <span className="text-[30px] shrink-0">{item.icon}</span>
@@ -104,15 +104,15 @@ export const slides: SlideData[] = [
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Módulo Principal</SectionLabel>
         <SlideTitle>Avaliação de Desempenho</SlideTitle>
-        <SlideSubtitle>A Mercedes destacou que avaliações profissionais são essenciais — aqui está como a Factorial transforma esse processo.</SlideSubtitle>
+        <SlideSubtitle>A Mercedes destacou que avaliações profissionais são essenciais. Aqui está como a Factorial transforma esse processo.</SlideSubtitle>
         <div className="grid grid-cols-3 gap-8 mt-10">
           {[
-            { icon: "📋", title: "Avaliações 360°", desc: "Auto-avaliação, pares, gestores — visão completa do colaborador." },
+            { icon: "📋", title: "Avaliações 180° e 360°", desc: "Autoavaliação, pares e gestores numa visão completa do colaborador." },
             { icon: "🎯", title: "OKRs e Objetivos", desc: "Defina metas claras e acompanhe o progresso em tempo real." },
             { icon: "📅", title: "Ciclos personalizados", desc: "Configure ciclos trimestrais, semestrais ou anuais." },
             { icon: "🤖", title: "IA integrada", desc: "A IA analisa padrões e sugere insights sobre desempenho." },
-            { icon: "📊", title: "Relatórios automáticos", desc: "Dashboards com dados reais — sem margem de erro." },
-            { icon: "💬", title: "Reuniões 1:1", desc: "Agende, grave e analise reuniões gestor-colaborador com IA." },
+            { icon: "📊", title: "Relatórios automáticos", desc: "Dashboards com dados reais, sem margem de erro de planilhas." },
+            { icon: "💬", title: "Reuniões 1:1", desc: "Agende, grave e analise reuniões entre gestor e colaborador com IA." },
           ].map((f) => (
             <div key={f.title} className="border border-white/20 p-8">
               <span className="text-[36px] block mb-4">{f.icon}</span>
@@ -134,13 +134,13 @@ export const slides: SlideData[] = [
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Módulo</SectionLabel>
         <SlideTitle>Engajamento e Clima</SlideTitle>
-        <SlideSubtitle>Meça a satisfação, identifique rotatividade e actue com dados — exactamente o que a Aztech precisa.</SlideSubtitle>
+        <SlideSubtitle>Meça a satisfação, identifique rotatividade e atue com dados. Exatamente o que a Aztech precisa.</SlideSubtitle>
         <div className="grid grid-cols-3 gap-6 mt-10">
           {[
             { icon: "🌡️", title: "Pesquisa de clima", desc: "Pulse surveys automatizadas para medir o sentimento da equipa." },
-            { icon: "📈", title: "NPS interno", desc: "Net Promoter Score dos colaboradores — quantificado." },
+            { icon: "📈", title: "NPS interno", desc: "Net Promoter Score dos colaboradores com histórico por equipa." },
             { icon: "🔄", title: "Rotatividade", desc: "Acompanhe e analise taxas de turnover por equipa." },
-            { icon: "💬", title: "Feedback contínuo", desc: "Recolha feedback e crie planos de acção de melhoria." },
+            { icon: "💬", title: "Feedback contínuo", desc: "Recolha feedback e crie planos de ação de melhoria." },
             { icon: "🤖", title: "Análise com IA", desc: "Pergunte à IA: 'Por que a rotatividade está alta?' e receba relatórios." },
             { icon: "📊", title: "Dashboards em tempo real", desc: "Dados de satisfação sempre actualizados e acessíveis." },
           ].map((f) => (
@@ -189,25 +189,25 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 6. RECRUTAMENTO E DESPESAS ──────────────────────
+  // ─── 6. RECRUTAMENTO E OPERAÇÃO RH ───────────────────
   {
-    id: "recruitment-expenses",
-    title: "Recrutamento e Despesas",
+    id: "recruitment-operations",
+    title: "Recrutamento e Operação RH",
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Módulos adicionais</SectionLabel>
-        <SlideTitle>Recrutamento e Despesas</SlideTitle>
-        <SlideSubtitle>Módulos que a Mercedes pediu para incluir — completam o ecossistema de gestão de pessoas.</SlideSubtitle>
+        <SlideTitle>Recrutamento e Operação RH</SlideTitle>
+        <SlideSubtitle>Módulos que a Mercedes pediu para incluir e que completam a operação de RH no dia a dia.</SlideSubtitle>
         <div className="grid grid-cols-2 gap-16 mt-8">
           <div>
-            <h3 className="text-[30px] font-medium opacity-80 mb-8">🔍 Recrutamento e Seleção</h3>
+            <h3 className="text-[30px] font-medium opacity-80 mb-8">🔍 Recrutamento, onboarding e formação</h3>
             <div className="space-y-5">
               {[
                 { title: "Portal de vagas", desc: "Publique vagas e receba candidaturas automaticamente." },
                 { title: "Pipeline visual", desc: "Acompanhe candidatos em cada etapa do processo." },
-                { title: "Avaliação colaborativa", desc: "Gestores avaliam candidatos directamente na plataforma." },
-                { title: "Onboarding automático", desc: "Candidato aprovado → colaborador configurado automaticamente." },
+                { title: "Avaliação colaborativa", desc: "Gestores avaliam candidatos diretamente na plataforma." },
+                { title: "Onboarding estruturado", desc: "Tarefas para RH, gestor, buddy e TI com prazos e lembretes." },
               ].map((f) => (
                 <div key={f.title} className="border border-white/20 p-6">
                   <h4 className="text-[22px] font-medium mb-1">{f.title}</h4>
@@ -217,13 +217,13 @@ export const slides: SlideData[] = [
             </div>
           </div>
           <div>
-            <h3 className="text-[30px] font-medium opacity-80 mb-8">💰 Gestão de Despesas</h3>
+            <h3 className="text-[30px] font-medium opacity-80 mb-8">⚙️ Operação RH e pedidos internos</h3>
             <div className="space-y-5">
               {[
-                { title: "Submissão por foto", desc: "Tire foto do recibo e a IA extrai os dados." },
-                { title: "Aprovação em cadeia", desc: "Fluxo de aprovação personalizado por valor e tipo." },
-                { title: "Categorias e políticas", desc: "Defina limites e regras por departamento." },
-                { title: "Relatórios financeiros", desc: "Visão consolidada de despesas por período e equipa." },
+                { title: "Controlo de ponto e ausências", desc: "Horas extras, banco de horas, férias e licenças com aprovação." },
+                { title: "Documentos com validade", desc: "Alertas de caducidade para BI, exames e contratos com histórico." },
+                { title: "Pedidos e tickets", desc: "Adiantamentos, declarações e solicitações com trilha de aprovação." },
+                { title: "Integrações críticas", desc: "Ligação com Primavera e compatibilidade com relógio ZKTeco." },
               ].map((f) => (
                 <div key={f.title} className="border border-white/20 p-6">
                   <h4 className="text-[22px] font-medium mb-1">{f.title}</h4>
@@ -297,9 +297,9 @@ export const slides: SlideData[] = [
             <h3 className="text-[28px] font-normal mb-8 opacity-80">O que muda na Aztech</h3>
             <div className="space-y-6">
               {[
-                { title: "Fim do trabalho manual", desc: "Processos automatizados — mais tempo para o estratégico." },
+                { title: "Fim do trabalho manual", desc: "Processos automatizados, mais tempo para o estratégico." },
                 { title: "Dados precisos", desc: "Elimine a margem de erro dos processos manuais." },
-                { title: "IA que trabalha por si", desc: "Relatórios, insights e análises — pergunte e receba." },
+                { title: "IA que trabalha por si", desc: "Relatórios, insights e análises com perguntas em linguagem natural." },
               ].map((g) => (
                 <div key={g.title} className="border border-white/15 p-8">
                   <h4 className="text-[26px] font-normal mb-2">{g.title}</h4>
@@ -321,32 +321,32 @@ export const slides: SlideData[] = [
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
         <SectionLabel>Investimento</SectionLabel>
-        <SlideTitle>Proposta comercial</SlideTitle>
+        <SlideTitle>Recomendação de investimento</SlideTitle>
 
         <div className="grid grid-cols-2 gap-16 mt-4">
           {/* Left: Pacote */}
           <div>
-            <h3 className="text-[28px] font-medium opacity-80 mb-8">Pacote Completo</h3>
+            <h3 className="text-[28px] font-medium opacity-80 mb-8">Pacote recomendado para a Aztech</h3>
             <div className="border border-foreground/20 p-10 space-y-5">
-              <p className="text-[20px] opacity-55 mb-4">Core + Performance + Engajamento + Treinamentos + Recrutamento + Despesas</p>
+              <p className="text-[20px] opacity-55 mb-4">Productivity PRO + Recrutamento (5 vagas ativas)</p>
               <div className="flex justify-between text-[22px]">
-                <span className="opacity-65">Preço por colaborador</span>
-                <span className="font-medium">$4,10/mês</span>
+                <span className="opacity-65">Productivity PRO</span>
+                <span className="font-medium">$6,25 por colaborador por mês</span>
               </div>
               <div className="flex justify-between text-[22px]">
-                <span className="opacity-65">Preço de tabela (outros mercados)</span>
-                <span className="font-medium line-through opacity-40">£7,50/mês</span>
+                <span className="opacity-65">Recrutamento (5 vagas)</span>
+                <span className="font-medium">$64,50 por mês</span>
               </div>
               <div className="flex justify-between text-[22px] border-t border-foreground/15 pt-5">
-                <span className="opacity-65">Condição especial África</span>
-                <span className="font-medium text-[20px]">✅ Aplicada</span>
+                <span className="opacity-65">Composição de módulos</span>
+                <span className="font-medium text-[20px]">Core, ponto, ausências, desempenho, formação e engajamento</span>
               </div>
             </div>
 
             <div className="border border-foreground/20 p-8 mt-6">
-              <p className="text-[20px] opacity-55 mb-4">💡 Flexibilidade de contrato</p>
+              <p className="text-[20px] opacity-55 mb-4">💡 Módulo opcional para fase 2</p>
               <p className="text-[22px] opacity-70 leading-relaxed">
-                Pode começar com um número menor de colaboradores (ex: 50) e escalar conforme a necessidade. O contrato é amarrado no mínimo.
+                Gestão de despesas pode ser adicionada depois: $44,50 fixo por mês + $3,00 por utilizador de despesas.
               </p>
             </div>
           </div>
@@ -357,19 +357,19 @@ export const slides: SlideData[] = [
             
             <div className="space-y-6">
               <div className="border border-foreground/20 p-8 text-center">
-                <p className="text-[18px] opacity-55 mb-2">Cenário piloto — 50 colaboradores</p>
-                <p className="text-[64px] font-light leading-none">$205</p>
-                <p className="text-[18px] opacity-45 mt-3">/mês · 50 × $4,10</p>
+                <p className="text-[18px] opacity-55 mb-2">Piloto com 50 colaboradores</p>
+                <p className="text-[64px] font-light leading-none">$377,00</p>
+                <p className="text-[18px] opacity-45 mt-3">por mês = (50 × $6,25) + $64,50</p>
               </div>
 
               <div className="border-2 border-foreground/30 bg-foreground/[0.06] p-8 text-center">
-                <p className="text-[18px] opacity-55 mb-2">Cenário completo — 100+ colaboradores</p>
-                <p className="text-[64px] font-light leading-none">$410</p>
-                <p className="text-[18px] opacity-45 mt-3">/mês · 100 × $4,10</p>
+                <p className="text-[18px] opacity-55 mb-2">Cenário recomendado com 100 colaboradores</p>
+                <p className="text-[64px] font-light leading-none">$689,50</p>
+                <p className="text-[18px] opacity-45 mt-3">por mês = (100 × $6,25) + $64,50</p>
               </div>
 
               <p className="text-[20px] opacity-55 text-center mt-4">
-                Pagamento em dólares · Parceiros locais disponíveis para cobrança
+                Valor anual no cenário de 100 colaboradores: $633,05 por mês equivalente
               </p>
             </div>
           </div>
@@ -416,10 +416,10 @@ export const slides: SlideData[] = [
           <div>
             <div className="space-y-6">
               {[
-                { step: "1", title: "Mercedes analisa concorrentes", desc: "Pesquisa de mercado durante as férias — até dia 27." },
-                { step: "2", title: "Reunião de retorno — Dia 29", desc: "Debater preços, funcionalidades e próximos passos." },
-                { step: "3", title: "Apresentação à diretora", desc: "Mercedes apresenta a Factorial internamente." },
-                { step: "4", title: "Definição do plano e arranque", desc: "Escolha do cenário (50 ou 100+) e início da implantação." },
+                { step: "1", title: "Validação interna da proposta", desc: "Alinhamento com direção e RH sobre módulos e orçamento." },
+                { step: "2", title: "Confirmação de escopo", desc: "Definição do arranque com 50 ou 100 colaboradores." },
+                { step: "3", title: "Kickoff de implementação", desc: "Configuração inicial dos fluxos de RH e integrações." },
+                { step: "4", title: "Entrada em produção", desc: "Operação com acompanhamento e evolução por fases." },
               ].map((p) => (
                 <div key={p.step} className="flex gap-6 items-start">
                   <div className="w-12 h-12 border border-foreground/30 flex items-center justify-center shrink-0">
@@ -440,7 +440,7 @@ export const slides: SlideData[] = [
                 Pronta para modernizar a gestão de pessoas da Aztech?
               </p>
               <a
-                href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent("Aztech — Avançar com Factorial")}&body=${encodeURIComponent("Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a Aztech.\n\nCumprimentos,\nMercedes")}`}
+                href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent("Aztech | Avançar com Factorial")}&body=${encodeURIComponent("Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a Aztech.\n\nCumprimentos,\nMercedes")}`}
                 className="inline-flex items-center gap-3 bg-foreground text-background px-10 py-5 text-[22px] font-medium hover:opacity-90 transition-opacity"
               >
                 <Mail size={22} />
