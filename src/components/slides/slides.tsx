@@ -33,10 +33,10 @@ export const slides: SlideData[] = [
         <SectionLabel>Factorial proposal</SectionLabel>
         <h1 className="text-[44px] md:text-[52px] font-light leading-[1.08] mb-4 max-w-[1200px]">{ORG}</h1>
         <p className="text-[17px] md:text-[19px] opacity-80 font-light mb-3">
-          HR operations for a distributed nonprofit — reliable attendance, clean data, and a strong mobile experience.
+          Starter Planning (Enterprise) plus Recruitment — one integrated HR workspace for your distributed team: Core, attendance, time off, shifts, and hiring.
         </p>
         <p className="text-[14px] md:text-[15px] opacity-60 font-light">
-          {SEATS} seats · ROW USD (monthly) · {DISCOUNT_PCT}% nonprofit discount (licenses, recruitment, implementation) · 5 active jobs
+          {SEATS} seats · ROW USD (monthly) · {DISCOUNT_PCT}% nonprofit discount (licenses, recruitment, implementation) · Recruitment: {PRICING_ROW_USD.recruitment.tier}
         </p>
         <div className="mt-8 flex items-center gap-4">
           <div className="w-10 h-10 border border-white/30 flex items-center justify-center">
@@ -77,10 +77,10 @@ export const slides: SlideData[] = [
           </div>
           <div className="space-y-2">
             {[
-              { icon: "📱", title: "Mobile-first", desc: "Employees should complete daily HR tasks on the phone, not only on a desktop." },
-              { icon: "🧾", title: "Clean reporting", desc: "Exports you can trust — fewer missing fields and less manual fixing." },
-              { icon: "🌍", title: "Distributed team", desc: "Consistent policies and approvals across locations and remote workers." },
-              { icon: "🤝", title: "Nonprofit footprint", desc: "Pricing designed to respect mission-driven budgets while staying enterprise-capable." },
+              { icon: "📱", title: "Mobile-first", desc: "Clock in/out, request time off, sign documents, and complete tasks from the Factorial app — built for remote workers." },
+              { icon: "🧾", title: "Complete records", desc: "Timesheets, attendance dashboards, and HR exports with the fields managers and Finance need — not half-empty reports." },
+              { icon: "🌍", title: "One system", desc: "Employee data, shifts, absences, and documents in a single place instead of spreadsheets and manual fixes." },
+              { icon: "🤝", title: "Nonprofit pricing", desc: `${DISCOUNT_PCT}% discount on licenses, recruitment, and implementation for registered nonprofits.` },
             ].map((item) => (
               <div key={item.title} className="flex gap-3 border border-foreground/15 p-3">
                 <span className="text-[22px] shrink-0">{item.icon}</span>
@@ -105,16 +105,16 @@ export const slides: SlideData[] = [
         <SectionLabel>What you asked for</SectionLabel>
         <SlideTitle>Start with core HR operations — then scale</SlideTitle>
         <SlideSubtitle>
-          You want the fundamental modules first: employee records, documentation, attendance/time tracking, time off, and recruitment — with realistic payroll handoff to your provider.
+          This proposal covers what you asked for on the call: employee records and documents, reliable remote attendance, time off, shift planning, hiring (~3–5 open roles), and clean data handoff to your payroll provider.
         </SlideSubtitle>
         <div className="grid grid-cols-2 gap-4 mt-5">
           {[
-            { icon: "👤", title: "Employee data & files", desc: "Single source of truth for contracts, IDs, and HR documents — with audit-friendly history." },
-            { icon: "⏱️", title: "Time tracking + shifts", desc: "Clock in/out that works for remote teams; shift planning when schedules matter." },
-            { icon: "🏖️", title: "Time off & approvals", desc: "Requests, policies, approvers, and a calendar everyone can trust." },
-            { icon: "📣", title: "Recruitment (≈3–5 roles)", desc: "Postings, applicants, and messaging — including channels your team already uses." },
-            { icon: "💸", title: "Payroll-ready outputs", desc: "Factorial does not run payroll checks here — it prepares the data your payroll partner needs." },
-            { icon: "📊", title: "Better operational reporting", desc: "Dashboards and exports (incl. AI-assisted reporting on your own data, where enabled)." },
+            { icon: "👤", title: "Core HR", desc: "Directory, contracts, org chart, permissions, cloud documents, and legally valid e-signatures — plus guided onboarding workflows." },
+            { icon: "⏱️", title: "Time tracking", desc: "Mobile clock-in/out with geolocation, timesheet approval, real-time attendance view, and detailed exports for control and payroll prep." },
+            { icon: "📅", title: "Shifts", desc: "Create and assign shifts (including bulk and templates), manage breaks, spot scheduling conflicts, and let employees review schedules on mobile." },
+            { icon: "🏖️", title: "Time off", desc: "Employees request leave on web or app; managers approve with policies, balances, calendars, and optional document attachments." },
+            { icon: "📣", title: "Recruitment", desc: "Career page, pipeline by hiring stage, Indeed/LinkedIn reach, email and WhatsApp with candidates, sized for about five active jobs." },
+            { icon: "💸", title: "Payroll handoff", desc: "Factorial does not process local payroll here — it centralizes time, absence, and employee change data your payroll partner can use." },
           ].map((f) => (
             <div key={f.title} className="border border-white/20 p-4">
               <span className="text-[26px] block mb-2">{f.icon}</span>
@@ -133,33 +133,57 @@ export const slides: SlideData[] = [
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-14">
-        <SectionLabel>Commercial recommendation</SectionLabel>
-        <SlideTitle>Starter Planning (ROW USD)</SlideTitle>
+        <SectionLabel>Recommended package</SectionLabel>
+        <SlideTitle>{PRICING_ROW_USD.bundleName} · Enterprise</SlideTitle>
         <SlideSubtitle>
-          Best fit for your needs on the price list: <strong className="opacity-100">Core</strong>, <strong className="opacity-100">Time Tracking</strong>,{" "}
-          <strong className="opacity-100">Time Off</strong>, and <strong className="opacity-100">Shifts</strong> — before nonprofit discount:{" "}
-          <strong className="opacity-100">${PRICING_ROW_USD.listPricePerSeatPerMonth}/seat/month</strong> (Enterprise · monthly).
+          One monthly package for {SEATS} employees: <strong className="opacity-100">Core</strong>, <strong className="opacity-100">Time Tracking</strong>,{" "}
+          <strong className="opacity-100">Time Off</strong>, and <strong className="opacity-100">Shifts</strong> — list price{" "}
+          <strong className="opacity-100">${PRICING_ROW_USD.listPricePerSeatPerMonth}/seat/month</strong> before your nonprofit discount.
         </SlideSubtitle>
         <div className="grid grid-cols-2 gap-6 mt-5">
           <div className="border border-white/20 p-5">
-            <h3 className="text-[17px] font-medium mb-3">Included in the bundle</h3>
-            <ul className="space-y-2 text-[14px] opacity-75 leading-snug">
-              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Employee platform / Core HR workspace</li>
-              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Time tracking (mobile + web)</li>
-              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Time off policies, balances, approvals</li>
-              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={16} /> Shift planning & scheduling</li>
-            </ul>
+            <h3 className="text-[17px] font-medium mb-3">What you get in the bundle</h3>
+            <div className="space-y-3 text-[13px] opacity-75 leading-snug">
+              <div>
+                <p className="font-medium opacity-90 mb-1">Core</p>
+                <ul className="space-y-1">
+                  <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> Employee directory, contracts, org chart, teams & permissions</li>
+                  <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> Cloud documents, bulk send, legally valid e-signatures</li>
+                  <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> Onboarding/offboarding workflows with tasks and file collection</li>
+                  <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> HR reports, custom reports, and payroll-ready employee change exports</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-medium opacity-90 mb-1">Time tracking & shifts</p>
+                <ul className="space-y-1">
+                  <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> Clock-in/out on mobile and web, with geolocation and optional location alerts</li>
+                  <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> Timesheet approval, real-time attendance dashboard, Excel/PDF exports</li>
+                  <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> Overtime rules, bank of hours, and shift planning with conflict warnings</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-medium opacity-90 mb-1">Time off</p>
+                <ul className="space-y-1">
+                  <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> Requests and approvals on desktop and mobile, with policy-based balances</li>
+                  <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> Team calendars, multi-level approvals, and document attachments when required</li>
+                </ul>
+              </div>
+            </div>
           </div>
           <div className="border border-white/20 p-5">
-            <h3 className="text-[17px] font-medium mb-3">Add-on in this proposal</h3>
+            <h3 className="text-[17px] font-medium mb-3">Recruitment add-on</h3>
             <p className="text-[14px] opacity-75 leading-snug mb-3">
-              <strong className="opacity-100">Recruitment — {PRICING_ROW_USD.recruitment.tier}</strong>
-              <br />
-              Fixed monthly list: <strong className="opacity-100">${PRICING_TOTALS_USD.recruitmentListPerMonth}/mo</strong> → with nonprofit discount:{" "}
-              <strong className="opacity-100">${PRICING_TOTALS_USD.recruitmentDiscountedSubtotal.toFixed(2)}/mo</strong>.
+              <strong className="opacity-100">{PRICING_ROW_USD.recruitment.tier}</strong> — applicant tracking for your typical hiring volume (~3–5 open roles).
             </p>
-            <p className="text-[12px] opacity-55 leading-snug">
-              Optional modules (Performance, Training, etc.) can be activated later.
+            <ul className="space-y-1.5 text-[13px] opacity-75 leading-snug mb-3">
+              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> Branded career page and customizable hiring stages</li>
+              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> Indeed and LinkedIn integration; one candidate pipeline</li>
+              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> Email and WhatsApp with applicants; notes and feedback per profile</li>
+              <li className="flex gap-2"><Check className="shrink-0 mt-0.5" size={14} /> Move hired candidates into Core onboarding (data, documents, tasks)</li>
+            </ul>
+            <p className="text-[12px] opacity-55 leading-snug border-t border-white/15 pt-3">
+              List <strong className="opacity-80">${PRICING_TOTALS_USD.recruitmentListPerMonth}/mo</strong> → nonprofit:{" "}
+              <strong className="opacity-80">${PRICING_TOTALS_USD.recruitmentDiscountedSubtotal.toFixed(2)}/mo</strong>
             </p>
           </div>
         </div>
@@ -176,13 +200,13 @@ export const slides: SlideData[] = [
         <SectionLabel>Experience</SectionLabel>
         <SlideTitle>Built for employees on their phones</SlideTitle>
         <SlideSubtitle>
-          Your team is remote — the HR experience should feel as easy as any consumer app: clock in/out, request time off, sign documents, and see what requires action in one inbox.
+          Remote employees use the Factorial app for daily HR: clock in/out with geolocation, request and track time off, sign documents, and complete onboarding tasks from one inbox.
         </SlideSubtitle>
         <div className="grid grid-cols-3 gap-4 mt-5">
           {[
-            { title: "One login, permission-based", desc: "HR/Admin sees everything; employees see only what they should — no separate “manager licenses” required." },
-            { title: "Works without a desk", desc: "Managers can approve on mobile; employees can complete tasks without a corporate machine." },
-            { title: "Optional geo controls", desc: "If needed, geofencing can help validate clock-in locations for roles that require it." },
+            { title: "One login, role-based access", desc: "HR sees the full picture; managers approve what they own; employees see only their data — no extra license types." },
+            { title: "Tasks in one inbox", desc: "Signatures, time-off reviews, document uploads, and onboarding steps appear as actionable tasks on mobile." },
+            { title: "Location-aware attendance", desc: "Assign work locations per employee; optional geofencing alerts help validate remote clock-ins when you need control." },
           ].map((x) => (
             <div key={x.title} className="border border-foreground/15 p-4">
               <h3 className="text-[15px] font-medium mb-1.5">{x.title}</h3>
@@ -202,13 +226,15 @@ export const slides: SlideData[] = [
       <div className="flex flex-col justify-center h-full px-14">
         <SectionLabel>Operations</SectionLabel>
         <SlideTitle>Attendance you can prove — reports you can export</SlideTitle>
-        <SlideSubtitle>Fix the gap you felt in the previous system: missing fields, weak exports, and unreliable sign-in flows.</SlideSubtitle>
+        <SlideSubtitle>
+          Replace unreliable sign-ins and incomplete reports with validated timesheets, live attendance visibility, and exports your Finance team can use.
+        </SlideSubtitle>
         <div className="grid grid-cols-2 gap-4 mt-4">
           {[
-            { icon: "📅", title: "Shifts + attendance together", desc: "Plan shifts, track attendance, and resolve exceptions with clear approvals." },
-            { icon: "📥", title: "Exports (Excel / PDF)", desc: "Download structured time tracking reports for internal control and payroll prep." },
-            { icon: "🧠", title: "AI on your company data", desc: "Ask operational questions against your own dataset (availability varies by workspace)." },
-            { icon: "✅", title: "Approval workflows", desc: "Time off, overtime/banks of hours (where configured), and audit-friendly trails." },
+            { icon: "📅", title: "Shifts linked to attendance", desc: "Plan and assign shifts (templates, bulk edits, breaks), see conflicts early, and align absences with the schedule." },
+            { icon: "📥", title: "Timesheets & exports", desc: "Approve timesheets, autofill where configured, and export detailed attendance to Excel or PDF." },
+            { icon: "📊", title: "Live attendance view", desc: "See who clocked in, who is missing, work location, and breaks — in real time for managers." },
+            { icon: "⏱️", title: "Overtime & bank of hours", desc: "Configure overtime and special-hour rules; balance extra time with policies you define." },
           ].map((f) => (
             <div key={f.title} className="flex gap-3 border border-white/20 p-4">
               <span className="text-[24px] shrink-0">{f.icon}</span>
@@ -232,15 +258,16 @@ export const slides: SlideData[] = [
         <SectionLabel>Compliance & onboarding</SectionLabel>
         <SlideTitle>Documents, e-signatures, and structured onboarding</SlideTitle>
         <SlideSubtitle>
-          Send policies in bulk, collect signatures, and run onboarding tasks so new hires upload IDs and complete onboarding steps in a guided flow.
+          Centralize HR files in the cloud, collect legally valid e-signatures, and run structured onboarding so new hires submit IDs and complete tasks without email chaos.
         </SlideSubtitle>
         <div className="grid grid-cols-2 gap-6 mt-5">
           <div className="space-y-2">
             {[
-              "Bulk document distribution with tracking",
-              "Fillable PDFs where needed",
-              "Employee inbox for tasks (sign, upload, acknowledge)",
-              "Audit trail for sensitive HR documents",
+              "Employee directory, contracts, and org chart in one workspace",
+              "Send, sign, and track documents in bulk (desktop and mobile)",
+              "Guided onboarding/offboarding workflows with assigned tasks",
+              "Super-task to collect employee IDs and required files into the right folders",
+              "Custom roles and permissions — control who sees and approves what",
             ].map((t) => (
               <div key={t} className="flex items-start gap-2 border border-white/15 p-3">
                 <Check size={16} className="shrink-0 mt-0.5 opacity-70" />
@@ -251,7 +278,7 @@ export const slides: SlideData[] = [
           <div className="border border-white/20 p-5">
             <h3 className="text-[16px] font-medium mb-2">From “offer accepted” to “ready to work”</h3>
             <p className="text-[13px] opacity-65 leading-snug">
-              Keep recruitment and onboarding connected: signing the offer, collecting personal data, assigning mandatory training reads, and requesting file uploads into the right folders.
+              After you hire in Recruitment, onboarding picks up automatically: offer and personal data collection, document signatures, and file uploads — so the new employee is ready to clock in and request time off on day one.
             </p>
           </div>
         </div>
@@ -266,15 +293,15 @@ export const slides: SlideData[] = [
     content: (
       <div className="flex flex-col justify-center h-full px-14">
         <SectionLabel>Talent acquisition</SectionLabel>
-        <SlideTitle>Recruitment with jobs postings and candidate experience</SlideTitle>
+        <SlideTitle>Recruitment built for your hiring rhythm</SlideTitle>
         <SlideSubtitle>
-          Publish roles, capture applicants, and communicate by email — plus channels like WhatsApp where your team hires day-to-day.
+          Publish roles, manage candidates in one ATS, and reach people on Indeed, LinkedIn, email, or WhatsApp — sized for about five active jobs at a time.
         </SlideSubtitle>
         <div className="grid grid-cols-3 gap-4 mt-5">
           {[
-            { title: "Job board + landing links", desc: "Share a clean careers URL (also useful if candidates don’t arrive via a job board)." },
-            { title: "Indeed / LinkedIn direction", desc: "Bring applicants into one pipeline with consistent screening steps." },
-            { title: "5 active jobs package", desc: "Sized for your typical hiring volume; upgrade tiers only if recruiting scales up." },
+            { title: "Career page & job posts", desc: "Branded careers URL, customizable application forms, and job catalog aligned with your teams." },
+            { title: "Indeed & LinkedIn", desc: "Bring applicants into one pipeline with tags, notes, and hiring stages your managers can follow." },
+            { title: "Candidate communication", desc: "Email from Factorial, WhatsApp outreach, and hiring metrics (time-to-hire, sources, funnel)." },
           ].map((x) => (
             <div key={x.title} className="border border-foreground/15 p-4">
               <h3 className="text-[15px] font-medium mb-1">{x.title}</h3>
@@ -301,9 +328,10 @@ export const slides: SlideData[] = [
           <div className="border border-white/20 p-5">
             <h3 className="text-[16px] font-medium mb-2">What Factorial covers</h3>
             <ul className="text-[13px] opacity-75 space-y-1.5 leading-snug">
-              <li>• Salaries and compensation data (as configured)</li>
-              <li>• Time off/absences and time tracking outputs</li>
-              <li>• Exports matched to your payroll provider layout (project milestone)</li>
+              <li>• Contract and employee updates that affect payroll</li>
+              <li>• Time tracking, absences, overtime, and bank-of-hours outputs</li>
+              <li>• Guided payroll cycle collaboration and exports to compatible payroll tools</li>
+              <li>• Custom reports and employee change exports for your provider’s format</li>
             </ul>
           </div>
           <div className="border border-white/20 p-5">
@@ -452,9 +480,9 @@ export const slides: SlideData[] = [
             <h3 className="text-[16px] font-normal mb-3 opacity-80">Why this matches your priorities</h3>
             <div className="space-y-2">
               {[
-                { title: "Mobile workflows", desc: "Employees can execute HR tasks without depending on a desktop machine." },
-                { title: "Operational reliability", desc: "Designed to reduce missing fields and inconsistent exports vs. manual spreadsheets." },
-                { title: "Recruitment connectivity", desc: "Keep hiring structured while staying practical for day-to-day messaging." },
+                { title: "Remote attendance", desc: "Mobile clock-in with geolocation, timesheet approval, and attendance exports." },
+                { title: "Core HR in one place", desc: "Directory, documents, e-signatures, and onboarding linked to time and hiring." },
+                { title: "Hiring that fits your volume", desc: "Career page, Indeed/LinkedIn, and WhatsApp-friendly candidate follow-up." },
               ].map((g) => (
                 <div key={g.title} className="border border-white/15 p-4">
                   <h4 className="text-[14px] font-normal mb-1">{g.title}</h4>
@@ -508,8 +536,8 @@ export const slides: SlideData[] = [
             <p className="text-[11px] uppercase tracking-widest opacity-50 mb-2">During implementation</p>
             <h3 className="text-[17px] font-medium mb-3">Dedicated Onboarding Specialist</h3>
             <p className="text-[13px] opacity-70 leading-snug mb-4">
-              From kickoff to go-live, a <strong className="opacity-100">Factorial Onboarding Specialist</strong> runs your setup:
-              policies, approvals, time tracking, documents, recruiting basics, and handoff to payroll-friendly exports.
+              From kickoff to go-live, a <strong className="opacity-100">Factorial Onboarding Specialist</strong> configures your Starter Planning modules:
+              Core (directory, documents, workflows), Time Tracking, Time Off, Shifts, Recruitment basics, and payroll-ready exports.
             </p>
             <ul className="space-y-2 text-[12px] opacity-75">
               <li className="flex gap-2"><Check size={14} className="shrink-0 mt-0.5 opacity-70" /> One <strong>live session per week</strong></li>
