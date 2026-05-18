@@ -4,7 +4,11 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
+// GitHub Project Pages URL: /<repo>/
+const repoBase = "/therighteousfoundation/";
+
 export default defineConfig(({ mode }) => ({
+  base: repoBase,
   server: {
     host: "::",
     port: 8080,

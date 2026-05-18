@@ -72,9 +72,9 @@ const SlidePresenter = () => {
     return (
       <div className="min-h-screen bg-primary text-primary-foreground p-4 md:p-8">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg md:text-xl font-light">Todos os slides</h2>
+          <h2 className="text-lg md:text-xl font-light">All slides</h2>
           <button onClick={() => setShowGrid(false)} className="text-sm opacity-60 hover:opacity-100 transition-opacity">
-            Fechar
+            Close
           </button>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
@@ -149,13 +149,13 @@ const SlidePresenter = () => {
             onClick={prev}
             disabled={current === 0}
             className="absolute left-0 top-0 bottom-0 w-1/4 z-10 lg:hidden disabled:hidden"
-            aria-label="Slide anterior"
+            aria-label="Previous slide"
           />
           <button
             onClick={next}
             disabled={current === slides.length - 1}
             className="absolute right-0 top-0 bottom-0 w-1/4 z-10 lg:hidden disabled:hidden"
-            aria-label="Próximo slide"
+            aria-label="Next slide"
           />
         </div>
       </div>

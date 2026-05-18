@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Check, Mail } from "lucide-react";
-
+import { CLIENT, PRICING_ROW_USD, PRICING_TOTALS_USD } from "@/utils/constants";
 
 interface SlideData {
   id: string;
@@ -21,23 +21,22 @@ const SlideSubtitle = ({ children }: { children: ReactNode }) => (
   <p className="text-[36px] opacity-80 font-light leading-relaxed max-w-[1200px]">{children}</p>
 );
 
+const { seatCount: SEATS, licenseDiscountPercent: DISCOUNT_PCT, organizationName: ORG } = CLIENT;
+
 export const slides: SlideData[] = [
-  // ─── 1. CAPA ───────────────────────────────────────────
   {
     id: "cover",
-    title: "Capa",
+    title: "Cover",
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Proposta Factorial</SectionLabel>
-        <h1 className="text-[96px] font-light leading-[1.1] mb-8 max-w-[1500px]">
-          Aztech
-        </h1>
+        <SectionLabel>Factorial proposal</SectionLabel>
+        <h1 className="text-[96px] font-light leading-[1.1] mb-8 max-w-[1500px]">{ORG}</h1>
         <p className="text-[36px] opacity-80 font-light mb-6">
-          Gestão de pessoas moderna, com dados reais e automação inteligente
+          HR operations for a distributed nonprofit — reliable attendance, clean data, and a strong mobile experience.
         </p>
         <p className="text-[26px] opacity-60 font-light">
-          Automatização com Primavera, integração ZKTeco para ponto e substituição de Excel por indicadores de RH e relatórios.
+          {SEATS} seats · ROW USD (monthly) · {DISCOUNT_PCT}% nonprofit license discount · Recruitment (5 active jobs)
         </p>
         <div className="mt-16 flex items-center gap-6">
           <div className="w-12 h-12 border border-white/30 flex items-center justify-center">
@@ -45,41 +44,42 @@ export const slides: SlideData[] = [
           </div>
           <div>
             <p className="text-[22px] opacity-70">Victor Gutierrez</p>
-            <p className="text-[18px] opacity-50">Gerente de Expansão · Factorial</p>
+            <p className="text-[18px] opacity-50">Business Development · Factorial</p>
           </div>
         </div>
       </div>
     ),
   },
 
-  // ─── 2. QUEM É A AZTECH ──────────────────────────────
   {
     id: "context",
-    title: "Contexto",
+    title: "Context",
     bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Contexto</SectionLabel>
-        <SlideTitle>Conhecemos a Aztech</SlideTitle>
+        <SectionLabel>Context</SectionLabel>
+        <SlideTitle>Why Righteous Foundation is looking for a new HR system</SlideTitle>
         <div className="grid grid-cols-2 gap-16 mt-4">
           <div>
             <p className="text-[26px] opacity-70 leading-[1.7] mb-8">
-              A Aztech, em Angola, está a reforçar a gestão de pessoas e o desenvolvimento organizacional, com foco em dados confiáveis e satisfação dos clientes.
+              Your team works <strong className="opacity-100">across the country, mostly remote</strong>. The previous HR tool had a{" "}
+              <strong className="opacity-100">weak mobile experience</strong>, and key workflows — especially{" "}
+              <strong className="opacity-100">reports and attendance</strong> — were unreliable.
             </p>
             <p className="text-[26px] opacity-70 leading-[1.7] mb-8">
-              Com <strong className="opacity-100">180 colaboradores</strong> e mais de <strong className="opacity-100">100 contratos ativos</strong>, a equipa precisa de processos mais rápidos, padronizados e com menos retrabalho.
+              You moved to <strong className="opacity-100">manual processes</strong> to keep control, but that creates extra work, gaps, and errors when you need trustworthy records for managers and Finance/Payroll.
             </p>
             <p className="text-[26px] opacity-70 leading-[1.7]">
-              Hoje, grande parte da operação é manual e a <strong className="opacity-100">margem de erro é alta</strong>. A prioridade principal é <strong className="opacity-100">ganhar tempo</strong> sem perder controlo.
+              As a <strong className="opacity-100">registered nonprofit</strong>, Factorial can align pricing through a nonprofit program — in this proposal:{" "}
+              <strong className="opacity-100">{DISCOUNT_PCT}% off Factorial licenses</strong>.
             </p>
           </div>
           <div className="space-y-5">
             {[
-              { icon: "⏱️", title: "Tempo é a prioridade", desc: "Automatizar o operacional para focar no estratégico." },
-              { icon: "📊", title: "Dados realistas", desc: "Eliminar margem de erro dos processos manuais." },
-              { icon: "😊", title: "Satisfação do cliente", desc: "KPI principal: satisfação e feedback contínuo." },
-              { icon: "👥", title: "180 colaboradores", desc: "Escala que exige operação padronizada e automação contínua." },
-              { icon: "🔄", title: "Reuniões 2x por semana", desc: "Gestores e colaboradores em contacto frequente." },
+              { icon: "📱", title: "Mobile-first", desc: "Employees should complete daily HR tasks on the phone, not only on a desktop." },
+              { icon: "🧾", title: "Clean reporting", desc: "Exports you can trust — fewer missing fields and less manual fixing." },
+              { icon: "🌍", title: "Distributed team", desc: "Consistent policies and approvals across locations and remote workers." },
+              { icon: "🤝", title: "Nonprofit footprint", desc: "Pricing designed to respect mission-driven budgets while staying enterprise-capable." },
             ].map((item) => (
               <div key={item.title} className="flex gap-5 border border-foreground/15 p-5">
                 <span className="text-[30px] shrink-0">{item.icon}</span>
@@ -95,24 +95,25 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 3. INTEGRAÇÕES CRÍTICAS ─────────────────────
   {
-    id: "critical-integrations",
-    title: "Integrações Críticas",
+    id: "priorities",
+    title: "Priorities",
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Como funciona na prática</SectionLabel>
-        <SlideTitle>Primavera fica. ZKTeco fica. A Factorial conecta tudo.</SlideTitle>
-        <SlideSubtitle>Este foi o momento wow da Mercedes: resolver a dor central sem trocar o que já funciona.</SlideSubtitle>
-        <div className="grid grid-cols-3 gap-8 mt-10">
+        <SectionLabel>What you asked for</SectionLabel>
+        <SlideTitle>Start with core HR operations — then scale</SlideTitle>
+        <SlideSubtitle>
+          You want the fundamental modules first: employee records, documentation, attendance/time tracking, time off, and recruitment — with realistic payroll handoff to your provider.
+        </SlideSubtitle>
+        <div className="grid grid-cols-2 gap-10 mt-10">
           {[
-            { icon: "⏱️", title: "Ponto com ZKTeco", desc: "Picagens do relógio e da app entram no fluxo de RH sem retrabalho manual." },
-            { icon: "✅", title: "Horas extra e ausências", desc: "Pedidos com aprovação por hierarquia e notificações automáticas para gestores." },
-            { icon: "💼", title: "Integração com Primavera", desc: "Horas, ausências e eventos críticos chegam ao payroll com consistência." },
-            { icon: "🔁", title: "Sem trocar equipamento", desc: "A Aztech mantém o relógio atual e aproveita o investimento já feito." },
-            { icon: "📄", title: "Documentos e caducidade", desc: "Alertas de BI, exames e contratos para não perder prazos legais." },
-            { icon: "📊", title: "Indicadores e relatórios", desc: "Saída em Excel e PDF para defender decisões com dados confiáveis." },
+            { icon: "👤", title: "Employee data & files", desc: "Single source of truth for contracts, IDs, and HR documents — with audit-friendly history." },
+            { icon: "⏱️", title: "Time tracking + shifts", desc: "Clock in/out that works for remote teams; shift planning when schedules matter." },
+            { icon: "🏖️", title: "Time off & approvals", desc: "Requests, policies, approvers, and a calendar everyone can trust." },
+            { icon: "📣", title: "Recruitment (≈3–5 roles)", desc: "Postings, applicants, and messaging — including channels your team already uses." },
+            { icon: "💸", title: "Payroll-ready outputs", desc: "Factorial does not run payroll checks here — it prepares the data your payroll partner needs." },
+            { icon: "📊", title: "Better operational reporting", desc: "Dashboards and exports (incl. AI-assisted reporting on your own data, where enabled)." },
           ].map((f) => (
             <div key={f.title} className="border border-white/20 p-8">
               <span className="text-[36px] block mb-4">{f.icon}</span>
@@ -125,31 +126,65 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 4. ENGAJAMENTO E CLIMA ──────────────────────────
   {
-    id: "engagement",
-    title: "Engajamento e Clima",
+    id: "recommended-package",
+    title: "Package",
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Módulo</SectionLabel>
-        <SlideTitle>Engajamento e Clima</SlideTitle>
-        <SlideSubtitle>Meça a satisfação, identifique rotatividade e atue com dados. Exatamente o que a Aztech precisa.</SlideSubtitle>
-        <div className="grid grid-cols-3 gap-6 mt-10">
+        <SectionLabel>Commercial recommendation</SectionLabel>
+        <SlideTitle>Starter Planning (ROW USD)</SlideTitle>
+        <SlideSubtitle>
+          Best fit for your needs on the price list: <strong className="opacity-100">Core</strong>, <strong className="opacity-100">Time Tracking</strong>,{" "}
+          <strong className="opacity-100">Time Off</strong>, and <strong className="opacity-100">Shifts</strong> — before nonprofit discount:{" "}
+          <strong className="opacity-100">${PRICING_ROW_USD.listPricePerSeatPerMonth}/seat/month</strong> (Business · monthly).
+        </SlideSubtitle>
+        <div className="grid grid-cols-2 gap-16 mt-10">
+          <div className="border border-white/20 p-10">
+            <h3 className="text-[28px] font-medium mb-6">Included in the bundle</h3>
+            <ul className="space-y-4 text-[22px] opacity-75 leading-relaxed">
+              <li className="flex gap-3"><Check className="shrink-0 mt-1" size={22} /> Employee platform / Core HR workspace</li>
+              <li className="flex gap-3"><Check className="shrink-0 mt-1" size={22} /> Time tracking (mobile + web)</li>
+              <li className="flex gap-3"><Check className="shrink-0 mt-1" size={22} /> Time off policies, balances, approvals</li>
+              <li className="flex gap-3"><Check className="shrink-0 mt-1" size={22} /> Shift planning & scheduling</li>
+            </ul>
+          </div>
+          <div className="border border-white/20 p-10">
+            <h3 className="text-[28px] font-medium mb-6">Add-on in this proposal</h3>
+            <p className="text-[22px] opacity-75 leading-relaxed mb-6">
+              <strong className="opacity-100">Recruitment — {PRICING_ROW_USD.recruitment.tier}</strong>
+              <br />
+              Priced as a <strong className="opacity-100">fixed monthly</strong> subscription (not per seat). Matches your typical hiring volume (around 3–5 open roles at a time).
+            </p>
+            <p className="text-[20px] opacity-55">
+              Optional modules (Performance, Training, Surveys/Engagement, etc.) can be activated later without changing the core story of phase 1.
+            </p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+
+  {
+    id: "mobile-remote",
+    title: "Mobile",
+    bg: "light",
+    content: (
+      <div className="flex flex-col justify-center h-full px-[120px]">
+        <SectionLabel>Experience</SectionLabel>
+        <SlideTitle>Built for employees on their phones</SlideTitle>
+        <SlideSubtitle>
+          Your team is remote — the HR experience should feel as easy as any consumer app: clock in/out, request time off, sign documents, and see what requires action in one inbox.
+        </SlideSubtitle>
+        <div className="grid grid-cols-3 gap-8 mt-10">
           {[
-            { icon: "🌡️", title: "Pesquisa de clima", desc: "Pulse surveys automatizadas para medir o sentimento da equipa." },
-            { icon: "📈", title: "NPS interno", desc: "Net Promoter Score dos colaboradores com histórico por equipa." },
-            { icon: "🔄", title: "Rotatividade", desc: "Acompanhe e analise taxas de turnover por equipa." },
-            { icon: "💬", title: "Feedback contínuo", desc: "Recolha feedback e crie planos de ação de melhoria." },
-            { icon: "🤖", title: "Análise com IA", desc: "Pergunte à IA: 'Por que a rotatividade está alta?' e receba relatórios." },
-            { icon: "📊", title: "Dashboards em tempo real", desc: "Dados de satisfação sempre actualizados e acessíveis." },
-          ].map((f) => (
-            <div key={f.title} className="border border-white/20 p-6">
-              <div className="flex items-center gap-4 mb-2">
-                <span className="text-[28px]">{f.icon}</span>
-                <h3 className="text-[22px] font-medium">{f.title}</h3>
-              </div>
-              <p className="text-[19px] opacity-60 leading-relaxed">{f.desc}</p>
+            { title: "One login, permission-based", desc: "HR/Admin sees everything; employees see only what they should — no separate “manager licenses” required." },
+            { title: "Works without a desk", desc: "Managers can approve on mobile; employees can complete tasks without a corporate machine." },
+            { title: "Optional geo controls", desc: "If needed, geofencing can help validate clock-in locations for roles that require it." },
+          ].map((x) => (
+            <div key={x.title} className="border border-foreground/15 p-8">
+              <h3 className="text-[24px] font-medium mb-3">{x.title}</h3>
+              <p className="text-[20px] opacity-60 leading-relaxed">{x.desc}</p>
             </div>
           ))}
         </div>
@@ -157,27 +192,24 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 5. TREINAMENTOS ─────────────────────────────────
   {
-    id: "training",
-    title: "Treinamentos",
-    bg: "light",
+    id: "attendance-reporting",
+    title: "Attendance",
+    bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Módulo</SectionLabel>
-        <SlideTitle>Treinamentos</SlideTitle>
-        <SlideSubtitle>Profissionalize a capacitação da equipa com cursos rastreáveis e certificações automáticas.</SlideSubtitle>
-        <div className="grid grid-cols-2 gap-10 mt-6">
+        <SectionLabel>Operations</SectionLabel>
+        <SlideTitle>Attendance you can prove — reports you can export</SlideTitle>
+        <SlideSubtitle>Fix the gap you felt in the previous system: missing fields, weak exports, and unreliable sign-in flows.</SlideSubtitle>
+        <div className="grid grid-cols-2 gap-10 mt-8">
           {[
-            { icon: "🎓", title: "Catálogo de cursos", desc: "Crie e organize cursos internos e externos." },
-            { icon: "📊", title: "Progresso rastreável", desc: "Acompanhe quem completou cada treinamento." },
-            { icon: "📜", title: "Certificações", desc: "Emita certificados automáticos ao concluir cursos." },
-            { icon: "📅", title: "Agendamento integrado", desc: "Sessões de treino no calendário do colaborador." },
-            { icon: "💰", title: "Controlo de custos", desc: "Monitorize investimento em formação por equipa." },
-            { icon: "🤖", title: "Recomendações IA", desc: "A IA sugere treinamentos com base no desempenho." },
+            { icon: "📅", title: "Shifts + attendance together", desc: "Plan shifts, track attendance, and resolve exceptions with clear approvals." },
+            { icon: "📥", title: "Exports (Excel / PDF)", desc: "Download structured time tracking reports for internal control and payroll prep." },
+            { icon: "🧠", title: "AI on your company data", desc: "Ask operational questions against your own dataset to speed up analysis (availability varies by workspace settings)." },
+            { icon: "✅", title: "Approval workflows", desc: "Time off, overtime/banks of hours (where configured), and audit-friendly trails." },
           ].map((f) => (
-            <div key={f.title} className="flex gap-5 border border-foreground/15 p-8">
-              <span className="text-[32px] shrink-0">{f.icon}</span>
+            <div key={f.title} className="flex gap-5 border border-white/20 p-8">
+              <span className="text-[34px] shrink-0">{f.icon}</span>
               <div>
                 <h4 className="text-[24px] font-medium mb-2">{f.title}</h4>
                 <p className="text-[20px] opacity-60 leading-relaxed">{f.desc}</p>
@@ -189,49 +221,160 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 6. RECRUTAMENTO E OPERAÇÃO RH ───────────────────
   {
-    id: "recruitment-operations",
-    title: "Recrutamento e Operação RH",
+    id: "documents-onboarding",
+    title: "Documents",
+    bg: "dark",
+    content: (
+      <div className="flex flex-col justify-center h-full px-[120px]">
+        <SectionLabel>Compliance & onboarding</SectionLabel>
+        <SlideTitle>Documents, e-signatures, and structured onboarding</SlideTitle>
+        <SlideSubtitle>
+          Send policies in bulk, collect signatures, and run onboarding tasks so new hires upload IDs and complete onboarding steps in a guided flow.
+        </SlideSubtitle>
+        <div className="grid grid-cols-2 gap-12 mt-10">
+          <div className="space-y-5">
+            {[
+              "Bulk document distribution with tracking",
+              "Fillable PDFs where needed",
+              "Employee inbox for tasks (sign, upload, acknowledge)",
+              "Audit trail for sensitive HR documents",
+            ].map((t) => (
+              <div key={t} className="flex items-start gap-4 border border-white/15 p-6">
+                <Check size={22} className="shrink-0 mt-1 opacity-70" />
+                <p className="text-[22px] opacity-80">{t}</p>
+              </div>
+            ))}
+          </div>
+          <div className="border border-white/20 p-10">
+            <h3 className="text-[26px] font-medium mb-4">From “offer accepted” to “ready to work”</h3>
+            <p className="text-[20px] opacity-65 leading-relaxed">
+              Keep recruitment and onboarding connected: signing the offer, collecting personal data, assigning mandatory training reads, and requesting file uploads into the right folders.
+            </p>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+
+  {
+    id: "recruitment",
+    title: "Recruitment",
+    bg: "light",
+    content: (
+      <div className="flex flex-col justify-center h-full px-[120px]">
+        <SectionLabel>Talent acquisition</SectionLabel>
+        <SlideTitle>Recruitment with jobs postings and candidate experience</SlideTitle>
+        <SlideSubtitle>
+          Publish roles, capture applicants, and communicate by email — plus channels like WhatsApp where your team hires day-to-day.
+        </SlideSubtitle>
+        <div className="grid grid-cols-3 gap-8 mt-10">
+          {[
+            { title: "Job board + landing links", desc: "Share a clean careers URL (also useful if candidates don’t arrive via a job board)." },
+            { title: "Indeed / LinkedIn direction", desc: "Bring applicants into one pipeline with consistent screening steps." },
+            { title: "5 active jobs package", desc: "Sized for your typical hiring volume; upgrade tiers only if recruiting scales up." },
+          ].map((x) => (
+            <div key={x.title} className="border border-foreground/15 p-8">
+              <h3 className="text-[24px] font-medium mb-3">{x.title}</h3>
+              <p className="text-[20px] opacity-60 leading-relaxed">{x.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ),
+  },
+
+  {
+    id: "payroll",
+    title: "Payroll",
     bg: "neutral",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Escopo da proposta</SectionLabel>
-        <SlideTitle>Pacote base e módulos prioritários</SlideTitle>
-        <SlideSubtitle>A recomendação abaixo reflete os must have da Aztech para operar RH com automação e integração real.</SlideSubtitle>
-        <div className="grid grid-cols-2 gap-16 mt-8">
+        <SectionLabel>Finance handoff</SectionLabel>
+        <SlideTitle>Factorial prepares payroll inputs — your payroll partner runs payroll</SlideTitle>
+        <SlideSubtitle>
+          If you want fully processed payslips inside the same system, Factorial is not positioned as the payroll engine in this scope. If you’re open to a best-in-class HR hub + payroll partner, Factorial fits cleanly.
+        </SlideSubtitle>
+        <div className="grid grid-cols-2 gap-12 mt-10">
+          <div className="border border-white/20 p-10">
+            <h3 className="text-[26px] font-medium mb-4">What Factorial covers</h3>
+            <ul className="text-[21px] opacity-75 space-y-3">
+              <li>• Salaries and compensation data (as configured)</li>
+              <li>• Time off/absences and time tracking outputs</li>
+              <li>• Exports matched to your payroll provider layout (project milestone)</li>
+            </ul>
+          </div>
+          <div className="border border-white/20 p-10">
+            <h3 className="text-[26px] font-medium mb-4">What your payroll partner keeps</h3>
+            <ul className="text-[21px] opacity-75 space-y-3">
+              <li>• Payslip generation and statutory compliance execution</li>
+              <li>• Final bank file / local regulatory filings (as applicable)</li>
+              <li>• Authoritative accounting entries (depending on your finance stack)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+
+  {
+    id: "investment",
+    title: "Investment",
+    bg: "light",
+    content: (
+      <div className="flex flex-col justify-center h-full px-[120px]">
+        <SectionLabel>Investment</SectionLabel>
+        <SlideTitle>Monthly estimate (ROW USD · monthly billing)</SlideTitle>
+
+        <div className="grid grid-cols-2 gap-16 mt-4">
           <div>
-            <h3 className="text-[30px] font-medium opacity-80 mb-8">📌 Pacote base obrigatório</h3>
-            <div className="space-y-5">
-              {[
-                { title: "Core RH e base de colaboradores", desc: "Registo único com dados contratuais, histórico e indicadores de RH." },
-                { title: "Ausências e férias", desc: "Pedidos, aprovações e regras por política com rastreabilidade completa." },
-                { title: "Ponto com ZKTeco", desc: "Picagem integrada para automatizar banco de horas e horas extra." },
-                { title: "Documentos e alertas", desc: "Validades de BI, exames médicos e contratos com alertas configuráveis." },
-                { title: "Integração com Primavera", desc: "Envio de ausências, horas e eventos para processamento salarial." },
-              ].map((f) => (
-                <div key={f.title} className="border border-white/20 p-6">
-                  <h4 className="text-[22px] font-medium mb-1">{f.title}</h4>
-                  <p className="text-[19px] opacity-60">{f.desc}</p>
-                </div>
-              ))}
+            <h3 className="text-[28px] font-medium opacity-80 mb-8">Bundle + add-on</h3>
+            <div className="border border-foreground/20 p-10 space-y-5">
+              <div className="flex justify-between text-[22px]">
+                <span className="opacity-65">{PRICING_ROW_USD.bundleName} ({SEATS} × ${PRICING_ROW_USD.listPricePerSeatPerMonth})</span>
+                <span className="font-medium">${PRICING_TOTALS_USD.licenseListSubtotal.toFixed(2)}/mo</span>
+              </div>
+              <div className="flex justify-between text-[22px] text-emerald-700 dark:text-emerald-400">
+                <span className="opacity-80">Nonprofit license discount ({DISCOUNT_PCT}%)</span>
+                <span className="font-medium">−${(PRICING_TOTALS_USD.licenseListSubtotal - PRICING_TOTALS_USD.licenseDiscountedSubtotal).toFixed(2)}/mo</span>
+              </div>
+              <div className="flex justify-between text-[22px] border-t border-foreground/15 pt-5">
+                <span className="opacity-65">Licenses after discount</span>
+                <span className="font-medium">${PRICING_TOTALS_USD.licenseDiscountedSubtotal.toFixed(2)}/mo</span>
+              </div>
+              <div className="flex justify-between text-[22px]">
+                <span className="opacity-65">Recruitment ({PRICING_ROW_USD.recruitment.tier}) — fixed</span>
+                <span className="font-medium">${PRICING_ROW_USD.recruitment.fixedPerMonth.toFixed(2)}/mo</span>
+              </div>
+              <div className="border-t border-foreground/15 pt-5 space-y-2">
+                <p className="text-[20px] opacity-55">Discount applies to Factorial per-seat licenses; recruitment is priced separately.</p>
+              </div>
             </div>
           </div>
+
           <div>
-            <h3 className="text-[30px] font-medium opacity-80 mb-8">🚀 Add ons prioritários</h3>
-            <div className="space-y-5">
-              {[
-                { title: "Avaliação de desempenho 180 e 360", desc: "Ciclos completos ligados a objetivos e evolução de cada colaborador." },
-                { title: "Formação", desc: "Planos de desenvolvimento por função com acompanhamento de progresso." },
-                { title: "Recrutamento e onboarding", desc: "Pipeline de vagas com entrada estruturada dos novos colaboradores." },
-                { title: "Pedidos internos e inquéritos", desc: "Tickets de RH e pesquisas de clima para melhorar experiência da equipa." },
-                { title: "IA como diferencial", desc: "Relatórios e assistente para produtividade sem inflacionar o custo total." },
-              ].map((f) => (
-                <div key={f.title} className="border border-white/20 p-6">
-                  <h4 className="text-[22px] font-medium mb-1">{f.title}</h4>
-                  <p className="text-[19px] opacity-60">{f.desc}</p>
+            <h3 className="text-[28px] font-medium opacity-80 mb-8">Totals</h3>
+            <div className="space-y-6">
+              <div className="border-2 border-foreground/30 bg-foreground/[0.06] p-8 text-center">
+                <p className="text-[18px] opacity-55 mb-2">Estimated monthly subscription</p>
+                <p className="text-[74px] font-light leading-none">${PRICING_TOTALS_USD.monthlyTotal.toFixed(2)}</p>
+                <p className="text-[18px] opacity-45 mt-3">per month · USD · excluding taxes/fees if applicable</p>
+              </div>
+
+              <div className="border border-foreground/20 p-8">
+                <p className="text-[22px] opacity-75 mb-4">Implementation (one-time)</p>
+                <div className="space-y-3 text-[21px]">
+                  <p className="flex justify-between">
+                    <span className="opacity-70">Guided setup (~5 hours) — indicative</span>
+                    <span className="font-medium">${PRICING_TOTALS_USD.implementationOneTime.toFixed(0)}</span>
+                  </p>
+                  <p className="text-[16px] opacity-45">Final implementation scope/quote can be confirmed after data migration size and integrations are validated.</p>
                 </div>
-              ))}
+              </div>
+
+              <div className="border border-foreground/20 p-6 text-[18px] opacity-55">
+                Payment options discussed on the call include card or bank transfer in USD/EUR. Billing details are finalized in the order form.
+              </div>
             </div>
           </div>
         </div>
@@ -239,21 +382,22 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 7. DEMO ──────────────────────────────────────────
   {
     id: "demo",
     title: "Demo",
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Experimente</SectionLabel>
-        <SlideTitle>Veja a Factorial em ação</SlideTitle>
+        <SectionLabel>Try it</SectionLabel>
+        <SlideTitle>Explore Factorial in a demo workspace</SlideTitle>
 
-        {/* Demo access banner */}
-        <div className="border-2 border-white/25 bg-white/[0.08] p-8 mb-10 flex items-center justify-between">
+        <div className="border-2 border-white/25 bg-white/[0.08] p-8 mb-10 flex items-center justify-between flex-wrap gap-6">
           <div>
-            <p className="text-[24px] font-medium opacity-90 mb-2">🔑 Ambiente de demonstração preparado</p>
-            <p className="text-[20px] opacity-55">Login: <span className="font-mono opacity-80">hellen@demob25acc00.com</span> · Senha: <span className="font-mono opacity-80">Papapapa333!</span></p>
+            <p className="text-[24px] font-medium opacity-90 mb-2">Demo environment</p>
+            <p className="text-[20px] opacity-55">
+              Login: <span className="font-mono opacity-80">hellen@demob25acc00.com</span> · Password:{" "}
+              <span className="font-mono opacity-80">Papapapa333!</span>
+            </p>
           </div>
           <a
             href="https://app.eu2.demo.factorial.dev/dashboard?switchToCompanyId=75113&redirect_uri=https://api.eu2.demo.factorial.dev/users/sign_in"
@@ -261,19 +405,18 @@ export const slides: SlideData[] = [
             rel="noopener noreferrer"
             className="shrink-0 bg-white text-black px-8 py-4 text-[20px] font-medium hover:opacity-90 transition-opacity"
           >
-            Entrar no Demo →
+            Open demo →
           </a>
         </div>
 
         <div className="grid grid-cols-2 gap-16">
           <div>
-            <h3 className="text-[28px] font-normal mb-8 opacity-80">Explore as funcionalidades</h3>
+            <h3 className="text-[28px] font-normal mb-8 opacity-80">Deep links</h3>
             <div className="space-y-4">
               {[
-                { label: "Gestão de turnos", desc: "Crie e atribua turnos para toda a equipa.", url: "https://app.eu2.demo.factorial.dev/shifts/monthly/employees/2026/1/1", isDemo: true },
-                { label: "Ausências em lote", desc: "Atribua ausências para vários colaboradores de uma vez.", url: "https://help.factorialhr.com/ausencias-e-aprovacoes/how-to-assign-the-absence-in-bulk-?from_search=218380148", isDemo: false },
-                { label: "Aprovações com IA", desc: "A IA sugere aprovações inteligentes baseadas em padrões.", url: "https://help.factorialhr.com/one/one-ai-%E2%80%93-time-off-management-approvals?from_search=218384939", isDemo: false },
-                { label: "Relatórios com IA", desc: "Faça perguntas sobre os seus dados e receba gráficos.", url: "https://app.eu2.demo.factorial.dev/analytics/reports/dashboards/105102/list/question", isDemo: true },
+                { label: "Shifts (monthly view)", desc: "See how scheduling maps to attendance.", url: "https://app.eu2.demo.factorial.dev/shifts/monthly/employees/2026/1/1", isDemo: true },
+                { label: "Time off approvals (Help Center)", desc: "How approvals and policies behave at scale.", url: "https://help.factorialhr.com/one/one-ai-%E2%80%93-time-off-management-approvals?from_search=218384939", isDemo: false },
+                { label: "AI reports entry point", desc: "Explore the reporting experience in demo.", url: "https://app.eu2.demo.factorial.dev/analytics/reports/dashboards/105102/list/question", isDemo: true },
               ].map((f) => (
                 <a
                   key={f.label}
@@ -287,21 +430,19 @@ export const slides: SlideData[] = [
                     <p className="text-[24px] font-medium opacity-90 group-hover:opacity-100 transition-opacity">{f.label}</p>
                     <p className="text-[19px] opacity-55 mt-1">{f.desc}</p>
                   </div>
-                  <span className="text-[18px] opacity-40 group-hover:opacity-70 shrink-0 mt-1 transition-opacity">
-                    {f.isDemo ? "🔗 Demo" : "📖 Saiba mais"}
-                  </span>
+                  <span className="text-[18px] opacity-40 group-hover:opacity-70 shrink-0 mt-1 transition-opacity">{f.isDemo ? "Demo" : "Help"}</span>
                 </a>
               ))}
             </div>
           </div>
 
           <div>
-            <h3 className="text-[28px] font-normal mb-8 opacity-80">O que muda na Aztech</h3>
+            <h3 className="text-[28px] font-normal mb-8 opacity-80">Why this matches your priorities</h3>
             <div className="space-y-6">
               {[
-                { title: "Integração com Primavera", desc: "Ponto super positivo para a realidade atual da Aztech e para o payroll." },
-                { title: "Integração com ZKTeco", desc: "Sem trocar relógio e sem custo de novo equipamento para começar." },
-                { title: "Automação operacional", desc: "Fluxo de ponto, horas extra e ausências com aprovação simples e rápida." },
+                { title: "Mobile workflows", desc: "Employees can execute HR tasks without depending on a desktop machine." },
+                { title: "Operational reliability", desc: "Designed to reduce missing fields and inconsistent exports vs. manual spreadsheets." },
+                { title: "Recruitment connectivity", desc: "Keep hiring structured while staying practical for day-to-day messaging." },
               ].map((g) => (
                 <div key={g.title} className="border border-white/15 p-8">
                   <h4 className="text-[26px] font-normal mb-2">{g.title}</h4>
@@ -315,171 +456,20 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 8. INVESTIMENTO ──────────────────────────────────
-  {
-    id: "investment",
-    title: "Investimento",
-    bg: "light",
-    content: (
-      <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Investimento</SectionLabel>
-        <SlideTitle>Recomendação de investimento</SlideTitle>
-
-        <div className="grid grid-cols-2 gap-16 mt-4">
-          {/* Left: Pacote */}
-          <div>
-            <h3 className="text-[28px] font-medium opacity-80 mb-8">Pacote recomendado para a Aztech</h3>
-            <div className="border border-foreground/20 p-10 space-y-5">
-              <p className="text-[20px] opacity-55 mb-4">Productivity PRO completo + Shift Management + Recrutamento (5 vagas ativas)</p>
-              <div className="flex justify-between text-[22px]">
-                <span className="opacity-65">Productivity PRO</span>
-                <span className="font-medium">$6,25 por colaborador por mês</span>
-              </div>
-              <div className="flex justify-between text-[22px]">
-                <span className="opacity-65">Shift Management</span>
-                <span className="font-medium">$1,50 por colaborador por mês</span>
-              </div>
-              <div className="flex justify-between text-[22px]">
-                <span className="opacity-65">Recrutamento (5 vagas)</span>
-                <span className="font-medium">$64,50 por mês</span>
-              </div>
-              <div className="border-t border-foreground/15 pt-5">
-                <p className="text-[22px] opacity-65 mb-3">Integrações obrigatórias (USD)</p>
-                <div className="space-y-2 text-[20px]">
-                  <p className="flex justify-between"><span className="opacity-70">ZKTeco Integration</span><span className="font-medium">$196,20 por mês</span></p>
-                  <p className="flex justify-between"><span className="opacity-70">Primavera Integration (EUR2,00/licença)</span><span className="font-medium">$392,40 por mês</span></p>
-                </div>
-              </div>
-              <div className="border-t border-foreground/15 pt-5">
-                <p className="text-[22px] opacity-65 mb-3">Tudo incluído no Productivity PRO</p>
-                <p className="text-[20px] font-medium leading-relaxed">
-                  Core RH, Time Tracking, Time Off, Performance, Trainings e Engagement.
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right: Cenários */}
-          <div>
-            <h3 className="text-[28px] font-medium opacity-80 mb-8">Investimento mensal</h3>
-            
-            <div className="space-y-6">
-              <div className="border-2 border-foreground/30 bg-foreground/[0.06] p-8 text-center">
-                <p className="text-[18px] opacity-55 mb-2">Arranque direto com 180 colaboradores</p>
-                <p className="text-[74px] font-light leading-none">$2.048,10</p>
-                <p className="text-[18px] opacity-45 mt-3">por mês = pacote RH ($1.459,50) + integrações ($588,60)</p>
-              </div>
-
-              <div className="border border-foreground/20 p-8">
-                <p className="text-[22px] opacity-75 mb-4">Composição do total mensal</p>
-                <div className="space-y-3 text-[21px]">
-                  <p className="flex justify-between"><span className="opacity-70">Productivity PRO (180 × $6,25)</span><span className="font-medium">$1.125,00</span></p>
-                  <p className="flex justify-between"><span className="opacity-70">Shift Management (180 × $1,50)</span><span className="font-medium">$270,00</span></p>
-                  <p className="flex justify-between"><span className="opacity-70">Recrutamento (5 vagas)</span><span className="font-medium">$64,50</span></p>
-                  <p className="flex justify-between"><span className="opacity-70">ZKTeco Integration (180 x EUR1,00)</span><span className="font-medium">$196,20</span></p>
-                  <p className="flex justify-between"><span className="opacity-70">Primavera Integration (180 x EUR2,00)</span><span className="font-medium">$392,40</span></p>
-                </div>
-              </div>
-
-              <div className="border border-foreground/20 p-6">
-                <p className="text-[22px] opacity-75 mb-3">Implantacao (servico de implementacao)</p>
-                <div className="space-y-2 text-[20px]">
-                  <p className="flex justify-between"><span className="opacity-70">Implementacao fixa (10 horas de sessao, one off)</span><span className="font-medium">$2.500,00</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-
-  // ─── 9. INVESTIMENTO COM DESCONTO ────────────────────
-  {
-    id: "investment-discount",
-    title: "Investimento com Desconto",
-    bg: "light",
-    content: (
-      <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Investimento</SectionLabel>
-        <SlideTitle>Cenario comercial com desconto</SlideTitle>
-
-        <div className="grid grid-cols-2 gap-16 mt-4">
-          <div>
-            <h3 className="text-[28px] font-medium opacity-80 mb-8">Licenca Factorial com 20% de desconto</h3>
-            <div className="border border-foreground/20 p-10 space-y-5">
-              <p className="text-[20px] opacity-55 mb-4">Desconto aplicado apenas nas licencas Factorial</p>
-              <div className="flex justify-between text-[22px]">
-                <span className="opacity-65">Subtotal Factorial sem desconto</span>
-                <span className="font-medium">$1.459,50</span>
-              </div>
-              <div className="flex justify-between text-[22px]">
-                <span className="opacity-65">Desconto comercial (20%)</span>
-                <span className="font-medium">-$291,90</span>
-              </div>
-              <div className="flex justify-between text-[22px] border-t border-foreground/15 pt-5">
-                <span className="opacity-65">Subtotal Factorial com desconto</span>
-                <span className="font-medium">$1.167,60</span>
-              </div>
-              <div className="border-t border-foreground/15 pt-5">
-                <p className="text-[22px] opacity-65 mb-3">Integracoes neste cenario (USD)</p>
-                <div className="space-y-2 text-[20px]">
-                  <p className="flex justify-between"><span className="opacity-70">ZKTeco Integration</span><span className="font-medium">$196,20 por mes</span></p>
-                  <p className="flex justify-between"><span className="opacity-70">Primavera Integration (EUR1,15/licenca)</span><span className="font-medium">$225,63 por mes</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-[28px] font-medium opacity-80 mb-8">Investimento mensal</h3>
-
-            <div className="space-y-6">
-              <div className="border-2 border-foreground/30 bg-foreground/[0.06] p-8 text-center">
-                <p className="text-[18px] opacity-55 mb-2">Arranque com 180 colaboradores</p>
-                <p className="text-[74px] font-light leading-none">$1.589,43</p>
-                <p className="text-[18px] opacity-45 mt-3">por mes = Factorial com desconto ($1.167,60) + integracoes ($421,83)</p>
-              </div>
-
-              <div className="border border-foreground/20 p-8">
-                <p className="text-[22px] opacity-75 mb-4">Composicao do total mensal</p>
-                <div className="space-y-3 text-[21px]">
-                  <p className="flex justify-between"><span className="opacity-70">Factorial com desconto de 20%</span><span className="font-medium">$1.167,60</span></p>
-                  <p className="flex justify-between"><span className="opacity-70">ZKTeco Integration (180 x EUR1,00)</span><span className="font-medium">$196,20</span></p>
-                  <p className="flex justify-between"><span className="opacity-70">Primavera Integration (180 x EUR1,15)</span><span className="font-medium">$225,63</span></p>
-                </div>
-              </div>
-
-              <div className="border border-foreground/20 p-6">
-                <p className="text-[22px] opacity-75 mb-3">Implantacao (servico de implementacao)</p>
-                <div className="space-y-2 text-[20px]">
-                  <p className="flex justify-between"><span className="opacity-70">Implementacao fixa (10 horas de sessao, one off)</span><span className="font-medium">$2.000,00</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-
-  // ─── 10. VÍDEO DEMO ───────────────────────────────────
   {
     id: "video",
-    title: "Vídeo Demo",
+    title: "Video",
     bg: "dark",
     content: (
       <div className="flex flex-col justify-center items-center h-full px-[120px] text-center">
-        <SectionLabel>Visualize o futuro</SectionLabel>
-        <SlideTitle>Imagine a gestão de pessoas assim</SlideTitle>
-        <div className="w-[960px] h-[540px] mt-8">
+        <SectionLabel>Overview</SectionLabel>
+        <SlideTitle>See the employee experience</SlideTitle>
+        <div className="w-[960px] h-[540px] mt-8 max-w-full">
           <iframe
             width="960"
             height="540"
             src="https://www.youtube.com/embed/6sUn2w1hRv0?start=26"
-            title="Factorial Demo"
-            frameBorder="0"
+            title="Factorial product overview"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             className="w-full h-full border-2 border-white/20"
@@ -489,23 +479,22 @@ export const slides: SlideData[] = [
     ),
   },
 
-  // ─── 11. PRÓXIMOS PASSOS ──────────────────────────────
   {
     id: "next-steps",
-    title: "Próximos Passos",
+    title: "Next steps",
     bg: "light",
     content: (
       <div className="flex flex-col justify-center h-full px-[120px]">
-        <SectionLabel>Próximos Passos</SectionLabel>
-        <SlideTitle>Vamos avançar?</SlideTitle>
+        <SectionLabel>Next steps</SectionLabel>
+        <SlideTitle>How we move forward</SlideTitle>
         <div className="grid grid-cols-2 gap-16 mt-4">
           <div>
             <div className="space-y-6">
               {[
-                { step: "1", title: "Validação interna da proposta", desc: "Alinhamento com direção e RH sobre módulos e orçamento." },
-                { step: "2", title: "Confirmação de escopo", desc: "Definição do arranque com 180 colaboradores, por fase de equipas." },
-                { step: "3", title: "Kickoff de implementação", desc: "Configuração inicial dos fluxos de RH e integrações." },
-                { step: "4", title: "Entrada em produção", desc: "Operação com acompanhamento e evolução por fases." },
+                { step: "1", title: "Internal alignment", desc: "Confirm priorities: phase‑1 modules, seat count, and payroll partner export format." },
+                { step: "2", title: "Validation workshop (30–45 min)", desc: "Short session with HR + IT/Finance to lock assumptions and timeline." },
+                { step: "3", title: "Implementation kickoff", desc: "Guided configuration: policies, approvals, attendance, document templates, and recruiting pipeline." },
+                { step: "4", title: "Go-live + hypercare", desc: "Train admins/managers, migrate employees, and stabilize reporting exports to payroll." },
               ].map((p) => (
                 <div key={p.step} className="flex gap-6 items-start">
                   <div className="w-12 h-12 border border-foreground/30 flex items-center justify-center shrink-0">
@@ -522,21 +511,17 @@ export const slides: SlideData[] = [
 
           <div className="flex flex-col justify-center">
             <div className="border border-foreground/20 bg-foreground/[0.04] p-12 text-center">
-              <p className="text-[28px] font-light mb-6">
-                Pronta para modernizar a gestão de pessoas da Aztech?
-              </p>
+              <p className="text-[28px] font-light mb-6">Ready to proceed with Factorial for {ORG}?</p>
               <a
-                href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent("Aztech | Avançar com Factorial")}&body=${encodeURIComponent("Olá Victor,\n\nGostaria de avançar com a proposta Factorial para a Aztech.\n\nCumprimentos,\nMercedes")}`}
+                href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent(`${ORG} | Next steps with Factorial`)}&body=${encodeURIComponent(`Hi Victor,\n\nWe’d like to move forward with Factorial for ${ORG}.\n\nBest regards`)}`}
                 className="inline-flex items-center gap-3 bg-foreground text-background px-10 py-5 text-[22px] font-medium hover:opacity-90 transition-opacity"
               >
                 <Mail size={22} />
-                Contactar Victor Gutierrez
+                Email Victor Gutierrez
               </a>
               <p className="text-[18px] opacity-40 mt-6">victor.gutierrez@factorial.co</p>
             </div>
-            <p className="text-center mt-8 text-[16px] opacity-30">
-              Proposta preparada para Aztech — 2026
-            </p>
+            <p className="text-center mt-8 text-[16px] opacity-30">Proposal prepared for {ORG} — 2026</p>
           </div>
         </div>
       </div>

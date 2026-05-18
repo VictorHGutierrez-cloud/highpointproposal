@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { CLIENT } from "@/utils/constants";
 
 const HeroSection = () => {
   const scrollToContext = () => {
@@ -17,21 +18,19 @@ const HeroSection = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="mb-16">
-            <span className="text-sm tracking-widest uppercase opacity-60">
-              Proposta Factorial
-            </span>
+            <span className="text-sm tracking-widest uppercase opacity-60">Factorial proposal</span>
           </div>
 
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-light leading-tight mb-8 max-w-3xl">
-            SIGA
+            {CLIENT.organizationName}
           </h1>
 
           <p className="text-lg md:text-xl opacity-80 max-w-2xl mb-4 font-light leading-relaxed">
-            Gestão de pessoas simples, completa e integrada com Primavera
+            HR operations for a distributed nonprofit — attendance, time off, documents, and recruitment in one place.
           </p>
 
           <p className="text-base opacity-60 max-w-xl mb-12 font-light leading-relaxed">
-            Plataforma completa para 15 colaboradores — documentos, horários, ausências, projetos e muito mais.
+            {CLIENT.seatCount} seats · ROW USD · nonprofit license pricing included in the deck below.
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -39,7 +38,7 @@ const HeroSection = () => {
               onClick={scrollToContext}
               className="inline-flex items-center gap-2 bg-primary-foreground text-primary px-8 py-4 text-sm tracking-wide hover:opacity-90 transition-opacity duration-300"
             >
-              Ver a proposta
+              View context
             </button>
           </div>
         </motion.div>

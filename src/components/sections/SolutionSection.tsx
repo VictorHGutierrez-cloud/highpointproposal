@@ -1,21 +1,20 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
+import { CLIENT } from "@/utils/constants";
 
 const features = [
-  "Gestão de documentos centralizada",
-  "Assinatura eletrónica legal",
-  "Controlo de horários completo",
-  "Gestão de ausências e férias",
-  "Gestão de projetos",
-  "Organograma e directório",
-  "Comunicados internos",
-  "Relatórios personalizados",
+  "Core HR employee profiles & documents",
+  "Time tracking that works on mobile",
+  "Time off policies, balances, approvals",
+  "Shift planning for teams that need schedules",
+  "Recruitment & structured onboarding flows",
+  "Operational dashboards & exports (Excel/PDF)",
 ];
 
 const gains = [
-  { title: "Tudo centralizado", description: "Documentos, ausências, horários e projetos numa só plataforma." },
-  { title: "Menos tempo no operacional", description: "Automatize processos que hoje são manuais e repetitivos." },
-  { title: "Integrado com Primavera", description: "Dados fluem automaticamente — sem retrabalho nem exportações manuais." },
+  { title: "Fewer manual spreadsheets", description: "Centralize attendance and time off so reports stop breaking mid-month." },
+  { title: "Better employee experience", description: "A modern inbox for tasks: sign, request, upload, and get answers faster." },
+  { title: "Payroll-friendly outputs", description: "Prepare the inputs your payroll partner needs — without pretending payroll is processed inside Factorial." },
 ];
 
 const fadeUp = {
@@ -34,16 +33,14 @@ const SolutionSection = () => {
       className="py-24 md:py-32 lg:py-40 bg-background text-foreground px-6 md:px-12 lg:px-24"
     >
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-sm tracking-widest uppercase opacity-60 mb-4">
-          A Solução Factorial
-        </h2>
+        <h2 className="text-sm tracking-widest uppercase opacity-60 mb-4">The Factorial approach</h2>
         <p className="text-2xl md:text-3xl lg:text-4xl font-light mb-16 max-w-3xl">
-          Tudo o que a SIGA precisa para gerir pessoas.
+          What {CLIENT.organizationName} gets in phase 1
         </p>
 
         <div className="grid md:grid-cols-2 gap-16 mb-16">
           <div>
-            <h3 className="text-lg font-normal mb-6 opacity-80">Funcionalidades Incluídas</h3>
+            <h3 className="text-lg font-normal mb-6 opacity-80">Included scope (high level)</h3>
             <ul className="space-y-3">
               {features.map((f, i) => (
                 <motion.li
@@ -63,7 +60,7 @@ const SolutionSection = () => {
           </div>
 
           <div className="space-y-6">
-            <h3 className="text-lg font-normal mb-6 opacity-80">O que muda na SIGA</h3>
+            <h3 className="text-lg font-normal mb-6 opacity-80">Outcomes</h3>
             {gains.map((g, i) => (
               <motion.div
                 key={i}

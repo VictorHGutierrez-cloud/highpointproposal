@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
+import { CLIENT } from "@/utils/constants";
 
 const cards = [
   {
-    title: "Empresa",
-    description: "SIGA — empresa de gestão administrativa em Cabo Verde, oferecendo consultoria empresarial, fiscalidade, contabilidade financeira e gestão administrativa.",
+    title: "Organization",
+    description: `${CLIENT.organizationName} — nonprofit team working across regions with a strong remote footprint.`,
   },
   {
-    title: "Equipa",
-    description: "15 colaboradores que precisam de uma plataforma moderna para gestão de pessoas.",
+    title: "Team size",
+    description: `Proposal is sized for ${CLIENT.seatCount} employees in Factorial (seats can be adjusted before signature).`,
   },
   {
-    title: "Sistema Atual",
-    description: "ERP Primavera para gestão financeira e folha — a Factorial entra como complemento para gestão de RH.",
+    title: "Current reality",
+    description: "Prior HR software struggled with mobile UX and weak reporting; many processes moved to manual work.",
   },
 ];
 
@@ -31,16 +32,12 @@ const ContextSection = () => {
       className="py-24 md:py-32 lg:py-40 bg-background text-foreground px-6 md:px-12 lg:px-24"
     >
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-sm tracking-widest uppercase opacity-60 mb-12">
-          Contexto
-        </h2>
+        <h2 className="text-sm tracking-widest uppercase opacity-60 mb-12">Context</h2>
 
         <div className="space-y-8 text-lg md:text-xl leading-relaxed font-light mb-16">
-          <p className="text-2xl md:text-3xl font-normal">
-            Conheça o contexto da SIGA.
-          </p>
+          <p className="text-2xl md:text-3xl font-normal">Why this investment matters now</p>
           <p className="opacity-80">
-            Uma empresa de gestão administrativa em Cabo Verde que utiliza o Primavera e procura uma plataforma completa de gestão de pessoas.
+            You need an HR layer that employees will actually use on mobile, with approvals and exports that Finance and Payroll can rely on — without going back to spreadsheets.
           </p>
         </div>
 

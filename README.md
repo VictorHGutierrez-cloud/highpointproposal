@@ -60,48 +60,33 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Deploy (GitHub Pages)
 
-### Deploy no GitHub Pages (Automático)
+The repo builds with Vite using `base: /therighteousfoundation/` so the site works as a **project page**.
 
-O projeto está configurado para fazer deploy automático no GitHub Pages!
+### Automated deploy (GitHub Actions)
 
-**Passo a passo:**
+1. In the GitHub repo, go to **Settings → Pages**.
+2. Under **Build and deployment → Source**, choose **GitHub Actions**.
+3. Push to `main` (workflow: `.github/workflows/deploy.yml`).
 
-1. **Ative o GitHub Pages no repositório:**
-   - Vá em Settings → Pages no seu repositório GitHub
-   - Em "Source", selecione "GitHub Actions"
-   - Salve as configurações
+After a successful run, open:
 
-2. **Faça push do código:**
-   ```sh
-   git add .
-   git commit -m "Configure GitHub Pages"
-   git push origin main
-   ```
+`https://victorhgutierrez-cloud.github.io/therighteousfoundation/`
 
-3. **Aguarde o deploy:**
-   - Vá em Actions no GitHub
-   - O workflow "Deploy to GitHub Pages" vai rodar automaticamente
-   - Quando terminar, seu site estará em: `https://victorhgutierrez-cloud.github.io/swaybox-4e9b3d55/`
+**Local dev:** because of the `base` path, open the app at  
+`http://localhost:8080/therighteousfoundation/` (port is set in `vite.config.ts`).
 
-**Nota:** O deploy acontece automaticamente toda vez que você fizer push na branch `main`.
-
-### Deploy Manual (Alternativa)
-
-Se preferir fazer deploy manual:
+### Manual deploy (optional)
 
 ```sh
-# 1. Compilar o projeto
 npm run build
-
-# 2. Fazer push da pasta dist para a branch gh-pages
-git subtree push --prefix dist origin gh-pages
+# Upload the dist/ output to your hosting target, preserving paths under /therighteousfoundation/
 ```
 
-### Deploy via Lovable
+### Deploy via Lovable (if you use it)
 
-Também pode usar o Lovable: abra [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) e clique em Share → Publish.
+Open your Lovable project and use **Share → Publish**.
 
 ## Can I connect a custom domain to my Lovable project?
 

@@ -4,13 +4,11 @@ const Footer = () => (
       <div className="grid md:grid-cols-2 gap-12">
         <div>
           <p className="font-semibold text-lg mb-2">Factorial</p>
-          <p className="text-sm opacity-60 leading-relaxed max-w-sm">
-            Transformando a gestão de pessoas em empresas de todo o mundo.
-          </p>
+          <p className="text-sm opacity-60 leading-relaxed max-w-sm">Modern HR operations for teams around the world.</p>
         </div>
         <div className="space-y-2 text-sm opacity-80">
           <p className="font-medium opacity-100">Victor Gutierrez</p>
-          <p className="opacity-60">Gerente de Expansão | Factorial</p>
+          <p className="opacity-60">Business Development · Factorial</p>
           <p>
             <a href="mailto:victor.gutierrez@factorial.co" className="hover:opacity-100 transition-opacity">
               victor.gutierrez@factorial.co
@@ -23,9 +21,7 @@ const Footer = () => (
           </p>
         </div>
       </div>
-      <p className="mt-12 text-xs opacity-40 text-center">
-        Proposta preparada especificamente para SIGA — 2026
-      </p>
+      <p className="mt-12 text-xs opacity-40 text-center">Proposal prepared for Righteous Foundation — 2026</p>
     </div>
   </footer>
 );
