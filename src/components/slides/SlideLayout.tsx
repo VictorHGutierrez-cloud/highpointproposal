@@ -12,6 +12,7 @@ const MOBILE_BREAKPOINT = 768;
 const SlideLayout = ({ children, className = "" }: SlideLayoutProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
+  const [fitScale, setFitScale] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -27,6 +28,8 @@ const SlideLayout = ({ children, className = "" }: SlideLayoutProps) => {
         const scaleX = parent.clientWidth / SLIDE_W;
         const scaleY = parent.clientHeight / SLIDE_H;
         setScale(Math.min(scaleX, scaleY));
+      } else {
+        setFitScale(1);
       }
     };
 
@@ -37,6 +40,26 @@ const SlideLayout = ({ children, className = "" }: SlideLayoutProps) => {
     }
     return () => ro.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (isMobile || !containerRef.current) return;
+
+    const measureOverflow = () => {
+      const el = containerRef.current;
+      if (!el) return;
+
+      const overflowXRatio = el.scrollWidth / SLIDE_W;
+      const overflowYRatio = el.scrollHeight / SLIDE_H;
+      const overflowRatio = Math.max(1, overflowXRatio, overflowYRatio);
+
+      // When a slide is too tall/wide, shrink it just enough to fit.
+      const adjustedFit = overflowRatio > 1 ? 1 / overflowRatio : 1;
+      setFitScale(adjustedFit);
+    };
+
+    const rafId = requestAnimationFrame(measureOverflow);
+    return () => cancelAnimationFrame(rafId);
+  }, [children, isMobile]);
 
   // Mobile: render content naturally with scroll
   if (isMobile) {
@@ -59,7 +82,7 @@ const SlideLayout = ({ children, className = "" }: SlideLayoutProps) => {
         height: SLIDE_H,
         marginLeft: -SLIDE_W / 2,
         marginTop: -SLIDE_H / 2,
-        transform: `scale(${scale})`,
+        transform: `scale(${scale * fitScale})`,
         transformOrigin: "center center",
       }}
     >
