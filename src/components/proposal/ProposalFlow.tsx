@@ -1,8 +1,15 @@
 import { Check, ExternalLink } from "lucide-react";
 import FlowArt, { FlowSection } from "@/components/ui/story-scroll";
-import { CLIENT, PRICING_ROW_USD, PRICING_TOTALS_USD } from "@/utils/constants";
+import {
+  CLIENT,
+  IMPLEMENTATION,
+  PRICING_OPTIONS,
+  PRICING_TOTALS_USD,
+  RECOMMENDED,
+} from "@/utils/constants";
 
-const { seatCount: SEATS, licenseDiscountPercent: DISCOUNT_PCT, organizationName: ORG } = CLIENT;
+const { seatCount: SEATS, organizationName: ORG } = CLIENT;
+const OPTS = [PRICING_OPTIONS.a, PRICING_OPTIONS.b, PRICING_OPTIONS.c];
 
 function Divider({ light }: { light?: boolean }) {
   return (
@@ -32,21 +39,20 @@ export default function ProposalFlow() {
         <Divider light />
         <div>
           <h1 className={headCls}>
-            {ORG}
+            High Point
+            <br />
+            Group
             <br />
             HR
-            <br />
-            Reimagined
           </h1>
         </div>
         <Divider light />
         <p className={`mt-auto max-w-[55ch] ${bodyCls}`}>
-          Starter Planning (Enterprise) plus Recruitment — one integrated workspace: Core, attendance, time off,
-          shifts, and hiring for your distributed team.
+          One integrated HR platform for four affiliated companies — replace manual payroll prep, paper leave forms,
+          and disconnected clocking with Core, shifts, time off, trainings, and native Sage 50 Cloud Payroll sync.
         </p>
-        <p className={`text-[clamp(0.85rem,1.3vw,1rem)] opacity-80`}>
-          {SEATS} seats · ROW USD (monthly) · {DISCOUNT_PCT}% nonprofit discount (licenses, recruitment,
-          implementation) · Recruitment: {PRICING_ROW_USD.recruitment.tier}
+        <p className="text-[clamp(0.85rem,1.3vw,1rem)] opacity-80">
+          {SEATS} seats · Africa USD (monthly) · Recommended: {RECOMMENDED.bundle.name} · Partner: {CLIENT.partner}
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-6 border-t border-white/30 pt-6">
           <div className="flex h-12 w-12 items-center justify-center border border-white/40 text-xl font-light">
@@ -54,7 +60,8 @@ export default function ProposalFlow() {
           </div>
           <div>
             <p className="text-[clamp(1rem,1.5vw,1.2rem)] font-medium">Victor Gutierrez</p>
-            <p className="text-sm opacity-70">Business Development · Factorial</p>
+            <p className="text-sm opacity-70">Account Executive, Africa · Factorial</p>
+            <p className="text-xs opacity-60 mt-1">Paolo Urzi — Regional Manager, Southern Africa</p>
           </div>
         </div>
       </FlowSection>
@@ -68,51 +75,52 @@ export default function ProposalFlow() {
         <p className={labelCls}>02 — Context</p>
         <Divider />
         <h2 className={headCls}>
-          Why a new
+          Four companies.
           <br />
-          HR system
+          One manual HR reality.
         </h2>
         <Divider />
         <div className="grid gap-8 lg:grid-cols-2">
           <div className={`space-y-6 ${bodyCls}`}>
             <p>
-              Your team works <strong className="font-semibold">across the country, mostly remote</strong>. The
-              previous HR tool had a <strong className="font-semibold">weak mobile experience</strong>, and key
-              workflows — especially <strong className="font-semibold">reports and attendance</strong> — were
-              unreliable.
+              High Point grew from <strong className="font-semibold">two businesses to four</strong> — engineering, steel
+              manufacturing, production, mining, and service operations across{" "}
+              <strong className="font-semibold">Cape Town and provincial sites</strong> (~{SEATS} employees).
             </p>
             <p>
-              You moved to <strong className="font-semibold">manual processes</strong> to keep control, but that
-              creates extra work and errors when managers and Finance need trustworthy records.
+              Today there is <strong className="font-semibold">no HR system</strong>. Payroll runs on{" "}
+              <strong className="font-semibold">Pastel Payroll</strong>, finance on{" "}
+              <strong className="font-semibold">Sage 200 Evolution</strong>, and clocking on{" "}
+              <strong className="font-semibold">Uniclocks</strong> (facial recognition) — but{" "}
+              <strong className="font-semibold">nothing talks to anything else</strong>.
             </p>
             <p>
-              As a <strong className="font-semibold">registered nonprofit</strong>, this proposal applies{" "}
-              <strong className="font-semibold">{DISCOUNT_PCT}%</strong> to{" "}
-              <strong className="font-semibold">licenses</strong>, <strong className="font-semibold">recruitment</strong>
-              , and <strong className="font-semibold">implementation</strong>.
+              Elani and Werner absorb <strong className="font-semibold">hours of manual work</strong> every month:
+              print timesheets, re-key data, chase paper leave forms, and hunt documents on servers for ISO and B-BBEE
+              audits.
             </p>
           </div>
           <div className="flex flex-col gap-4">
             {[
               {
+                icon: "🏭",
+                title: "Multi-site operations",
+                desc: "Mines (~30), drivers with variable hours, production workshops, and a service centre — each with different shift patterns.",
+              },
+              {
+                icon: "📋",
+                title: "Compliance pressure",
+                desc: "ISO standards (Howden audit), B-BBEE certificate cycle, and bargaining council reporting need accurate, exportable workforce data.",
+              },
+              {
+                icon: "🔗",
+                title: "Sage ecosystem",
+                desc: "Exponent joins as your Sage partner — Factorial syncs compensation to Sage 50 Cloud Payroll with one click.",
+              },
+              {
                 icon: "📱",
-                title: "Mobile-first",
-                desc: "Clock in/out, request time off, sign documents, and complete tasks from the Factorial app.",
-              },
-              {
-                icon: "🧾",
-                title: "Complete records",
-                desc: "Timesheets, attendance dashboards, and HR exports with the fields managers and Finance need.",
-              },
-              {
-                icon: "🌍",
-                title: "One system",
-                desc: "Employee data, shifts, absences, and documents in a single place — not spreadsheets.",
-              },
-              {
-                icon: "🤝",
-                title: "Nonprofit pricing",
-                desc: `${DISCOUNT_PCT}% discount on licenses, recruitment, and implementation.`,
+                title: "Owner visibility",
+                desc: "The business owner is highly involved but distant — needs instant mobile reporting, not month-end surprises.",
               },
             ].map((item) => (
               <div key={item.title} className="flex gap-4 border border-black/15 bg-white/50 p-4">
@@ -136,47 +144,47 @@ export default function ProposalFlow() {
         <p className={labelCls}>03 — What you asked for</p>
         <Divider light />
         <h2 className={headCls}>
-          Core HR
+          Your priorities
           <br />
-          First
+          from the call
         </h2>
         <Divider light />
         <p className={`max-w-[55ch] ${bodyCls}`}>
-          Employee records and documents, reliable remote attendance, time off, shift planning, hiring (~3–5 open
-          roles), and clean data handoff to your payroll provider.
+          Based on our conversation with Elani and Werner — aligned to what you need before pitching to the business
+          owner.
         </p>
         <Divider light />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[
             {
-              icon: "👤",
-              title: "Core HR",
-              desc: "Directory, contracts, org chart, permissions, cloud documents, e-signatures, onboarding workflows.",
-            },
-            {
               icon: "⏱️",
-              title: "Time tracking",
-              desc: "Mobile clock-in/out with geolocation, timesheet approval, real-time attendance, exports.",
+              title: "Time & attendance",
+              desc: "End printed Uniclocks timesheets and manual re-entry. Integrate existing facial-recognition devices or use mobile/tablet clocking.",
             },
             {
               icon: "📅",
-              title: "Shifts",
-              desc: "Bulk shifts, templates, breaks, conflict warnings, mobile schedule review.",
+              title: "Shifts & scheduling",
+              desc: "Mines, drivers, production — different hour categories today; day and night shifts coming when full production resumes.",
             },
             {
               icon: "🏖️",
               title: "Time off",
-              desc: "Requests and approvals on web and app; policies, balances, calendars, attachments.",
+              desc: "Replace paper forms with mobile requests, manager approvals, and multi-level workflows (manager → finance).",
             },
             {
-              icon: "📣",
-              title: "Recruitment",
-              desc: "Career page, pipeline, Indeed/LinkedIn, email and WhatsApp — ~5 active jobs.",
+              icon: "📁",
+              title: "Documents & onboarding",
+              desc: "Digital employee folders, compliant e-signatures, expiry alerts (licences, certifications), structured onboarding tasks.",
+            },
+            {
+              icon: "🎓",
+              title: "Trainings & ISO",
+              desc: "Mandatory training tracking, 30-day expiry warnings, audit-ready document repository for Werner's ISO obligations.",
             },
             {
               icon: "💸",
-              title: "Payroll handoff",
-              desc: "Factorial does not run local payroll here — it centralizes data your partner can use.",
+              title: "Sage 50 Cloud sync",
+              desc: "Compose salary, deductions, overtime, and incentives in Factorial — sync to Pastel/Sage 50 Cloud Payroll natively.",
             },
           ].map((f) => (
             <div key={f.title} className="border border-white/20 p-4">
@@ -197,133 +205,136 @@ export default function ProposalFlow() {
         <p className={labelCls}>04 — Recommended package</p>
         <Divider light />
         <h2 className={headCls}>
-          {PRICING_ROW_USD.bundleName}
+          {RECOMMENDED.bundle.name}
           <br />
-          Enterprise
+          ⭐ Recommended
         </h2>
         <Divider light />
         <p className={`max-w-[60ch] ${bodyCls}`}>
-          One monthly package for {SEATS} employees: <strong>Core</strong>, <strong>Time Tracking</strong>,{" "}
-          <strong>Time Off</strong>, and <strong>Shifts</strong> — list{" "}
-          <strong>${PRICING_ROW_USD.listPricePerSeatPerMonth}/seat/month</strong> before your nonprofit discount.
+          For High Point, <strong>Planning PRO</strong> is the best fit: shifts for mines and production, plus
+          Trainings for ISO/B-BBEE, Performance for owner reporting, and Engagement — in one bundle (no à la carte
+          modules).
         </p>
         <Divider light />
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="space-y-6 border border-white/20 p-6">
-            <h3 className="text-lg font-bold uppercase tracking-wide">In the bundle</h3>
+            <h3 className="text-lg font-bold uppercase tracking-wide">What&apos;s included</h3>
             <div className="space-y-4 text-[clamp(0.9rem,1.3vw,1.05rem)] opacity-90">
               <div>
-                <p className="mb-2 font-semibold text-white">Core</p>
+                <p className="mb-2 font-semibold text-white">Core HR</p>
                 <ul className="space-y-2">
                   <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Directory, contracts, org chart, teams
-                    & permissions
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Four entities in one tenant — unified
+                    policies, entity-level segmentation
                   </li>
                   <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Cloud documents, bulk send, legally valid
-                    e-signatures
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Keep existing Pastel employee codes
                   </li>
                   <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Onboarding/offboarding with tasks and file
-                    collection
-                  </li>
-                  <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> HR and custom reports; payroll-ready
-                    change exports
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Documents, e-signatures, onboarding
+                    workflows, bulk Excel import
                   </li>
                 </ul>
               </div>
               <div>
-                <p className="mb-2 font-semibold text-white">Time tracking & shifts</p>
+                <p className="mb-2 font-semibold text-white">Time, shifts & leave</p>
                 <ul className="space-y-2">
                   <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Clock-in/out on mobile and web; geolocation;
-                    optional location alerts
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Uniclocks integration assessment +
+                    mobile/tablet facial recognition option
                   </li>
                   <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Timesheet approval; live attendance
-                    dashboard; Excel/PDF exports
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Shift templates, AI scheduler, publish &
+                    notify (push, email, in-app)
                   </li>
                   <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Overtime rules, bank of hours, shift
-                    planning with conflict warnings
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Leave policies, accruals, multi-level
+                    approvals
                   </li>
                 </ul>
               </div>
               <div>
-                <p className="mb-2 font-semibold text-white">Time off</p>
+                <p className="mb-2 font-semibold text-white">Trainings · Performance · Engagement</p>
                 <ul className="space-y-2">
                   <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Requests and approvals; policy-based
-                    balances
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Training catalogue, mandatory courses,
+                    expiry alerts, certificates
                   </li>
                   <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Team calendars; multi-level approvals;
-                    document attachments
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> B-BBEE reporting support (levels 1–8) —
+                    built with onboarding consultant
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 opacity-80" /> Factorial One AI — custom reports for owner
+                    and Werner
                   </li>
                 </ul>
               </div>
             </div>
           </div>
           <div className="space-y-4 border border-white/20 p-6">
-            <h3 className="text-lg font-bold uppercase tracking-wide">Recruitment add-on</h3>
-            <p className={`${bodyCls} opacity-90`}>
-              <strong>{PRICING_ROW_USD.recruitment.tier}</strong> — ATS for typical hiring volume (~3–5 open roles).
-            </p>
-            <ul className="space-y-2 text-[clamp(0.9rem,1.3vw,1.05rem)] opacity-90">
-              <li className="flex gap-2">
-                <Check className="mt-0.5 h-4 w-4 shrink-0" /> Branded career page and customizable hiring stages
-              </li>
-              <li className="flex gap-2">
-                <Check className="mt-0.5 h-4 w-4 shrink-0" /> Indeed and LinkedIn; one candidate pipeline
-              </li>
-              <li className="flex gap-2">
-                <Check className="mt-0.5 h-4 w-4 shrink-0" /> Email and WhatsApp; notes and feedback per profile
-              </li>
-              <li className="flex gap-2">
-                <Check className="mt-0.5 h-4 w-4 shrink-0" /> Hires flow into Core onboarding (data, documents, tasks)
-              </li>
-            </ul>
-            <p className="border-t border-white/20 pt-4 text-sm opacity-70">
-              List <strong>${PRICING_TOTALS_USD.recruitmentListPerMonth}/mo</strong> → nonprofit:{" "}
-              <strong>${PRICING_TOTALS_USD.recruitmentDiscountedSubtotal.toFixed(2)}/mo</strong>
+            <h3 className="text-lg font-bold uppercase tracking-wide">Three options (bundles only)</h3>
+            {OPTS.map((opt) => (
+              <div
+                key={opt.id}
+                className={`border p-4 ${opt.recommended ? "border-white/50 bg-white/5" : "border-white/15"}`}
+              >
+                <div className="flex justify-between items-start gap-2 mb-1">
+                  <p className="font-semibold">
+                    Option {opt.id} — {opt.label}
+                    {opt.recommended && " ⭐"}
+                  </p>
+                  <p className="font-light text-lg shrink-0">${opt.monthlyTotal.toFixed(0)}/mo</p>
+                </div>
+                <p className="text-sm opacity-70 mb-2">{opt.subtitle}</p>
+                <p className="text-xs opacity-55">
+                  {opt.bundle.name} · {opt.bundle.includes}
+                  {opt.addons.length > 0 && ` + ${opt.addons.map((a) => a.name).join(", ")}`}
+                </p>
+              </div>
+            ))}
+            <p className="text-xs opacity-50 pt-2 border-t border-white/15">
+              Annual billing saves ~8% (e.g. Option B: ${PRICING_OPTIONS.b.annualMonthlyEquiv.toFixed(0)}/mo equivalent).
+              Minimum 14 seats — you bill {SEATS}.
             </p>
           </div>
         </div>
       </FlowSection>
 
-      {/* 05 Mobile */}
+      {/* 05 Shifts & Uniclocks */}
       <FlowSection
         innerClassName="!justify-start gap-8"
-        aria-label="Mobile experience"
+        aria-label="Shifts and time tracking"
         style={{ backgroundColor: "#F5F0E8", color: "#1a1a1a" }}
       >
-        <p className={labelCls}>05 — Mobile experience</p>
+        <p className={labelCls}>05 — Time & shifts</p>
         <Divider />
         <h2 className={headCls}>
-          Built for
+          From printed
           <br />
-          Phones
+          timesheets
+          <br />
+          to live data
         </h2>
         <Divider />
         <p className={`max-w-[55ch] ${bodyCls}`}>
-          Remote employees use the Factorial app for daily HR: clock in/out with geolocation, request time off, sign
-          documents, and complete onboarding tasks from one inbox.
+          Today: Uniclocks facial recognition → print timesheets → manual payroll entry. Tomorrow: clock data flows
+          into Factorial, extra hours compose in Compensation, one-click sync to Sage 50 Cloud.
         </p>
         <Divider />
         <div className="flex flex-wrap gap-[3vw]">
           {[
             {
-              title: "One login, roles",
-              desc: "HR sees everything; managers approve their scope; employees see only their data — no extra license types.",
+              title: "Keep your Uniclocks",
+              desc: "Send us the device model — we assess integration so you don't have to buy new hardware. Any camera device (tablet, phone on wall) also works.",
             },
             {
-              title: "Tasks in one inbox",
-              desc: "Signatures, time-off reviews, uploads, and onboarding steps as actionable mobile tasks.",
+              title: "Shift categories",
+              desc: "Separate rules for mines, drivers, and production. AI-assisted scheduling when you launch day and night shifts.",
             },
             {
-              title: "Location-aware",
-              desc: "Work locations per employee; optional geofencing alerts when you need stricter validation.",
+              title: "Employee notifications",
+              desc: "Published shifts reach staff via push notification, email, and in-app inbox — no more 'I didn't know my roster'.",
             },
           ].map((x) => (
             <div key={x.title} className="min-w-[200px] flex-1 border border-black/15 bg-white/60 p-5">
@@ -334,46 +345,46 @@ export default function ProposalFlow() {
         </div>
       </FlowSection>
 
-      {/* 06 Attendance */}
+      {/* 06 Documents & compliance */}
       <FlowSection
         innerClassName="!justify-start gap-8"
-        aria-label="Attendance and reporting"
+        aria-label="Documents and compliance"
         style={{ backgroundColor: "hsl(347 50% 18%)", color: "#fff" }}
       >
-        <p className={labelCls}>06 — Operations</p>
+        <p className={labelCls}>06 — Compliance</p>
         <Divider light />
         <h2 className={headCls}>
-          Attendance
+          ISO · B-BBEE
           <br />
-          You trust
+          Audit-ready
         </h2>
         <Divider light />
         <p className={`max-w-[55ch] ${bodyCls}`}>
-          Validated timesheets, live attendance visibility, and exports your Finance team can use — not half-empty
-          reports.
+          Werner&apos;s ISO audit with Howden exposed the risk of paper HR files. Factorial centralises documents,
+          tracks training expiries, and supports South Africa B-BBEE reporting — all exportable for consultants.
         </p>
         <Divider light />
         <div className="grid gap-4 sm:grid-cols-2">
           {[
             {
-              icon: "📅",
-              title: "Shifts linked to attendance",
-              desc: "Templates, bulk edits, breaks, conflicts, absences aligned with the schedule.",
+              icon: "📄",
+              title: "Document vault",
+              desc: "Upload ID on day one from a phone. Searchable folders — trainings, contracts, certifications — with compliant e-signatures.",
             },
             {
-              icon: "📥",
-              title: "Timesheets & exports",
-              desc: "Approval, autofill where configured, detailed Excel/PDF exports.",
+              icon: "⚠️",
+              title: "Expiry workflows",
+              desc: "Custom alerts 30 days before driver licences, certifications, or mandatory training expires — email to manager and HR.",
+            },
+            {
+              icon: "🎓",
+              title: "Training sequences",
+              desc: "Onboarding task chains from hire date: videos, documents, acknowledgements — tracked from first day on the floor.",
             },
             {
               icon: "📊",
-              title: "Live attendance",
-              desc: "Who clocked in, who is missing, location, breaks — in real time.",
-            },
-            {
-              icon: "⏱️",
-              title: "Overtime & bank",
-              desc: "Rules for overtime and special hours; balance extra time with your policies.",
+              title: "B-BBEE & equity",
+              desc: "SA policy templates and custom reports built with your onboarding consultant — supports certificate phases (levels 1–8).",
             },
           ].map((f) => (
             <div key={f.title} className="flex gap-4 border border-white/20 p-4">
@@ -387,85 +398,86 @@ export default function ProposalFlow() {
         </div>
       </FlowSection>
 
-      {/* 07 Documents */}
+      {/* 07 Sage integration */}
       <FlowSection
         innerClassName="!justify-start gap-8"
-        aria-label="Documents and onboarding"
-        style={{ backgroundColor: "#0f0709", color: "#fff" }}
+        aria-label="Sage integration"
+        style={{ backgroundColor: "#07A2AD", color: "#fff" }}
       >
-        <p className={labelCls}>07 — Documents & onboarding</p>
+        <p className={labelCls}>07 — Sage integration</p>
         <Divider light />
         <h2 className={headCls}>
-          Sign &
+          Factorial +
           <br />
-          Onboard
+          Sage 50 Cloud
         </h2>
         <Divider light />
         <p className={`max-w-[55ch] ${bodyCls}`}>
-          Centralize HR files, collect legally valid e-signatures, and run structured onboarding so new hires submit IDs
-          and complete tasks without email chaos.
+          Native integration built with Sage over three years. Factorial prepares compensation;{" "}
+          <strong>Pastel/Sage 50 Cloud Payroll</strong> remains your payroll engine. Exponent supports the finance
+          side; Sage 200 Evolution stays for costing (out of scope).
         </p>
         <Divider light />
-        <div className="grid gap-8 lg:grid-cols-2">
-          <ul className="space-y-3 text-[clamp(0.9rem,1.3vw,1.05rem)]">
-            {[
-              "Employee directory, contracts, and org chart in one workspace",
-              "Send, sign, and track documents in bulk (desktop and mobile)",
-              "Guided onboarding/offboarding workflows with assigned tasks",
-              "Super-task to collect IDs and files into the right folders",
-              "Custom roles and permissions — control who sees and approves what",
-            ].map((t) => (
-              <li key={t} className="flex gap-3 border border-white/15 p-3">
-                <Check className="mt-1 h-4 w-4 shrink-0 opacity-80" />
-                <span className="opacity-90">{t}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="border border-white/20 p-6">
-            <h3 className="text-lg font-semibold mb-3">From offer accepted to day one</h3>
-            <p className="text-[clamp(0.95rem,1.35vw,1.1rem)] opacity-80 leading-relaxed">
-              After you hire in Recruitment, onboarding continues in Core: offer and personal data, signatures, and
-              uploads — so the employee can clock in and request time off on day one.
-            </p>
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="border border-white/30 bg-black/10 p-6">
+            <h3 className="mb-3 font-bold uppercase tracking-wide text-sm">What Factorial syncs</h3>
+            <ul className={`space-y-2 ${cardBodyCls}`}>
+              <li>• Base salary, deductions, commissions, overtime, incentives</li>
+              <li>• Time tracking and absence data — no duplicate entry</li>
+              <li>• Employee master updates (retain your existing codes)</li>
+              <li>• One-click &quot;Sync&quot; to Sage 50 Cloud Payroll</li>
+            </ul>
+          </div>
+          <div className="border border-white/30 bg-black/10 p-6">
+            <h3 className="mb-3 font-bold uppercase tracking-wide text-sm">What stays in Sage</h3>
+            <ul className={`space-y-2 ${cardBodyCls}`}>
+              <li>• Payslip generation and statutory payroll execution</li>
+              <li>• Sage 200 Evolution for finance / costing / stock</li>
+              <li>• Bargaining council system (manual export only)</li>
+              <li>• Final bank files and regulatory filings</li>
+            </ul>
           </div>
         </div>
       </FlowSection>
 
-      {/* 08 Recruitment */}
+      {/* 08 Success vision */}
       <FlowSection
         innerClassName="!justify-start gap-8"
-        aria-label="Recruitment"
-        style={{ backgroundColor: "#07A2AD", color: "#fff" }}
+        aria-label="Success vision"
+        style={{ backgroundColor: "#0f0709", color: "#fff" }}
       >
-        <p className={labelCls}>08 — Talent acquisition</p>
+        <p className={labelCls}>08 — Success in 12 months</p>
         <Divider light />
         <h2 className={headCls}>
-          Hire
+          What changes
           <br />
-          Smarter
+          for you
         </h2>
         <Divider light />
-        <p className={`max-w-[55ch] ${bodyCls}`}>
-          Publish roles, manage candidates in one ATS, and reach people on Indeed, LinkedIn, email, or WhatsApp —
-          sized for about five active jobs at a time.
-        </p>
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="border border-white/20 p-6">
+            <p className="text-xs uppercase tracking-widest opacity-50 mb-2">Elani — Cape Town HQ</p>
+            <p className={`${bodyCls} opacity-90 leading-relaxed`}>
+              &quot;An integrated system where everybody on the floor follows the same process — and payroll prep is
+              automatic by month-end, not one-by-one leave forms.&quot;
+            </p>
+          </div>
+          <div className="border border-white/20 p-6">
+            <p className="text-xs uppercase tracking-widest opacity-50 mb-2">Werner — Provincial ops</p>
+            <p className={`${bodyCls} opacity-90 leading-relaxed`}>
+              &quot;Proper reporting for the owner — see which department costs money, where salaries sit, and stop
+              spending days on manual pulls before month-end.&quot;
+            </p>
+          </div>
+        </div>
         <Divider light />
         <div className="flex flex-wrap gap-[3vw]">
           {[
-            {
-              title: "Career page",
-              desc: "Branded careers URL, customizable application forms, job catalog aligned with your teams.",
-            },
-            {
-              title: "Indeed & LinkedIn",
-              desc: "One pipeline with tags, notes, and hiring stages managers can follow.",
-            },
-            {
-              title: "Communication",
-              desc: "Email from Factorial, WhatsApp outreach, hiring metrics (time-to-hire, sources, funnel).",
-            },
+            { title: "Owner on mobile", desc: "Silent partner stays informed — instant communication and workforce visibility from his phone." },
+            { title: "Hours back for managers", desc: "Elani and Werner recover time currently lost to copy-paste between Pastel, Uniclocks, and paper." },
+            { title: "Audit confidence", desc: "ISO and B-BBEE consultants get accurate packs — not a scramble through server folders." },
           ].map((x) => (
-            <div key={x.title} className="min-w-[200px] flex-1 border border-white/30 bg-black/10 p-5">
+            <div key={x.title} className="min-w-[200px] flex-1 border border-white/20 p-5">
               <p className={cardTitleCls}>{x.title}</p>
               <p className={cardBodyCls}>{x.desc}</p>
             </div>
@@ -473,134 +485,75 @@ export default function ProposalFlow() {
         </div>
       </FlowSection>
 
-      {/* 09 Payroll */}
-      <FlowSection
-        innerClassName="!justify-start gap-8"
-        aria-label="Finance and payroll handoff"
-        style={{ backgroundColor: "#F5F0E8", color: "#1a1a1a" }}
-      >
-        <p className={labelCls}>09 — Finance handoff</p>
-        <Divider />
-        <h2 className={headCls}>
-          Payroll
-          <br />
-          Partner
-        </h2>
-        <Divider />
-        <p className={`max-w-[55ch] ${bodyCls}`}>
-          Factorial prepares payroll inputs — your payroll partner runs payroll. If you need fully processed payslips
-          inside one system, we position as an HR hub alongside a payroll provider.
-        </p>
-        <Divider />
-        <div className="grid gap-6 lg:grid-cols-2">
-          <div className="border border-black/15 bg-white/70 p-6">
-            <h3 className="mb-3 font-bold uppercase tracking-wide text-sm">What Factorial covers</h3>
-            <ul className={`space-y-2 ${cardBodyCls}`}>
-              <li>• Contract and employee updates that affect payroll</li>
-              <li>• Time tracking, absences, overtime, bank-of-hours outputs</li>
-              <li>• Guided payroll cycle collaboration and exports</li>
-              <li>• Custom reports and change exports for your provider&apos;s format</li>
-            </ul>
-          </div>
-          <div className="border border-black/15 bg-white/70 p-6">
-            <h3 className="mb-3 font-bold uppercase tracking-wide text-sm">What your partner keeps</h3>
-            <ul className={`space-y-2 ${cardBodyCls}`}>
-              <li>• Payslip generation and statutory compliance</li>
-              <li>• Bank files / regulatory filings (as applicable)</li>
-              <li>• Authoritative accounting entries (per your finance stack)</li>
-            </ul>
-          </div>
-        </div>
-      </FlowSection>
-
-      {/* 10 Investment */}
+      {/* 09 Investment */}
       <FlowSection
         innerClassName="!justify-start gap-6"
         aria-label="Investment"
-        style={{ backgroundColor: "#0f0709", color: "#fff" }}
+        style={{ backgroundColor: "#F5F0E8", color: "#1a1a1a" }}
       >
-        <p className={labelCls}>10 — Investment</p>
-        <Divider light />
+        <p className={labelCls}>09 — Investment</p>
+        <Divider />
         <h2 className={headCls}>
-          ROW USD
+          Africa USD
           <br />
           Monthly
         </h2>
-        <Divider light />
+        <Divider />
+        <div className="grid gap-6 lg:grid-cols-3 mb-6">
+          {OPTS.map((opt) => (
+            <div
+              key={opt.id}
+              className={`border p-5 ${opt.recommended ? "border-black/40 bg-white shadow-md" : "border-black/15 bg-white/70"}`}
+            >
+              <p className="text-xs uppercase tracking-widest opacity-50 mb-1">Option {opt.id}</p>
+              <h3 className="font-bold text-lg mb-1">
+                {opt.label}
+                {opt.recommended && " ⭐"}
+              </h3>
+              <p className="text-3xl font-light mb-2">${opt.monthlyTotal.toFixed(2)}</p>
+              <p className="text-xs opacity-60 mb-3">per month · {SEATS} seats</p>
+              <p className="text-sm opacity-75 leading-snug mb-2">{opt.bundle.name}</p>
+              <p className="text-xs opacity-55">
+                Annual equiv.: ${opt.annualMonthlyEquiv.toFixed(2)}/mo
+              </p>
+            </div>
+          ))}
+        </div>
         <div className="grid gap-8 lg:grid-cols-2">
-          <div className="space-y-3 border border-white/20 p-6 text-[clamp(0.9rem,1.25vw,1.05rem)]">
-            <h3 className="font-bold uppercase tracking-wide text-sm mb-4">Monthly subscription</h3>
-            <div className="flex justify-between gap-2 border-b border-white/10 pb-2">
-              <span className="opacity-80">
-                {PRICING_ROW_USD.bundleName} ({SEATS} × ${PRICING_ROW_USD.listPricePerSeatPerMonth})
+          <div className="border border-black/20 p-6 text-sm space-y-2">
+            <p className="font-semibold text-base mb-3">Recommended — Option B breakdown</p>
+            <div className="flex justify-between">
+              <span className="opacity-70">
+                {RECOMMENDED.bundle.name} ({SEATS} × ${RECOMMENDED.bundle.rateMonthly})
               </span>
-              <span className="font-medium">${PRICING_TOTALS_USD.licenseListSubtotal.toFixed(2)}/mo</span>
+              <span>${RECOMMENDED.monthlyTotal.toFixed(2)}/mo</span>
             </div>
-            <div className="flex justify-between gap-2 text-emerald-400">
-              <span>Nonprofit discount ({DISCOUNT_PCT}%)</span>
-              <span>
-                −$
-                {(PRICING_TOTALS_USD.licenseListSubtotal - PRICING_TOTALS_USD.licenseDiscountedSubtotal).toFixed(2)}/mo
-              </span>
-            </div>
-            <div className="flex justify-between gap-2 pt-2 font-medium">
-              <span className="opacity-80">Licenses after discount</span>
-              <span>${PRICING_TOTALS_USD.licenseDiscountedSubtotal.toFixed(2)}/mo</span>
-            </div>
-            <div className="flex justify-between gap-2 pt-2 border-t border-white/10">
-              <span className="opacity-80">Recruitment ({PRICING_ROW_USD.recruitment.tier}) — list</span>
-              <span>${PRICING_TOTALS_USD.recruitmentListPerMonth.toFixed(2)}/mo</span>
-            </div>
-            <div className="flex justify-between gap-2 text-emerald-400">
-              <span>Nonprofit discount ({DISCOUNT_PCT}%)</span>
-              <span>
-                −$
-                {(
-                  PRICING_TOTALS_USD.recruitmentListPerMonth - PRICING_TOTALS_USD.recruitmentDiscountedSubtotal
-                ).toFixed(2)}
-                /mo
-              </span>
-            </div>
-            <div className="flex justify-between gap-2 pt-2 font-medium border-t border-white/10">
-              <span className="opacity-80">Recruitment after discount</span>
-              <span>${PRICING_TOTALS_USD.recruitmentDiscountedSubtotal.toFixed(2)}/mo</span>
-            </div>
+            <p className="text-xs opacity-50 pt-2">
+              Includes Trainings, Performance, and Engagement — no separate module lines.
+            </p>
           </div>
           <div className="space-y-4">
-            <div className="border-2 border-white/30 bg-white/5 p-6 text-center">
-              <p className="text-sm opacity-70 mb-2">Estimated monthly subscription</p>
+            <div className="border-2 border-black/30 bg-black/[0.04] p-6 text-center">
+              <p className="text-sm opacity-60 mb-2">Recommended monthly subscription</p>
               <p className="text-[clamp(2.5rem,8vw,4.5rem)] font-light leading-none">
                 ${PRICING_TOTALS_USD.monthlyTotal.toFixed(2)}
               </p>
-              <p className="text-xs opacity-50 mt-2">USD · before taxes/fees if applicable</p>
+              <p className="text-xs opacity-50 mt-2">USD · {SEATS} employees · before taxes if applicable</p>
             </div>
-            <div className="border border-white/20 p-5 text-sm space-y-2">
+            <div className="border border-black/20 p-5 text-sm space-y-2">
               <p className="font-semibold">Implementation (one-time)</p>
               <p className="flex justify-between">
-                <span className="opacity-70">List (reference)</span>
-                <span>${PRICING_TOTALS_USD.implementationListOneTime.toFixed(0)}</span>
-              </p>
-              <p className="flex justify-between text-emerald-400">
-                <span>Nonprofit discount ({DISCOUNT_PCT}%)</span>
-                <span>
-                  −$
-                  {(
-                    PRICING_TOTALS_USD.implementationListOneTime - PRICING_TOTALS_USD.implementationOneTime
-                  ).toFixed(0)}
-                </span>
-              </p>
-              <p className="flex justify-between border-t border-white/15 pt-2 font-medium">
-                <span>Your price</span>
-                <span>${PRICING_TOTALS_USD.implementationOneTime.toFixed(0)} USD</span>
+                <span className="opacity-70">Onboarding &amp; configuration (~{IMPLEMENTATION.timelineDays} days)</span>
+                <span className="font-medium">${PRICING_TOTALS_USD.implementationOneTime.toLocaleString()} USD</span>
               </p>
               <p className="text-xs opacity-50 pt-2">
-                ~1 hour/week with your Specialist; ~1.5 months to go-live. Final scope in the order form.
+                {IMPLEMENTATION.goLiveRule}. No hidden fees — standard hours included. Exponent aligned for Sage
+                integration.
               </p>
             </div>
-            <p className="text-sm opacity-60">Card or bank transfer in USD/EUR as agreed.</p>
             <a
-              href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent(`${ORG} — Proposal confirmation`)}`}
-              className="inline-flex items-center gap-2 bg-white px-6 py-3 text-sm font-semibold text-black hover:opacity-90"
+              href={`mailto:victor.gutierrez@factorial.co?subject=${encodeURIComponent(`${ORG} — Proposal follow-up`)}`}
+              className="inline-flex items-center gap-2 bg-black px-6 py-3 text-sm font-semibold text-white hover:opacity-90"
             >
               Reply to confirm <ExternalLink className="h-4 w-4" />
             </a>
@@ -608,11 +561,46 @@ export default function ProposalFlow() {
         </div>
       </FlowSection>
 
-      {/* 11 Demo + video */}
+      {/* 10 Rollout */}
+      <FlowSection
+        innerClassName="!justify-start gap-8"
+        aria-label="Implementation"
+        style={{ backgroundColor: "#3d1522", color: "#fff" }}
+      >
+        <p className={labelCls}>10 — Rollout</p>
+        <Divider light />
+        <h2 className={headCls}>
+          Go-live in
+          <br />
+          {IMPLEMENTATION.timelineDays} days
+        </h2>
+        <Divider light />
+        <p className={`max-w-[55ch] ${bodyCls}`}>
+          Phased implementation with Exponent and your onboarding consultant — aligned to your rule:{" "}
+          <strong>start at the beginning of a financial month</strong>, not mid-cycle.
+        </p>
+        <Divider light />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { phase: "Weeks 1–2", title: "Discovery", desc: "Map 4 entities, shift rules, Uniclocks spec, Sage 50 mapping, B-BBEE requirements." },
+            { phase: "Weeks 2–5", title: "Configure", desc: "Core, time, shifts, leave, trainings, compensation. Import ~100 employees (keep Pastel codes)." },
+            { phase: "Weeks 5–7", title: "Test", desc: "UAT with Elani & Werner. Optional parallel payroll cycle. Sage sync validation." },
+            { phase: "Weeks 7–8", title: "Go-live", desc: "Admin + manager training. Launch at month start. 30-day hypercare support." },
+          ].map((s) => (
+            <div key={s.phase} className="border border-white/20 p-4">
+              <p className="text-xs opacity-50 mb-1">{s.phase}</p>
+              <h4 className="font-semibold mb-2">{s.title}</h4>
+              <p className="text-sm opacity-75 leading-snug">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </FlowSection>
+
+      {/* 11 Demo */}
       <FlowSection
         innerClassName="!justify-start gap-6"
-        aria-label="Demo and product overview"
-        style={{ backgroundColor: "#3d1522", color: "#fff" }}
+        aria-label="Demo"
+        style={{ backgroundColor: "#0f0709", color: "#fff" }}
       >
         <p className={labelCls}>11 — Try it</p>
         <Divider light />
@@ -624,7 +612,6 @@ export default function ProposalFlow() {
         <Divider light />
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
           <div className="flex-1 space-y-4">
-            <p className={bodyCls}>Explore Factorial in a demo workspace, or watch a short product overview.</p>
             <div className="flex flex-col gap-4 border border-white/20 bg-black/20 p-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="font-semibold mb-1">Demo login</p>
@@ -643,18 +630,9 @@ export default function ProposalFlow() {
             </div>
             <div className="space-y-2">
               {[
-                {
-                  label: "Shifts (monthly)",
-                  url: "https://app.eu2.demo.factorial.dev/shifts/monthly/employees/2026/1/1",
-                },
-                {
-                  label: "Time off approvals (Help Center)",
-                  url: "https://help.factorialhr.com/one/one-ai-%E2%80%93-time-off-management-approvals?from_search=218384939",
-                },
-                {
-                  label: "AI reports (demo)",
-                  url: "https://app.eu2.demo.factorial.dev/analytics/reports/dashboards/105102/list/question",
-                },
+                { label: "Shifts (monthly view)", url: "https://app.eu2.demo.factorial.dev/shifts/monthly/employees/2026/1/1" },
+                { label: "Compensation & payroll prep", url: "https://app.eu2.demo.factorial.dev/compensation" },
+                { label: "AI reports (Factorial One)", url: "https://app.eu2.demo.factorial.dev/analytics/reports/dashboards/105102/list/question" },
               ].map((link) => (
                 <a
                   key={link.label}
@@ -681,62 +659,39 @@ export default function ProposalFlow() {
         </div>
       </FlowSection>
 
-      {/* 12 Onboarding */}
+      {/* 12 Next steps */}
       <FlowSection
         innerClassName="!justify-start gap-8"
-        aria-label="Implementation"
+        aria-label="Next steps"
         style={{ backgroundColor: "#F5F0E8", color: "#1a1a1a" }}
       >
-        <p className={labelCls}>12 — Implementation</p>
+        <p className={labelCls}>12 — Next steps</p>
         <Divider />
         <h2 className={headCls}>
-          How we
+          Your
           <br />
-          Go live
+          timeline
         </h2>
         <Divider />
-        <p className={`max-w-[55ch] ${bodyCls}`}>
-          Structured weekly sessions so your team adopts Factorial confidently — without overwhelming day-to-day work.
-        </p>
-        <Divider />
-        <div className="grid gap-6 lg:grid-cols-2">
-          <div className="border border-black/15 bg-white/70 p-6">
-            <p className="text-xs uppercase tracking-widest opacity-50 mb-2">During implementation</p>
-            <h3 className="text-lg font-semibold mb-3">Dedicated Onboarding Specialist</h3>
-            <p className="text-[clamp(0.95rem,1.35vw,1.05rem)] opacity-80 mb-4 leading-relaxed">
-              Your Specialist configures Starter Planning: Core, Time Tracking, Time Off, Shifts, Recruitment basics,
-              and payroll-ready exports.
-            </p>
-            <ul className="space-y-2 text-[clamp(0.9rem,1.2vw,1rem)]">
-              <li className="flex gap-2">
-                <Check className="mt-0.5 h-4 w-4 shrink-0" /> One live session per week
-              </li>
-              <li className="flex gap-2">
-                <Check className="mt-0.5 h-4 w-4 shrink-0" /> Each session: 1 hour, actionable
-              </li>
-              <li className="flex gap-2">
-                <Check className="mt-0.5 h-4 w-4 shrink-0" /> ~1.5 months (≈6 weeks) to go-live
-              </li>
-            </ul>
-          </div>
-          <div className="border border-black/15 bg-white/70 p-6">
-            <p className="text-xs uppercase tracking-widest opacity-50 mb-2">After go-live</p>
-            <h3 className="text-lg font-semibold mb-3">Your Account Manager</h3>
-            <p className="text-[clamp(0.95rem,1.35vw,1.05rem)] opacity-80 mb-4 leading-relaxed">
-              One named contact for adoption, renewals, and growing the platform — not a faceless ticket queue.
-            </p>
-            <ul className="space-y-2 text-[clamp(0.9rem,1.2vw,1rem)]">
-              <li className="flex gap-2">
-                <Check className="mt-0.5 h-4 w-4 shrink-0" /> Specialist first, then one Account Manager
-              </li>
-              <li className="flex gap-2">
-                <Check className="mt-0.5 h-4 w-4 shrink-0" /> Ongoing alignment on usage and next modules
-              </li>
-            </ul>
-          </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {[
+            { step: "1", title: "Owner meeting (Monday)", desc: "Elani presents this proposal + ROI to the business owner for budget approval." },
+            { step: "2", title: "Follow-up call (Friday)", desc: "Victor + Paolo answer questions after internal review. Confirm Uniclocks device models." },
+            { step: "3", title: "Contract & kick-off", desc: "Order form signed — implementation starts within ~1 month. Onboarding fee at signature." },
+            { step: "4", title: "Go-live at month start", desc: "First payroll cycle in Factorial aligned to financial month boundary — as you requested." },
+          ].map((s) => (
+            <div key={s.step} className="flex gap-4 border border-black/15 bg-white/70 p-5">
+              <span className="text-2xl font-light opacity-40">{s.step}</span>
+              <div>
+                <h4 className="font-semibold mb-1">{s.title}</h4>
+                <p className="text-sm opacity-75 leading-snug">{s.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
         <p className="mt-auto text-sm opacity-60 border-t border-black/10 pt-6">
-          Proposal prepared for {ORG} — 2026 · Scroll experience; reduce motion in system settings for a simpler view.
+          Proposal prepared for {ORG} — June 2026 · Prepared for {CLIENT.contacts.champion} &amp;{" "}
+          {CLIENT.contacts.operations}
         </p>
       </FlowSection>
     </FlowArt>

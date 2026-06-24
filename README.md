@@ -62,7 +62,7 @@ This project is built with:
 
 ## Deploy (GitHub Pages)
 
-The repo builds with Vite using `base: /therighteousfoundation/` so the site works as a **project page**.
+The repo builds with Vite using `base: /highpointproposal/` so the site works as a **project page**.
 
 ### Automated deploy (GitHub Actions)
 
@@ -72,16 +72,16 @@ The repo builds with Vite using `base: /therighteousfoundation/` so the site wor
 
 After a successful run, open:
 
-`https://victorhgutierrez-cloud.github.io/therighteousfoundation/`
+`https://victorhgutierrez-cloud.github.io/highpointproposal/`
 
 **Local dev:** because of the `base` path, open the app at  
-`http://localhost:8080/therighteousfoundation/` (port is set in `vite.config.ts`).
+`http://localhost:8080/highpointproposal/` (port is set in `vite.config.ts`).
 
 ### Manual deploy (optional)
 
 ```sh
 npm run build
-# Upload the dist/ output to your hosting target, preserving paths under /therighteousfoundation/
+# Upload the dist/ output to your hosting target, preserving paths under /highpointproposal/
 ```
 
 ### Deploy via Lovable (if you use it)

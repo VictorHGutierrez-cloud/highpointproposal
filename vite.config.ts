@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 // GitHub Project Pages URL: /<repo>/
-const repoBase = "/therighteousfoundation/";
+const repoBase = "/highpointproposal/";
 
 export default defineConfig(({ mode }) => ({
   base: repoBase,
