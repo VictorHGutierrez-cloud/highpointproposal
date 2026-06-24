@@ -97,12 +97,22 @@ export const PRICING_OPTIONS = {
 } as const;
 
 export const IMPLEMENTATION = {
-  oneTimeZar: Math.round(2500 * CURRENCY.fxRateFromUsd),
+  oneTimeUsd: 800,
+  oneTimeZar: Math.round(800 * CURRENCY.fxRateFromUsd),
   timelineDays: "45–60",
   goLiveRule: "First day of a new financial month (no mid-month payroll cutover)",
 } as const;
 
 export const RECOMMENDED = PRICING_OPTIONS.b;
+
+/** Africa ROW USD — subscription from price list. */
+export const PRICING_TOTALS_USD = {
+  monthlyTotal: 700,
+  annualMonthlyEquiv: 640,
+  annualSubscription: 8_400,
+  implementationOneTime: IMPLEMENTATION.oneTimeUsd,
+  yearOneTotal: 8_400 + IMPLEMENTATION.oneTimeUsd,
+} as const;
 
 export const PRICING_TOTALS_ZAR = {
   monthlyTotal: RECOMMENDED.monthlyTotalZar,
@@ -112,17 +122,14 @@ export const PRICING_TOTALS_ZAR = {
   yearOneTotal: RECOMMENDED.monthlyTotalZar * 12 + IMPLEMENTATION.oneTimeZar,
 } as const;
 
-/** @deprecated Use PRICING_TOTALS_ZAR */
-export const PRICING_TOTALS_USD = PRICING_TOTALS_ZAR;
-
 /** @deprecated Legacy imports from template */
 export const PRICING_ROW_USD = {
   bundleName: RECOMMENDED.bundle.name,
   listPricePerSeatPerMonth: RECOMMENDED.bundle.rateMonthlyZar,
   recruitment: { tier: "Not in scope", listPricePerMonth: 0 },
   implementation: {
-    listPriceOneTime: IMPLEMENTATION.oneTimeZar,
-    discountedOneTime: IMPLEMENTATION.oneTimeZar,
+    listPriceOneTime: IMPLEMENTATION.oneTimeUsd,
+    discountedOneTime: IMPLEMENTATION.oneTimeUsd,
   },
 } as const;
 

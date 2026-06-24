@@ -5,10 +5,11 @@ import {
   CURRENCY,
   IMPLEMENTATION,
   PRICING_OPTIONS,
+  PRICING_TOTALS_USD,
   PRICING_TOTALS_ZAR,
   RECOMMENDED,
 } from "@/utils/constants";
-import { formatZAR } from "@/utils/formatters";
+import { formatUSD, formatZAR } from "@/utils/formatters";
 
 const { seatCount: SEATS, organizationName: ORG } = CLIENT;
 const OPTS = [PRICING_OPTIONS.a, PRICING_OPTIONS.b, PRICING_OPTIONS.c];
@@ -546,7 +547,7 @@ export default function ProposalFlow() {
               <p className="font-semibold">Implementation (one-time)</p>
               <p className="flex justify-between">
                 <span className="opacity-70">Onboarding &amp; configuration (~{IMPLEMENTATION.timelineDays} days)</span>
-                <span className="font-medium">{formatZAR(PRICING_TOTALS_ZAR.implementationOneTime)}</span>
+                <span className="font-medium">{formatUSD(PRICING_TOTALS_USD.implementationOneTime)}</span>
               </p>
               <p className="text-xs opacity-50 pt-2">
                 {IMPLEMENTATION.goLiveRule}. No hidden fees — standard hours included.
