@@ -13,7 +13,6 @@ export const CLIENT = {
     champion: "Elani Swanepoel — Finance, HR & Payroll (Cape Town)",
     operations: "Werner — Finance & provincial operations",
   },
-  partner: "Exponent (Sage Platinum Partner)",
 } as const;
 
 /** Africa ROW USD — per seat / month (monthly billing column). */

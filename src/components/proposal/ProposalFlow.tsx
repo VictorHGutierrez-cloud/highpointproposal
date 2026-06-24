@@ -52,7 +52,7 @@ export default function ProposalFlow() {
           and disconnected clocking with Core, shifts, time off, trainings, and native Sage 50 Cloud Payroll sync.
         </p>
         <p className="text-[clamp(0.85rem,1.3vw,1rem)] opacity-80">
-          {SEATS} seats · Africa USD (monthly) · Recommended: {RECOMMENDED.bundle.name} · Partner: {CLIENT.partner}
+          {SEATS} seats · Africa USD (monthly) · Recommended: {RECOMMENDED.bundle.name}
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-6 border-t border-white/30 pt-6">
           <div className="flex h-12 w-12 items-center justify-center border border-white/40 text-xl font-light">
@@ -115,7 +115,7 @@ export default function ProposalFlow() {
               {
                 icon: "🔗",
                 title: "Sage ecosystem",
-                desc: "Exponent joins as your Sage partner — Factorial syncs compensation to Sage 50 Cloud Payroll with one click.",
+                desc: "Native Sage 50 Cloud Payroll integration — Factorial syncs compensation with one click.",
               },
               {
                 icon: "📱",
@@ -414,8 +414,8 @@ export default function ProposalFlow() {
         <Divider light />
         <p className={`max-w-[55ch] ${bodyCls}`}>
           Native integration built with Sage over three years. Factorial prepares compensation;{" "}
-          <strong>Pastel/Sage 50 Cloud Payroll</strong> remains your payroll engine. Exponent supports the finance
-          side; Sage 200 Evolution stays for costing (out of scope).
+          <strong>Pastel/Sage 50 Cloud Payroll</strong> remains your payroll engine. Sage 200 Evolution stays for
+          costing (out of scope).
         </p>
         <Divider light />
         <div className="grid gap-6 lg:grid-cols-2">
@@ -547,8 +547,7 @@ export default function ProposalFlow() {
                 <span className="font-medium">${PRICING_TOTALS_USD.implementationOneTime.toLocaleString()} USD</span>
               </p>
               <p className="text-xs opacity-50 pt-2">
-                {IMPLEMENTATION.goLiveRule}. No hidden fees — standard hours included. Exponent aligned for Sage
-                integration.
+                {IMPLEMENTATION.goLiveRule}. No hidden fees — standard hours included.
               </p>
             </div>
             <a
@@ -576,7 +575,7 @@ export default function ProposalFlow() {
         </h2>
         <Divider light />
         <p className={`max-w-[55ch] ${bodyCls}`}>
-          Phased implementation with Exponent and your onboarding consultant — aligned to your rule:{" "}
+          Phased implementation with your onboarding consultant — aligned to your rule:{" "}
           <strong>start at the beginning of a financial month</strong>, not mid-cycle.
         </p>
         <Divider light />
