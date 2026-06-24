@@ -2,11 +2,13 @@ import { Check, ExternalLink } from "lucide-react";
 import FlowArt, { FlowSection } from "@/components/ui/story-scroll";
 import {
   CLIENT,
+  CURRENCY,
   IMPLEMENTATION,
   PRICING_OPTIONS,
-  PRICING_TOTALS_USD,
+  PRICING_TOTALS_ZAR,
   RECOMMENDED,
 } from "@/utils/constants";
+import { formatZAR } from "@/utils/formatters";
 
 const { seatCount: SEATS, organizationName: ORG } = CLIENT;
 const OPTS = [PRICING_OPTIONS.a, PRICING_OPTIONS.b, PRICING_OPTIONS.c];
@@ -52,7 +54,7 @@ export default function ProposalFlow() {
           and disconnected clocking with Core, shifts, time off, trainings, and native Sage 50 Cloud Payroll sync.
         </p>
         <p className="text-[clamp(0.85rem,1.3vw,1rem)] opacity-80">
-          {SEATS} seats · Africa USD (monthly) · Recommended: {RECOMMENDED.bundle.name}
+          {SEATS} seats · {CURRENCY.label} (monthly) · Recommended: {RECOMMENDED.bundle.name}
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-6 border-t border-white/30 pt-6">
           <div className="flex h-12 w-12 items-center justify-center border border-white/40 text-xl font-light">
@@ -284,7 +286,7 @@ export default function ProposalFlow() {
                     Option {opt.id} — {opt.label}
                     {opt.recommended && " ⭐"}
                   </p>
-                  <p className="font-light text-lg shrink-0">${opt.monthlyTotal.toFixed(0)}/mo</p>
+                  <p className="font-light text-lg shrink-0">{formatZAR(opt.monthlyTotalZar)}/mo</p>
                 </div>
                 <p className="text-sm opacity-70 mb-2">{opt.subtitle}</p>
                 <p className="text-xs opacity-55">
@@ -294,7 +296,7 @@ export default function ProposalFlow() {
               </div>
             ))}
             <p className="text-xs opacity-50 pt-2 border-t border-white/15">
-              Annual billing saves ~8% (e.g. Option B: ${PRICING_OPTIONS.b.annualMonthlyEquiv.toFixed(0)}/mo equivalent).
+              Annual billing saves ~8% (e.g. Option B: {formatZAR(PRICING_OPTIONS.b.annualMonthlyEquivZar)}/mo equivalent).
               Minimum 14 seats — you bill {SEATS}.
             </p>
           </div>
@@ -494,7 +496,7 @@ export default function ProposalFlow() {
         <p className={labelCls}>09 — Investment</p>
         <Divider />
         <h2 className={headCls}>
-          Africa USD
+          ZAR
           <br />
           Monthly
         </h2>
@@ -510,11 +512,11 @@ export default function ProposalFlow() {
                 {opt.label}
                 {opt.recommended && " ⭐"}
               </h3>
-              <p className="text-3xl font-light mb-2">${opt.monthlyTotal.toFixed(2)}</p>
+              <p className="text-3xl font-light mb-2">{formatZAR(opt.monthlyTotalZar)}</p>
               <p className="text-xs opacity-60 mb-3">per month · {SEATS} seats</p>
               <p className="text-sm opacity-75 leading-snug mb-2">{opt.bundle.name}</p>
               <p className="text-xs opacity-55">
-                Annual equiv.: ${opt.annualMonthlyEquiv.toFixed(2)}/mo
+                Annual equiv.: {formatZAR(opt.annualMonthlyEquivZar)}/mo
               </p>
             </div>
           ))}
@@ -524,9 +526,9 @@ export default function ProposalFlow() {
             <p className="font-semibold text-base mb-3">Recommended — Option B breakdown</p>
             <div className="flex justify-between">
               <span className="opacity-70">
-                {RECOMMENDED.bundle.name} ({SEATS} × ${RECOMMENDED.bundle.rateMonthly})
+                {RECOMMENDED.bundle.name} ({SEATS} × {formatZAR(RECOMMENDED.bundle.rateMonthlyZar)}/seat)
               </span>
-              <span>${RECOMMENDED.monthlyTotal.toFixed(2)}/mo</span>
+              <span>{formatZAR(RECOMMENDED.monthlyTotalZar)}/mo</span>
             </div>
             <p className="text-xs opacity-50 pt-2">
               Includes Trainings, Performance, and Engagement — no separate module lines.
@@ -536,15 +538,15 @@ export default function ProposalFlow() {
             <div className="border-2 border-black/30 bg-black/[0.04] p-6 text-center">
               <p className="text-sm opacity-60 mb-2">Recommended monthly subscription</p>
               <p className="text-[clamp(2.5rem,8vw,4.5rem)] font-light leading-none">
-                ${PRICING_TOTALS_USD.monthlyTotal.toFixed(2)}
+                {formatZAR(PRICING_TOTALS_ZAR.monthlyTotal)}
               </p>
-              <p className="text-xs opacity-50 mt-2">USD · {SEATS} employees · before taxes if applicable</p>
+              <p className="text-xs opacity-50 mt-2">ZAR · {SEATS} employees · VAT if applicable per order form</p>
             </div>
             <div className="border border-black/20 p-5 text-sm space-y-2">
               <p className="font-semibold">Implementation (one-time)</p>
               <p className="flex justify-between">
                 <span className="opacity-70">Onboarding &amp; configuration (~{IMPLEMENTATION.timelineDays} days)</span>
-                <span className="font-medium">${PRICING_TOTALS_USD.implementationOneTime.toLocaleString()} USD</span>
+                <span className="font-medium">{formatZAR(PRICING_TOTALS_ZAR.implementationOneTime)}</span>
               </p>
               <p className="text-xs opacity-50 pt-2">
                 {IMPLEMENTATION.goLiveRule}. No hidden fees — standard hours included.

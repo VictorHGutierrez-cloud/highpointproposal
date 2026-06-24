@@ -1,32 +1,50 @@
 /**
- * High Point Group — commercial proposal constants (Africa USD, monthly).
- * Source: Pricing ENG Africa v1.xlsx + discovery call (Highpoint.txt).
- * Sales model: bundles + add-ons only — never individual modules.
+ * High Point Group — commercial proposal constants (ZAR, South Africa).
+ * Source: Pricing ENG Africa v1.xlsx (ROW list) + discovery call (Highpoint.txt).
+ * Billing currency: South African Rand (ZAR).
  */
+
+export const CURRENCY = {
+  code: "ZAR",
+  symbol: "R",
+  label: "South African Rand (ZAR)",
+  /** Africa ROW USD list → ZAR (indicative; confirmed on order form). */
+  fxRateFromUsd: 18.5,
+} as const;
 
 export const CLIENT = {
   organizationName: "High Point Group",
-  /** ~100 employees across four affiliated South African entities. */
   seatCount: 100,
   location: "South Africa — Cape Town HQ + provincial sites",
+  billingCurrency: "ZAR",
   contacts: {
     champion: "Elani Swanepoel — Finance, HR & Payroll (Cape Town)",
     operations: "Werner — Finance & provincial operations",
   },
 } as const;
 
-/** Africa ROW USD — per seat / month (monthly billing column). */
+/** Convert ROW USD per-seat rate to ZAR per seat. */
+function zarPerSeat(usdPerSeat: number): number {
+  return Math.round(usdPerSeat * CURRENCY.fxRateFromUsd * 100) / 100;
+}
+
+/** Total ZAR for all seats at a per-seat USD list rate. */
+function zarTotal(usdPerSeat: number): number {
+  return Math.round(CLIENT.seatCount * usdPerSeat * CURRENCY.fxRateFromUsd);
+}
+
+/** Bundles — rates shown in ZAR per seat / month. */
 export const BUNDLES = {
   starterPlanning: {
     name: "Starter Planning",
-    rateMonthly: 4.75,
-    rateAnnual: 4.4,
+    rateMonthlyZar: zarPerSeat(4.75),
+    rateAnnualZar: zarPerSeat(4.4),
     includes: "Core, Time Tracking, Time Off, Shifts",
   },
   planningPro: {
     name: "Planning PRO",
-    rateMonthly: 7.0,
-    rateAnnual: 6.4,
+    rateMonthlyZar: zarPerSeat(7.0),
+    rateAnnualZar: zarPerSeat(6.4),
     includes: "Starter Planning + Trainings + Performance + Engagement",
   },
 } as const;
@@ -34,27 +52,20 @@ export const BUNDLES = {
 export const ADDONS = {
   trainings: {
     name: "Trainings",
-    rateMonthly: 1.75,
-    rateAnnual: 1.575,
+    rateMonthlyZar: zarPerSeat(1.75),
+    rateAnnualZar: zarPerSeat(1.575),
   },
 } as const;
 
-const SEATS = CLIENT.seatCount;
-
-function bundleMonthly(rate: number) {
-  return SEATS * rate;
-}
-
-/** Three proposal options — bundles only (+ optional middle tier via add-on). */
 export const PRICING_OPTIONS = {
   a: {
     id: "A",
     label: "HR & Attendance",
     subtitle: "Replace manual clocking and leave — shifts included",
     bundle: BUNDLES.starterPlanning,
-    addons: [] as { name: string; monthly: number; annual: number }[],
-    monthlyTotal: bundleMonthly(BUNDLES.starterPlanning.rateMonthly),
-    annualMonthlyEquiv: bundleMonthly(BUNDLES.starterPlanning.rateAnnual),
+    addons: [] as { name: string; monthlyZar: number; annualZar: number }[],
+    monthlyTotalZar: zarTotal(4.75),
+    annualMonthlyEquivZar: zarTotal(4.4),
     recommended: false,
   },
   b: {
@@ -62,9 +73,9 @@ export const PRICING_OPTIONS = {
     label: "Operations + Compliance",
     subtitle: "Shifts, trainings, ISO/B-BBEE readiness, owner reporting",
     bundle: BUNDLES.planningPro,
-    addons: [] as { name: string; monthly: number; annual: number }[],
-    monthlyTotal: bundleMonthly(BUNDLES.planningPro.rateMonthly),
-    annualMonthlyEquiv: bundleMonthly(BUNDLES.planningPro.rateAnnual),
+    addons: [] as { name: string; monthlyZar: number; annualZar: number }[],
+    monthlyTotalZar: zarTotal(7.0),
+    annualMonthlyEquivZar: zarTotal(6.4),
     recommended: true,
   },
   c: {
@@ -75,43 +86,43 @@ export const PRICING_OPTIONS = {
     addons: [
       {
         name: ADDONS.trainings.name,
-        monthly: bundleMonthly(ADDONS.trainings.rateMonthly),
-        annual: bundleMonthly(ADDONS.trainings.rateAnnual),
+        monthlyZar: zarTotal(1.75),
+        annualZar: zarTotal(1.575),
       },
     ],
-    monthlyTotal:
-      bundleMonthly(BUNDLES.starterPlanning.rateMonthly) +
-      bundleMonthly(ADDONS.trainings.rateMonthly),
-    annualMonthlyEquiv:
-      bundleMonthly(BUNDLES.starterPlanning.rateAnnual) +
-      bundleMonthly(ADDONS.trainings.rateAnnual),
+    monthlyTotalZar: zarTotal(4.75) + zarTotal(1.75),
+    annualMonthlyEquivZar: zarTotal(4.4) + zarTotal(1.575),
     recommended: false,
   },
 } as const;
 
 export const IMPLEMENTATION = {
-  /** One-time onboarding — confirm with manager before contract. */
-  oneTimeUSD: 2500,
+  oneTimeZar: Math.round(2500 * CURRENCY.fxRateFromUsd),
   timelineDays: "45–60",
   goLiveRule: "First day of a new financial month (no mid-month payroll cutover)",
 } as const;
 
 export const RECOMMENDED = PRICING_OPTIONS.b;
 
-export const PRICING_TOTALS_USD = {
-  monthlyTotal: RECOMMENDED.monthlyTotal,
-  annualMonthlyEquiv: RECOMMENDED.annualMonthlyEquiv,
-  implementationOneTime: IMPLEMENTATION.oneTimeUSD,
+export const PRICING_TOTALS_ZAR = {
+  monthlyTotal: RECOMMENDED.monthlyTotalZar,
+  annualMonthlyEquiv: RECOMMENDED.annualMonthlyEquivZar,
+  annualSubscription: RECOMMENDED.monthlyTotalZar * 12,
+  implementationOneTime: IMPLEMENTATION.oneTimeZar,
+  yearOneTotal: RECOMMENDED.monthlyTotalZar * 12 + IMPLEMENTATION.oneTimeZar,
 } as const;
 
-/** @deprecated Legacy shape for any remaining imports */
+/** @deprecated Use PRICING_TOTALS_ZAR */
+export const PRICING_TOTALS_USD = PRICING_TOTALS_ZAR;
+
+/** @deprecated Legacy imports from template */
 export const PRICING_ROW_USD = {
   bundleName: RECOMMENDED.bundle.name,
-  listPricePerSeatPerMonth: RECOMMENDED.bundle.rateMonthly,
+  listPricePerSeatPerMonth: RECOMMENDED.bundle.rateMonthlyZar,
   recruitment: { tier: "Not in scope", listPricePerMonth: 0 },
   implementation: {
-    listPriceOneTime: IMPLEMENTATION.oneTimeUSD,
-    discountedOneTime: IMPLEMENTATION.oneTimeUSD,
+    listPriceOneTime: IMPLEMENTATION.oneTimeZar,
+    discountedOneTime: IMPLEMENTATION.oneTimeZar,
   },
 } as const;
 
@@ -120,8 +131,8 @@ export const DEFAULT_VALUES = {
   contacto: CLIENT.contacts.champion,
   totalColaboradoresInternos: CLIENT.seatCount,
   totalColaboradoresExternos: 0,
-  custoColaboradorMes_USD: RECOMMENDED.bundle.rateMonthly,
+  custoColaboradorMes_ZAR: RECOMMENDED.bundle.rateMonthlyZar,
   minimoContrato: 14,
-  valorMinimo_USD: 14 * RECOMMENDED.bundle.rateMonthly,
-  valorTotal100_USD: PRICING_TOTALS_USD.monthlyTotal,
+  valorMinimo_ZAR: Math.round(14 * RECOMMENDED.bundle.rateMonthlyZar),
+  valorTotal100_ZAR: PRICING_TOTALS_ZAR.monthlyTotal,
 };
