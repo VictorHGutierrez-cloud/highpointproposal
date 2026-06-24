@@ -112,7 +112,7 @@ export default function ProposalFlow() {
               {
                 icon: "📋",
                 title: "Compliance pressure",
-                desc: "ISO standards (Howden audit), B-BBEE certificate cycle, and bargaining council reporting need accurate, exportable workforce data.",
+                desc: "ISO standards, B-BBEE certificate cycle, and bargaining council reporting need accurate, exportable workforce data.",
               },
               {
                 icon: "🔗",
@@ -362,7 +362,7 @@ export default function ProposalFlow() {
         </h2>
         <Divider light />
         <p className={`max-w-[55ch] ${bodyCls}`}>
-          Werner&apos;s ISO audit with Howden exposed the risk of paper HR files. Factorial centralises documents,
+          Werner&apos;s ISO audit exposed the risk of paper HR files. Factorial centralises documents,
           tracks training expiries, and supports South Africa B-BBEE reporting — all exportable for consultants.
         </p>
         <Divider light />
